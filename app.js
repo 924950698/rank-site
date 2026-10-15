@@ -171,10 +171,12 @@ fetch("topic.json", { cache: "no-cache" }).then(r => r.json()).then(t => {
 // ---------- F12 我的最佳互动账号（partners.json 按需加载） ----------
 let partnersP;
 const normHandle = s => String(s || "").trim().replace(/^@+/, "").replace(/^https?:\/\/(x|twitter)\.com\//i, "").split(/[/?#\s]/)[0].toLowerCase();
-async function showPartners(raw, push = true) {
+let qTimer, qTries = 0;
+async function showPartners(raw, push = true, poll = false) {
   const h = normHandle(raw), out = $("#pqOut");
+  if (!poll) { clearTimeout(qTimer); qTries = 0; }
   if (!/^[a-z0-9_]{1,15}$/.test(h)) { out.innerHTML = `<div class="pres m">请输入有效的 X 用户名</div>`; return; }
-  out.innerHTML = `<div class="pres m">查询中…</div>`;
+  if (!poll) out.innerHTML = `<div class="pres m">查询中…</div>`;
   try {
     partnersP ||= fetch("partners.json", { cache: "no-cache" }).then(r => { if (!r.ok) throw 0; return r.json(); });
     const P = await partnersP, list = (P.users || {})[h];
@@ -182,7 +184,10 @@ async function showPartners(raw, push = true) {
     const t = P.updated_at ? new Date(P.updated_at).toLocaleString("zh-CN", { hour12: false, month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" }) : "";
     const note = `<div class="pnote">计算方法：${esc(P.method || "按最近回复和@次数")}（只统计最近的回复和 @，不含点赞）${t ? " · 更新于 " + t : ""}</div>`;
     PW = list?.length ? { h, list, extra: P.extra?.[h] || P.users_extra?.[h] || [], selfAv: P.profiles?.[h]?.avatar } : null; renderWall();
-    if (!list?.length) { try { window.track?.("queue:" + h, "queue " + h); } catch (e) {} out.innerHTML = `<div class="pres"><h4>@${esc(h)}</h4><div>已加入收录队列，约 1 小时后再来看</div>${note}</div>`; return null; }
+    if (!list?.length) { if (!poll) try { window.track?.("queue:" + h, "queue " + h); } catch (e) {}
+      out.innerHTML = `<div class="pres"><h4>@${esc(h)}</h4><div>已加入收录队列，约 15 分钟出结果</div><div class="m">页面不用关，数据一到会自动显示${qTries ? `（已等 ${qTries} 分钟）` : ""}</div>${note}</div>`;
+      if (qTries < 40) qTimer = setTimeout(() => { qTries++; partnersP = null; showPartners(h, false, true); }, 60000); return null; }
+    clearTimeout(qTimer);
     out.innerHTML = `<div class="pres"><h4><span>@${esc(h)}</span> 的最佳互动账号 Top 3</h4>` +
       list.slice(0, 3).map((u, i) => `<a class="pu" href="${outUrl(profile(u.handle), "partner")}" target="_blank" rel="noopener">
         <div class="rk">${i + 1}</div><img class="av" loading="lazy" src="${esc(u.avatar || AV)}" alt="">
