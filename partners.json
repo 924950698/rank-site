@@ -1,4 +1,209 @@
-{"updated_at":"2026-10-15T07:00:00Z","method":"按最近回复和@次数","sample":true,"users":{
- "tigerr3aue":[{"handle":"demo_a","name":"示例账号A","avatar":"","count":42},{"handle":"demo_b","name":"示例账号B","avatar":"","count":31},{"handle":"demo_c","name":"示例账号C","avatar":"","count":18}],
- "demo_0":[{"handle":"tigerr3aue","name":"tiger","avatar":"","count":12},{"handle":"demo_5","name":"示例账号F","avatar":"","count":9},{"handle":"demo_9","name":"示例账号J","avatar":"","count":4}]
-}}
+{
+ "updated_at": "2026-10-15T07:00:00Z",
+ "method": "按最近回复和@次数",
+ "sample": true,
+ "users": {
+  "tigerr3aue": [
+   {
+    "handle": "demo_a",
+    "name": "示例账号A",
+    "avatar": "",
+    "count": 42
+   },
+   {
+    "handle": "demo_b",
+    "name": "示例账号B",
+    "avatar": "",
+    "count": 37
+   },
+   {
+    "handle": "demo_c",
+    "name": "示例账号C",
+    "avatar": "",
+    "count": 33
+   },
+   {
+    "handle": "demo_d",
+    "name": "示例账号D",
+    "avatar": "",
+    "count": 29
+   },
+   {
+    "handle": "demo_e",
+    "name": "示例账号E",
+    "avatar": "",
+    "count": 25
+   },
+   {
+    "handle": "demo_f",
+    "name": "示例账号F",
+    "avatar": "",
+    "count": 22
+   },
+   {
+    "handle": "demo_g",
+    "name": "示例账号G",
+    "avatar": "",
+    "count": 20
+   },
+   {
+    "handle": "demo_h",
+    "name": "示例账号H",
+    "avatar": "",
+    "count": 17
+   },
+   {
+    "handle": "demo_i",
+    "name": "示例账号I",
+    "avatar": "",
+    "count": 15
+   },
+   {
+    "handle": "demo_j",
+    "name": "示例账号J",
+    "avatar": "",
+    "count": 13
+   },
+   {
+    "handle": "demo_k",
+    "name": "示例账号K",
+    "avatar": "",
+    "count": 12
+   },
+   {
+    "handle": "demo_l",
+    "name": "示例账号L",
+    "avatar": "",
+    "count": 10
+   },
+   {
+    "handle": "demo_m",
+    "name": "示例账号M",
+    "avatar": "",
+    "count": 9
+   },
+   {
+    "handle": "demo_n",
+    "name": "示例账号N",
+    "avatar": "",
+    "count": 8
+   },
+   {
+    "handle": "demo_o",
+    "name": "示例账号O",
+    "avatar": "",
+    "count": 7
+   },
+   {
+    "handle": "demo_p",
+    "name": "示例账号P",
+    "avatar": "",
+    "count": 6
+   },
+   {
+    "handle": "demo_q",
+    "name": "示例账号Q",
+    "avatar": "",
+    "count": 5
+   },
+   {
+    "handle": "demo_r",
+    "name": "示例账号R",
+    "avatar": "",
+    "count": 5
+   },
+   {
+    "handle": "demo_s",
+    "name": "示例账号S",
+    "avatar": "",
+    "count": 4
+   },
+   {
+    "handle": "demo_t",
+    "name": "示例账号T",
+    "avatar": "",
+    "count": 4
+   },
+   {
+    "handle": "demo_u",
+    "name": "示例账号U",
+    "avatar": "",
+    "count": 3
+   },
+   {
+    "handle": "demo_v",
+    "name": "示例账号V",
+    "avatar": "",
+    "count": 3
+   },
+   {
+    "handle": "demo_w",
+    "name": "示例账号W",
+    "avatar": "",
+    "count": 3
+   },
+   {
+    "handle": "demo_x",
+    "name": "示例账号X",
+    "avatar": "",
+    "count": 2
+   },
+   {
+    "handle": "demo_y",
+    "name": "示例账号Y",
+    "avatar": "",
+    "count": 2
+   },
+   {
+    "handle": "demo_z",
+    "name": "示例账号Z",
+    "avatar": "",
+    "count": 2
+   },
+   {
+    "handle": "demo_a26",
+    "name": "示例账号A26",
+    "avatar": "",
+    "count": 2
+   },
+   {
+    "handle": "demo_b27",
+    "name": "示例账号B27",
+    "avatar": "",
+    "count": 1
+   },
+   {
+    "handle": "demo_c28",
+    "name": "示例账号C28",
+    "avatar": "",
+    "count": 1
+   },
+   {
+    "handle": "demo_d29",
+    "name": "示例账号D29",
+    "avatar": "",
+    "count": 1
+   }
+  ],
+  "demo_0": [
+   {
+    "handle": "tigerr3aue",
+    "name": "tiger",
+    "avatar": "",
+    "count": 12
+   },
+   {
+    "handle": "demo_5",
+    "name": "示例账号F",
+    "avatar": "",
+    "count": 9
+   },
+   {
+    "handle": "demo_9",
+    "name": "示例账号J",
+    "avatar": "",
+    "count": 4
+   }
+  ]
+ }
+}

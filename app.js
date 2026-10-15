@@ -7,7 +7,7 @@ const ago = t => { const m = Math.max(1, Math.round((Date.now() - new Date(t)) /
 const profile = u => `https://x.com/${encodeURIComponent(u)}`;
 const AV = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg"/%3E';
 
-let D = null, tab = "exposure", expanded = false, wallSort = "views";
+let PW = null, D = null, tab = "exposure", expanded = false, wallSort = "views";
 
 // ---------- 渲染 ----------
 function card(p, i, extra = "") {
@@ -44,8 +44,7 @@ function renderBest() {
     <div class="m">互动 ${num(b.interactions)}</div>${b.gain != null ? `<div class="g" style="font-size:12px">+${num(b.gain)} 粉</div>` : ""}</a>`).join("");
 }
 // 圆形气泡墙：按当前排序名次定大小，#1 居中，螺旋搜索 + 碰撞检测的确定性排布
-function packCircles(n, W) {
-  const rad = i => 64 / Math.pow(i + 1, 0.42) + 9;          // 名次越靠后越小
+function packCircles(n, W, rad = i => 64 / Math.pow(i + 1, 0.42) + 9) {   // 默认：名次越靠后越小
   const placed = [], GAP = 3;
   for (let i = 0; i < n; i++) {
     const r = rad(i);
@@ -59,7 +58,24 @@ function packCircles(n, W) {
   const k = Math.min(1, (W / 2 - 6) / R), H = Math.ceil(2 * R * k + 44);
   return { H, items: placed.map(p => ({ x: W / 2 + p.x * k, y: (H - 36) / 2 + p.y * k, r: p.r * k })) };
 }
+const selfAvatar = h => `https://unavatar.io/x/${encodeURIComponent(h)}`;
+const partnerRad = (list) => { const mx = Math.max(1, ...list.map(u => u.count || 0)); return i => i === 0 ? 70 : 12 + 44 * Math.sqrt((list[i - 1].count || 0) / mx); };
+const ini = u => [...(u.name || u.handle || "?")][0].toUpperCase();
+function renderPersonalWall() {
+  const { h, list } = PW, el = $("#wall"), arr = list.slice(0, 40);
+  const W = el.clientWidth || 378, { H, items } = packCircles(arr.length + 1, W, partnerRad(arr));
+  el.style.height = H + "px";
+  el.innerHTML = items.map((c, i) => { const u = i ? arr[i - 1] : { handle: h, name: h, avatar: selfAvatar(h) };
+    return `<a class="bub${i ? "" : " self"}" href="${outUrl(profile(u.handle), i ? "partner_wall" : "self_wall")}" target="_blank" rel="noopener" title="@${esc(u.handle)}${i ? " · " + u.count + " 次互动" : ""}"
+      style="left:${(c.x - c.r).toFixed(1)}px;top:${(c.y - c.r).toFixed(1)}px;width:${(2 * c.r).toFixed(1)}px;height:${(2 * c.r).toFixed(1)}px">
+      ${u.avatar ? `<img loading="lazy" decoding="async" src="${esc(u.avatar)}" alt="" onerror="this.outerHTML='<b class=ini>${esc(ini(u))}</b>'">` : `<b class="ini">${esc(ini(u))}</b>`}${i && i <= 3 ? `<i>${i}</i>` : ""}</a>`; }).join("")
+    + `<span class="wtag l">@${esc(h)} 的互动圈<br><span style="opacity:.7">圆越大互动越多</span></span><span class="wtag r">${arr.length} 人</span>`;
+}
 function renderWall() {
+  $("#wallTitle").textContent = PW ? `@${PW.h} 的互动照片墙` : "24 小时照片墙";
+  $("#wallSort").style.display = PW ? "none" : "";
+  if (PW) return renderPersonalWall();
+  if (!D) return;
   const arr = [...(D.photos || [])].sort((a, b) => b.metrics[wallSort] - a.metrics[wallSort]).slice(0, 60);
   const el = $("#wall"); if (!arr.length) { el.style.height = ""; el.innerHTML = `<div class="empty">暂无带图帖子</div>`; return; }
   const W = el.clientWidth || 378, { H, items } = packCircles(arr.length, W);
@@ -132,6 +148,7 @@ async function showPartners(raw, push = true) {
     if (push) history.replaceState(null, "", `?u=${encodeURIComponent(h)}`);
     const t = P.updated_at ? new Date(P.updated_at).toLocaleString("zh-CN", { hour12: false, month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" }) : "";
     const note = `<div class="pnote">计算方法：${esc(P.method || "按最近回复和@次数")}（只统计最近的回复和 @，不含点赞）${t ? " · 更新于 " + t : ""}</div>`;
+    PW = list?.length ? { h, list } : null; renderWall();
     if (!list?.length) { out.innerHTML = `<div class="pres"><h4>@${esc(h)}</h4><div>暂未收录，明天再来看看</div>${note}</div>`; return; }
     out.innerHTML = `<div class="pres"><h4><span>@${esc(h)}</span> 的最佳互动账号 Top 3</h4>` +
       list.slice(0, 3).map((u, i) => `<a class="pu" href="${outUrl(profile(u.handle), "partner")}" target="_blank" rel="noopener">
@@ -141,7 +158,7 @@ async function showPartners(raw, push = true) {
       `${note}<div class="pshare"><button type="button" class="btn ghost" id="pqCopy">复制链接</button><button type="button" class="btn" id="pqPoster">生成海报</button></div></div>`;
     const url = shareUrl(h);
     $("#pqCopy").onclick = async () => { try { await navigator.clipboard.writeText(url); } catch { const t = document.createElement("textarea"); t.value = url; document.body.appendChild(t); t.select(); document.execCommand("copy"); t.remove(); } toast("已复制"); };
-    $("#pqPoster").onclick = () => openPoster(h, list.slice(0, 3), url);
+    $("#pqPoster").onclick = () => openPoster(h, list, url);
   } catch { partnersP = null; out.innerHTML = `<div class="pres m">数据加载失败，请稍后再试</div>`; }
 }
 function shareUrl(h) { const base = (C.SITE_URL && !/example\./.test(C.SITE_URL)) ? C.SITE_URL : location.origin + location.pathname; return base.replace(/[?#].*$/, "") + "?u=" + encodeURIComponent(h); }
@@ -154,7 +171,7 @@ async function openPoster(h, list, url) {
   try {
     posterLib ||= Promise.all([loadJS("vendor/qrcode.js"), loadJS("poster.js")]);
     await posterLib;
-    const cv = await window.makePoster({ handle: h, list, url });
+    const cv = await window.makePoster({ handle: h, list, url, self: selfAvatar(h), pack: (n, W, rad) => packCircles(n, W, rad), rad: partnerRad });
     const blob = await new Promise(r => cv.toBlob(r, "image/png")), file = new File([blob], `best-partners-${h}.png`, { type: "image/png" });
     const purl = URL.createObjectURL(blob);
     const xText = "我的 X 最佳互动账号 Top 3 出炉了，测测你的 👉 " + url;
