@@ -82,10 +82,7 @@ function wallPeople(pw) {
   (pw.extra || []).forEach(u => add(u, true));
   return out;
 }
-function peopleRad(ppl) {
-  const mx = Math.max(1, ...ppl.map(u => u.count || 0));
-  return i => { const u = ppl[i]; if (u.self) return 64; if (u.extra) return 10 + hsh(u.handle) % 5; return 14 + 34 * Math.sqrt(u.count / mx); };
-}
+function peopleRad(ppl) { return i => 64 / Math.pow(i + 1, 0.42) + 9; }   // 与 24h 照片墙统一：按名次平滑递减
 let wallTok = 0;
 async function renderPersonalWall() {
   const tok = ++wallTok, el = $("#wall"), h = PW.h;
