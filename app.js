@@ -193,3 +193,12 @@ $("#pqPost").onclick = async () => { const r = await showPartners($("#pqIn").val
 fetch("data.json", { cache: "no-cache" }).then(r => r.json()).then(d => { D = d; render(); })
   .catch(() => { $("#list").innerHTML = `<div class="empty">数据加载失败，请稍后刷新</div>`; });
 })();
+
+// ---------- 按钮埋点（GoatCounter 事件） ----------
+(() => {
+  const code = C.GC_CODE;
+  if (code) { const s = document.createElement("script"); s.async = true; s.src = "https://gc.zgo.at/count.js"; s.dataset.goatcounter = `https://${code}.goatcounter.com/count`; document.head.appendChild(s); }
+  const name = el => el.dataset.ev || (el.id ? el.id : "") || [el.dataset.t, el.dataset.s, el.dataset.src].filter(Boolean).join("-") || (el.textContent || "").trim().slice(0, 20) || "unknown";
+  window.track = (ev, title) => { const n = "ev-" + ev; if (window.goatcounter?.count) goatcounter.count({ path: n, title: title || ev, event: true }); else (window._evq ||= []).push(n); };
+  document.addEventListener("click", e => { const el = e.target.closest("button,a,.pu,canvas"); if (!el) return; const sec = el.closest("section,header,footer,form,.pm")?.id || el.closest(".pm") && "poster" || ""; track((sec ? sec + ":" : "") + name(el), (el.textContent || "").trim().slice(0, 30)); }, true);
+})();
