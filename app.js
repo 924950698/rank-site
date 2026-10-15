@@ -182,7 +182,7 @@ async function showPartners(raw, push = true) {
     const t = P.updated_at ? new Date(P.updated_at).toLocaleString("zh-CN", { hour12: false, month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" }) : "";
     const note = `<div class="pnote">计算方法：${esc(P.method || "按最近回复和@次数")}（只统计最近的回复和 @，不含点赞）${t ? " · 更新于 " + t : ""}</div>`;
     PW = list?.length ? { h, list, extra: P.extra?.[h] || P.users_extra?.[h] || [], selfAv: P.profiles?.[h]?.avatar } : null; renderWall();
-    if (!list?.length) { out.innerHTML = `<div class="pres"><h4>@${esc(h)}</h4><div>暂未收录，明天再来看看</div>${note}</div>`; return null; }
+    if (!list?.length) { try { window.track?.("queue:" + h, "queue " + h); } catch (e) {} out.innerHTML = `<div class="pres"><h4>@${esc(h)}</h4><div>已加入收录队列，约 1 小时后再来看</div>${note}</div>`; return null; }
     out.innerHTML = `<div class="pres"><h4><span>@${esc(h)}</span> 的最佳互动账号 Top 3</h4>` +
       list.slice(0, 3).map((u, i) => `<a class="pu" href="${outUrl(profile(u.handle), "partner")}" target="_blank" rel="noopener">
         <div class="rk">${i + 1}</div><img class="av" loading="lazy" src="${esc(u.avatar || AV)}" alt="">
