@@ -1,0 +1,4 @@
+{"updated_at":"2026-10-15T07:00:00Z","method":"按最近回复和@次数","sample":true,"users":{
+ "tigerr3aue":[{"handle":"demo_a","name":"示例账号A","avatar":"","count":42},{"handle":"demo_b","name":"示例账号B","avatar":"","count":31},{"handle":"demo_c","name":"示例账号C","avatar":"","count":18}],
+ "demo_0":[{"handle":"tigerr3aue","name":"tiger","avatar":"","count":12},{"handle":"demo_5","name":"示例账号F","avatar":"","count":9},{"handle":"demo_9","name":"示例账号J","avatar":"","count":4}]
+}}

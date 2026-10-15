@@ -1,0 +1,9 @@
+{
+  "rolling": ["比特币", "BTC", "以太坊", "ETH", "空投", "山寨币", "Meme", "转发抽奖", "评论区", "你们怎么看", "投票"],
+  "scheduled": ["铭文", "RWA", "\"AI Agent\"", "SOL", "互关", "涨粉", "回关", "互粉", "神回复", "笑死", "破防", "暴跌", "暴涨", "爆仓", "突发", "刚刚"],
+  "scheduled_hours_cst": [11, 20],
+  "include_x_trends_top": 5,
+  "blacklist_users": [],
+  "blacklist_words": ["私信领取", "带单", "稳赚", "保本", "加V", "加微"],
+  "min_followers": 500
+}

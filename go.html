@@ -1,0 +1,10 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>跳转到 X…</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"><style>body{background:#000;color:#71767b;font:14px sans-serif;text-align:center;padding-top:40vh}a{color:#39ff14}</style>
+<script src="config.js"></script></head><body>正在跳转到 X… <a id="l" href="https://x.com/">点此继续</a>
+<script>
+// 出站中转页：Cloudflare Web Analytics 只统计页面浏览，用 /go.html?t=<来源> 的浏览量统计“点击到 X”
+(function(){var q=new URLSearchParams(location.search),u=q.get("u")||"";
+if(!/^https:\/\/(x|twitter)\.com\//.test(u))u="https://x.com/"+((window.APP_CONFIG||{}).OWNER||"");
+document.getElementById("l").href=u;var t=(window.APP_CONFIG||{}).CF_BEACON_TOKEN,go=function(){location.replace(u)};
+if(t){var s=document.createElement("script");s.defer=1;s.src="https://static.cloudflareinsights.com/beacon.min.js";s.setAttribute("data-cf-beacon",JSON.stringify({token:t,spa:false}));s.onload=function(){setTimeout(go,300)};s.onerror=go;document.head.appendChild(s);setTimeout(go,1200)}else go();})();
+</script></body></html>

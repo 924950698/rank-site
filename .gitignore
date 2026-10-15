@@ -1,0 +1,11 @@
+node_modules/
+.env
+*.local
+state/
+preview.png
+wall-before.png
+wall-after.png
+partners-result.png
+poster-sample.png
+live.png
+PRD-*.md

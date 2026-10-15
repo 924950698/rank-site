@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>币圈 24h 爆帖榜 · 每小时更新</title>
+<meta name="description" content="每小时更新 X 上中文币圈 24 小时爆帖：曝光榜、评论榜、涨粉榜、照片墙。">
+<meta name="theme-color" content="#000000">
+<link rel="preload" href="data.json" as="fetch" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <b class="logo">币圈<span class="g">24h</span>爆帖榜</b>
+  <span class="upd" id="upd">● --:-- 已更新</span>
+  <a class="btn follow" data-src="header" href="https://x.com/intent/follow?screen_name=tigerr3aue" target="_blank" rel="noopener">关注 @tigerr3aue</a>
+</header>
+<section id="wallSec">
+  <h3 id="wallTitle">24 小时照片墙</h3>
+  <div class="sw" id="wallSort"><button data-s="views" class="on">按曝光</button><button data-s="replies">按评论</button></div>
+  <div class="wall" id="wall"></div>
+  <form class="pq" id="pq"><b>我的最佳互动账号</b><span class="m">看看谁和你互动最多</span>
+    <div class="pqr"><input id="pqIn" placeholder="输入你的 X 用户名" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="16"><button class="btn">查看</button></div>
+    <div id="pqOut"></div></form>
+  <div class="cta"><b>每小时更新爆帖</b><br><span class="m">关注不迷路</span><br><br><a class="btn follow" data-src="wall" href="https://x.com/intent/follow?screen_name=tigerr3aue" target="_blank" rel="noopener">关注 @tigerr3aue</a></div>
+</section>
+
+<a class="pin" id="pinned" hidden target="_blank" rel="noopener" href="https://x.com/tigerr3aue">
+  <img class="av" src="https://unavatar.io/x/tigerr3aue" loading="lazy" alt="" onerror="this.style.visibility='hidden'">
+  <span><span class="m">站长推荐</span><br><b>…</b></span><span class="fl">去看 →</span>
+</a>
+<a class="topic" id="topic" target="_blank" rel="noopener" href="https://x.com/tigerr3aue">
+  <span class="m">今日话题</span><br><b id="topicText">加载中…</b>
+</a>
+
+<nav class="tabs" id="tabs">
+  <button data-t="exposure" class="on">曝光</button>
+  <button data-t="growth">涨粉</button>
+  <button data-t="comments">评论</button>
+</nav>
+
+<main>
+  <section id="list"></section>
+  <button class="more" id="more">查看 Top 50 ↓</button>
+
+  <h3>今日最佳互动账号</h3>
+  <div class="best" id="best"></div>
+
+</main>
+
+<footer class="m">
+  数据每小时更新 · 点击卡片跳转 X 原帖<br><br>
+  <a class="btn follow" data-src="footer" href="https://x.com/intent/follow?screen_name=tigerr3aue" target="_blank" rel="noopener">关注 @tigerr3aue</a><br><br>
+  <a href="privacy.html">隐私政策</a> · <a href="terms.html">服务条款</a><br>
+  <span style="font-size:11px">榜单仅覆盖关键词范围内的公开帖，仅展示摘要并链接原帖</span>
+</footer>
+
+
+<script src="config.js"></script>
+<script src="app.js" defer></script>
+</body>
+</html>
