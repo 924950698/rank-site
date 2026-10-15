@@ -1,4 +1,5 @@
 (() => {
+const AV_V = window.ASSET_V || "1";
 const C = window.APP_CONFIG || {};
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -185,12 +186,23 @@ async function showPartners(raw, push = true) {
 function shareUrl(h) { const base = (C.SITE_URL && !/example\./.test(C.SITE_URL)) ? C.SITE_URL : location.origin + location.pathname; return base.replace(/[?#].*$/, "") + "?u=" + encodeURIComponent(h); }
 function toast(s) { let t = $("#toast"); if (!t) { t = document.createElement("div"); t.id = "toast"; document.body.appendChild(t); } t.textContent = s; t.classList.add("on"); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("on"), 1600); }
 const loadJS = src => new Promise((r, j) => { const s = document.createElement("script"); s.src = src; s.onload = r; s.onerror = j; document.head.appendChild(s); });
+// 保存图片：在点击手势内同步调用 share（blob 已提前生成）；失败回退下载；iOS/内置浏览器提示长按保存
+const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+const inApp = /MicroMessenger|QQ\/|Weibo|FBAN|FBAV|Instagram|Line\//i.test(navigator.userAgent);
+function saveImage(file, purl, box) {
+  const hint = () => { const e = box?.querySelector(".pmh"); if (e) { e.textContent = "长按上方图片，选择「保存」或「存储图像」"; e.style.color = "#39ff14"; } toast("长按图片保存"); };
+  const dl = () => { if (isIOS || inApp) return hint(); try { const a = document.createElement("a"); a.href = purl; a.download = file.name; document.body.appendChild(a); a.click(); a.remove(); toast("已保存"); } catch { hint(); } };
+  let ok = false; try { ok = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) && !!navigator.canShare?.({ files: [file] }); } catch {}
+  if (!ok) return dl();
+  let p; try { p = navigator.share({ files: [file] }); } catch (e) { return hint(); }   // 同步调用，保住用户手势
+  p.catch(e => { if (e?.name !== "AbortError") hint(); });
+}
 let posterLib;
 async function openPoster(h, list, url) {
   const m = document.createElement("div"); m.className = "pm"; m.innerHTML = `<div class="pmb"><div class="m" style="text-align:center;padding:40px">海报生成中…</div></div>`;
   document.body.appendChild(m); m.onclick = e => { if (e.target === m) m.remove(); };
   try {
-    posterLib ||= Promise.all([loadJS("vendor/qrcode.js"), loadJS("poster.js")]);
+    posterLib ||= Promise.all([loadJS("vendor/qrcode.js?v=" + AV_V), loadJS("poster.js?v=" + AV_V)]);
     await posterLib;
     const cv = await window.makePoster({ handle: h, list, url, self: selfAvatar(h) });
     const blob = await new Promise(r => cv.toBlob(r, "image/png")), file = new File([blob], `best-partners-${h}.png`, { type: "image/png" });
@@ -199,17 +211,15 @@ async function openPoster(h, list, url) {
     m.querySelector(".pmb").innerHTML = `<img src="${purl}" alt="海报"><div class="pmh">先保存海报，发帖时把图片加上</div>
       <div class="pmr"><button class="btn" id="pmSave">保存图片</button><a class="btn ghost" id="pmX" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(xText)}">发到 X</a><button class="btn ghost" id="pmClose">关闭</button></div>`;
     m.querySelector("#pmClose").onclick = () => m.remove();
-    m.querySelector("#pmSave").onclick = async () => {
-      if (navigator.canShare?.({ files: [file] }) && /Mobi|Android|iPhone/i.test(navigator.userAgent)) { try { await navigator.share({ files: [file], text: xText }); return; } catch (e) { if (e.name === "AbortError") return; } }
-      const a = document.createElement("a"); a.href = purl; a.download = file.name; a.click(); toast("已保存");
-    };
+    m.querySelector("#pmSave").onclick = () => saveImage(file, purl, m.querySelector(".pmb"));
   } catch (e) { m.querySelector(".pmb").innerHTML = `<div class="m" style="padding:30px;text-align:center">海报生成失败</div>`; }
 }
 // ---------- 个人照片墙动图（600×600，气泡轻浮动，24 帧 × 100ms 无缝循环） ----------
+// 单张跨域污染 → 该头像用首字母
 const wallImg = src => new Promise(res => { if (!src) return res(null); const im = new Image(); im.crossOrigin = "anonymous"; im.referrerPolicy = "no-referrer";
-  const t = setTimeout(() => res(null), 4000); im.onload = () => { clearTimeout(t); res(im); }; im.onerror = () => { clearTimeout(t); res(null); }; im.src = src; });
+  const t = setTimeout(() => res(null), 4000); im.onload = () => { clearTimeout(t); try { const k = document.createElement("canvas"); k.width = k.height = 1; const x = k.getContext("2d"); x.drawImage(im, 0, 0, 1, 1); x.getImageData(0, 0, 1, 1); res(im); } catch { res(null); } }; im.onerror = () => { clearTimeout(t); res(null); }; im.src = src; });
 async function makeWallGif(h, list, prog) {
-  const { GIFEncoder, quantize, applyPalette } = await import("./vendor/gifenc.esm.js");
+  const { GIFEncoder, quantize, applyPalette } = await import("./vendor/gifenc.esm.js?v=" + AV_V);
   const S = 600, arr = list.slice(0, 40), { H, items, fillers } = packCircles(arr.length + 1, S - 40, partnerRad(arr));
   const users = [{ handle: h, name: h, avatar: selfAvatar(h) }, ...arr];
   let ims = await Promise.all(users.map(u => wallImg(u.avatar)));
@@ -248,10 +258,7 @@ async function openWallModal(h, list) {
     m.querySelector(".pmb").innerHTML = `<img src="${purl}" alt="互动照片墙"><div class="pmh">先保存图片，发帖时把图片加上</div>
       <div class="pmr"><button class="btn" id="wmSave">保存图片</button><a class="btn ghost" id="wmX" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(xText)}">发到 X</a><button class="btn ghost" id="wmClose">关闭</button></div>`;
     m.querySelector("#wmClose").onclick = () => m.remove();
-    m.querySelector("#wmSave").onclick = async () => {
-      if (navigator.canShare?.({ files: [file] }) && /Mobi|Android|iPhone/i.test(navigator.userAgent)) { try { await navigator.share({ files: [file], text: xText }); return; } catch (e) { if (e.name === "AbortError") return; } }
-      const a = document.createElement("a"); a.href = purl; a.download = file.name; a.click(); toast("已保存");
-    };
+    m.querySelector("#wmSave").onclick = () => saveImage(file, purl, m.querySelector(".pmb"));
   } catch { m.querySelector(".pmb").innerHTML = `<div class="m" style="padding:30px;text-align:center">动图生成失败</div>`; }
 }
 $("#pq").onsubmit = async e => { e.preventDefault(); const r = await showPartners($("#pqIn").value); document.querySelector("#wall,.wall,canvas")?.scrollIntoView({ behavior: "smooth", block: "start" }); if (r) openWallModal(r.h, r.list); };

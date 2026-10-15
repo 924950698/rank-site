@@ -6,7 +6,7 @@ function loadImg(src) {
     if (!src || src.startsWith("data:image/svg")) return res(null);
     const im = new Image(); im.crossOrigin = "anonymous"; im.referrerPolicy = "no-referrer";
     const t = setTimeout(() => res(null), 4000);
-    im.onload = () => { clearTimeout(t); res(im); }; im.onerror = () => { clearTimeout(t); res(null); };
+    im.onload = () => { clearTimeout(t); try { const k = document.createElement("canvas"); k.width = k.height = 1; const x = k.getContext("2d"); x.drawImage(im, 0, 0, 1, 1); x.getImageData(0, 0, 1, 1); res(im); } catch { res(null); } }; im.onerror = () => { clearTimeout(t); res(null); };
     im.src = src;
   });
 }
