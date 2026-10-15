@@ -45,30 +45,49 @@ function renderBest() {
 }
 // 圆形气泡墙：按当前排序名次定大小，#1 居中，螺旋搜索 + 碰撞检测的确定性排布
 function packCircles(n, W, rad = i => 64 / Math.pow(i + 1, 0.42) + 9) {   // 默认：名次越靠后越小
-  const placed = [], GAP = 3;
-  for (let i = 0; i < n; i++) {
-    const r = rad(i);
-    if (!i) { placed.push({ x: 0, y: 0, r }); continue; }
-    for (let t = 0; ; t += 0.07) {                          // 阿基米德螺旋向外找第一个不重叠的位置
-      const d = 2.2 * t, x = d * Math.cos(t * 1.7), y = d * Math.sin(t * 1.7);
-      if (placed.every(p => Math.hypot(p.x - x, p.y - y) >= p.r + r + GAP)) { placed.push({ x, y, r }); break; }
+  // 向日葵（黄金角）顺序从中心向外排，全部限制在边界圆 R 内；最后用小装饰圆填满边缘缝隙，整体轮廓是正圆
+  const GAP = 3, GA = 2.39996, rs = Array.from({ length: n }, (_, i) => rad(i));
+  let R = Math.sqrt(rs.reduce((s, r) => s + r * r, 0) / 0.7) + 2, placed;
+  for (let tries = 0; tries < 40; tries++, R *= 1.04) {
+    placed = []; let ok = true;
+    for (let i = 0; i < n && ok; i++) {
+      const r = rs[i]; if (!i) { placed.push({ x: 0, y: 0, r }); continue; }
+      ok = false;
+      for (let j = 1; j < 6000; j++) {
+        const d = R * Math.sqrt(j / 5000), a = j * GA; if (d + r > R) break;
+        const x = d * Math.cos(a), y = d * Math.sin(a);
+        if (placed.every(p => Math.hypot(p.x - x, p.y - y) >= p.r + r + GAP)) { placed.push({ x, y, r }); ok = true; break; }
+      }
+    }
+    if (ok) break;
+  }
+  const k = (W / 2 - 6) / R;
+  const fills = [];
+  for (let fr = 10; fr >= 3 && fills.length < 150; fr -= 1) {          // 显示尺寸 3–10px 的装饰圆
+    const r = fr / k, g = GAP / k * 0.6, step = r;
+    for (let d = R - r; d > R * 0.55 && fills.length < 150; d -= step) {
+      const m = Math.max(6, Math.floor(2 * Math.PI * d / step));
+      for (let q = 0; q < m && fills.length < 150; q++) {
+        const a = q / m * 2 * Math.PI + d, x = d * Math.cos(a), y = d * Math.sin(a);
+        if (placed.every(p => Math.hypot(p.x - x, p.y - y) >= p.r + r + g) && fills.every(p => Math.hypot(p.x - x, p.y - y) >= p.r + r + g)) fills.push({ x, y, r, f: 1 });
+      }
     }
   }
-  let R = 0; placed.forEach(p => R = Math.max(R, Math.hypot(p.x, p.y) + p.r));
-  const k = Math.min(1, (W / 2 - 6) / R), H = Math.ceil(2 * R * k + 44);
-  return { H, items: placed.map(p => ({ x: W / 2 + p.x * k, y: (H - 36) / 2 + p.y * k, r: p.r * k })) };
+  const H = Math.ceil(2 * R * k + 44), map = p => ({ x: W / 2 + p.x * k, y: (H - 36) / 2 + p.y * k, r: p.r * k, f: p.f });
+  return { H, items: placed.map(map), fillers: fills.map(map) };
 }
+const fillHtml = fs => fs.map((c, i) => `<span class="bub fill${i % 3 ? "" : " o"}" style="left:${(c.x - c.r).toFixed(1)}px;top:${(c.y - c.r).toFixed(1)}px;width:${(2 * c.r).toFixed(1)}px;height:${(2 * c.r).toFixed(1)}px"></span>`).join("");
 const selfAvatar = h => `https://unavatar.io/x/${encodeURIComponent(h)}`;
 const partnerRad = (list) => { const mx = Math.max(1, ...list.map(u => u.count || 0)); return i => i === 0 ? 70 : 12 + 44 * Math.sqrt((list[i - 1].count || 0) / mx); };
 const ini = u => [...(u.name || u.handle || "?")][0].toUpperCase();
 function renderPersonalWall() {
   const { h, list } = PW, el = $("#wall"), arr = list.slice(0, 40);
-  const W = el.clientWidth || 378, { H, items } = packCircles(arr.length + 1, W, partnerRad(arr));
+  const W = el.clientWidth || 378, { H, items, fillers } = packCircles(arr.length + 1, W, partnerRad(arr));
   el.style.height = H + "px";
   el.innerHTML = items.map((c, i) => { const u = i ? arr[i - 1] : { handle: h, name: h, avatar: selfAvatar(h) };
     return `<a class="bub${i ? "" : " self"}" href="${outUrl(profile(u.handle), i ? "partner_wall" : "self_wall")}" target="_blank" rel="noopener" title="@${esc(u.handle)}${i ? " · " + u.count + " 次互动" : ""}"
       style="left:${(c.x - c.r).toFixed(1)}px;top:${(c.y - c.r).toFixed(1)}px;width:${(2 * c.r).toFixed(1)}px;height:${(2 * c.r).toFixed(1)}px">
-      ${u.avatar ? `<img loading="lazy" decoding="async" src="${esc(u.avatar)}" alt="" onerror="this.outerHTML='<b class=ini>${esc(ini(u))}</b>'">` : `<b class="ini">${esc(ini(u))}</b>`}${i && i <= 3 ? `<i>${i}</i>` : ""}</a>`; }).join("")
+      ${u.avatar ? `<img loading="lazy" decoding="async" src="${esc(u.avatar)}" alt="" onerror="this.outerHTML='<b class=ini>${esc(ini(u))}</b>'">` : `<b class="ini">${esc(ini(u))}</b>`}${i && i <= 3 ? `<i>${i}</i>` : ""}</a>`; }).join("") + fillHtml(fillers)
     + `<span class="wtag l">@${esc(h)} 的互动圈<br><span style="opacity:.7">圆越大互动越多</span></span><span class="wtag r">${arr.length} 人</span>`;
 }
 function renderWall() {
@@ -78,12 +97,12 @@ function renderWall() {
   if (!D) return;
   const arr = [...(D.photos || [])].sort((a, b) => b.metrics[wallSort] - a.metrics[wallSort]).slice(0, 60);
   const el = $("#wall"); if (!arr.length) { el.style.height = ""; el.innerHTML = `<div class="empty">暂无带图帖子</div>`; return; }
-  const W = el.clientWidth || 378, { H, items } = packCircles(arr.length, W);
+  const W = el.clientWidth || 378, { H, items, fillers } = packCircles(arr.length, W);
   el.style.height = H + "px";
   el.innerHTML = items.map((c, i) => { const p = arr[i], img = p.image?.url || p.author.avatar || AV;
     return `<a class="bub" href="${esc(p.url)}" target="_blank" rel="noopener" title="@${esc(p.author.username)} · ${wallSort === "views" ? "👁 " + num(p.metrics.views) : "💬 " + num(p.metrics.replies)}"
       style="left:${(c.x - c.r).toFixed(1)}px;top:${(c.y - c.r).toFixed(1)}px;width:${(2 * c.r).toFixed(1)}px;height:${(2 * c.r).toFixed(1)}px">
-      <img loading="lazy" decoding="async" src="${esc(img)}" alt="">${i < 3 ? `<i>${i + 1}</i>` : ""}</a>`; }).join("")
+      <img loading="lazy" decoding="async" src="${esc(img)}" alt="">${i < 3 ? `<i>${i + 1}</i>` : ""}</a>`; }).join("") + fillHtml(fillers)
     + `<span class="wtag l">24h 照片墙<br><span style="opacity:.7">按${wallSort === "views" ? "曝光" : "评论"} · 中心=第1</span></span><span class="wtag r">${arr.length} 帖</span>`;
 }
 function render() {

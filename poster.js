@@ -47,13 +47,18 @@ function draw(o, IM, t = null) {
   c.fillStyle = G; c.fillText("24h", 80 + w, 120); w += c.measureText("24h").width; c.fillStyle = "#fff"; c.fillText("爆帖榜", 80 + w, 120);
   // 个人互动圈（顶部）
   if (o.pack) {
-    const arr = o.list.slice(0, 30), { H: ph, items } = o.pack(arr.length + 1, W - 160, o.rad(arr));
+    const arr = o.list.slice(0, 30), { H: ph, items, fillers = [] } = o.pack(arr.length + 1, W - 160, o.rad(arr));
     const k = Math.min(1, (CIRCLE_H - 20) / (ph - 44)), cx = W / 2, cy = 150 + CIRCLE_H / 2;
     const mid = (ph - 36) / 2, ims = IM ? IM.wall : [];
     items.forEach((c, i) => {
       const [ox, oy] = off(i, t, 3), x = cx + (c.x - (W - 160) / 2) * k + ox, y = cy + (c.y - mid) * k + oy, r = c.r * k;
       const u = i ? arr[i - 1] : { handle: o.handle };
       c2(cv, ims[i], u.name || u.handle, x, y, r, i === 0);
+    });
+    fillers.forEach((f, j) => {
+      const [ox, oy] = off(j + 7, t, 2), x = cx + (f.x - (W - 160) / 2) * k + ox, y = cy + (f.y - mid) * k + oy;
+      c.beginPath(); c.arc(x, y, f.r * k, 0, 2 * Math.PI);
+      if (j % 3) { c.fillStyle = j % 2 ? "#123d0c" : "#2a2d31"; c.fill(); } else { c.strokeStyle = "#ffffff55"; c.lineWidth = 2; c.stroke(); }
     });
   }
   c.save(); c.translate(0, dy);

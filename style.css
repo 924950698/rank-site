@@ -81,3 +81,5 @@ header .btn{padding:5px 9px;font-size:12px}
 .bub{animation:bfloat 4.8s ease-in-out infinite}
 .bub:nth-child(3n){animation-duration:5.6s;animation-delay:-1.3s}.bub:nth-child(3n+1){animation-duration:4.2s;animation-delay:-2.7s}.bub:nth-child(5n){animation-direction:reverse}.bub:nth-child(7n){animation-delay:-3.9s}
 @media (prefers-reduced-motion:reduce){.bub{animation:none}}
+.bub.fill{border:0;box-shadow:none;background:#1a3d12;pointer-events:none}.bub.fill:nth-child(2n){background:#2a2d31}.bub.fill.o{background:none;border:1px solid #fff5}
+.wall{max-width:420px;margin-left:auto;margin-right:auto}
