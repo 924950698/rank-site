@@ -94,6 +94,7 @@ function renderPersonalWall() {
 function renderWall() {
   $("#wallTitle").textContent = PW ? `@${PW.h} 的互动照片墙` : "24 小时照片墙";
   $("#wallSort").style.display = PW ? "none" : "";
+  $("#wallGif").style.display = PW ? "block" : "none";
   if (PW) return renderPersonalWall();
   if (!D) return;
   const arr = [...(D.photos || [])].sort((a, b) => b.metrics[wallSort] - a.metrics[wallSort]).slice(0, 60);
@@ -205,6 +206,50 @@ async function openPoster(h, list, url) {
     };
   } catch (e) { m.querySelector(".pmb").innerHTML = `<div class="m" style="padding:30px;text-align:center">海报生成失败</div>`; }
 }
+// ---------- 个人照片墙动图（600×600，气泡轻浮动，24 帧 × 100ms 无缝循环） ----------
+const wallImg = src => new Promise(res => { if (!src) return res(null); const im = new Image(); im.crossOrigin = "anonymous"; im.referrerPolicy = "no-referrer";
+  const t = setTimeout(() => res(null), 4000); im.onload = () => { clearTimeout(t); res(im); }; im.onerror = () => { clearTimeout(t); res(null); }; im.src = src; });
+async function makeWallGif(h, list, prog) {
+  const { GIFEncoder, quantize, applyPalette } = await import("./vendor/gifenc.esm.js");
+  const S = 600, arr = list.slice(0, 40), { H, items, fillers } = packCircles(arr.length + 1, S - 40, partnerRad(arr));
+  const users = [{ handle: h, name: h, avatar: selfAvatar(h) }, ...arr];
+  let ims = await Promise.all(users.map(u => wallImg(u.avatar)));
+  const cv = document.createElement("canvas"); cv.width = cv.height = S; const c = cv.getContext("2d", { willReadFrequently: true });
+  const oy = (S - 30 - (H - 36)) / 2 - 0, ox = 20;
+  const frame = (t, I) => {
+    c.globalAlpha = 1; c.fillStyle = "#000"; c.fillRect(0, 0, S, S);
+    const a = 2 * Math.PI * t, off = (i, A) => [A * Math.sin(a + i * 2.399), A * Math.cos(a + i * 4.08)];
+    fillers.forEach((f, j) => { const [dx, dy] = off(j + 7, 1.5); c.globalAlpha = f.o; c.beginPath(); c.arc(ox + f.x + dx, oy + f.y + dy, f.r, 0, 7);
+      if (j % 3) { c.fillStyle = j % 2 ? "#2a2d31" : "#1a3d12"; c.fill(); } else { c.strokeStyle = "#ffffff55"; c.lineWidth = 1; c.stroke(); } });
+    items.forEach((b, i) => { const [dx, dy] = off(i, 2.5), x = ox + b.x + dx, y = oy + b.y + dy, u = users[i]; c.globalAlpha = b.o;
+      c.save(); c.beginPath(); c.arc(x, y, b.r, 0, 7); c.clip();
+      if (I[i]) c.drawImage(I[i], x - b.r, y - b.r, 2 * b.r, 2 * b.r); else { c.fillStyle = "#1d1f23"; c.fill(); c.fillStyle = "#39ff14"; c.font = `800 ${Math.max(9, b.r * .8)}px sans-serif`; c.textAlign = "center"; c.textBaseline = "middle"; c.fillText(ini(u), x, y + 1); }
+      c.restore(); c.lineWidth = i ? 2 : 3; c.strokeStyle = i ? "#fff" : "#39ff14"; c.beginPath(); c.arc(x, y, b.r, 0, 7); c.stroke(); });
+    c.globalAlpha = .75; c.fillStyle = "#8b9095"; c.font = "500 15px sans-serif"; c.textAlign = "center"; c.textBaseline = "alphabetic";
+    c.fillText(`@${h} 的互动圈 · 924950698.github.io/rank-site`, S / 2, S - 12); c.globalAlpha = 1;
+  };
+  frame(0, ims); try { c.getImageData(0, 0, 1, 1); } catch { ims = []; }   // 跨域头像污染画布 → 首字母
+  const N = 24, enc = GIFEncoder(); let pal;
+  for (let f = 0; f < N; f++) {
+    frame(f / N, ims); const px = c.getImageData(0, 0, S, S).data;
+    if (!pal) pal = quantize(px, 256);
+    enc.writeFrame(applyPalette(px, pal), S, S, { palette: f ? undefined : pal, delay: 100, repeat: 0 });
+    prog?.((f + 1) / N); await new Promise(r => setTimeout(r));
+  }
+  enc.finish(); return new Blob([enc.bytes()], { type: "image/gif" });
+}
+window.__makeWallGif = makeWallGif;
+let wallGifBusy = false;
+$("#wallGif").onclick = async e => {
+  if (!PW || wallGifBusy) return; wallGifBusy = true; const b = e.currentTarget, t0 = "保存照片墙动图";
+  try {
+    b.textContent = "动图生成中…";
+    const gb = await makeWallGif(PW.h, PW.list, p => b.textContent = `动图生成中… ${Math.round(p * 100)}%`);
+    const gf = new File([gb], `wall-${PW.h}.gif`, { type: "image/gif" }); b.textContent = t0;
+    if (navigator.canShare?.({ files: [gf] }) && /Mobi|Android|iPhone/i.test(navigator.userAgent)) { try { await navigator.share({ files: [gf] }); return; } catch (err) { if (err.name === "AbortError") return; } }
+    const a = document.createElement("a"); a.href = URL.createObjectURL(gb); a.download = gf.name; a.click(); toast("动图已保存");
+  } catch { b.textContent = t0; toast("动图生成失败"); } finally { wallGifBusy = false; }
+};
 $("#pq").onsubmit = async e => { e.preventDefault(); await showPartners($("#pqIn").value); document.querySelector("#wall,.wall,canvas")?.scrollIntoView({ behavior: "smooth", block: "start" }); };
 $("#pqPost").onclick = async () => { const r = await showPartners($("#pqIn").value); if (r) openPoster(r.h, r.list, r.url); };
 { const u = new URLSearchParams(location.search).get("u"); if (u) { $("#pqIn").value = "@" + normHandle(u); showPartners(u, false); } }
