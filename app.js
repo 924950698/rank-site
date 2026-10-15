@@ -47,7 +47,7 @@ function renderBest() {
 // 圆形气泡墙：按当前排序名次定大小，#1 居中，螺旋搜索 + 碰撞检测的确定性排布
 function packCircles(n, W, rad = i => 64 / Math.pow(i + 1, 0.42) + 9) {
   // 同心圆环：中心是本人，外面一圈一圈排，每圈头像同尺寸、均匀分布满 360°，整体轮廓是正圆
-  const GAP = 4, rs = Array.from({ length: n }, (_, i) => rad(i)), placed = [];
+  const GAP = 13, rs = Array.from({ length: n }, (_, i) => rad(i)), placed = [];
   if (!n) return { H: 0, items: [], fillers: [] };
   placed.push({ x: 0, y: 0, r: rs[0] });
   let outer = rs[0], i = 1;
@@ -83,6 +83,32 @@ function wallPeople(pw) {
   return out;
 }
 function peopleRad(ppl) { return i => 64 / Math.pow(i + 1, 0.42) + 9; }   // 与 24h 照片墙统一：按名次平滑递减
+
+// 碰撞光环（B 版）：头像在原位漂动，相邻头像碰到时荡开两圈荧光绿光环
+let fxRaf = 0;
+function startWallFx(el) {
+  cancelAnimationFrame(fxRaf); el.querySelector("canvas.fx")?.remove();
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const bubs = [...el.querySelectorAll(".bub")].map((b, i) => { const r = b.offsetWidth / 2; return { b, x: b.offsetLeft + r, y: b.offsetTop + r, r, ph: i * 1.7, sp: .5 + (i % 5) * .09, amp: Math.min(7, 3.5 + r * .06) }; });
+  const W = el.clientWidth, H = el.clientHeight, d = Math.min(2, devicePixelRatio || 1), cv = document.createElement("canvas");
+  cv.className = "fx"; cv.width = W * d; cv.height = H * d; cv.style.cssText = `position:absolute;left:0;top:0;width:${W}px;height:${H}px;pointer-events:none;z-index:5`;
+  el.appendChild(cv); const g = cv.getContext("2d"); g.scale(d, d);
+  const pairs = []; for (let i = 0; i < bubs.length; i++) for (let j = i + 1; j < bubs.length; j++) { const a = bubs[i], b = bubs[j], gap = Math.hypot(a.x - b.x, a.y - b.y) - a.r - b.r; if (gap < a.amp + b.amp) pairs.push({ a, b, on: false }); }
+  let fx = [], last = performance.now();
+  const step = now => {
+    if (!el.isConnected || !el.contains(cv)) return;
+    const t = now / 1000, dt = Math.min(.1, (now - last) / 1000); last = now;
+    for (const o of bubs) { o.dx = Math.sin(t * o.sp + o.ph) * o.amp; o.dy = Math.cos(t * o.sp * .8 + o.ph * 1.3) * o.amp; o.b.style.transform = `translate(${o.dx.toFixed(2)}px,${o.dy.toFixed(2)}px)`; }
+    for (const p of pairs) { const ax = p.a.x + p.a.dx, ay = p.a.y + p.a.dy, bx = p.b.x + p.b.dx, by = p.b.y + p.b.dy, touch = Math.hypot(ax - bx, ay - by) <= p.a.r + p.b.r + .5;
+      if (touch && !p.on) { const u = p.a.r / (p.a.r + p.b.r), x = ax + (bx - ax) * u, y = ay + (by - ay) * u, s = Math.min(p.a.r, p.b.r); fx.push({ x, y, s, age: 0 }, { x, y, s, age: -.45 }); } p.on = touch; }
+    g.clearRect(0, 0, W, H); fx = fx.filter(f => (f.age += dt) < 1.8);
+    for (const f of fx) { if (f.age < 0) continue; const k = f.age / 1.8, e = 1 - (1 - k) * (1 - k);
+      g.globalAlpha = (1 - k) * .85; g.strokeStyle = "#39ff14"; g.lineWidth = 2.2 * (1 - k) + .5; g.shadowColor = "#39ff14"; g.shadowBlur = 10;
+      g.beginPath(); g.arc(f.x, f.y, 4 + e * (f.s * 1.3 + 14), 0, 7); g.stroke(); }
+    fxRaf = requestAnimationFrame(step);
+  };
+  fxRaf = requestAnimationFrame(step);
+}
 let wallTok = 0;
 async function renderPersonalWall() {
   const tok = ++wallTok, el = $("#wall"), h = PW.h;
@@ -95,6 +121,7 @@ async function renderPersonalWall() {
       style="left:${(c.x - c.r).toFixed(1)}px;top:${(c.y - c.r).toFixed(1)}px;width:${(2 * c.r).toFixed(1)}px;height:${(2 * c.r).toFixed(1)}px;opacity:${c.o}">
       <img decoding="async" src="${esc(u.avatar)}" alt="" onerror="${u.self ? `this.outerHTML='<b class=ini>${esc(ini(u))}</b>'` : "this.parentNode.remove()"}">${rk && rk <= 3 ? `<i>${rk}</i>` : ""}</a>`; }).join("")
     + `<span class="wtag l">@${esc(h)} 的互动圈<br><span style="opacity:.7">圆越大互动越多</span></span><span class="wtag r">${ppl.length - 1} 人</span>`;
+  startWallFx(el);
 }
 async function renderWall() {
   $("#wallTitle").textContent = PW ? `@${PW.h} 的互动照片墙` : "24 小时照片墙";
@@ -118,6 +145,7 @@ async function renderWall() {
       style="left:${(c.x - c.r).toFixed(1)}px;top:${(c.y - c.r).toFixed(1)}px;width:${(2 * c.r).toFixed(1)}px;height:${(2 * c.r).toFixed(1)}px;opacity:${c.o}">
       <img decoding="async" src="${esc(p.avatar)}" alt="" onerror="this.parentNode.remove()">${i < 3 && !p.fill ? `<i>${i + 1}</i>` : ""}</a>`; }).join("")
     + `<span class="wtag l">24h 照片墙<br><span style="opacity:.7">按${wallSort === "views" ? "曝光" : "评论"} · 中心=第1</span></span><span class="wtag r">${n0} 帖</span>`;
+  startWallFx(el);
 }
 function render() {
   const t = new Date(D.updated_at);
@@ -242,21 +270,29 @@ async function makeWallGif(pw, prog) {
   const S = 600, { H, items } = packCircles(users.length, S - 40, peopleRad(users));
   const cv = document.createElement("canvas"); cv.width = cv.height = S; const c = cv.getContext("2d", { willReadFrequently: true });
   const oy = (S - 30 - (H - 36)) / 2 - 0, ox = 20;
+  const N = 36, RL = 14, OFF = [], RIP = [];   // 预算每帧漂移，相邻头像碰到的那一帧起两圈光环（循环无缝）
+  for (let f = 0; f < N; f++) { const a = 2 * Math.PI * f / N; OFF.push(items.map((b, i) => { const A = Math.min(7, 3.5 + b.r * .06); return [A * Math.sin(a + i * 2.399), A * Math.cos(a + i * 4.08)]; })); }
+  for (let i = 0; i < items.length; i++) for (let j = i + 1; j < items.length; j++) { const p = items[i], q = items[j]; if (Math.hypot(p.x - q.x, p.y - q.y) - p.r - q.r > 15) continue;
+    const on = f => { const [a1, b1] = OFF[f][i], [a2, b2] = OFF[f][j]; return Math.hypot(p.x + a1 - q.x - a2, p.y + b1 - q.y - b2) <= p.r + q.r + .5; };
+    for (let f = 0; f < N; f++) if (on(f) && !on((f + N - 1) % N)) { const u = p.r / (p.r + q.r), [a1, b1] = OFF[f][i], [a2, b2] = OFF[f][j], x = p.x + a1 + (q.x + a2 - p.x - a1) * u, y = p.y + b1 + (q.y + b2 - p.y - b1) * u, s = Math.min(p.r, q.r);
+      RIP.push({ f, x, y, s }, { f: (f + 4) % N, x, y, s }); } }
   const frame = (t, I) => {
     c.globalAlpha = 1; c.fillStyle = "#000"; c.fillRect(0, 0, S, S);
-    const a = 2 * Math.PI * t, off = (i, A) => [A * Math.sin(a + i * 2.399), A * Math.cos(a + i * 4.08)];
-    items.forEach((b, i) => { const [dx, dy] = off(i, 2.5), x = ox + b.x + dx, y = oy + b.y + dy, u = users[i]; c.globalAlpha = b.o;
+    const OF = OFF[Math.round(t * N) % N];
+    items.forEach((b, i) => { const [dx, dy] = OF[i], x = ox + b.x + dx, y = oy + b.y + dy, u = users[i]; c.globalAlpha = b.o;
       c.save(); c.beginPath(); c.arc(x, y, b.r, 0, 7); c.clip();
       if (I[i]) c.drawImage(I[i], x - b.r, y - b.r, 2 * b.r, 2 * b.r); else { c.fillStyle = "#1d1f23"; c.fill(); c.fillStyle = "#39ff14"; c.font = `800 ${Math.max(9, b.r * .8)}px sans-serif`; c.textAlign = "center"; c.textBaseline = "middle"; c.fillText(ini(u), x, y + 1); }
       c.restore(); c.lineWidth = u.self ? 3 : 2; c.strokeStyle = u.self ? "#39ff14" : "#fff"; c.beginPath(); c.arc(x, y, b.r, 0, 7); c.stroke(); });
+    for (const f of RIP) { let age = (Math.round(t * N) - f.f + N) % N; if (age >= RL) continue; const k = age / RL, e = 1 - (1 - k) * (1 - k);
+      c.globalAlpha = (1 - k) * .85; c.strokeStyle = "#39ff14"; c.lineWidth = 3 * (1 - k) + .8; c.beginPath(); c.arc(ox + f.x, oy + f.y, 5 + e * (f.s * 1.3 + 18), 0, 7); c.stroke(); }
     c.globalAlpha = .75; c.fillStyle = "#8b9095"; c.font = "500 15px sans-serif"; c.textAlign = "center"; c.textBaseline = "alphabetic";
     c.fillText(`@${h} 的互动圈 · 924950698.github.io/rank-site`, S / 2, S - 12); c.globalAlpha = 1;
   };
-  const N = 24, enc = GIFEncoder(); let pal;
+  const enc = GIFEncoder(); let pal;
   for (let f = 0; f < N; f++) {
     frame(f / N, ims); const px = c.getImageData(0, 0, S, S).data;
     if (!pal) pal = quantize(px, 256);
-    enc.writeFrame(applyPalette(px, pal), S, S, { palette: f ? undefined : pal, delay: 100, repeat: 0 });
+    enc.writeFrame(applyPalette(px, pal), S, S, { palette: f ? undefined : pal, delay: 110, repeat: 0 });
     prog?.((f + 1) / N); await new Promise(r => setTimeout(r));
   }
   enc.finish(); return new Blob([enc.bytes()], { type: "image/gif" });
