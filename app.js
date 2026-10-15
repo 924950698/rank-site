@@ -134,7 +134,7 @@ function startWallFx(el) {
     g.clearRect(0, 0, W, H); fx = fx.filter(f => (f.age += dt) < f.life);
     for (const f of fx) { if (f.age < 0) continue; const k = f.age / f.life, e = 1 - (1 - k) * (1 - k);
       g.globalAlpha = (1 - k) * .85 * f.a; g.strokeStyle = "#39ff14"; g.lineWidth = (2.2 * (1 - k) + .5) * f.w; g.shadowColor = "#39ff14"; g.shadowBlur = 10 * f.w;
-      g.beginPath(); g.arc(f.x, f.y, 4 + e * (f.s * 1.3 + 14), 0, 7); g.stroke(); }
+      g.beginPath(); g.arc(f.x, f.y, 2 + e * (f.s * .65 + 7), 0, 7); g.stroke(); }
     g.globalAlpha = 1; fxRaf = requestAnimationFrame(step);
   };
   fxRaf = requestAnimationFrame(step);
@@ -314,7 +314,7 @@ async function makeWallGif(pw, prog) {
       if (I[i]) c.drawImage(I[i], x - b.r, y - b.r, 2 * b.r, 2 * b.r); else { c.fillStyle = "#1d1f23"; c.fill(); c.fillStyle = "#39ff14"; c.font = `800 ${Math.max(9, b.r * .8)}px sans-serif`; c.textAlign = "center"; c.textBaseline = "middle"; c.fillText(ini(u), x, y + 1); }
       c.restore(); c.lineWidth = u.self ? 3 : 2; c.strokeStyle = u.self ? "#39ff14" : "#fff"; c.beginPath(); c.arc(x, y, b.r, 0, 7); c.stroke(); });
     for (const f of RIP) { let age = (Math.round(t * N) - f.f + N) % N; if (age >= RL) continue; const k = age / RL, e = 1 - (1 - k) * (1 - k);
-      c.globalAlpha = (1 - k) * .85; c.strokeStyle = "#39ff14"; c.lineWidth = 3 * (1 - k) + .8; c.beginPath(); c.arc(ox + f.x, oy + f.y, 5 + e * (f.s * 1.3 + 18), 0, 7); c.stroke(); }
+      c.globalAlpha = (1 - k) * .85; c.strokeStyle = "#39ff14"; c.lineWidth = 3 * (1 - k) + .8; c.beginPath(); c.arc(ox + f.x, oy + f.y, 2.5 + e * (f.s * .65 + 9), 0, 7); c.stroke(); }
     c.globalAlpha = .75; c.fillStyle = "#8b9095"; c.font = "500 15px sans-serif"; c.textAlign = "center"; c.textBaseline = "alphabetic";
     c.fillText(`@${h} 的互动圈 · 924950698.github.io/rank-site`, S / 2, S - 12); c.globalAlpha = 1;
   };
