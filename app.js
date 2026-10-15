@@ -84,28 +84,58 @@ function wallPeople(pw) {
 }
 function peopleRad(ppl) { return i => 64 / Math.pow(i + 1, 0.42) + 9; }   // 与 24h 照片墙统一：按名次平滑递减
 
-// 碰撞光环（B 版）：头像在原位漂动，相邻头像碰到时荡开两圈荧光绿光环
+// 碰撞光环（B 版）+ 触控：头像原位漂动；手指甩动头像 → 沿方向冲出、连锁碰撞，光环逐层增强，传到最外圈消散
 let fxRaf = 0;
 function startWallFx(el) {
   cancelAnimationFrame(fxRaf); el.querySelector("canvas.fx")?.remove();
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const bubs = [...el.querySelectorAll(".bub")].map((b, i) => { const r = b.offsetWidth / 2; return { b, x: b.offsetLeft + r, y: b.offsetTop + r, r, ph: i * 1.7, sp: .5 + (i % 5) * .09, amp: Math.min(7, 3.5 + r * .06) }; });
-  const W = el.clientWidth, H = el.clientHeight, d = Math.min(2, devicePixelRatio || 1), cv = document.createElement("canvas");
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const W = el.clientWidth, H = el.clientHeight, cx = W / 2;
+  const bubs = [...el.querySelectorAll(".bub")].map((b, i) => { const r = b.offsetWidth / 2; return { b, i, x: b.offsetLeft + r, y: b.offsetTop + r, r, m: r * r, ph: i * 1.7, sp: .5 + (i % 5) * .09, amp: still ? 0 : Math.min(7, 3.5 + r * .06), ox: 0, oy: 0, vx: 0, vy: 0, gen: 0, cool: 0 }; });
+  if (!bubs.length) return;
+  const cy = bubs[0].y, Rmax = Math.max(...bubs.map(o => Math.hypot(o.x - cx, o.y - cy) + o.r));
+  const d = Math.min(2, devicePixelRatio || 1), cv = document.createElement("canvas");
   cv.className = "fx"; cv.width = W * d; cv.height = H * d; cv.style.cssText = `position:absolute;left:0;top:0;width:${W}px;height:${H}px;pointer-events:none;z-index:5`;
   el.appendChild(cv); const g = cv.getContext("2d"); g.scale(d, d);
-  const pairs = []; for (let i = 0; i < bubs.length; i++) for (let j = i + 1; j < bubs.length; j++) { const a = bubs[i], b = bubs[j], gap = Math.hypot(a.x - b.x, a.y - b.y) - a.r - b.r; if (gap < a.amp + b.amp) pairs.push({ a, b, on: false }); }
-  let fx = [], last = performance.now();
+  const pairs = []; for (let i = 0; i < bubs.length; i++) for (let j = i + 1; j < bubs.length; j++) { const a = bubs[i], b = bubs[j]; if (Math.hypot(a.x - b.x, a.y - b.y) - a.r - b.r < 60) pairs.push({ a, b, on: false }); }
+  let fx = [], last = performance.now(), drag = null;
+  const ring = (x, y, s, gen) => { const p = Math.min(1, Math.hypot(x - cx, y - cy) / Rmax), lv = 1 + Math.min(gen, 6) * .35, fade = p > .85 ? (1 - p) / .15 : 1;
+    if (fade <= .05) return; fx.push({ x, y, s: s * lv, w: lv, a: fade, age: 0, life: 1.6 + gen * .12 }, { x, y, s: s * lv, w: lv, a: fade, age: -.4, life: 1.6 + gen * .12 }); };
+  // 触控
+  el.querySelectorAll(".bub").forEach(b => { b.style.touchAction = "none"; b.draggable = false; b.querySelector("img")?.setAttribute("draggable", "false"); });
+  el.onpointerdown = e => { const t = e.target.closest(".bub"); if (!t) return; const o = bubs.find(q => q.b === t); if (!o) return;
+    drag = { o, sx: e.clientX, sy: e.clientY, bx: o.ox, by: o.oy, hist: [[e.clientX, e.clientY, performance.now()]], moved: false }; t.setPointerCapture?.(e.pointerId); };
+  el.onpointermove = e => { if (!drag) return; const dx = e.clientX - drag.sx, dy = e.clientY - drag.sy; if (Math.hypot(dx, dy) > 6) drag.moved = true;
+    const L = Math.hypot(dx, dy), k = L > 30 ? 30 / L : 1; drag.o.ox = drag.bx + dx * k; drag.o.oy = drag.by + dy * k; drag.o.vx = drag.o.vy = 0;
+    drag.hist.push([e.clientX, e.clientY, performance.now()]); if (drag.hist.length > 6) drag.hist.shift(); };
+  el.onpointerup = el.onpointercancel = e => { if (!drag) return; const { o, hist, moved } = drag; drag = null;
+    if (!moved) return; const [x0, y0, t0] = hist[0], [x1, y1, t1] = hist[hist.length - 1], dt = Math.max(16, t1 - t0) / 1000;
+    let vx = (x1 - x0) / dt, vy = (y1 - y0) / dt; const v = Math.hypot(vx, vy), cap = 900, mn = 380; if (v < 1) return;
+    const f = Math.min(cap, Math.max(mn, v)) / v; o.vx = vx * f; o.vy = vy * f; o.gen = 1; o.flick = 1;
+    el.dataset.nc = "1"; setTimeout(() => delete el.dataset.nc, 50); window.track?.("wall:flick"); };
+  el.onclick = e => { if (el.dataset.nc) { e.preventDefault(); e.stopPropagation(); } };
+  el.addEventListener("click", e => { if (el.dataset.nc) e.preventDefault(); }, true);
   const step = now => {
     if (!el.isConnected || !el.contains(cv)) return;
-    const t = now / 1000, dt = Math.min(.1, (now - last) / 1000); last = now;
-    for (const o of bubs) { o.dx = Math.sin(t * o.sp + o.ph) * o.amp; o.dy = Math.cos(t * o.sp * .8 + o.ph * 1.3) * o.amp; o.b.style.transform = `translate(${o.dx.toFixed(2)}px,${o.dy.toFixed(2)}px)`; }
-    for (const p of pairs) { const ax = p.a.x + p.a.dx, ay = p.a.y + p.a.dy, bx = p.b.x + p.b.dx, by = p.b.y + p.b.dy, touch = Math.hypot(ax - bx, ay - by) <= p.a.r + p.b.r + .5;
-      if (touch && !p.on) { const u = p.a.r / (p.a.r + p.b.r), x = ax + (bx - ax) * u, y = ay + (by - ay) * u, s = Math.min(p.a.r, p.b.r); fx.push({ x, y, s, age: 0 }, { x, y, s, age: -.45 }); } p.on = touch; }
-    g.clearRect(0, 0, W, H); fx = fx.filter(f => (f.age += dt) < 1.8);
-    for (const f of fx) { if (f.age < 0) continue; const k = f.age / 1.8, e = 1 - (1 - k) * (1 - k);
-      g.globalAlpha = (1 - k) * .85; g.strokeStyle = "#39ff14"; g.lineWidth = 2.2 * (1 - k) + .5; g.shadowColor = "#39ff14"; g.shadowBlur = 10;
+    const t = now / 1000, dt = Math.min(.033, (now - last) / 1000); last = now;
+    for (const o of bubs) { if (drag?.o === o) continue;
+      const ax = -60 * o.ox - 7 * o.vx, ay = -60 * o.oy - 7 * o.vy; o.vx += ax * dt; o.vy += ay * dt; o.ox += o.vx * dt; o.oy += o.vy * dt;
+      if (o.cool > 0) o.cool -= dt; if (Math.hypot(o.vx, o.vy) < 15) o.gen = 0; }
+    for (const o of bubs) { o.dx = Math.sin(t * o.sp + o.ph) * o.amp + o.ox; o.dy = Math.cos(t * o.sp * .8 + o.ph * 1.3) * o.amp + o.oy; }
+    for (const p of pairs) { const A = p.a, B = p.b, ax = A.x + A.dx, ay = A.y + A.dy, bx = B.x + B.dx, by = B.y + B.dy, dx = bx - ax, dy = by - ay, dist = Math.hypot(dx, dy) || 1, ov = A.r + B.r - dist, touch = ov >= -.5;
+      if (touch) { const nx = dx / dist, ny = dy / dist, rv = (B.vx - A.vx) * nx + (B.vy - A.vy) * ny;
+        if (rv < 0) { const im = 1 / A.m + 1 / B.m, j = -(1 + .9) * rv / im * 1.06, hard = -rv > 60;   // 略大于弹性碰撞：波越传越强
+          A.vx -= j * nx / A.m; A.vy -= j * ny / A.m; B.vx += j * nx / B.m; B.vy += j * ny / B.m;
+          if (hard) { const src = A.gen >= B.gen ? A : B, dst = src === A ? B : A; dst.gen = Math.max(dst.gen, src.gen + 1);
+            const sp = Math.hypot(dst.vx, dst.vy), lim = 700 + dst.gen * 40; if (sp > lim) { dst.vx *= lim / sp; dst.vy *= lim / sp; } } }
+        if (ov > 0) { const push = ov / 2; if (drag?.o !== A) { A.ox -= nx * push; A.oy -= ny * push; } if (drag?.o !== B) { B.ox += nx * push; B.oy += ny * push; } }
+        if (!p.on && (A.cool <= 0 || B.cool <= 0)) { const u = A.r / (A.r + B.r), gen = Math.max(A.gen, B.gen); ring(ax + dx * u, ay + dy * u, Math.min(A.r, B.r), gen); A.cool = B.cool = .25; } }
+      p.on = touch; }
+    for (const o of bubs) o.b.style.transform = `translate(${o.dx.toFixed(2)}px,${o.dy.toFixed(2)}px)`;
+    g.clearRect(0, 0, W, H); fx = fx.filter(f => (f.age += dt) < f.life);
+    for (const f of fx) { if (f.age < 0) continue; const k = f.age / f.life, e = 1 - (1 - k) * (1 - k);
+      g.globalAlpha = (1 - k) * .85 * f.a; g.strokeStyle = "#39ff14"; g.lineWidth = (2.2 * (1 - k) + .5) * f.w; g.shadowColor = "#39ff14"; g.shadowBlur = 10 * f.w;
       g.beginPath(); g.arc(f.x, f.y, 4 + e * (f.s * 1.3 + 14), 0, 7); g.stroke(); }
-    fxRaf = requestAnimationFrame(step);
+    g.globalAlpha = 1; fxRaf = requestAnimationFrame(step);
   };
   fxRaf = requestAnimationFrame(step);
 }
