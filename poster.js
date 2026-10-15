@@ -30,13 +30,13 @@ function qr(c, text, x, y, size) {
 }
 async function loadAll(o) {
   const arr = o.list.slice(0, 30);
-  const [wall, top] = await Promise.all([Promise.all([o.self, ...arr.map(u => u.avatar)].map(loadImg)), Promise.all(o.list.slice(0, 3).map(u => loadImg(u.avatar)))]);
+  const [wall, top] = await Promise.all([Promise.resolve([]), Promise.all(o.list.slice(0, 3).map(u => loadImg(u.avatar)))]);
   return { wall, top };
 }
 // t: 0..1 动画相位（null=静态）；每个气泡相位不同，首尾无缝循环
 function off(i, t, A) { if (t == null) return [0, 0]; const p = i * 2.399, a = 2 * Math.PI * t; return [A * Math.sin(a + p), A * Math.cos(a + p * 1.7)]; }
 function draw(o, IM, t = null) {
-  const dy = o.pack ? CIRCLE_H : 0; H = 1350 + dy;
+  const dy = 0; H = 1400;
   const cv = document.createElement("canvas"); cv.width = W; cv.height = H; const c = cv.getContext("2d");
   c.fillStyle = "#000"; c.fillRect(0, 0, W, H);
   const gr = c.createRadialGradient(W / 2, 0, 50, W / 2, 0, 900); gr.addColorStop(0, "#0d3a06"); gr.addColorStop(1, "#000"); c.fillStyle = gr; c.fillRect(0, 0, W, 700);
@@ -45,22 +45,6 @@ function draw(o, IM, t = null) {
   c.textAlign = "left"; c.textBaseline = "alphabetic";
   c.font = `800 44px ${FONT}`; c.fillStyle = "#fff"; c.fillText("币圈", 80, 120); let w = c.measureText("币圈").width;
   c.fillStyle = G; c.fillText("24h", 80 + w, 120); w += c.measureText("24h").width; c.fillStyle = "#fff"; c.fillText("爆帖榜", 80 + w, 120);
-  // 个人互动圈（顶部）
-  if (o.pack) {
-    const arr = o.list.slice(0, 30), { H: ph, items, fillers = [] } = o.pack(arr.length + 1, W - 160, o.rad(arr));
-    const k = Math.min(1, (CIRCLE_H - 20) / (ph - 44)), cx = W / 2, cy = 150 + CIRCLE_H / 2;
-    const mid = (ph - 36) / 2, ims = IM ? IM.wall : [];
-    items.forEach((c, i) => {
-      const [ox, oy] = off(i, t, 3), x = cx + (c.x - (W - 160) / 2) * k + ox, y = cy + (c.y - mid) * k + oy, r = c.r * k;
-      const u = i ? arr[i - 1] : { handle: o.handle };
-      c2(cv, ims[i], u.name || u.handle, x, y, r, i === 0);
-    });
-    fillers.forEach((f, j) => {
-      const [ox, oy] = off(j + 7, t, 2), x = cx + (f.x - (W - 160) / 2) * k + ox, y = cy + (f.y - mid) * k + oy;
-      c.beginPath(); c.arc(x, y, f.r * k, 0, 2 * Math.PI);
-      if (j % 3) { c.fillStyle = j % 2 ? "#123d0c" : "#2a2d31"; c.fill(); } else { c.strokeStyle = "#ffffff55"; c.lineWidth = 2; c.stroke(); }
-    });
-  }
   c.save(); c.translate(0, dy);
   // 标题
   c.textAlign = "center"; c.fillStyle = G; c.font = `800 64px ${FONT}`; c.fillText(fit(c, "@" + o.handle, W - 160), W / 2, 240);
@@ -68,18 +52,18 @@ function draw(o, IM, t = null) {
   // 三个账号
   const imgs = IM ? IM.top : [];
   o.list.slice(0, 3).forEach((u, i) => {
-    const y = 400 + i * 170;
+    const y = 400 + i * 190;
     c.fillStyle = i === 0 ? "#0d2a07" : "#0b0b0b"; c.strokeStyle = i === 0 ? G : "#2f3336"; c.lineWidth = 3;
-    c.beginPath(); c.roundRect(80, y, W - 160, 140, 28); c.fill(); c.stroke();
-    c.textAlign = "left"; c.fillStyle = G; c.font = `900 60px ${FONT}`; c.fillText(String(i + 1), 120, y + 92);
-    circleImg(c, imgs[i], u.name || u.handle, 255, y + 70, 50);
-    c.fillStyle = "#fff"; c.font = `700 44px ${FONT}`; c.fillText(fit(c, u.name || u.handle, 470), 330, y + 64);
-    c.fillStyle = "#8b9095"; c.font = `400 32px ${FONT}`; c.fillText(fit(c, "@" + u.handle, 470), 330, y + 110);
-    c.textAlign = "right"; c.fillStyle = G; c.font = `900 60px ${FONT}`; c.fillText(String(u.count), W - 120, y + 80);
-    c.fillStyle = "#8b9095"; c.font = `400 26px ${FONT}`; c.fillText("次互动", W - 120, y + 116);
+    c.beginPath(); c.roundRect(80, y, W - 160, 160, 30); c.fill(); c.stroke();
+    c.textAlign = "left"; c.fillStyle = G; c.font = `900 60px ${FONT}`; c.fillText(String(i + 1), 120, y + 102);
+    circleImg(c, imgs[i], u.name || u.handle, 262, y + 80, 58);
+    c.fillStyle = "#fff"; c.font = `700 44px ${FONT}`; c.fillText(fit(c, u.name || u.handle, 450), 345, y + 72);
+    c.fillStyle = "#8b9095"; c.font = `400 32px ${FONT}`; c.fillText(fit(c, "@" + u.handle, 450), 345, y + 120);
+    c.textAlign = "right"; c.fillStyle = G; c.font = `900 60px ${FONT}`; c.fillText(String(u.count), W - 120, y + 90);
+    c.fillStyle = "#8b9095"; c.font = `400 26px ${FONT}`; c.fillText("次互动", W - 120, y + 128);
   });
   // 二维码 + 链接
-  const qy = 935; qr(c, o.url, 80, qy, 260);
+  const qy = 1000; qr(c, o.url, 80, qy, 260);
   c.textAlign = "left"; c.fillStyle = "#fff"; c.font = `700 40px ${FONT}`; c.fillText("扫码测测你的 Top 3", 380, qy + 70);
   c.fillStyle = "#8b9095"; c.font = `400 26px ${FONT}`; c.fillText("只统计最近的回复和 @，不含点赞", 380, qy + 120);
   c.fillStyle = G; c.font = `400 26px ${FONT}`;
@@ -98,20 +82,4 @@ async function safeImgs(o) {
   return IM;
 }
 window.makePoster = async o => draw(o, await safeImgs(o));
-// 动图：气泡轻微浮动，24 帧 × 100ms 无缝循环，缩到 600 宽；头像只加载一次
-window.makePosterGif = async (o, prog) => {
-  const { GIFEncoder, quantize, applyPalette } = await import("./vendor/gifenc.esm.js");
-  const IM = await safeImgs(o), N = 24, OW = 600;
-  const enc = GIFEncoder(); let pal, oc, octx;
-  for (let f = 0; f < N; f++) {
-    const cv = draw(o, IM, f / N);
-    if (!oc) { oc = document.createElement("canvas"); oc.width = OW; oc.height = Math.round(cv.height * OW / cv.width); octx = oc.getContext("2d", { willReadFrequently: true }); }
-    octx.drawImage(cv, 0, 0, oc.width, oc.height);
-    const px = octx.getImageData(0, 0, oc.width, oc.height).data;
-    if (!pal) pal = quantize(px, 256);
-    enc.writeFrame(applyPalette(px, pal), oc.width, oc.height, { palette: f ? undefined : pal, delay: 100, repeat: 0 });
-    prog?.((f + 1) / N); await new Promise(r => setTimeout(r));
-  }
-  enc.finish(); return new Blob([enc.bytes()], { type: "image/gif" });
-};
 })();

@@ -73,10 +73,11 @@ function packCircles(n, W, rad = i => 64 / Math.pow(i + 1, 0.42) + 9) {   // 默
       }
     }
   }
-  const H = Math.ceil(2 * R * k + 44), map = p => ({ x: W / 2 + p.x * k, y: (H - 36) / 2 + p.y * k, r: p.r * k, f: p.f });
+  const H = Math.ceil(2 * R * k + 44), map = p => { const u = Math.min(1, Math.max(0, (Math.hypot(p.x, p.y) / R - 0.35) / 0.65)), sm = u * u * (3 - 2 * u);
+    return { x: W / 2 + p.x * k, y: (H - 36) / 2 + p.y * k, r: p.r * k, f: p.f, o: +(1 - 0.7 * sm).toFixed(3) }; };   // 透明度按离中心距离平滑过渡：35% 半径内不透明，边缘降到 0.3
   return { H, items: placed.map(map), fillers: fills.map(map) };
 }
-const fillHtml = fs => fs.map((c, i) => `<span class="bub fill${i % 3 ? "" : " o"}" style="left:${(c.x - c.r).toFixed(1)}px;top:${(c.y - c.r).toFixed(1)}px;width:${(2 * c.r).toFixed(1)}px;height:${(2 * c.r).toFixed(1)}px"></span>`).join("");
+const fillHtml = fs => fs.map((c, i) => `<span class="bub fill${i % 3 ? "" : " o"}" style="left:${(c.x - c.r).toFixed(1)}px;top:${(c.y - c.r).toFixed(1)}px;width:${(2 * c.r).toFixed(1)}px;height:${(2 * c.r).toFixed(1)}px;opacity:${c.o}"></span>`).join("");
 const selfAvatar = h => `https://unavatar.io/x/${encodeURIComponent(h)}`;
 const partnerRad = (list) => { const mx = Math.max(1, ...list.map(u => u.count || 0)); return i => i === 0 ? 70 : 12 + 44 * Math.sqrt((list[i - 1].count || 0) / mx); };
 const ini = u => [...(u.name || u.handle || "?")][0].toUpperCase();
@@ -86,7 +87,7 @@ function renderPersonalWall() {
   el.style.height = H + "px";
   el.innerHTML = items.map((c, i) => { const u = i ? arr[i - 1] : { handle: h, name: h, avatar: selfAvatar(h) };
     return `<a class="bub${i ? "" : " self"}" href="${outUrl(profile(u.handle), i ? "partner_wall" : "self_wall")}" target="_blank" rel="noopener" title="@${esc(u.handle)}${i ? " · " + u.count + " 次互动" : ""}"
-      style="left:${(c.x - c.r).toFixed(1)}px;top:${(c.y - c.r).toFixed(1)}px;width:${(2 * c.r).toFixed(1)}px;height:${(2 * c.r).toFixed(1)}px">
+      style="left:${(c.x - c.r).toFixed(1)}px;top:${(c.y - c.r).toFixed(1)}px;width:${(2 * c.r).toFixed(1)}px;height:${(2 * c.r).toFixed(1)}px;opacity:${c.o}">
       ${u.avatar ? `<img loading="lazy" decoding="async" src="${esc(u.avatar)}" alt="" onerror="this.outerHTML='<b class=ini>${esc(ini(u))}</b>'">` : `<b class="ini">${esc(ini(u))}</b>`}${i && i <= 3 ? `<i>${i}</i>` : ""}</a>`; }).join("") + fillHtml(fillers)
     + `<span class="wtag l">@${esc(h)} 的互动圈<br><span style="opacity:.7">圆越大互动越多</span></span><span class="wtag r">${arr.length} 人</span>`;
 }
@@ -101,7 +102,7 @@ function renderWall() {
   el.style.height = H + "px";
   el.innerHTML = items.map((c, i) => { const p = arr[i], img = p.image?.url || p.author.avatar || AV;
     return `<a class="bub" href="${esc(p.url)}" target="_blank" rel="noopener" title="@${esc(p.author.username)} · ${wallSort === "views" ? "👁 " + num(p.metrics.views) : "💬 " + num(p.metrics.replies)}"
-      style="left:${(c.x - c.r).toFixed(1)}px;top:${(c.y - c.r).toFixed(1)}px;width:${(2 * c.r).toFixed(1)}px;height:${(2 * c.r).toFixed(1)}px">
+      style="left:${(c.x - c.r).toFixed(1)}px;top:${(c.y - c.r).toFixed(1)}px;width:${(2 * c.r).toFixed(1)}px;height:${(2 * c.r).toFixed(1)}px;opacity:${c.o}">
       <img loading="lazy" decoding="async" src="${esc(img)}" alt="">${i < 3 ? `<i>${i + 1}</i>` : ""}</a>`; }).join("") + fillHtml(fillers)
     + `<span class="wtag l">24h 照片墙<br><span style="opacity:.7">按${wallSort === "views" ? "曝光" : "评论"} · 中心=第1</span></span><span class="wtag r">${arr.length} 帖</span>`;
 }
@@ -191,28 +192,16 @@ async function openPoster(h, list, url) {
   try {
     posterLib ||= Promise.all([loadJS("vendor/qrcode.js"), loadJS("poster.js")]);
     await posterLib;
-    const cv = await window.makePoster({ handle: h, list, url, self: selfAvatar(h), pack: (n, W, rad) => packCircles(n, W, rad), rad: partnerRad });
+    const cv = await window.makePoster({ handle: h, list, url, self: selfAvatar(h) });
     const blob = await new Promise(r => cv.toBlob(r, "image/png")), file = new File([blob], `best-partners-${h}.png`, { type: "image/png" });
     const purl = URL.createObjectURL(blob);
     const xText = "我的 X 最佳互动账号 Top 3 出炉了，测测你的 👉 " + url;
     m.querySelector(".pmb").innerHTML = `<img src="${purl}" alt="海报"><div class="pmh">先保存海报，发帖时把图片加上</div>
-      <div class="pmr"><button class="btn" id="pmSave">保存图片</button><button class="btn ghost" id="pmGif">保存动图</button><a class="btn ghost" id="pmX" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(xText)}">发到 X</a><button class="btn ghost" id="pmClose">关闭</button></div>`;
+      <div class="pmr"><button class="btn" id="pmSave">保存图片</button><a class="btn ghost" id="pmX" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(xText)}">发到 X</a><button class="btn ghost" id="pmClose">关闭</button></div>`;
     m.querySelector("#pmClose").onclick = () => m.remove();
     m.querySelector("#pmSave").onclick = async () => {
       if (navigator.canShare?.({ files: [file] }) && /Mobi|Android|iPhone/i.test(navigator.userAgent)) { try { await navigator.share({ files: [file], text: xText }); return; } catch (e) { if (e.name === "AbortError") return; } }
       const a = document.createElement("a"); a.href = purl; a.download = file.name; a.click(); toast("已保存");
-    };
-    let gifBusy = false;
-    m.querySelector("#pmGif").onclick = async e => {
-      const b = e.currentTarget; if (gifBusy) return; gifBusy = true; const t0 = b.textContent;
-      try {
-        b.textContent = "动图生成中…";
-        const gb = await window.makePosterGif({ handle: h, list, url, self: selfAvatar(h), pack: (n, W, rad) => packCircles(n, W, rad), rad: partnerRad }, p => b.textContent = `动图生成中… ${Math.round(p * 100)}%`);
-        const gf = new File([gb], `best-partners-${h}.gif`, { type: "image/gif" });
-        b.textContent = t0;
-        if (navigator.canShare?.({ files: [gf] }) && /Mobi|Android|iPhone/i.test(navigator.userAgent)) { try { await navigator.share({ files: [gf], text: xText }); return; } catch (e) { if (e.name === "AbortError") return; } }
-        const a = document.createElement("a"); a.href = URL.createObjectURL(gb); a.download = gf.name; a.click(); toast("动图已保存");
-      } catch (err) { b.textContent = t0; toast("动图生成失败"); } finally { gifBusy = false; }
     };
   } catch (e) { m.querySelector(".pmb").innerHTML = `<div class="m" style="padding:30px;text-align:center">海报生成失败</div>`; }
 }
