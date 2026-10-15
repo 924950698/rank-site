@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-15T19:05:01.109Z",
+ "updated_at": "2026-10-15T20:05:25.569Z",
  "exposure": [
   {
    "id": "2110614354534215897",
@@ -13,7 +13,7 @@
     "followers": 52997
    },
    "metrics": {
-    "views": 26183,
+    "views": 26420,
     "replies": 31,
     "reposts": 3,
     "likes": 69,
@@ -52,27 +52,6 @@
    }
   },
   {
-   "id": "2110448354358628748",
-   "url": "https://x.com/BTC__Sunny/status/2110448354358628748",
-   "created_at": "2026-10-14T19:11:12.000Z",
-   "author": {
-    "id": "1750451963765080064",
-    "name": "🌞Sunny哥",
-    "username": "BTC__Sunny",
-    "avatar": "https://pbs.twimg.com/profile_images/2050504782255960064/oNA1n_k8_400x400.jpg",
-    "followers": 48336
-   },
-   "metrics": {
-    "views": 19755,
-    "replies": 59,
-    "reposts": 5,
-    "likes": 57,
-    "quotes": 0,
-    "bookmarks": 0
-   },
-   "image": null
-  },
-  {
    "id": "2110564768469893515",
    "url": "https://x.com/3596675596com/status/2110564768469893515",
    "created_at": "2026-10-15T02:53:47.000Z",
@@ -106,13 +85,13 @@
     "name": "何币",
     "username": "hebi555",
     "avatar": "https://pbs.twimg.com/profile_images/1677888294661791748/GzBJhJcb_400x400.jpg",
-    "followers": 420248
+    "followers": 420230
    },
    "metrics": {
-    "views": 11509,
+    "views": 11594,
     "replies": 25,
     "reposts": 0,
-    "likes": 43,
+    "likes": 44,
     "quotes": 1,
     "bookmarks": 2
    },
@@ -127,10 +106,10 @@
     "name": "比特老马",
     "username": "jici6182131",
     "avatar": "https://pbs.twimg.com/profile_images/1942092569539936256/ld0mvYU6_400x400.jpg",
-    "followers": 20818
+    "followers": 20880
    },
    "metrics": {
-    "views": 10467,
+    "views": 10512,
     "replies": 11,
     "reposts": 0,
     "likes": 38,
@@ -148,11 +127,11 @@
     "name": "俺是你牛爷爷",
     "username": "laodi888",
     "avatar": "https://pbs.twimg.com/profile_images/1826961752745263104/rbVY-0nr_400x400.jpg",
-    "followers": 25008
+    "followers": 25066
    },
    "metrics": {
-    "views": 10333,
-    "replies": 48,
+    "views": 10334,
+    "replies": 50,
     "reposts": 5,
     "likes": 36,
     "quotes": 0,
@@ -162,6 +141,31 @@
     "url": "https://pbs.twimg.com/media/HUrgXPCboAAGrRi.png",
     "w": 512,
     "h": 512
+   }
+  },
+  {
+   "id": "2110733180303196522",
+   "url": "https://x.com/ruxin231/status/2110733180303196522",
+   "created_at": "2026-10-15T14:03:00.000Z",
+   "author": {
+    "id": "2014320479465840640",
+    "name": "RUXIN（性体验提升）",
+    "username": "ruxin231",
+    "avatar": "https://pbs.twimg.com/profile_images/2014938615831535616/MmyndF5p_400x400.jpg",
+    "followers": 26896
+   },
+   "metrics": {
+    "views": 8641,
+    "replies": 82,
+    "reposts": 63,
+    "likes": 46,
+    "quotes": 0,
+    "bookmarks": 11
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HUqCQmabQAAiGGC.jpg",
+    "w": 1499,
+    "h": 2000
    }
   },
   {
@@ -190,31 +194,6 @@
    }
   },
   {
-   "id": "2110733180303196522",
-   "url": "https://x.com/ruxin231/status/2110733180303196522",
-   "created_at": "2026-10-15T14:03:00.000Z",
-   "author": {
-    "id": "2014320479465840640",
-    "name": "RUXIN（性体验提升）",
-    "username": "ruxin231",
-    "avatar": "https://pbs.twimg.com/profile_images/2014938615831535616/MmyndF5p_400x400.jpg",
-    "followers": 26889
-   },
-   "metrics": {
-    "views": 8134,
-    "replies": 70,
-    "reposts": 56,
-    "likes": 43,
-    "quotes": 0,
-    "bookmarks": 10
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HUqCQmabQAAiGGC.jpg",
-    "w": 1499,
-    "h": 2000
-   }
-  },
-  {
    "id": "2110636447262982223",
    "url": "https://x.com/Cryptobaofu/status/2110636447262982223",
    "created_at": "2026-10-15T07:38:37.000Z",
@@ -238,6 +217,31 @@
     "w": 1024,
     "h": 1024
    }
+  },
+  {
+   "id": "2110672040319656333",
+   "url": "https://x.com/BTC99M/status/2110672040319656333",
+   "created_at": "2026-10-15T10:00:03.000Z",
+   "author": {
+    "id": "1585275680010301441",
+    "name": "Dylan.迪伦丨做合约，来WEEX",
+    "username": "BTC99M",
+    "avatar": "https://pbs.twimg.com/profile_images/1984920869735702528/kPRbIQZz_400x400.jpg",
+    "followers": 94759
+   },
+   "metrics": {
+    "views": 6183,
+    "replies": 19,
+    "reposts": 0,
+    "likes": 15,
+    "quotes": 0,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HUqOE1ZakAAVUoa.jpg",
+    "w": 1870,
+    "h": 854
+   }
   }
  ],
  "comments": [
@@ -250,10 +254,10 @@
     "name": "鲁与班|Bird🕊️",
     "username": "luyuban69",
     "avatar": "https://pbs.twimg.com/profile_images/1698491537217204224/x-_TdDMe_400x400.jpg",
-    "followers": 8967
+    "followers": 8964
    },
    "metrics": {
-    "views": 4761,
+    "views": 4786,
     "replies": 148,
     "reposts": 90,
     "likes": 125,
@@ -275,13 +279,13 @@
     "name": "加密兔",
     "username": "ETH0928",
     "avatar": "https://pbs.twimg.com/profile_images/2071794520367489025/92K2J4A9_400x400.jpg",
-    "followers": 3185
+    "followers": 3190
    },
    "metrics": {
-    "views": 4752,
-    "replies": 136,
-    "reposts": 117,
-    "likes": 120,
+    "views": 4867,
+    "replies": 142,
+    "reposts": 124,
+    "likes": 124,
     "quotes": 2,
     "bookmarks": 14
    },
@@ -342,15 +346,15 @@
     "name": "RUXIN（性体验提升）",
     "username": "ruxin231",
     "avatar": "https://pbs.twimg.com/profile_images/2014938615831535616/MmyndF5p_400x400.jpg",
-    "followers": 26889
+    "followers": 26896
    },
    "metrics": {
-    "views": 8134,
-    "replies": 70,
-    "reposts": 56,
-    "likes": 43,
+    "views": 8641,
+    "replies": 82,
+    "reposts": 63,
+    "likes": 46,
     "quotes": 0,
-    "bookmarks": 10
+    "bookmarks": 11
    },
    "image": {
     "url": "https://pbs.twimg.com/media/HUqCQmabQAAiGGC.jpg",
@@ -367,13 +371,13 @@
     "name": "比特币教主",
     "username": "wyl2035",
     "avatar": "https://pbs.twimg.com/profile_images/1734729586821435393/dLDEqq05_400x400.jpg",
-    "followers": 88195
+    "followers": 88204
    },
    "metrics": {
-    "views": 3675,
+    "views": 3714,
     "replies": 66,
     "reposts": 30,
-    "likes": 56,
+    "likes": 57,
     "quotes": 0,
     "bookmarks": 0
    },
@@ -388,36 +392,15 @@
     "name": "知识分享站",
     "username": "CryptoDaJin",
     "avatar": "https://pbs.twimg.com/profile_images/1858889847978815491/DO_Rg-iu_400x400.jpg",
-    "followers": 2152
+    "followers": 2155
    },
    "metrics": {
-    "views": 1968,
+    "views": 1991,
     "replies": 60,
     "reposts": 15,
     "likes": 10,
     "quotes": 1,
     "bookmarks": 3
-   },
-   "image": null
-  },
-  {
-   "id": "2110448354358628748",
-   "url": "https://x.com/BTC__Sunny/status/2110448354358628748",
-   "created_at": "2026-10-14T19:11:12.000Z",
-   "author": {
-    "id": "1750451963765080064",
-    "name": "🌞Sunny哥",
-    "username": "BTC__Sunny",
-    "avatar": "https://pbs.twimg.com/profile_images/2050504782255960064/oNA1n_k8_400x400.jpg",
-    "followers": 48336
-   },
-   "metrics": {
-    "views": 19755,
-    "replies": 59,
-    "reposts": 5,
-    "likes": 57,
-    "quotes": 0,
-    "bookmarks": 0
    },
    "image": null
   },
@@ -470,6 +453,31 @@
     "w": 1254,
     "h": 1254
    }
+  },
+  {
+   "id": "2110746074214490483",
+   "url": "https://x.com/laodi888/status/2110746074214490483",
+   "created_at": "2026-10-15T14:54:14.000Z",
+   "author": {
+    "id": "1689352231236116481",
+    "name": "俺是你牛爷爷",
+    "username": "laodi888",
+    "avatar": "https://pbs.twimg.com/profile_images/1826961752745263104/rbVY-0nr_400x400.jpg",
+    "followers": 25066
+   },
+   "metrics": {
+    "views": 10334,
+    "replies": 50,
+    "reposts": 5,
+    "likes": 36,
+    "quotes": 0,
+    "bookmarks": 1
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HUrgXPCboAAGrRi.png",
+    "w": 512,
+    "h": 512
+   }
   }
  ],
  "growth": [],
@@ -486,7 +494,7 @@
     "followers": 52997
    },
    "metrics": {
-    "views": 26183,
+    "views": 26420,
     "replies": 31,
     "reposts": 3,
     "likes": 69,
@@ -558,11 +566,11 @@
     "name": "俺是你牛爷爷",
     "username": "laodi888",
     "avatar": "https://pbs.twimg.com/profile_images/1826961752745263104/rbVY-0nr_400x400.jpg",
-    "followers": 25008
+    "followers": 25066
    },
    "metrics": {
-    "views": 10333,
-    "replies": 48,
+    "views": 10334,
+    "replies": 50,
     "reposts": 5,
     "likes": 36,
     "quotes": 0,
@@ -572,6 +580,31 @@
     "url": "https://pbs.twimg.com/media/HUrgXPCboAAGrRi.png",
     "w": 512,
     "h": 512
+   }
+  },
+  {
+   "id": "2110733180303196522",
+   "url": "https://x.com/ruxin231/status/2110733180303196522",
+   "created_at": "2026-10-15T14:03:00.000Z",
+   "author": {
+    "id": "2014320479465840640",
+    "name": "RUXIN（性体验提升）",
+    "username": "ruxin231",
+    "avatar": "https://pbs.twimg.com/profile_images/2014938615831535616/MmyndF5p_400x400.jpg",
+    "followers": 26896
+   },
+   "metrics": {
+    "views": 8641,
+    "replies": 82,
+    "reposts": 63,
+    "likes": 46,
+    "quotes": 0,
+    "bookmarks": 11
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HUqCQmabQAAiGGC.jpg",
+    "w": 1499,
+    "h": 2000
    }
   },
   {
@@ -600,31 +633,6 @@
    }
   },
   {
-   "id": "2110733180303196522",
-   "url": "https://x.com/ruxin231/status/2110733180303196522",
-   "created_at": "2026-10-15T14:03:00.000Z",
-   "author": {
-    "id": "2014320479465840640",
-    "name": "RUXIN（性体验提升）",
-    "username": "ruxin231",
-    "avatar": "https://pbs.twimg.com/profile_images/2014938615831535616/MmyndF5p_400x400.jpg",
-    "followers": 26889
-   },
-   "metrics": {
-    "views": 8134,
-    "replies": 70,
-    "reposts": 56,
-    "likes": 43,
-    "quotes": 0,
-    "bookmarks": 10
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HUqCQmabQAAiGGC.jpg",
-    "w": 1499,
-    "h": 2000
-   }
-  },
-  {
    "id": "2110636447262982223",
    "url": "https://x.com/Cryptobaofu/status/2110636447262982223",
    "created_at": "2026-10-15T07:38:37.000Z",
@@ -647,6 +655,31 @@
     "url": "https://pbs.twimg.com/media/HUp8pddaEAAmN75.jpg",
     "w": 1024,
     "h": 1024
+   }
+  },
+  {
+   "id": "2110672040319656333",
+   "url": "https://x.com/BTC99M/status/2110672040319656333",
+   "created_at": "2026-10-15T10:00:03.000Z",
+   "author": {
+    "id": "1585275680010301441",
+    "name": "Dylan.迪伦丨做合约，来WEEX",
+    "username": "BTC99M",
+    "avatar": "https://pbs.twimg.com/profile_images/1984920869735702528/kPRbIQZz_400x400.jpg",
+    "followers": 94759
+   },
+   "metrics": {
+    "views": 6183,
+    "replies": 19,
+    "reposts": 0,
+    "likes": 15,
+    "quotes": 0,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HUqOE1ZakAAVUoa.jpg",
+    "w": 1870,
+    "h": 854
    }
   },
   {
@@ -700,31 +733,6 @@
    }
   },
   {
-   "id": "2110672040319656333",
-   "url": "https://x.com/BTC99M/status/2110672040319656333",
-   "created_at": "2026-10-15T10:00:03.000Z",
-   "author": {
-    "id": "1585275680010301441",
-    "name": "Dylan.迪伦丨做合约，来WEEX",
-    "username": "BTC99M",
-    "avatar": "https://pbs.twimg.com/profile_images/1984920869735702528/kPRbIQZz_400x400.jpg",
-    "followers": 94759
-   },
-   "metrics": {
-    "views": 5651,
-    "replies": 19,
-    "reposts": 0,
-    "likes": 15,
-    "quotes": 0,
-    "bookmarks": 0
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HUqOE1ZakAAVUoa.jpg",
-    "w": 1870,
-    "h": 854
-   }
-  },
-  {
    "id": "2110564365913198667",
    "url": "https://x.com/luyuban69/status/2110564365913198667",
    "created_at": "2026-10-15T02:52:11.000Z",
@@ -733,10 +741,10 @@
     "name": "鲁与班|Bird🕊️",
     "username": "luyuban69",
     "avatar": "https://pbs.twimg.com/profile_images/1698491537217204224/x-_TdDMe_400x400.jpg",
-    "followers": 8967
+    "followers": 8964
    },
    "metrics": {
-    "views": 4761,
+    "views": 4786,
     "replies": 148,
     "reposts": 90,
     "likes": 125,
@@ -772,6 +780,31 @@
     "url": "https://pbs.twimg.com/media/HUo6eOraIAA5-VT.jpg",
     "w": 1200,
     "h": 2640
+   }
+  },
+  {
+   "id": "2110751898513055948",
+   "url": "https://x.com/KuiGas/status/2110751898513055948",
+   "created_at": "2026-10-15T15:17:23.000Z",
+   "author": {
+    "id": "1372876871990272000",
+    "name": "丰密",
+    "username": "KuiGas",
+    "avatar": "https://pbs.twimg.com/profile_images/1951510357769592890/oim_Z9Fl_400x400.jpg",
+    "followers": 107590
+   },
+   "metrics": {
+    "views": 4419,
+    "replies": 10,
+    "reposts": 1,
+    "likes": 20,
+    "quotes": 0,
+    "bookmarks": 2
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HUrK68easAEPqk5.jpg",
+    "w": 3066,
+    "h": 1602
    }
   },
   {
@@ -936,7 +969,7 @@
     "followers": 11754
    },
    "metrics": {
-    "views": 1818,
+    "views": 1837,
     "replies": 4,
     "reposts": 0,
     "likes": 11,
@@ -983,10 +1016,10 @@
     "name": "樱桃🍒s(大号五万粉被封)",
     "username": "yingtaols",
     "avatar": "https://pbs.twimg.com/profile_images/2101663262505086976/CHfMzoFZ_400x400.jpg",
-    "followers": 12473
+    "followers": 12482
    },
    "metrics": {
-    "views": 1562,
+    "views": 1612,
     "replies": 0,
     "reposts": 4,
     "likes": 26,
@@ -1058,10 +1091,10 @@
     "name": "苏珊💓Susan",
     "username": "susanryanlin",
     "avatar": "https://pbs.twimg.com/profile_images/2049009282583236608/leZ5VZX4_400x400.jpg",
-    "followers": 11753
+    "followers": 11749
    },
    "metrics": {
-    "views": 1337,
+    "views": 1341,
     "replies": 10,
     "reposts": 0,
     "likes": 19,
@@ -1208,10 +1241,10 @@
     "name": "鲁与班|Bird🕊️",
     "username": "luyuban69",
     "avatar": "https://pbs.twimg.com/profile_images/1698491537217204224/x-_TdDMe_400x400.jpg",
-    "followers": 8967
+    "followers": 8964
    },
    "metrics": {
-    "views": 828,
+    "views": 830,
     "replies": 0,
     "reposts": 0,
     "likes": 0,
@@ -1233,10 +1266,10 @@
     "name": "WEEX中文 | 做合约，来WEEX",
     "username": "WeexCn",
     "avatar": "https://pbs.twimg.com/profile_images/2063901560493821952/iaFZSBFK_400x400.jpg",
-    "followers": 16914
+    "followers": 16909
    },
    "metrics": {
-    "views": 793,
+    "views": 817,
     "replies": 13,
     "reposts": 12,
     "likes": 23,
@@ -1336,10 +1369,10 @@
     "followers": 2093
    },
    "metrics": {
-    "views": 621,
-    "replies": 24,
-    "reposts": 15,
-    "likes": 23,
+    "views": 646,
+    "replies": 28,
+    "reposts": 17,
+    "likes": 25,
     "quotes": 0,
     "bookmarks": 2
    },
@@ -1383,10 +1416,10 @@
     "name": "Young",
     "username": "Young852560",
     "avatar": "https://pbs.twimg.com/profile_images/2087461627507671040/1X3C9As7_400x400.jpg",
-    "followers": 33663
+    "followers": 33661
    },
    "metrics": {
-    "views": 590,
+    "views": 604,
     "replies": 2,
     "reposts": 0,
     "likes": 2,
@@ -1500,6 +1533,31 @@
    }
   },
   {
+   "id": "2110672042530078933",
+   "url": "https://x.com/feixiaohaocom/status/2110672042530078933",
+   "created_at": "2026-10-15T10:00:03.000Z",
+   "author": {
+    "id": "1744277683746619393",
+    "name": "FeiXiaoHao(非小号)",
+    "username": "feixiaohaocom",
+    "avatar": "https://pbs.twimg.com/profile_images/1744277907147837441/gchsTlr2_400x400.jpg",
+    "followers": 13051
+   },
+   "metrics": {
+    "views": 505,
+    "replies": 3,
+    "reposts": 0,
+    "likes": 3,
+    "quotes": 0,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HUqdBmGboAAgpnA.jpg",
+    "w": 1672,
+    "h": 941
+   }
+  },
+  {
    "id": "2110590995939397725",
    "url": "https://x.com/sanmage88/status/2110590995939397725",
    "created_at": "2026-10-15T04:38:00.000Z",
@@ -1550,6 +1608,31 @@
    }
   },
   {
+   "id": "2110696755767681361",
+   "url": "https://x.com/GameVoicer/status/2110696755767681361",
+   "created_at": "2026-10-15T11:38:16.000Z",
+   "author": {
+    "id": "1933180221961965568",
+    "name": "游戏好声音",
+    "username": "GameVoicer",
+    "avatar": "https://pbs.twimg.com/profile_images/1934817662254956544/Niyluu7q_400x400.jpg",
+    "followers": 2849
+   },
+   "metrics": {
+    "views": 412,
+    "replies": 4,
+    "reposts": 29,
+    "likes": 31,
+    "quotes": 1,
+    "bookmarks": 5
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HUqzgNLa4AA3JDk.jpg",
+    "w": 1920,
+    "h": 1080
+   }
+  },
+  {
    "id": "2110656099691159655",
    "url": "https://x.com/CryptoKangkang/status/2110656099691159655",
    "created_at": "2026-10-15T08:56:42.000Z",
@@ -1597,31 +1680,6 @@
     "url": "https://pbs.twimg.com/media/HUpiGDwaIAACajh.jpg",
     "w": 1508,
     "h": 586
-   }
-  },
-  {
-   "id": "2110696755767681361",
-   "url": "https://x.com/GameVoicer/status/2110696755767681361",
-   "created_at": "2026-10-15T11:38:16.000Z",
-   "author": {
-    "id": "1933180221961965568",
-    "name": "游戏好声音",
-    "username": "GameVoicer",
-    "avatar": "https://pbs.twimg.com/profile_images/1934817662254956544/Niyluu7q_400x400.jpg",
-    "followers": 2849
-   },
-   "metrics": {
-    "views": 392,
-    "replies": 4,
-    "reposts": 27,
-    "likes": 29,
-    "quotes": 1,
-    "bookmarks": 5
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HUqzgNLa4AA3JDk.jpg",
-    "w": 1920,
-    "h": 1080
    }
   },
   {
@@ -1836,7 +1894,7 @@
     "followers": 10641
    },
    "metrics": {
-    "views": 309,
+    "views": 310,
     "replies": 6,
     "reposts": 0,
     "likes": 6,
@@ -1923,56 +1981,6 @@
     "w": 213,
     "h": 537
    }
-  },
-  {
-   "id": "2110758060314747356",
-   "url": "https://x.com/NiufuguiBTC/status/2110758060314747356",
-   "created_at": "2026-10-15T15:41:52.000Z",
-   "author": {
-    "id": "1417312439469629447",
-    "name": "牛富贵BTC",
-    "username": "NiufuguiBTC",
-    "avatar": "https://pbs.twimg.com/profile_images/1848004886719561728/vo0auSql_400x400.jpg",
-    "followers": 3322
-   },
-   "metrics": {
-    "views": 259,
-    "replies": 0,
-    "reposts": 0,
-    "likes": 5,
-    "quotes": 0,
-    "bookmarks": 0
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HUrrP4ibEAACCzS.jpg",
-    "w": 1989,
-    "h": 1149
-   }
-  },
-  {
-   "id": "2110656797828939927",
-   "url": "https://x.com/Pustika_a9/status/2110656797828939927",
-   "created_at": "2026-10-15T08:59:29.000Z",
-   "author": {
-    "id": "957828847684210688",
-    "name": "Puṣṭika🐲（火力全开版）",
-    "username": "Pustika_a9",
-    "avatar": "https://pbs.twimg.com/profile_images/2030876189011931136/xBS4iBEG_400x400.jpg",
-    "followers": 13876
-   },
-   "metrics": {
-    "views": 243,
-    "replies": 1,
-    "reposts": 0,
-    "likes": 0,
-    "quotes": 0,
-    "bookmarks": 0
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HUqPKzxaEAA2ckv.jpg",
-    "w": 1638,
-    "h": 790
-   }
   }
  ],
  "best": [
@@ -1993,9 +2001,9 @@
     "name": "加密兔",
     "username": "ETH0928",
     "avatar": "https://pbs.twimg.com/profile_images/2071794520367489025/92K2J4A9_400x400.jpg",
-    "followers": 3185
+    "followers": 3190
    },
-   "interactions": 408,
+   "interactions": 425,
    "gain": null
   },
   {
@@ -2026,9 +2034,9 @@
     "name": "比特币教主",
     "username": "wyl2035",
     "avatar": "https://pbs.twimg.com/profile_images/1734729586821435393/dLDEqq05_400x400.jpg",
-    "followers": 88195
+    "followers": 88204
    },
-   "interactions": 224,
+   "interactions": 227,
    "gain": null
   },
   {
@@ -2059,9 +2067,9 @@
     "name": "RUXIN（性体验提升）",
     "username": "ruxin231",
     "avatar": "https://pbs.twimg.com/profile_images/2014938615831535616/MmyndF5p_400x400.jpg",
-    "followers": 26889
+    "followers": 26896
    },
-   "interactions": 169,
+   "interactions": 191,
    "gain": null
   },
   {
@@ -2077,18 +2085,18 @@
   },
   {
    "author": {
-    "id": "1750451963765080064",
-    "name": "🌞Sunny哥",
-    "username": "BTC__Sunny",
-    "avatar": "https://pbs.twimg.com/profile_images/2050504782255960064/oNA1n_k8_400x400.jpg",
-    "followers": 48324
+    "id": "15191335",
+    "name": "Sea",
+    "username": "Sea_Bitcoin",
+    "avatar": "https://pbs.twimg.com/profile_images/1914322023565963264/kK4wIKSG_400x400.jpg",
+    "followers": 52997
    },
-   "interactions": 126,
+   "interactions": 108,
    "gain": null
   }
  ],
  "meta": {
-  "pool_size": 395,
-  "api_calls_this_run": 7
+  "pool_size": 408,
+  "api_calls_this_run": 47
  }
 }
