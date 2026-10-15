@@ -28,7 +28,14 @@ function qr(c, text, x, y, size) {
   c.fillStyle = "#fff"; c.fillRect(x, y, size, size); c.fillStyle = "#000";
   for (let r = 0; r < n; r++) for (let k = 0; k < n; k++) if (q.isDark(r, k)) c.fillRect(x + pad + k * cell, y + pad + r * cell, Math.ceil(cell), Math.ceil(cell));
 }
-async function draw(o, useImgs) {
+async function loadAll(o) {
+  const arr = o.list.slice(0, 30);
+  const [wall, top] = await Promise.all([Promise.all([o.self, ...arr.map(u => u.avatar)].map(loadImg)), Promise.all(o.list.slice(0, 3).map(u => loadImg(u.avatar)))]);
+  return { wall, top };
+}
+// t: 0..1 动画相位（null=静态）；每个气泡相位不同，首尾无缝循环
+function off(i, t, A) { if (t == null) return [0, 0]; const p = i * 2.399, a = 2 * Math.PI * t; return [A * Math.sin(a + p), A * Math.cos(a + p * 1.7)]; }
+function draw(o, IM, t = null) {
   const dy = o.pack ? CIRCLE_H : 0; H = 1350 + dy;
   const cv = document.createElement("canvas"); cv.width = W; cv.height = H; const c = cv.getContext("2d");
   c.fillStyle = "#000"; c.fillRect(0, 0, W, H);
@@ -42,9 +49,9 @@ async function draw(o, useImgs) {
   if (o.pack) {
     const arr = o.list.slice(0, 30), { H: ph, items } = o.pack(arr.length + 1, W - 160, o.rad(arr));
     const k = Math.min(1, (CIRCLE_H - 20) / (ph - 44)), cx = W / 2, cy = 150 + CIRCLE_H / 2;
-    const mid = (ph - 36) / 2, ims = useImgs ? await Promise.all([o.self, ...arr.map(u => u.avatar)].map(loadImg)) : [];
+    const mid = (ph - 36) / 2, ims = IM ? IM.wall : [];
     items.forEach((c, i) => {
-      const x = cx + (c.x - (W - 160) / 2) * k * 1, y = cy + (c.y - mid) * k, r = c.r * k;
+      const [ox, oy] = off(i, t, 3), x = cx + (c.x - (W - 160) / 2) * k + ox, y = cy + (c.y - mid) * k + oy, r = c.r * k;
       const u = i ? arr[i - 1] : { handle: o.handle };
       c2(cv, ims[i], u.name || u.handle, x, y, r, i === 0);
     });
@@ -54,7 +61,7 @@ async function draw(o, useImgs) {
   c.textAlign = "center"; c.fillStyle = G; c.font = `800 64px ${FONT}`; c.fillText(fit(c, "@" + o.handle, W - 160), W / 2, 240);
   c.fillStyle = "#fff"; c.font = `800 60px ${FONT}`; c.fillText("的最佳互动账号 Top 3", W / 2, 320);
   // 三个账号
-  const imgs = useImgs ? await Promise.all(o.list.map(u => loadImg(u.avatar))) : [];
+  const imgs = IM ? IM.top : [];
   o.list.slice(0, 3).forEach((u, i) => {
     const y = 400 + i * 170;
     c.fillStyle = i === 0 ? "#0d2a07" : "#0b0b0b"; c.strokeStyle = i === 0 ? G : "#2f3336"; c.lineWidth = 3;
@@ -80,9 +87,26 @@ async function draw(o, useImgs) {
   c.save(); c.globalAlpha = .9; c.fillStyle = G; c.font = `800 30px ${FONT}`; c.textAlign = "right"; c.fillText("@tigerr3aue", W - 80, 120); c.restore();
   return cv;
 }
-window.makePoster = async o => {
-  let cv = await draw(o, true);
-  try { cv.toDataURL(); } catch { cv = await draw(o, false); } // 头像跨域导致画布被污染 → 改用首字母头像
-  return cv;
+async function safeImgs(o) {
+  let IM = await loadAll(o);
+  try { draw(o, IM).getContext("2d").getImageData(0, 0, 1, 1); } catch { IM = null; } // 头像跨域导致画布被污染 → 改用首字母头像
+  return IM;
+}
+window.makePoster = async o => draw(o, await safeImgs(o));
+// 动图：气泡轻微浮动，24 帧 × 100ms 无缝循环，缩到 600 宽；头像只加载一次
+window.makePosterGif = async (o, prog) => {
+  const { GIFEncoder, quantize, applyPalette } = await import("./vendor/gifenc.esm.js");
+  const IM = await safeImgs(o), N = 24, OW = 600;
+  const enc = GIFEncoder(); let pal, oc, octx;
+  for (let f = 0; f < N; f++) {
+    const cv = draw(o, IM, f / N);
+    if (!oc) { oc = document.createElement("canvas"); oc.width = OW; oc.height = Math.round(cv.height * OW / cv.width); octx = oc.getContext("2d", { willReadFrequently: true }); }
+    octx.drawImage(cv, 0, 0, oc.width, oc.height);
+    const px = octx.getImageData(0, 0, oc.width, oc.height).data;
+    if (!pal) pal = quantize(px, 256);
+    enc.writeFrame(applyPalette(px, pal), oc.width, oc.height, { palette: f ? undefined : pal, delay: 100, repeat: 0 });
+    prog?.((f + 1) / N); await new Promise(r => setTimeout(r));
+  }
+  enc.finish(); return new Blob([enc.bytes()], { type: "image/gif" });
 };
 })();

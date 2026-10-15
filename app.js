@@ -177,11 +177,23 @@ async function openPoster(h, list, url) {
     const purl = URL.createObjectURL(blob);
     const xText = "我的 X 最佳互动账号 Top 3 出炉了，测测你的 👉 " + url;
     m.querySelector(".pmb").innerHTML = `<img src="${purl}" alt="海报"><div class="pmh">先保存海报，发帖时把图片加上</div>
-      <div class="pmr"><button class="btn" id="pmSave">保存图片</button><a class="btn ghost" id="pmX" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(xText)}">发到 X</a><button class="btn ghost" id="pmClose">关闭</button></div>`;
+      <div class="pmr"><button class="btn" id="pmSave">保存图片</button><button class="btn ghost" id="pmGif">保存动图</button><a class="btn ghost" id="pmX" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(xText)}">发到 X</a><button class="btn ghost" id="pmClose">关闭</button></div>`;
     m.querySelector("#pmClose").onclick = () => m.remove();
     m.querySelector("#pmSave").onclick = async () => {
       if (navigator.canShare?.({ files: [file] }) && /Mobi|Android|iPhone/i.test(navigator.userAgent)) { try { await navigator.share({ files: [file], text: xText }); return; } catch (e) { if (e.name === "AbortError") return; } }
       const a = document.createElement("a"); a.href = purl; a.download = file.name; a.click(); toast("已保存");
+    };
+    let gifBusy = false;
+    m.querySelector("#pmGif").onclick = async e => {
+      const b = e.currentTarget; if (gifBusy) return; gifBusy = true; const t0 = b.textContent;
+      try {
+        b.textContent = "动图生成中…";
+        const gb = await window.makePosterGif({ handle: h, list, url, self: selfAvatar(h), pack: (n, W, rad) => packCircles(n, W, rad), rad: partnerRad }, p => b.textContent = `动图生成中… ${Math.round(p * 100)}%`);
+        const gf = new File([gb], `best-partners-${h}.gif`, { type: "image/gif" });
+        b.textContent = t0;
+        if (navigator.canShare?.({ files: [gf] }) && /Mobi|Android|iPhone/i.test(navigator.userAgent)) { try { await navigator.share({ files: [gf], text: xText }); return; } catch (e) { if (e.name === "AbortError") return; } }
+        const a = document.createElement("a"); a.href = URL.createObjectURL(gb); a.download = gf.name; a.click(); toast("动图已保存");
+      } catch (err) { b.textContent = t0; toast("动图生成失败"); } finally { gifBusy = false; }
     };
   } catch (e) { m.querySelector(".pmb").innerHTML = `<div class="m" style="padding:30px;text-align:center">海报生成失败</div>`; }
 }
@@ -196,7 +208,7 @@ fetch("data.json", { cache: "no-cache" }).then(r => r.json()).then(d => { D = d;
 
 // ---------- 按钮埋点（GoatCounter 事件） ----------
 (() => {
-  const code = C.GC_CODE;
+  const code = (window.APP_CONFIG || {}).GC_CODE;
   if (code) { const s = document.createElement("script"); s.async = true; s.src = "https://gc.zgo.at/count.js"; s.dataset.goatcounter = `https://${code}.goatcounter.com/count`; document.head.appendChild(s); }
   const name = el => el.dataset.ev || (el.id ? el.id : "") || [el.dataset.t, el.dataset.s, el.dataset.src].filter(Boolean).join("-") || (el.textContent || "").trim().slice(0, 20) || "unknown";
   window.track = (ev, title) => { const n = "ev-" + ev; if (window.goatcounter?.count) goatcounter.count({ path: n, title: title || ev, event: true }); else (window._evq ||= []).push(n); };

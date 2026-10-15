@@ -70,7 +70,7 @@ header .btn{padding:5px 9px;font-size:12px}
 .pm{position:fixed;inset:0;background:#000d;z-index:15;display:flex;align-items:center;justify-content:center;padding:16px}
 .pmb{width:100%;max-width:360px;background:#0b0b0b;border:1px solid #39ff14;border-radius:14px;padding:12px}
 .pmb img{width:100%;display:block;border-radius:8px}.pmh{font-size:12px;color:#39ff14;text-align:center;margin:8px 0}
-.pmr{display:flex;gap:8px}.pmr .btn{flex:1;text-align:center;padding:8px 0}
+.pmr{display:flex;flex-wrap:wrap;gap:8px}.pmr .btn{min-width:40%}.pmr .btn{flex:1;text-align:center;padding:8px 0}
 .pq.top{margin:10px 6px 4px}
 .bub.self{border:3px solid #39ff14;box-shadow:0 0 14px #39ff1466}
 .bub .ini{display:flex;width:100%;height:100%;align-items:center;justify-content:center;color:#39ff14;background:#1d1f23;font-weight:800}
