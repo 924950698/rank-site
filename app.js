@@ -149,7 +149,7 @@ async function showPartners(raw, push = true) {
     const t = P.updated_at ? new Date(P.updated_at).toLocaleString("zh-CN", { hour12: false, month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" }) : "";
     const note = `<div class="pnote">计算方法：${esc(P.method || "按最近回复和@次数")}（只统计最近的回复和 @，不含点赞）${t ? " · 更新于 " + t : ""}</div>`;
     PW = list?.length ? { h, list } : null; renderWall();
-    if (!list?.length) { out.innerHTML = `<div class="pres"><h4>@${esc(h)}</h4><div>暂未收录，明天再来看看</div>${note}</div>`; return; }
+    if (!list?.length) { out.innerHTML = `<div class="pres"><h4>@${esc(h)}</h4><div>暂未收录，明天再来看看</div>${note}</div>`; return null; }
     out.innerHTML = `<div class="pres"><h4><span>@${esc(h)}</span> 的最佳互动账号 Top 3</h4>` +
       list.slice(0, 3).map((u, i) => `<a class="pu" href="${outUrl(profile(u.handle), "partner")}" target="_blank" rel="noopener">
         <div class="rk">${i + 1}</div><img class="av" loading="lazy" src="${esc(u.avatar || AV)}" alt="">
@@ -159,6 +159,7 @@ async function showPartners(raw, push = true) {
     const url = shareUrl(h);
     $("#pqCopy").onclick = async () => { try { await navigator.clipboard.writeText(url); } catch { const t = document.createElement("textarea"); t.value = url; document.body.appendChild(t); t.select(); document.execCommand("copy"); t.remove(); } toast("已复制"); };
     $("#pqPoster").onclick = () => openPoster(h, list, url);
+    return { h, list, url };
   } catch { partnersP = null; out.innerHTML = `<div class="pres m">数据加载失败，请稍后再试</div>`; }
 }
 function shareUrl(h) { const base = (C.SITE_URL && !/example\./.test(C.SITE_URL)) ? C.SITE_URL : location.origin + location.pathname; return base.replace(/[?#].*$/, "") + "?u=" + encodeURIComponent(h); }
@@ -184,7 +185,8 @@ async function openPoster(h, list, url) {
     };
   } catch (e) { m.querySelector(".pmb").innerHTML = `<div class="m" style="padding:30px;text-align:center">海报生成失败</div>`; }
 }
-$("#pq").onsubmit = e => { e.preventDefault(); showPartners($("#pqIn").value); };
+$("#pq").onsubmit = async e => { e.preventDefault(); await showPartners($("#pqIn").value); document.querySelector("#wall,.wall,canvas")?.scrollIntoView({ behavior: "smooth", block: "start" }); };
+$("#pqPost").onclick = async () => { const r = await showPartners($("#pqIn").value); if (r) openPoster(r.h, r.list, r.url); };
 { const u = new URLSearchParams(location.search).get("u"); if (u) { $("#pqIn").value = "@" + normHandle(u); showPartners(u, false); } }
 
 // ---------- 启动 ----------

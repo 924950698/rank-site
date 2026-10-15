@@ -75,3 +75,5 @@ header .btn{padding:5px 9px;font-size:12px}
 .bub.self{border:3px solid #39ff14;box-shadow:0 0 14px #39ff1466}
 .bub .ini{display:flex;width:100%;height:100%;align-items:center;justify-content:center;color:#39ff14;background:#1d1f23;font-weight:800}
 #pqOut .pres{margin:10px 6px 0}
+
+.pqb{display:flex;flex-direction:column;gap:8px;margin-top:10px}.pqb .btn{width:100%;padding:12px;font-size:15px}
