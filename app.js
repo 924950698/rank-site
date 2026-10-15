@@ -45,26 +45,22 @@ function renderBest() {
     <div class="m">互动 ${num(b.interactions)}</div>${b.gain != null ? `<div class="g" style="font-size:12px">+${num(b.gain)} 粉</div>` : ""}</a>`).join("");
 }
 // 圆形气泡墙：按当前排序名次定大小，#1 居中，螺旋搜索 + 碰撞检测的确定性排布
-function packCircles(n, W, rad = i => 64 / Math.pow(i + 1, 0.42) + 9) {   // 默认：名次越靠后越小
-  // 向日葵（黄金角）顺序从中心向外排，全部限制在边界圆 R 内；最后用小装饰圆填满边缘缝隙，整体轮廓是正圆
-  const GAP = 3, GA = 2.39996, rs = Array.from({ length: n }, (_, i) => rad(i));
-  let R = Math.sqrt(rs.reduce((s, r) => s + r * r, 0) / 0.7) + 2, placed;
-  for (let tries = 0; tries < 40; tries++, R *= 1.04) {
-    placed = []; let ok = true;
-    for (let i = 0; i < n && ok; i++) {
-      const r = rs[i]; if (!i) { placed.push({ x: 0, y: 0, r }); continue; }
-      ok = false;
-      for (let j = 1; j < 6000; j++) {
-        const d = R * Math.sqrt(j / 5000), a = j * GA; if (d + r > R) break;
-        const x = d * Math.cos(a), y = d * Math.sin(a);
-        if (placed.every(p => Math.hypot(p.x - x, p.y - y) >= p.r + r + GAP)) { placed.push({ x, y, r }); ok = true; break; }
-      }
-    }
-    if (ok) break;
+function packCircles(n, W, rad = i => 64 / Math.pow(i + 1, 0.42) + 9) {
+  // 同心圆环：中心是本人，外面一圈一圈排，每圈头像同尺寸、均匀分布满 360°，整体轮廓是正圆
+  const GAP = 4, rs = Array.from({ length: n }, (_, i) => rad(i)), placed = [];
+  if (!n) return { H: 0, items: [], fillers: [] };
+  placed.push({ x: 0, y: 0, r: rs[0] });
+  let outer = rs[0], i = 1;
+  while (i < n) {
+    const r = Math.max(8, rs[i]), d = outer + GAP + r;
+    const cap = Math.max(6, Math.floor(Math.PI / Math.asin(Math.min(1, (r + GAP / 2) / d))));
+    const cnt = Math.min(cap, n - i), off = (i % 2) * Math.PI / cap;
+    for (let j = 0; j < cnt; j++, i++) { const a = off + 2 * Math.PI * j / cnt; placed.push({ x: d * Math.cos(a), y: d * Math.sin(a), r }); }
+    outer = d + r;
   }
-  const k = (W / 2 - 6) / R;
+  const R = outer, k = (W / 2 - 6) / R;
   const H = Math.ceil(2 * R * k + 44), map = p => { const u = Math.min(1, Math.max(0, (Math.hypot(p.x, p.y) / R - 0.35) / 0.65)), sm = u * u * (3 - 2 * u);
-    return { x: W / 2 + p.x * k, y: (H - 36) / 2 + p.y * k, r: p.r * k, f: p.f, o: +(1 - 0.7 * sm).toFixed(3) }; };   // 透明度按离中心距离平滑过渡：35% 半径内不透明，边缘降到 0.3
+    return { x: W / 2 + p.x * k, y: (H - 36) / 2 + p.y * k, r: p.r * k, f: p.f, o: +(1 - 0.7 * sm).toFixed(3) }; };   // 透明度按离中心距离平滑过渡
   return { H, items: placed.map(map), fillers: [] };
 }
 const selfAvatar = h => `https://unavatar.io/x/${encodeURIComponent(h)}`;
