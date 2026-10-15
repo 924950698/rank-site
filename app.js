@@ -29,7 +29,7 @@ function renderList() {
   if (tab === "growth") {
     const g = D.growth || [];
     html = g.length ? g.slice(0, n).map((x, i) => card(x.post, i, `<div class="gain">24h +${num(x.gain)} 粉</div>`)).join("")
-      : `<div class="empty">涨粉榜需累计 24 小时粉丝快照后才有数据<br>（上线约 24 小时后开放）</div>`;
+      : `<div class="empty">数据统计中，约 24 小时后更新</div>`;
     $("#more").style.display = "none";
   } else {
     const arr = D[tab] || [];
@@ -94,7 +94,6 @@ function renderPersonalWall() {
 function renderWall() {
   $("#wallTitle").textContent = PW ? `@${PW.h} 的互动照片墙` : "24 小时照片墙";
   $("#wallSort").style.display = PW ? "none" : "";
-  $("#wallGif").style.display = PW ? "block" : "none";
   if (PW) return renderPersonalWall();
   if (!D) return;
   const arr = [...(D.photos || [])].sort((a, b) => b.metrics[wallSort] - a.metrics[wallSort]).slice(0, 60);
@@ -239,18 +238,23 @@ async function makeWallGif(h, list, prog) {
   enc.finish(); return new Blob([enc.bytes()], { type: "image/gif" });
 }
 window.__makeWallGif = makeWallGif;
-let wallGifBusy = false;
-$("#wallGif").onclick = async e => {
-  if (!PW || wallGifBusy) return; wallGifBusy = true; const b = e.currentTarget, t0 = "保存照片墙动图";
+async function openWallModal(h, list) {
+  const m = document.createElement("div"); m.className = "pm"; m.innerHTML = `<div class="pmb"><div class="m" style="text-align:center;padding:40px" id="wmProg">动图生成中…</div></div>`;
+  document.body.appendChild(m); m.onclick = e => { if (e.target === m) m.remove(); };
   try {
-    b.textContent = "动图生成中…";
-    const gb = await makeWallGif(PW.h, PW.list, p => b.textContent = `动图生成中… ${Math.round(p * 100)}%`);
-    const gf = new File([gb], `wall-${PW.h}.gif`, { type: "image/gif" }); b.textContent = t0;
-    if (navigator.canShare?.({ files: [gf] }) && /Mobi|Android|iPhone/i.test(navigator.userAgent)) { try { await navigator.share({ files: [gf] }); return; } catch (err) { if (err.name === "AbortError") return; } }
-    const a = document.createElement("a"); a.href = URL.createObjectURL(gb); a.download = gf.name; a.click(); toast("动图已保存");
-  } catch { b.textContent = t0; toast("动图生成失败"); } finally { wallGifBusy = false; }
-};
-$("#pq").onsubmit = async e => { e.preventDefault(); await showPartners($("#pqIn").value); document.querySelector("#wall,.wall,canvas")?.scrollIntoView({ behavior: "smooth", block: "start" }); };
+    const gb = await makeWallGif(h, list, p => { const e = m.querySelector("#wmProg"); if (e) e.textContent = `动图生成中… ${Math.round(p * 100)}%`; });
+    const file = new File([gb], `wall-${h}.gif`, { type: "image/gif" }), purl = URL.createObjectURL(gb);
+    const xText = "我的 X 互动照片墙出炉了，测测你的 👉 " + shareUrl(h);
+    m.querySelector(".pmb").innerHTML = `<img src="${purl}" alt="互动照片墙"><div class="pmh">先保存图片，发帖时把图片加上</div>
+      <div class="pmr"><button class="btn" id="wmSave">保存图片</button><a class="btn ghost" id="wmX" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(xText)}">发到 X</a><button class="btn ghost" id="wmClose">关闭</button></div>`;
+    m.querySelector("#wmClose").onclick = () => m.remove();
+    m.querySelector("#wmSave").onclick = async () => {
+      if (navigator.canShare?.({ files: [file] }) && /Mobi|Android|iPhone/i.test(navigator.userAgent)) { try { await navigator.share({ files: [file], text: xText }); return; } catch (e) { if (e.name === "AbortError") return; } }
+      const a = document.createElement("a"); a.href = purl; a.download = file.name; a.click(); toast("已保存");
+    };
+  } catch { m.querySelector(".pmb").innerHTML = `<div class="m" style="padding:30px;text-align:center">动图生成失败</div>`; }
+}
+$("#pq").onsubmit = async e => { e.preventDefault(); const r = await showPartners($("#pqIn").value); document.querySelector("#wall,.wall,canvas")?.scrollIntoView({ behavior: "smooth", block: "start" }); if (r) openWallModal(r.h, r.list); };
 $("#pqPost").onclick = async () => { const r = await showPartners($("#pqIn").value); if (r) openPoster(r.h, r.list, r.url); };
 { const u = new URLSearchParams(location.search).get("u"); if (u) { $("#pqIn").value = "@" + normHandle(u); showPartners(u, false); } }
 
