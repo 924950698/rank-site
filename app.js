@@ -63,49 +63,68 @@ function packCircles(n, W, rad = i => 64 / Math.pow(i + 1, 0.42) + 9) {   // 默
     if (ok) break;
   }
   const k = (W / 2 - 6) / R;
-  const fills = [];
-  for (let fr = 10; fr >= 3 && fills.length < 150; fr -= 1) {          // 显示尺寸 3–10px 的装饰圆
-    const r = fr / k, g = GAP / k * 0.6, step = r;
-    for (let d = R - r; d > R * 0.55 && fills.length < 150; d -= step) {
-      const m = Math.max(6, Math.floor(2 * Math.PI * d / step));
-      for (let q = 0; q < m && fills.length < 150; q++) {
-        const a = q / m * 2 * Math.PI + d, x = d * Math.cos(a), y = d * Math.sin(a);
-        if (placed.every(p => Math.hypot(p.x - x, p.y - y) >= p.r + r + g) && fills.every(p => Math.hypot(p.x - x, p.y - y) >= p.r + r + g)) fills.push({ x, y, r, f: 1 });
-      }
-    }
-  }
   const H = Math.ceil(2 * R * k + 44), map = p => { const u = Math.min(1, Math.max(0, (Math.hypot(p.x, p.y) / R - 0.35) / 0.65)), sm = u * u * (3 - 2 * u);
     return { x: W / 2 + p.x * k, y: (H - 36) / 2 + p.y * k, r: p.r * k, f: p.f, o: +(1 - 0.7 * sm).toFixed(3) }; };   // 透明度按离中心距离平滑过渡：35% 半径内不透明，边缘降到 0.3
-  return { H, items: placed.map(map), fillers: fills.map(map) };
+  return { H, items: placed.map(map), fillers: [] };
 }
-const fillHtml = fs => fs.map((c, i) => `<span class="bub fill${i % 3 ? "" : " o"}" style="left:${(c.x - c.r).toFixed(1)}px;top:${(c.y - c.r).toFixed(1)}px;width:${(2 * c.r).toFixed(1)}px;height:${(2 * c.r).toFixed(1)}px;opacity:${c.o}"></span>`).join("");
 const selfAvatar = h => `https://unavatar.io/x/${encodeURIComponent(h)}`;
 const partnerRad = (list) => { const mx = Math.max(1, ...list.map(u => u.count || 0)); return i => i === 0 ? 70 : 12 + 44 * Math.sqrt((list[i - 1].count || 0) / mx); };
 const ini = u => [...(u.name || u.handle || "?")][0].toUpperCase();
-function renderPersonalWall() {
-  const { h, list } = PW, el = $("#wall"), arr = list.slice(0, 40);
-  const W = el.clientWidth || 378, { H, items, fillers } = packCircles(arr.length + 1, W, partnerRad(arr));
-  el.style.height = H + "px";
-  el.innerHTML = items.map((c, i) => { const u = i ? arr[i - 1] : { handle: h, name: h, avatar: selfAvatar(h) };
-    return `<a class="bub${i ? "" : " self"}" href="${outUrl(profile(u.handle), i ? "partner_wall" : "self_wall")}" target="_blank" rel="noopener" title="@${esc(u.handle)}${i ? " · " + u.count + " 次互动" : ""}"
-      style="left:${(c.x - c.r).toFixed(1)}px;top:${(c.y - c.r).toFixed(1)}px;width:${(2 * c.r).toFixed(1)}px;height:${(2 * c.r).toFixed(1)}px;opacity:${c.o}">
-      ${u.avatar ? `<img loading="lazy" decoding="async" src="${esc(u.avatar)}" alt="" onerror="this.outerHTML='<b class=ini>${esc(ini(u))}</b>'">` : `<b class="ini">${esc(ini(u))}</b>`}${i && i <= 3 ? `<i>${i}</i>` : ""}</a>`; }).join("") + fillHtml(fillers)
-    + `<span class="wtag l">@${esc(h)} 的互动圈<br><span style="opacity:.7">圆越大互动越多</span></span><span class="wtag r">${arr.length} 人</span>`;
+// 头像高清化 + 预加载：加载失败的气泡直接去掉（只有中心自己保留首字母）
+const hiAv = s => s ? String(s).replace(/_normal\.(jpe?g|png|webp)$/i, "_200x200.$1") : s;
+const imgOk = new Map();
+const probe = src => { if (!src) return Promise.resolve(false); if (!imgOk.has(src)) imgOk.set(src, new Promise(res => { const im = new Image(); im.referrerPolicy = "no-referrer";
+  const t = setTimeout(() => res(false), 6000); im.onload = () => { clearTimeout(t); res(im.naturalWidth > 0); }; im.onerror = () => { clearTimeout(t); res(false); }; im.src = src; })); return imgOk.get(src); };
+async function keepLoaded(arr, keepFirst) { const ok = await Promise.all(arr.map(u => probe(u.avatar))); return arr.filter((u, i) => ok[i] || (keepFirst && i === 0)); }
+const hsh = s => [...String(s)].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
+// 个人墙人员：自己 → 按互动排序的伙伴 → extra（外圈小头像），去重，最多 50
+function wallPeople(pw) {
+  const seen = new Set([pw.h]), out = [{ handle: pw.h, name: pw.h, avatar: hiAv(pw.selfAv) || selfAvatar(pw.h), self: 1 }];
+  const add = (u, extra) => { const hd = normHandle(u?.handle || u?.username); if (!hd || seen.has(hd) || !u.avatar || out.length >= 50) return; seen.add(hd); out.push({ handle: hd, name: u.name || hd, avatar: hiAv(u.avatar), count: extra ? 0 : (u.count || 0), extra: extra || !(u.count > 0) }); };
+  pw.list.filter(u => u.count > 0).forEach(u => add(u, false));
+  pw.list.filter(u => !(u.count > 0)).forEach(u => add(u, true));
+  (pw.extra || []).forEach(u => add(u, true));
+  return out;
 }
-function renderWall() {
+function peopleRad(ppl) {
+  const mx = Math.max(1, ...ppl.map(u => u.count || 0));
+  return i => { const u = ppl[i]; if (u.self) return 64; if (u.extra) return 10 + hsh(u.handle) % 5; return 14 + 34 * Math.sqrt(u.count / mx); };
+}
+let wallTok = 0;
+async function renderPersonalWall() {
+  const tok = ++wallTok, el = $("#wall"), h = PW.h;
+  const ppl = await keepLoaded(wallPeople(PW), true); if (tok !== wallTok || !PW) return;
+  const W = el.clientWidth || 378, { H, items } = packCircles(ppl.length, W, peopleRad(ppl));
+  let rank = 0;
+  el.style.height = H + "px";
+  el.innerHTML = items.map((c, i) => { const u = ppl[i], rk = !u.self && !u.extra ? ++rank : 0;
+    return `<a class="bub${u.self ? " self" : ""}" href="${outUrl(profile(u.handle), u.self ? "self_wall" : "partner_wall")}" target="_blank" rel="noopener" title="@${esc(u.handle)}${u.count ? " · " + u.count + " 次互动" : ""}"
+      style="left:${(c.x - c.r).toFixed(1)}px;top:${(c.y - c.r).toFixed(1)}px;width:${(2 * c.r).toFixed(1)}px;height:${(2 * c.r).toFixed(1)}px;opacity:${c.o}">
+      <img decoding="async" src="${esc(u.avatar)}" alt="" onerror="${u.self ? `this.outerHTML='<b class=ini>${esc(ini(u))}</b>'` : "this.parentNode.remove()"}">${rk && rk <= 3 ? `<i>${rk}</i>` : ""}</a>`; }).join("")
+    + `<span class="wtag l">@${esc(h)} 的互动圈<br><span style="opacity:.7">圆越大互动越多</span></span><span class="wtag r">${ppl.length - 1} 人</span>`;
+}
+async function renderWall() {
   $("#wallTitle").textContent = PW ? `@${PW.h} 的互动照片墙` : "24 小时照片墙";
   $("#wallSort").style.display = PW ? "none" : "";
   if (PW) return renderPersonalWall();
   if (!D) return;
-  const arr = [...(D.photos || [])].sort((a, b) => b.metrics[wallSort] - a.metrics[wallSort]).slice(0, 60);
-  const el = $("#wall"); if (!arr.length) { el.style.height = ""; el.innerHTML = `<div class="empty">暂无带图帖子</div>`; return; }
-  const W = el.clientWidth || 378, { H, items, fillers } = packCircles(arr.length, W);
+  const tok = ++wallTok, el = $("#wall");
+  const ps = [...(D.photos || [])].sort((a, b) => b.metrics[wallSort] - a.metrics[wallSort]).slice(0, 50);
+  let arr = ps.map(p => ({ url: p.url, avatar: p.image?.url || hiAv(p.author.avatar), handle: p.author.username, m: p.metrics }));
+  if (arr.length < 30) {                                   // 帖子图不够 → 用曝光/评论榜作者头像补到 30–50
+    const seen = new Set(arr.map(x => x.handle));
+    for (const p of [...(D.exposure || []), ...(D.comments || []), ...(D.best || []), ...(D.growth || []).map(g => g.post)].filter(Boolean)) { if (arr.length >= 50) break; const a = p.author; if (!a?.avatar || seen.has(a.username)) continue; seen.add(a.username); arr.push({ url: p.url, avatar: hiAv(a.avatar), handle: a.username, m: p.metrics || {}, fill: 1 }); }
+  }
+  arr = await keepLoaded(arr, false); if (tok !== wallTok || PW) return;
+  if (!arr.length) { el.style.height = ""; el.innerHTML = `<div class="empty">暂无带图帖子</div>`; return; }
+  const n0 = arr.filter(x => !x.fill).length;
+  const W = el.clientWidth || 378, { H, items } = packCircles(arr.length, W, i => arr[i].fill ? 11 + hsh(arr[i].handle) % 5 : 64 / Math.pow(i + 1, 0.42) + 9);
   el.style.height = H + "px";
-  el.innerHTML = items.map((c, i) => { const p = arr[i], img = p.image?.url || p.author.avatar || AV;
-    return `<a class="bub" href="${esc(p.url)}" target="_blank" rel="noopener" title="@${esc(p.author.username)} · ${wallSort === "views" ? "👁 " + num(p.metrics.views) : "💬 " + num(p.metrics.replies)}"
+  el.innerHTML = items.map((c, i) => { const p = arr[i];
+    return `<a class="bub" href="${esc(p.url)}" target="_blank" rel="noopener" title="@${esc(p.handle)}${p.m?.views != null ? " · 👁 " + num(p.m.views) : ""}"
       style="left:${(c.x - c.r).toFixed(1)}px;top:${(c.y - c.r).toFixed(1)}px;width:${(2 * c.r).toFixed(1)}px;height:${(2 * c.r).toFixed(1)}px;opacity:${c.o}">
-      <img loading="lazy" decoding="async" src="${esc(img)}" alt="">${i < 3 ? `<i>${i + 1}</i>` : ""}</a>`; }).join("") + fillHtml(fillers)
-    + `<span class="wtag l">24h 照片墙<br><span style="opacity:.7">按${wallSort === "views" ? "曝光" : "评论"} · 中心=第1</span></span><span class="wtag r">${arr.length} 帖</span>`;
+      <img decoding="async" src="${esc(p.avatar)}" alt="" onerror="this.parentNode.remove()">${i < 3 && !p.fill ? `<i>${i + 1}</i>` : ""}</a>`; }).join("")
+    + `<span class="wtag l">24h 照片墙<br><span style="opacity:.7">按${wallSort === "views" ? "曝光" : "评论"} · 中心=第1</span></span><span class="wtag r">${n0} 帖</span>`;
 }
 function render() {
   const t = new Date(D.updated_at);
@@ -169,7 +188,7 @@ async function showPartners(raw, push = true) {
     if (push) history.replaceState(null, "", `?u=${encodeURIComponent(h)}`);
     const t = P.updated_at ? new Date(P.updated_at).toLocaleString("zh-CN", { hour12: false, month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" }) : "";
     const note = `<div class="pnote">计算方法：${esc(P.method || "按最近回复和@次数")}（只统计最近的回复和 @，不含点赞）${t ? " · 更新于 " + t : ""}</div>`;
-    PW = list?.length ? { h, list } : null; renderWall();
+    PW = list?.length ? { h, list, extra: P.extra?.[h] || P.users_extra?.[h] || [], selfAv: P.profiles?.[h]?.avatar } : null; renderWall();
     if (!list?.length) { out.innerHTML = `<div class="pres"><h4>@${esc(h)}</h4><div>暂未收录，明天再来看看</div>${note}</div>`; return null; }
     out.innerHTML = `<div class="pres"><h4><span>@${esc(h)}</span> 的最佳互动账号 Top 3</h4>` +
       list.slice(0, 3).map((u, i) => `<a class="pu" href="${outUrl(profile(u.handle), "partner")}" target="_blank" rel="noopener">
@@ -218,26 +237,23 @@ async function openPoster(h, list, url) {
 // 单张跨域污染 → 该头像用首字母
 const wallImg = src => new Promise(res => { if (!src) return res(null); const im = new Image(); im.crossOrigin = "anonymous"; im.referrerPolicy = "no-referrer";
   const t = setTimeout(() => res(null), 4000); im.onload = () => { clearTimeout(t); try { const k = document.createElement("canvas"); k.width = k.height = 1; const x = k.getContext("2d"); x.drawImage(im, 0, 0, 1, 1); x.getImageData(0, 0, 1, 1); res(im); } catch { res(null); } }; im.onerror = () => { clearTimeout(t); res(null); }; im.src = src; });
-async function makeWallGif(h, list, prog) {
+async function makeWallGif(pw, prog) {
   const { GIFEncoder, quantize, applyPalette } = await import("./vendor/gifenc.esm.js?v=" + AV_V);
-  const S = 600, arr = list.slice(0, 40), { H, items, fillers } = packCircles(arr.length + 1, S - 40, partnerRad(arr));
-  const users = [{ handle: h, name: h, avatar: selfAvatar(h) }, ...arr];
-  let ims = await Promise.all(users.map(u => wallImg(u.avatar)));
+  const h = pw.h, all = wallPeople(pw), loaded = await Promise.all(all.map(u => wallImg(u.avatar)));
+  const users = all.filter((u, i) => loaded[i] || u.self), ims = loaded.filter((im, i) => im || all[i].self);   // 失败头像去掉，只有中心保留首字母
+  const S = 600, { H, items } = packCircles(users.length, S - 40, peopleRad(users));
   const cv = document.createElement("canvas"); cv.width = cv.height = S; const c = cv.getContext("2d", { willReadFrequently: true });
   const oy = (S - 30 - (H - 36)) / 2 - 0, ox = 20;
   const frame = (t, I) => {
     c.globalAlpha = 1; c.fillStyle = "#000"; c.fillRect(0, 0, S, S);
     const a = 2 * Math.PI * t, off = (i, A) => [A * Math.sin(a + i * 2.399), A * Math.cos(a + i * 4.08)];
-    fillers.forEach((f, j) => { const [dx, dy] = off(j + 7, 1.5); c.globalAlpha = f.o; c.beginPath(); c.arc(ox + f.x + dx, oy + f.y + dy, f.r, 0, 7);
-      if (j % 3) { c.fillStyle = j % 2 ? "#2a2d31" : "#1a3d12"; c.fill(); } else { c.strokeStyle = "#ffffff55"; c.lineWidth = 1; c.stroke(); } });
     items.forEach((b, i) => { const [dx, dy] = off(i, 2.5), x = ox + b.x + dx, y = oy + b.y + dy, u = users[i]; c.globalAlpha = b.o;
       c.save(); c.beginPath(); c.arc(x, y, b.r, 0, 7); c.clip();
       if (I[i]) c.drawImage(I[i], x - b.r, y - b.r, 2 * b.r, 2 * b.r); else { c.fillStyle = "#1d1f23"; c.fill(); c.fillStyle = "#39ff14"; c.font = `800 ${Math.max(9, b.r * .8)}px sans-serif`; c.textAlign = "center"; c.textBaseline = "middle"; c.fillText(ini(u), x, y + 1); }
-      c.restore(); c.lineWidth = i ? 2 : 3; c.strokeStyle = i ? "#fff" : "#39ff14"; c.beginPath(); c.arc(x, y, b.r, 0, 7); c.stroke(); });
+      c.restore(); c.lineWidth = u.self ? 3 : 2; c.strokeStyle = u.self ? "#39ff14" : "#fff"; c.beginPath(); c.arc(x, y, b.r, 0, 7); c.stroke(); });
     c.globalAlpha = .75; c.fillStyle = "#8b9095"; c.font = "500 15px sans-serif"; c.textAlign = "center"; c.textBaseline = "alphabetic";
     c.fillText(`@${h} 的互动圈 · 924950698.github.io/rank-site`, S / 2, S - 12); c.globalAlpha = 1;
   };
-  frame(0, ims); try { c.getImageData(0, 0, 1, 1); } catch { ims = []; }   // 跨域头像污染画布 → 首字母
   const N = 24, enc = GIFEncoder(); let pal;
   for (let f = 0; f < N; f++) {
     frame(f / N, ims); const px = c.getImageData(0, 0, S, S).data;
@@ -248,11 +264,12 @@ async function makeWallGif(h, list, prog) {
   enc.finish(); return new Blob([enc.bytes()], { type: "image/gif" });
 }
 window.__makeWallGif = makeWallGif;
-async function openWallModal(h, list) {
+async function openWallModal(pw) {
+  const h = pw.h;
   const m = document.createElement("div"); m.className = "pm"; m.innerHTML = `<div class="pmb"><div class="m" style="text-align:center;padding:40px" id="wmProg">动图生成中…</div></div>`;
   document.body.appendChild(m); m.onclick = e => { if (e.target === m) m.remove(); };
   try {
-    const gb = await makeWallGif(h, list, p => { const e = m.querySelector("#wmProg"); if (e) e.textContent = `动图生成中… ${Math.round(p * 100)}%`; });
+    const gb = await makeWallGif(pw, p => { const e = m.querySelector("#wmProg"); if (e) e.textContent = `动图生成中… ${Math.round(p * 100)}%`; });
     const file = new File([gb], `wall-${h}.gif`, { type: "image/gif" }), purl = URL.createObjectURL(gb);
     const xText = "我的 X 互动照片墙出炉了，测测你的 👉 " + shareUrl(h);
     m.querySelector(".pmb").innerHTML = `<img src="${purl}" alt="互动照片墙"><div class="pmh">先保存图片，发帖时把图片加上</div>
@@ -261,7 +278,7 @@ async function openWallModal(h, list) {
     m.querySelector("#wmSave").onclick = () => saveImage(file, purl, m.querySelector(".pmb"));
   } catch { m.querySelector(".pmb").innerHTML = `<div class="m" style="padding:30px;text-align:center">动图生成失败</div>`; }
 }
-$("#pq").onsubmit = async e => { e.preventDefault(); const r = await showPartners($("#pqIn").value); document.querySelector("#wall,.wall,canvas")?.scrollIntoView({ behavior: "smooth", block: "start" }); if (r) openWallModal(r.h, r.list); };
+$("#pq").onsubmit = async e => { e.preventDefault(); const r = await showPartners($("#pqIn").value); document.querySelector("#wall,.wall,canvas")?.scrollIntoView({ behavior: "smooth", block: "start" }); if (r) openWallModal(PW); };
 $("#pqPost").onclick = async () => { const r = await showPartners($("#pqIn").value); if (r) openPoster(r.h, r.list, r.url); };
 { const u = new URLSearchParams(location.search).get("u"); if (u) { $("#pqIn").value = "@" + normHandle(u); showPartners(u, false); } }
 
