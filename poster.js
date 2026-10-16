@@ -43,7 +43,7 @@ function draw(o, IM, t = null) {
   c.strokeStyle = G; c.lineWidth = 4; c.strokeRect(30, 30, W - 60, H - 60);
   // 站名
   c.textAlign = "left"; c.textBaseline = "alphabetic";
-  c.font = `800 44px ${FONT}`; c.fillStyle = "#fff"; c.fillText("币圈", 80, 120); let w = c.measureText("币圈").width;
+  c.font = `800 44px ${FONT}`; c.fillStyle = "#fff"; c.fillText("X 中文", 80, 120); let w = c.measureText("X 中文").width;
   c.fillStyle = G; c.fillText("24h", 80 + w, 120); w += c.measureText("24h").width; c.fillStyle = "#fff"; c.fillText("爆帖榜", 80 + w, 120);
   c.save(); c.translate(0, dy);
   // 标题
@@ -71,7 +71,7 @@ function draw(o, IM, t = null) {
   for (const ch of u) { if (c.measureText(line + ch).width > 620) { c.fillText(line, 380, ly); ly += 34; line = ""; } line += ch; } c.fillText(line, 380, ly);
   c.restore();
   // 页脚 + 水印
-  c.textAlign = "center"; c.fillStyle = "#8b9095"; c.font = `400 30px ${FONT}`; c.fillText("关注 @tigerr3aue · 每小时更新币圈爆帖", W / 2, H - 70);
+  c.textAlign = "center"; c.fillStyle = "#8b9095"; c.font = `400 30px ${FONT}`; c.fillText("关注 @tigerr3aue · 每小时更新 X 中文爆帖", W / 2, H - 70);
   c.save(); c.translate(W - 66, 400 + dy); c.rotate(Math.PI / 2); c.globalAlpha = .35; c.fillStyle = G; c.font = `800 26px ${FONT}`; c.textAlign = "left"; c.fillText("@tigerr3aue", 0, 0); c.restore();
   c.save(); c.globalAlpha = .9; c.fillStyle = G; c.font = `800 30px ${FONT}`; c.textAlign = "right"; c.fillText("@tigerr3aue", W - 80, 120); c.restore();
   return cv;
