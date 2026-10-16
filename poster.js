@@ -44,7 +44,7 @@ function draw(o, IM, t = null) {
   // 站名
   c.textAlign = "left"; c.textBaseline = "alphabetic";
   c.font = `800 44px ${FONT}`; c.fillStyle = "#fff"; c.fillText("X 中文", 80, 120); let w = c.measureText("X 中文").width;
-  c.fillStyle = G; c.fillText("24h", 80 + w, 120); w += c.measureText("24h").width; c.fillStyle = "#fff"; c.fillText("爆帖榜", 80 + w, 120);
+  c.fillStyle = G; c.fillText("创作者", 80 + w, 120); w += c.measureText("创作者").width; c.fillStyle = "#fff"; c.fillText("成长站", 80 + w, 120);
   c.save(); c.translate(0, dy);
   // 标题
   c.textAlign = "center"; c.fillStyle = G; c.font = `800 64px ${FONT}`; c.fillText(fit(c, "@" + o.handle, W - 160), W / 2, 240);
