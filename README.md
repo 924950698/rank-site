@@ -38,3 +38,10 @@
 - 列表已按 me_to+to_me 降序、最近时间降序排好。
 - 已过滤“在自己帖子下回复评论者”（父帖是对方回复我的评论），这种算作回答，不算去对方那里串门。
 - 局限：每次只拿最近 25 条，活跃号的单次覆盖可能只有几小时，账本靠每 6 小时累积补齐，并不是完整的 7 天。
+
+## 数据总览 overview.json
+
+由 `scripts/overview.py` 生成（每天一次，只覆盖 tigerr3aue / wugaga520 / xinjiangmoment）。
+`{"updated_at","window_days":7,"users":{"<handle>":{posts,views,avg_views,likes,reposts(含引用),replies,eng_rate(小数),followers,followers_24h?,top_post:{url,views}}}}`
+- posts 只算原创（不含回复和转帖），views 为 impression_count 之和；字段未知时省略。
+- followers_24h 需要约 24h 前的粉丝快照，首日没有。
