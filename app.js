@@ -346,11 +346,15 @@ async function openWallModal(pw) {
 // ---------- 互评账本（ledger.json：me_to=我评TA，to_me=TA评我） ----------
 let ledgerP, LG = null;
 const DM_TEXT = "嗨～最近常去你帖子下聊，挺喜欢你的内容！我这两天也发了几条，有空来坐坐呀 🙏";
+let ovP;
 async function showLedger(raw, scroll) {
   const h = normHandle(raw), out = $("#ledgerOut"); if (!out || !/^[a-z0-9_]{1,15}$/.test(h)) return;
   try { ledgerP ||= fetch("ledger.json", { cache: "no-cache" }).then(r => { if (!r.ok) throw 0; return r.json(); }); } catch {}
   let L; try { L = await ledgerP; } catch { ledgerP = null; out.innerHTML = ""; return; }
   const list = (L.users || {})[h];
+  let ov = ""; try { ovP ||= fetch("overview.json", { cache: "no-cache" }).then(r => r.ok ? r.json() : null); const O = await ovP, o = O?.users?.[h];
+    if (o) { const n = x => (+x || 0).toLocaleString("en-US"), d = o.followers_24h;
+      ov = `<div class="ov"><div class="ov-t"><b>近 ${O.window_days || 7} 天公开数据概览</b><span>基于公开数据估算 · ${o.posts || 0} 条原创</span></div><div class="lg-kpi ov-k"><div><b>${n(o.views)}</b><span>总浏览</span></div><div><b>${n(o.avg_views)}</b><span>平均每帖</span></div><div><b>${((o.eng_rate || 0) * 100).toFixed(1)}%</b><span>互动率</span></div><div><b>${n(o.followers)}${d != null ? `<i class="${d < 0 ? "dn" : "up"}">${d < 0 ? "" : "+"}${d}</i>` : ""}</b><span>粉丝</span></div></div>${o.top_post?.url ? `<a class="ov-top" href="${esc(o.top_post.url)}" target="_blank" rel="noopener">🔥 最爆一条 · ${n(o.top_post.views)} 浏览 ›</a>` : ""}</div>`; } } catch { ovP = null; }
   const t = L.updated_at ? new Date(L.updated_at).toLocaleString("zh-CN", { hour12: false, month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" }) : "";
   const selfAv = hiAv(L.profiles?.[h]?.avatar) || selfAvatar(h);
   const since = L.since?.[h] || L.meta?.[h]?.since || (list || []).map(u => u.since).filter(Boolean).sort()[0];
@@ -358,7 +362,7 @@ async function showLedger(raw, scroll) {
   const rng = since && L.updated_at ? fmt(since) + " – " + fmt(L.updated_at) : "";
   const tm = (list || []).reduce((x, u) => x + (u.me_to || 0), 0), tt = (list || []).reduce((x, u) => x + (u.to_me || 0), 0);
   const head = `<div class="lg-hd"><div class="lg-top"><img src="${esc(selfAv)}" alt="" onerror="this.outerHTML='<b class=ini>${esc(h[0].toUpperCase())}</b>'"><div><b>@${esc(h)} 的互评账本</b><div class="m">${rng ? "统计区间 " + rng : "统计近期互评"} · 每 6 小时更新</div></div></div>${list?.length ? `<div class="lg-kpi"><div><b>${tm}</b><span>主动评论</span></div><div><b>${tt}</b><span>收到评论</span></div><div><b>${list.length}</b><span>互动账号</span></div></div>` : ""}</div>`;
-  if (!list?.length) { out.innerHTML = `<h3>互评账本</h3>${head}<div class="lg-sec"><div class="lg-empty">暂未收录，联系 <a href="https://x.com/tigerr3aue" target="_blank" rel="noopener" style="color:#39ff14">@tigerr3aue</a> 加入</div></div>`; if (scroll) out.scrollIntoView({ behavior: "smooth" }); return; }
+  if (!list?.length) { out.innerHTML = `<h3>互评账本</h3>${ov}${head}<div class="lg-sec"><div class="lg-empty">暂未收录，联系 <a href="https://x.com/tigerr3aue" target="_blank" rel="noopener" style="color:#39ff14">@tigerr3aue</a> 加入</div></div>`; if (scroll) out.scrollIntoView({ behavior: "smooth" }); return; }
   const mu = list.filter(u => u.me_to > 0 && u.to_me > 0).sort((a, b) => (b.me_to + b.to_me) - (a.me_to + a.to_me));
   const wa = list.filter(u => u.me_to > 0 && !(u.to_me > 0)).sort((a, b) => b.me_to - a.me_to);
   const ow = list.filter(u => u.to_me > 0 && !(u.me_to > 0)).sort((a, b) => b.to_me - a.to_me);
@@ -370,7 +374,7 @@ async function showLedger(raw, scroll) {
       <a class="lg-n" href="${esc(profile(hd))}" target="_blank" rel="noopener"><b>${esc(u.name || hd)}</b><span>@${esc(hd)}</span></a>
       <div class="lg-c">${u.me_to > 0 && u.last_me_url ? `<a class="lg-g lg-l" href="${esc(u.last_me_url)}" target="_blank" rel="noopener">我评 ${u.me_to} ›</a>` : `<span class="lg-g">我评 ${u.me_to || 0}</span>`}${u.to_me > 0 && u.last_to_me_url ? `<a class="lg-b lg-l" href="${esc(u.last_to_me_url)}" target="_blank" rel="noopener">TA评 ${u.to_me} ›</a>` : `<span class="lg-b">TA评 ${u.to_me || 0}</span>`}</div>${btn}</div>`; };
   const sec = (k, ic, name, tip, arr, empty) => `<div class="lg-sec" data-k="${k}"><h4>${ic} ${name}<small>${tip}</small></h4>${arr.length ? arr.map(u => row(u, k)).join("") : `<div class="lg-empty">${empty}</div>`}</div>`;
-  out.innerHTML = `<h3>互评账本</h3>${head}
+  out.innerHTML = `<h3>互评账本</h3>${ov}${head}
     <div class="lg-sum"><button type="button" data-f="mu" class="on"><b class="lg-g">${mu.length}</b>互惠好友</button><button type="button" data-f="wa"><b class="lg-y">${wa.length}</b>待回评</button><button type="button" data-f="ow"><b class="lg-b">${ow.length}</b>我该回的</button></div>
     ${sec("mu", "🤝", "互惠好友", "你们互相评论过", mu, "还没有互惠好友，去评论区多走动走动")}
     ${sec("wa", "⏳", "待回评", "你评论过 TA，TA 还没来你这儿", wa, "没有待回评，大家都很讲究 👍")}

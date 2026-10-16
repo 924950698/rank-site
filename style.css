@@ -108,3 +108,8 @@ header .btn{padding:5px 9px;font-size:12px}
 .lg-kpi{display:flex;margin-top:12px;padding-top:12px;border-top:1px solid #1f3a17}
 .lg-kpi div{flex:1;text-align:center;border-left:1px solid #1f3a17}.lg-kpi div:first-child{border-left:0}
 .lg-kpi b{display:block;font-size:20px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums}.lg-kpi span{font-size:12px;color:#8b9095}
+
+.ov{background:#11161c;border:1px solid #1f2a33;border-radius:14px;padding:14px 16px;margin:0 0 12px}
+.ov-t{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}.ov-t span{font-size:12px;color:#7d8a96}
+.ov-k i{font-style:normal;font-size:11px;margin-left:4px}.ov-k i.up{color:#39ff14}.ov-k i.dn{color:#ff5a5a}
+.ov-top{display:block;margin-top:10px;font-size:13px;color:#39ff14;text-decoration:none}
