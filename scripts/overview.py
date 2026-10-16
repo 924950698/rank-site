@@ -48,6 +48,8 @@ for arg in sys.argv[2:]:
         r['top_post'] = {'url': f'https://x.com/{u["username"] if u else h}/status/{tid}', 'views': m.get('impression_count', 0)}
     out[h] = r
 json.dump(own, open(SNAP, 'w'))
-res = {'updated_at': now.strftime('%Y-%m-%dT%H:%M:%SZ'), 'window_days': 7, 'users': out}
+prev = json.load(open(os.path.join(ROOT, 'overview.json'))).get('users', {}) if os.path.exists(os.path.join(ROOT, 'overview.json')) else {}
+prev.update(out)  # 只更新本次传入的账号，其余保留
+res = {'updated_at': now.strftime('%Y-%m-%dT%H:%M:%SZ'), 'window_days': 7, 'users': prev}
 json.dump(res, open(os.path.join(ROOT, 'overview.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
 print(json.dumps(res, ensure_ascii=False, indent=1))
