@@ -113,3 +113,4 @@ header .btn{padding:5px 9px;font-size:12px}
 .ov-t{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}.ov-t span{font-size:12px;color:#7d8a96}
 .ov-k i{font-style:normal;font-size:11px;margin-left:4px}.ov-k i.up{color:#39ff14}.ov-k i.dn{color:#ff5a5a}
 .ov-top{display:block;margin-top:10px;font-size:13px;color:#39ff14;text-decoration:none}
+.lg-hd .ov{margin:12px 0 0;background:rgba(0,0,0,.25)}
