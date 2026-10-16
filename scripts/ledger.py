@@ -83,12 +83,11 @@ def build():
             rows.append(r)
         rows.sort(key=lambda r: (r['me_to'] + r['to_me'], max(r.get('last_me', ''), r.get('last_to_me', ''))), reverse=True)
         out[me] = rows
-    meta = {}
+    since = {}
     for me in out:
         ts = [e['t'] for e in st['events'].values() if me in (e['a'], e['b'])]
-        meta[me] = {'events': len(ts)}
-        if ts: meta[me]['since'] = min(ts)[:19] + 'Z'
-    led = {'updated_at': dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'), 'window_days': WIN, 'users': out, 'meta': meta}
+        if ts: since[me] = min(ts)[:19] + 'Z'
+    led = {'updated_at': dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'), 'window_days': WIN, 'users': out, 'since': since}
     tmp = OUT + '.tmp'; json.dump(led, open(tmp, 'w'), ensure_ascii=False, separators=(',', ':')); os.replace(tmp, OUT)
     print(f'ledger.json: {len(out)} users, {sum(len(v) for v in out.values())} peer rows, {len(st["events"])} events')
 
