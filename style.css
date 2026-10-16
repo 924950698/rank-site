@@ -127,3 +127,19 @@ header .btn{padding:5px 9px;font-size:12px}
 .dbox ul{margin:0;padding-left:18px;line-height:1.8;font-size:14px}
 @media(min-width:768px){.dmodal{align-items:center}.dbox{border-radius:16px}
 .btn:hover,.dinfo:hover{filter:brightness(1.15);cursor:pointer}.card:hover{border-color:#39ff14}}
+
+/* 菜单 + 双飞翼 */
+.topnav{display:none}.menuBtn{background:none;border:1px solid #39ff14;color:#39ff14;border-radius:8px;width:34px;height:30px;font-size:16px;cursor:pointer;flex:none}
+.menuDd{display:none;position:absolute;right:8px;top:52px;width:230px;background:#0b0b0b;border:1px solid #39ff14;border-radius:12px;overflow:hidden;z-index:20;box-shadow:0 8px 24px rgba(0,0,0,.6)}
+.menuDd.open{display:block}.menuDd button{display:block;width:100%;text-align:left;background:none;border:0;border-top:1px solid #222;color:#e7e9ea;padding:12px 14px;font-size:14px}
+.menuDd button:first-child{border-top:0}.menuDd button.on{background:#163d0c;color:#39ff14;font-weight:700}.menuDd button.on:before{content:"✓ "}
+.lhint{display:none}.colR .rbox{display:none}.lgEmpty{padding:24px 12px;text-align:center}
+@media(min-width:1024px){body{max-width:1280px;padding:0 24px}
+ header{padding:0 4px}.topnav{display:flex;gap:28px;margin:0 auto}.topnav button{background:none;border:0;border-bottom:2px solid transparent;color:#e7e9ea;font-size:15px;padding:6px 0;cursor:pointer}
+ .topnav button.on{color:#39ff14;border-color:#39ff14}.topnav button:hover{color:#39ff14}.menuBtn,.menuDd{display:none!important}
+ .layout{display:flex;gap:20px;align-items:flex-start;padding-top:16px}
+ .colL{width:260px;flex:none;position:sticky;top:72px}.colL .pq{margin:0}.lhint{display:block;padding:8px 4px;font-size:12px}
+ .colC{flex:1;min-width:0}.colR{width:260px;flex:none;position:sticky;top:72px;display:flex;flex-direction:column;gap:14px}
+ .colR .rbox{display:block;border:1px solid #39ff14;border-radius:12px;padding:14px;background:#0b0b0b}.colR .rbox ul{padding-left:18px;margin:6px 0 0;line-height:1.7;font-size:13px}
+ .colR .howto{margin:0;max-width:none;flex-direction:column;align-items:flex-start}.dinfo{display:none}}
+@media(max-width:1023px){header .upd{display:none}}
