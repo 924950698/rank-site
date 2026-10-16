@@ -371,15 +371,14 @@ async function showLedger(raw, scroll) {
       <div class="lg-c">${u.me_to > 0 && u.last_me_url ? `<a class="lg-g lg-l" href="${esc(u.last_me_url)}" target="_blank" rel="noopener">我评 ${u.me_to} ›</a>` : `<span class="lg-g">我评 ${u.me_to || 0}</span>`}${u.to_me > 0 && u.last_to_me_url ? `<a class="lg-b lg-l" href="${esc(u.last_to_me_url)}" target="_blank" rel="noopener">TA评 ${u.to_me} ›</a>` : `<span class="lg-b">TA评 ${u.to_me || 0}</span>`}</div>${btn}</div>`; };
   const sec = (k, ic, name, tip, arr, empty) => `<div class="lg-sec" data-k="${k}"><h4>${ic} ${name}<small>${tip}</small></h4>${arr.length ? arr.map(u => row(u, k)).join("") : `<div class="lg-empty">${empty}</div>`}</div>`;
   out.innerHTML = `<h3>互评账本</h3>${head}
-    <div class="lg-sum"><button type="button" data-f="all" class="on"><b class="lg-g">${mu.length}</b>互惠好友</button><button type="button" data-f="wa"><b class="lg-y">${wa.length}</b>待回评</button><button type="button" data-f="ow"><b class="lg-b">${ow.length}</b>我该回的</button></div>
+    <div class="lg-sum"><button type="button" data-f="mu" class="on"><b class="lg-g">${mu.length}</b>互惠好友</button><button type="button" data-f="wa"><b class="lg-y">${wa.length}</b>待回评</button><button type="button" data-f="ow"><b class="lg-b">${ow.length}</b>我该回的</button></div>
     ${sec("mu", "🤝", "互惠好友", "你们互相评论过", mu, "还没有互惠好友，去评论区多走动走动")}
     ${sec("wa", "⏳", "待回评", "你评论过 TA，TA 还没来你这儿", wa, "没有待回评，大家都很讲究 👍")}
     ${sec("ow", "💬", "我该回的", "TA 评论过你，你还没回访", ow, "都回过了，你很靠谱 👍")}
     <button type="button" class="btn lg-card" id="lgCard">生成我的互评名片</button>`;
-  out.querySelectorAll(".lg-sum button").forEach(b => b.onclick = () => { out.querySelectorAll(".lg-sum button").forEach(x => x.classList.toggle("on", x === b && b.dataset.f !== "all" ? true : x === b));
-    const f = b.dataset.f; if (f !== "all" && b.classList.contains("on") && b._on) { b._on = 0; b.classList.remove("on"); out.querySelector('[data-f="all"]').classList.add("on"); out.querySelectorAll(".lg-sec").forEach(s => s.style.display = ""); return; }
-    out.querySelectorAll(".lg-sum button").forEach(x => x._on = 0); b._on = f !== "all";
-    out.querySelectorAll(".lg-sec").forEach(s => s.style.display = f === "all" || s.dataset.k === f ? "" : "none"); window.track?.("ledger:tab-" + f); });
+  const pick = f => { out.querySelectorAll(".lg-sum button").forEach(x => x.classList.toggle("on", x.dataset.f === f)); out.querySelectorAll(".lg-sec").forEach(x => x.style.display = x.dataset.k === f ? "" : "none"); };
+  pick("mu");
+  out.querySelectorAll(".lg-sum button").forEach(b => b.onclick = () => { pick(b.dataset.f); window.track?.("ledger:tab-" + b.dataset.f); });
   out.querySelectorAll("[data-dm]").forEach(b => b.onclick = async () => { try { await navigator.clipboard.writeText(DM_TEXT); toast("话术已复制，去私信 @" + b.dataset.dm); } catch { prompt("复制这段话术：", DM_TEXT); }
     window.track?.("ledger:dm"); window.open(profile(b.dataset.dm), "_blank", "noopener"); });
   out.querySelectorAll("[data-go]").forEach(a => a.addEventListener("click", () => window.track?.("ledger:go")));
