@@ -24,7 +24,7 @@ function card(p, i, extra = "") {
       <div class="st"><span>👁 <b>${num(me.views)}</b></span><span>💬 <b>${num(me.replies)}</b></span><span>🔁 <b>${num(me.reposts)}</b></span><span>❤️ <b>${num(me.likes)}</b></span><button class="act" data-show="${esc(p.url)}">正文 ▾</button></div>
     </div></div>`;
 }
-const RK_SUB = { exposure: "过去 24 小时中文区曝光最高的帖子，每小时更新", growth: "过去 24 小时涨粉最多的作者和他们的爆帖", comments: "过去 24 小时评论最多、讨论最热的帖子", rising: "粉丝 300–5,000 的新号里涨得最快的" };
+const RK_SUB = { exposure: "按浏览量排，看什么帖最多人看", growth: "按作者 24 小时涨粉排，看谁在快速起号", comments: "按评论数排，看什么话题最能引发讨论", rising: "粉丝 5000 以下涨得最快的号，新号也能上榜" };
 function renderList() {
   { const e = document.getElementById("rkSub"); if (e) e.textContent = RK_SUB[tab] || ""; }
   const n = 10;
