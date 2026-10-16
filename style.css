@@ -86,7 +86,7 @@ header .btn{padding:5px 9px;font-size:12px}
 
 /* 互评账本 */
 #ledgerOut{margin-top:16px}
-.lg-hd{display:flex;align-items:center;gap:12px;background:#0b140b;border:1px solid #39ff14;border-radius:16px;padding:14px}
+.lg-hd{display:block;background:#0b140b;border:1px solid #39ff14;border-radius:16px;padding:14px}
 .lg-hd img,.lg-hd .ini{width:52px;height:52px;border-radius:50%;border:3px solid #39ff14;object-fit:cover;flex:none}
 .lg-hd b{font-size:16px}
 .lg-sum{display:flex;gap:8px;margin:12px 0}.lg-sum button{flex:1;background:#111;border:1px solid #111;border-radius:12px;padding:10px 4px;text-align:center;color:#ddd;font:inherit;font-size:13px}
@@ -104,3 +104,7 @@ header .btn{padding:5px 9px;font-size:12px}
 .lg-empty{color:#8b9095;font-size:13px;padding:6px 0}
 .lg-card{display:block;width:100%;margin-top:4px}
 .lg-l{text-decoration:underline;text-underline-offset:3px;padding:2px 0}
+.lg-top{display:flex;align-items:center;gap:12px}
+.lg-kpi{display:flex;margin-top:12px;padding-top:12px;border-top:1px solid #1f3a17}
+.lg-kpi div{flex:1;text-align:center;border-left:1px solid #1f3a17}.lg-kpi div:first-child{border-left:0}
+.lg-kpi b{display:block;font-size:20px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums}.lg-kpi span{font-size:12px;color:#8b9095}
