@@ -147,3 +147,4 @@ header .btn{padding:5px 9px;font-size:12px}
 .champ{margin:10px 6px 12px;padding:14px;border:1px solid #ffd23f;border-radius:14px;background:linear-gradient(135deg,#2a2405,#0b0b0b)}
 .chT{color:#ffd23f;font-weight:800;font-size:15px;margin-bottom:10px}.chR{display:flex;gap:12px;align-items:center}.chR .av{width:56px;height:56px;border-radius:50%;border:2px solid #ffd23f}
 .chS{color:#ffd23f;font-weight:800;margin-top:2px}.chB{display:flex;gap:8px;margin-top:12px}.chB .btn{flex:1;text-align:center}
+.chMe{display:block;text-align:center;margin-top:8px}.chRank{display:block;text-align:center;color:#39ff14;margin-top:10px;font-weight:700}

@@ -59,12 +59,15 @@ function champ() {
     if (!p) return null; stat = tab === "comments" ? `${num(p.metrics?.replies)} 评论` : `${num(p.metrics?.views)} 曝光`; }
   if (!p?.author?.username) return null; return { p, a: p.author, stat, board: CH_NAME[tab] || "" };
 }
+function champUrl(u) { return location.origin + location.pathname + "?champ=" + encodeURIComponent(u) + "&board=" + tab + "#rank"; }
 function champHtml() {
   const c = champ(); if (!c) return ""; const { a, stat, board } = c;
-  const xt = `恭喜 @${a.username} 拿下今日 X 中文${board}冠军 🏆 ${stat}\n来看看今天谁在爆 👉 ` + (location.origin + location.pathname) + "#rank";
+  const xt = `恭喜 @${a.username} 拿下今日 X 中文${board}冠军 🏆 ${stat}\n来看看今天谁在爆 👉 ` + champUrl(a.username);
+  const mt = `今天拿下 X 中文${board}冠军 🏆 ${stat}\n来 X 中文创作者成长站看看你排第几 👉 ` + champUrl(a.username);
   return `<div class="champ"><div class="chT">🏆 今日${board}冠军</div><div class="chR"><img class="av" src="${esc(a.avatar || AV)}" alt="" referrerpolicy="no-referrer">
     <div><b>${esc(a.name)}</b><div class="m">@${esc(a.username)}</div><div class="chS">${esc(stat)}</div></div></div>
-    <div class="chB"><button class="btn" type="button" id="chSave">保存冠军卡片</button><a class="btn ghost" id="chX" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(xt)}">@ 他发帖祝贺</a></div></div>`;
+    <div class="chB"><button class="btn" type="button" id="chSave">保存冠军卡片</button><a class="btn ghost" id="chX" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(xt)}">@ 他发帖祝贺</a></div>
+    <a class="btn ghost chMe" id="chMe" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(mt)}">我是冠军，去晒</a></div>`;
 }
 async function openChampCard() {
   const ch = champ(); if (!ch) return; const { a, stat, board } = ch;
@@ -86,7 +89,8 @@ async function openChampCard() {
     const blob = await new Promise(r => cv.toBlob(r, "image/png")), file = new File([blob], `champ-${a.username}.png`, { type: "image/png" }), purl = URL.createObjectURL(blob);
     const xt = document.getElementById("chX")?.href || "#";
     m.querySelector(".pmb").innerHTML = `<img src="${purl}" alt="冠军卡片"><div class="pmh">先保存图片，发帖时把图片加上</div>
-      <div class="pmr"><button class="btn" id="chS2">保存图片</button><a class="btn ghost" target="_blank" rel="noopener" href="${xt}">@ 他发帖祝贺</a><button class="btn ghost" id="chC">关闭</button></div>`;
+      <div class="pmr"><button class="btn" id="chS2">保存图片</button><a class="btn ghost" target="_blank" rel="noopener" href="${xt}">@ 他发帖祝贺</a><button class="btn ghost" id="chC">关闭</button></div><a class="chRank" href="#rank" id="chRk">你今天排第几？去榜单看看 →</a>`;
+    m.querySelector("#chRk").onclick = e => { e.preventDefault(); m.remove(); window.__go?.("rank"); };
     m.querySelector("#chC").onclick = () => m.remove();
     m.querySelector("#chS2").onclick = () => { window.track?.("champ:save"); saveImage(file, purl, m.querySelector(".pmb")); };
   } catch (e) { m.querySelector(".pmb").innerHTML = `<div class="m" style="padding:30px;text-align:center">冠军卡片生成失败</div>`; }
@@ -478,8 +482,11 @@ $("#pqLedger").onclick = () => { const v = $("#pqIn").value; if (!normHandle(v))
 $("#pqPost").onclick = async () => { const r = await showPartners($("#pqIn").value); if (r) openPoster(r.h, r.list, r.url); };
 { const u = new URLSearchParams(location.search).get("u"); if (u) { $("#pqIn").value = "@" + normHandle(u); showPartners(u, false); showLedger(u); } }
 
+function openChampLink() { const q = new URLSearchParams(location.search), u = q.get("champ"), b = q.get("board");
+  if (!u || !CH_NAME[b]) return; window.__go?.("rank"); if (b !== tab) document.querySelector(`#tabs [data-t="${b}"]`)?.click();
+  const c = champ(); if (c && c.a.username.toLowerCase() === u.toLowerCase()) openChampCard(); else toast?.("今天的冠军已经换人了，看看现在的榜单"); }
 // ---------- 启动 ----------
-fetch("data.json", { cache: "no-cache" }).then(r => r.json()).then(d => { D = d; render(); })
+fetch("data.json", { cache: "no-cache" }).then(r => r.json()).then(d => { D = d; render(); openChampLink(); })
   .catch(() => { $("#list").innerHTML = `<div class="empty">数据加载失败，请稍后刷新</div>`; });
 })();
 
