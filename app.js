@@ -59,7 +59,7 @@ function champ() {
     if (!p) return null; stat = tab === "comments" ? `${num(p.metrics?.replies)} 评论` : `${num(p.metrics?.views)} 曝光`; }
   if (!p?.author?.username) return null; return { p, a: p.author, stat, board: CH_NAME[tab] || "" };
 }
-function champUrl(u) { return location.origin + location.pathname + "?champ=" + encodeURIComponent(u) + "&board=" + tab + "#rank"; }
+function champUrl(u) { return location.origin + location.pathname.replace(/[^/]*$/, "") + "champ/" + tab + ".html"; }
 function champHtml() {
   const c = champ(); if (!c) return ""; const { a, stat, board } = c;
   const xt = `恭喜 @${a.username} 拿下今日 X 中文${board}冠军 🏆 ${stat}\n来看看今天谁在爆 👉 ` + champUrl(a.username);

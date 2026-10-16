@@ -29,6 +29,8 @@ def avatar(url, size):
         im = Image.open(io.BytesIO(urllib.request.urlopen(req, timeout=10).read())).convert("RGB").resize((size, size))
     except Exception: return None
     mk = Image.new("L", (size, size), 0); ImageDraw.Draw(mk).ellipse((0, 0, size, size), fill=255); im.putalpha(mk); return im
+def clean(t):  # 字体里没有的 emoji 去掉，避免画出方框
+    return "".join(ch for ch in t if not (0x1F000 <= ord(ch) <= 0x1FFFF or 0x2600 <= ord(ch) <= 0x27BF or ord(ch) in (0xFE0F, 0x200D))).strip()
 def F(s): return ImageFont.truetype(FONT, s)
 def draw(a, stat, board, out):
     W, H = 1200, 630; im = Image.new("RGB", (W, H), "#050805"); d = ImageDraw.Draw(im)
@@ -44,7 +46,7 @@ def draw(a, stat, board, out):
     d.ellipse((cx - S // 2 - 6, cy - S // 2 - 6, cx + S // 2 + 6, cy + S // 2 + 6), outline="#ffd23f", width=10)
     x = 440
     d.text((x, 90), f"今日 X 中文{board}冠军", font=F(54), fill="#ffd23f")
-    nm = a.get("name") or ""; f = F(64)
+    nm = clean(a.get("name") or "") or ("@" + (a.get("username") or "")); f = F(64)
     while d.textlength(nm, font=f) > W - x - 60 and len(nm) > 1: nm = nm[:-1]
     d.text((x, 190), nm, font=f, fill="#ffffff")
     d.text((x, 280), "@" + (a.get("username") or ""), font=F(40), fill="#c8c8c8")
