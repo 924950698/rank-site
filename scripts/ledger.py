@@ -2,6 +2,7 @@
 """互评账本：把 x search_posts_all 原始结果合并成 ledger.json。
 用法：
   python3 scripts/ledger.py ingest HANDLE out|in FILE   # out = from:HANDLE is:reply ; in = to:HANDLE is:reply
+  python3 scripts/ledger.py next FILE [CUTOFF_ISO]       # 需要翻页时打印 pagination_token（最多翻到第 4 页）
   python3 scripts/ledger.py build                        # 生成 ledger.json（7 天窗口）
 推荐查询参数（每个号每轮 2 次调用）：
   query="from:H is:reply" / "to:H is:reply", max_results=25, sort_order=recency, start_time=now-7d,
@@ -82,10 +83,25 @@ def build():
             rows.append(r)
         rows.sort(key=lambda r: (r['me_to'] + r['to_me'], max(r.get('last_me', ''), r.get('last_to_me', ''))), reverse=True)
         out[me] = rows
-    led = {'updated_at': dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'), 'window_days': WIN, 'users': out}
+    meta = {}
+    for me in out:
+        ts = [e['t'] for e in st['events'].values() if me in (e['a'], e['b'])]
+        meta[me] = {'events': len(ts)}
+        if ts: meta[me]['since'] = min(ts)[:19] + 'Z'
+    led = {'updated_at': dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'), 'window_days': WIN, 'users': out, 'meta': meta}
     tmp = OUT + '.tmp'; json.dump(led, open(tmp, 'w'), ensure_ascii=False, separators=(',', ':')); os.replace(tmp, OUT)
     print(f'ledger.json: {len(out)} users, {sum(len(v) for v in out.values())} peer rows, {len(st["events"])} events')
 
+def next_page(path, cutoff=None):
+    """打印下一页 pagination_token；若本页最早一条已早于 cutoff（默认 now-6h）或没有下一页，则不输出。"""
+    d = parse_raw(path)
+    if not cutoff:
+        cutoff = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=6)).strftime('%Y-%m-%dT%H:%M:%S')
+    ts = [t['created_at'] for t in d.get('data', []) or []]
+    tok = (d.get('meta') or {}).get('next_token')
+    if tok and ts and min(ts)[:19] > cutoff[:19]: print(tok)
+
 if __name__ == '__main__':
     if sys.argv[1] == 'ingest': ingest(*sys.argv[2:5])
+    elif sys.argv[1] == 'next': next_page(sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else None)
     else: build()

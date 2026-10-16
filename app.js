@@ -353,7 +353,10 @@ async function showLedger(raw, scroll) {
   const list = (L.users || {})[h];
   const t = L.updated_at ? new Date(L.updated_at).toLocaleString("zh-CN", { hour12: false, month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" }) : "";
   const selfAv = hiAv(L.profiles?.[h]?.avatar) || selfAvatar(h);
-  const head = `<div class="lg-hd"><img src="${esc(selfAv)}" alt="" onerror="this.outerHTML='<b class=ini>${esc(h[0].toUpperCase())}</b>'"><div><b>@${esc(h)} 的互评账本</b><div class="m">统计近期互评 · 每 6 小时更新${t ? " · 更新于 " + t : ""}</div></div></div>`;
+  const since = L.since?.[h] || L.meta?.[h]?.since || (list || []).map(u => u.since).filter(Boolean).sort()[0];
+  const fmt = x => new Date(x).toLocaleString("zh-CN", { hour12: false, month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" });
+  const rng = since && L.updated_at ? fmt(since) + " – " + fmt(L.updated_at) : "";
+  const head = `<div class="lg-hd"><img src="${esc(selfAv)}" alt="" onerror="this.outerHTML='<b class=ini>${esc(h[0].toUpperCase())}</b>'"><div><b>@${esc(h)} 的互评账本</b><div class="m">${rng ? "统计范围：" + rng : "统计近期互评"} · 每 6 小时更新${t ? " · 更新于 " + t : ""}</div></div></div>`;
   if (!list?.length) { out.innerHTML = `<h3>互评账本</h3>${head}<div class="lg-sec"><div class="lg-empty">暂未收录，联系 <a href="https://x.com/tigerr3aue" target="_blank" rel="noopener" style="color:#39ff14">@tigerr3aue</a> 加入</div></div>`; if (scroll) out.scrollIntoView({ behavior: "smooth" }); return; }
   const mu = list.filter(u => u.me_to > 0 && u.to_me > 0).sort((a, b) => (b.me_to + b.to_me) - (a.me_to + a.to_me));
   const wa = list.filter(u => u.me_to > 0 && !(u.to_me > 0)).sort((a, b) => b.me_to - a.me_to);
