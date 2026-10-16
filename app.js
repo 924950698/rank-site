@@ -32,6 +32,12 @@ function renderList() {
     html = g.length ? g.slice(0, n).map((x, i) => card(x.post, i, `<div class="gain">24h +${num(x.gain)} 粉</div>`)).join("")
       : `<div class="empty">数据统计中，约 24 小时后更新</div>`;
     $("#more").style.display = "none";
+  } else if (tab === "rising") {
+    const g = D.rising || [];
+    const win = g[0]?.window === "7d" ? "7 天" : "24h";
+    html = `<div class="pnote" style="margin:0 0 10px">粉丝 300–5,000 的新号，按近 ${win} 涨粉增幅排名，每小时更新</div>` + (g.slice(0, n).map((x, i) => card({ ...x.post, author: x.post?.author || x.author, metrics: x.post?.metrics || { views: x.post?.views || 0, likes: 0, replies: 0, reposts: 0 } }, i, `<div class="gain">${win} +${num(x.gain)} 粉 · +${(+x.growth_pct || 0).toFixed(1)}%</div>`)).join("")
+      + (g.length < 5 ? `<div class="empty">新号进步榜刚上线，数据攒满后会有更多新号上榜<br><a class="btn" style="display:inline-block;margin-top:10px" href="https://x.com/intent/follow?screen_name=tigerr3aue" target="_blank" rel="noopener">关注 @tigerr3aue，下一个上榜的就是你</a></div>` : ""));
+    $("#more").style.display = "none";
   } else {
     const arr = D[tab] || [];
     html = arr.slice(0, n).map((p, i) => card(p, i)).join("") || `<div class="empty">暂无数据</div>`;
