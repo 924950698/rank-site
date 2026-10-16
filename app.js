@@ -47,8 +47,51 @@ function renderList() {
     html = arr.slice(0, n).map((p, i) => card(p, i)).join("") || `<div class="empty">暂无数据</div>`;
     $("#more").style.display = "none";
   }
-  $("#list").innerHTML = html;
+  $("#list").innerHTML = champHtml() + html;
 }
+// ---------- 冠军卡片 ----------
+const CH_NAME = { exposure: "曝光榜", comments: "评论榜", growth: "涨粉榜", rising: "新号进步榜" };
+function champ() {
+  let p, stat;
+  if (tab === "growth" || tab === "rising") { const x = (D[tab] || [])[0]; if (!x) return null; p = x.post || {}; p = { ...p, author: p.author || x.author }; stat = `+${num(x.gain)} 粉`; }
+  else { const seen = new Set(); p = (D[tab] || []).find(q => { const m = q.metrics || {}, k = (q.author?.username || "").toLowerCase();
+      if ((m.views || 0) >= 5000 && !((m.likes || 0) + (m.replies || 0) + (m.reposts || 0))) return false; if (seen.has(k)) return false; seen.add(k); return true; });
+    if (!p) return null; stat = tab === "comments" ? `${num(p.metrics?.replies)} 评论` : `${num(p.metrics?.views)} 曝光`; }
+  if (!p?.author?.username) return null; return { p, a: p.author, stat, board: CH_NAME[tab] || "" };
+}
+function champHtml() {
+  const c = champ(); if (!c) return ""; const { a, stat, board } = c;
+  const xt = `恭喜 @${a.username} 拿下今日 X 中文${board}冠军 🏆 ${stat}\n来看看今天谁在爆 👉 ` + (location.origin + location.pathname) + "#rank";
+  return `<div class="champ"><div class="chT">🏆 今日${board}冠军</div><div class="chR"><img class="av" src="${esc(a.avatar || AV)}" alt="" referrerpolicy="no-referrer">
+    <div><b>${esc(a.name)}</b><div class="m">@${esc(a.username)}</div><div class="chS">${esc(stat)}</div></div></div>
+    <div class="chB"><button class="btn" type="button" id="chSave">保存冠军卡片</button><a class="btn ghost" id="chX" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(xt)}">@ 他发帖祝贺</a></div></div>`;
+}
+async function openChampCard() {
+  const ch = champ(); if (!ch) return; const { a, stat, board } = ch;
+  const m = document.createElement("div"); m.className = "pm"; m.innerHTML = `<div class="pmb"><div class="m" style="text-align:center;padding:40px">冠军卡片生成中…</div></div>`;
+  document.body.appendChild(m); m.onclick = e => { if (e.target === m) m.remove(); };
+  try {
+    const S = 1080, H = 1350, cv = document.createElement("canvas"); cv.width = S; cv.height = H; const c = cv.getContext("2d"), cx = S / 2;
+    const gr = c.createRadialGradient(cx, 0, 50, cx, 0, H); gr.addColorStop(0, "#5a4a08"); gr.addColorStop(.75, "#050805"); c.fillStyle = gr; c.fillRect(0, 0, S, H);
+    c.strokeStyle = "#ffd23f"; c.lineWidth = 6; c.beginPath(); c.roundRect(30, 30, S - 60, H - 60, 48); c.stroke();
+    c.textAlign = "center"; c.fillStyle = "#ffd23f"; c.font = "800 120px sans-serif"; c.fillText("🏆", cx, 220);
+    c.fillStyle = "#fff"; c.font = "800 64px sans-serif"; c.fillText(`今日 X 中文${board}冠军`, cx, 330);
+    const im = await wallImg(a.avatar);
+    c.save(); c.beginPath(); c.arc(cx, 560, 170, 0, 7); c.clip(); if (im) c.drawImage(im, cx - 170, 390, 340, 340); else { c.fillStyle = "#1d1f23"; c.fill(); } c.restore();
+    c.strokeStyle = "#ffd23f"; c.lineWidth = 12; c.beginPath(); c.arc(cx, 560, 170, 0, 7); c.stroke();
+    c.fillStyle = "#fff"; c.font = "800 62px sans-serif"; let nm = a.name || ""; while (c.measureText(nm).width > S - 160 && nm.length > 1) nm = nm.slice(0, -1); c.fillText(nm, cx, 830);
+    c.fillStyle = "#c8c8c8"; c.font = "500 44px sans-serif"; c.fillText("@" + a.username, cx, 895);
+    c.font = "800 56px sans-serif"; const bw = c.measureText(stat).width + 100; c.fillStyle = "#ffd23f"; c.beginPath(); c.roundRect(cx - bw / 2, 950, bw, 100, 50); c.fill(); c.fillStyle = "#000"; c.fillText(stat, cx, 1020);
+    c.fillStyle = "#39ff14"; c.font = "800 48px sans-serif"; c.fillText("X 中文创作者成长站", cx, 1170); c.fillStyle = "#c8c8c8"; c.font = "500 38px sans-serif"; c.fillText("924950698.github.io/rank-site", cx, 1230);
+    const blob = await new Promise(r => cv.toBlob(r, "image/png")), file = new File([blob], `champ-${a.username}.png`, { type: "image/png" }), purl = URL.createObjectURL(blob);
+    const xt = document.getElementById("chX")?.href || "#";
+    m.querySelector(".pmb").innerHTML = `<img src="${purl}" alt="冠军卡片"><div class="pmh">先保存图片，发帖时把图片加上</div>
+      <div class="pmr"><button class="btn" id="chS2">保存图片</button><a class="btn ghost" target="_blank" rel="noopener" href="${xt}">@ 他发帖祝贺</a><button class="btn ghost" id="chC">关闭</button></div>`;
+    m.querySelector("#chC").onclick = () => m.remove();
+    m.querySelector("#chS2").onclick = () => { window.track?.("champ:save"); saveImage(file, purl, m.querySelector(".pmb")); };
+  } catch (e) { m.querySelector(".pmb").innerHTML = `<div class="m" style="padding:30px;text-align:center">冠军卡片生成失败</div>`; }
+}
+document.addEventListener("click", e => { if (e.target.id === "chSave") openChampCard(); });
 function renderBest() {
   $("#best").innerHTML = (D.best || []).slice(0, 10).map(b => `<a class="bc" href="${profile(b.author.username)}" target="_blank" rel="noopener">
     <img class="av" loading="lazy" src="${esc(b.author.avatar || AV)}" alt=""><b>${esc(b.author.name)}</b>
