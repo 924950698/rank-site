@@ -242,9 +242,9 @@ async function showPartners(raw, push = true, poll = false) {
     const t = P.updated_at ? new Date(P.updated_at).toLocaleString("zh-CN", { hour12: false, month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" }) : "";
     const note = `<div class="pnote">计算方法：${esc(P.method || "按最近回复和@次数")}（只统计最近的回复和 @，不含点赞）${t ? " · 更新于 " + t : ""}</div>`;
     PW = list?.length ? { h, list, extra: P.extra?.[h] || P.users_extra?.[h] || [], selfAv: P.profiles?.[h]?.avatar } : null; renderWall();
-    if (!list?.length) { if (!poll) try { window.track?.("queue:" + h, "queue " + h); } catch (e) {}
-      out.innerHTML = `<div class="pres"><h4>@${esc(h)}</h4><div>已加入收录队列，通常 1 小时内完成（0–6 点暂停），有问题联系 <a href="https://x.com/tigerr3aue" target="_blank" rel="noopener" style="color:#39ff14">@tigerr3aue</a></div><div class="m">收录后页面会自动显示，不用关${qTries ? `（已等 ${qTries * 5} 分钟）` : ""}</div>${note}</div>`;
-      if (qTries < 24) qTimer = setTimeout(() => { qTries++; partnersP = null; showPartners(h, false, true); }, 300000); return null; }
+    if (!list?.length) {
+      out.innerHTML = `<div class="pres"><h4>@${esc(h)}</h4><div>暂未开通，请进 X 群找群主申请权限 <a class="btn" style="display:inline-block;margin-top:8px" href="https://x.com/i/chat/group_join/g2108003040645275931/SH2IyrkR1A" target="_blank" rel="noopener">进 X 群申请</a></div><div class="m">开通后一般当天生效</div></div>`;
+      return null; }
     clearTimeout(qTimer);
     out.innerHTML = `<div class="pres"><h4><span>@${esc(h)}</span> 的最佳互动账号 Top 3</h4>` +
       list.slice(0, 3).map((u, i) => `<a class="pu" href="${outUrl(profile(u.handle), "partner")}" target="_blank" rel="noopener">
@@ -362,7 +362,7 @@ async function showLedger(raw, scroll) {
   const rng = since && L.updated_at ? fmt(since) + " – " + fmt(L.updated_at) : "";
   const tm = (list || []).reduce((x, u) => x + (u.me_to || 0), 0), tt = (list || []).reduce((x, u) => x + (u.to_me || 0), 0);
   const head = `<div class="lg-hd"><div class="lg-top"><img src="${esc(selfAv)}" alt="" onerror="this.outerHTML='<b class=ini>${esc(h[0].toUpperCase())}</b>'"><div><b>@${esc(h)} 的互评账本</b><div class="m">${rng ? "统计区间 " + rng : "统计近期互评"} · 每 6 小时更新</div></div></div>${ov}${list?.length ? `<div class="lg-kpi"><div><b>${tm}</b><span>主动评论</span></div><div><b>${tt}</b><span>收到评论</span></div><div><b>${list.length}</b><span>互动账号</span></div></div>` : ""}</div>`;
-  if (!list?.length) { out.innerHTML = `<h3>互评账本</h3>${head}<div class="lg-sec"><div class="lg-empty">已加入收录队列，通常 1 小时内完成（0–6 点暂停），有问题联系 <a href="https://x.com/tigerr3aue" target="_blank" rel="noopener" style="color:#39ff14">@tigerr3aue</a></div></div>`; if (scroll) out.scrollIntoView({ behavior: "smooth" }); return; }
+  if (!list?.length) { out.innerHTML = `<h3>互评账本</h3>${head}<div class="lg-sec"><div class="lg-empty">暂未开通，请进 X 群找群主申请权限 <a class="btn" style="display:inline-block;margin-top:8px" href="https://x.com/i/chat/group_join/g2108003040645275931/SH2IyrkR1A" target="_blank" rel="noopener">进 X 群申请</a></div></div>`; if (scroll) out.scrollIntoView({ behavior: "smooth" }); return; }
   const mu = list.filter(u => u.me_to > 0 && u.to_me > 0).sort((a, b) => (b.me_to + b.to_me) - (a.me_to + a.to_me));
   const wa = list.filter(u => u.me_to > 0 && !(u.to_me > 0)).sort((a, b) => b.me_to - a.me_to);
   const ow = list.filter(u => u.to_me > 0 && !(u.me_to > 0)).sort((a, b) => b.to_me - a.to_me);
