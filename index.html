@@ -15,7 +15,7 @@
 <meta name="twitter:image" content="https://924950698.github.io/rank-site/og.png">
 <meta name="theme-color" content="#000000">
 <link rel="preload" href="data.json" as="fetch" crossorigin>
-<link rel="stylesheet" href="style.css?v=20261016171415">
+<link rel="stylesheet" href="style.css?v=20261016190718">
 </head>
 <body>
 <header>
@@ -45,7 +45,7 @@
   <span class="m">今日话题</span><br><b id="topicText">加载中…</b>
 </a>
 
-<div class="rk-hd"><h3>今日中文 X 爆帖 Top 10</h3><div class="m">给冲分成的中文新号：每天来这找选题、找互关 · 每小时更新</div><div class="m g" id="rkSub" style="margin-top:4px"></div></div>
+<div class="rk-hd"><h3>今日中文 X 爆帖 Top 10 <button class="dinfo" type="button" onclick="document.getElementById('dmodal').style.display='flex'">ⓘ 数据说明</button></h3><div class="m">给冲分成的中文新号：每天来这找选题、找互关 · 每小时更新</div><div class="m g" id="rkSub" style="margin-top:4px"></div></div>
 <nav class="tabs" id="tabs">
   <button data-t="exposure" class="on">曝光</button>
   <button data-t="growth">涨粉</button>
@@ -70,7 +70,14 @@
 </footer>
 
 
-<script>window.ASSET_V="20261016171415"</script><script src="config.js?v=20261016171415"></script>
-<script src="app.js?v=20261016171415" defer></script>
+<script>window.ASSET_V="20261016190718"</script><script src="config.js?v=20261016190718"></script>
+<script src="app.js?v=20261016190718" defer></script>
+<div id="dmodal" class="dmodal" style="display:none" onclick="if(event.target===this)this.style.display='none'"><div class="dbox"><div class="dh"><b>数据说明</b><button type="button" onclick="document.getElementById('dmodal').style.display='none'">✕</button></div><ul>
+<li>只统计中文 X 帖子，每小时更新一次</li>
+<li>每天早上 8 点（北京时间）切日，榜单从零开始算</li>
+<li>每个作者在一个榜单里只出现一次，取他表现最好的那条帖子</li>
+<li>曝光超过 5000、但评论、转发、点赞都是 0 的帖子按刷量处理，不上榜</li>
+<li>个人数据要先进 X 群找群主开通，开通后一般当天生效</li>
+</ul></div></div>
 </body>
 </html>

@@ -119,3 +119,11 @@ header .btn{padding:5px 9px;font-size:12px}
 .rk-hd{padding:22px 16px 6px}.rk-hd h3{margin:0 0 4px}
 .rk-hd h3{padding:0!important;font-size:20px}
 #rkSub{color:#39ff14}
+
+.dinfo{margin-left:6px;font-size:12px;font-weight:600;color:#39ff14;background:none;border:1px solid #39ff14;border-radius:999px;padding:1px 8px;cursor:pointer;vertical-align:middle}
+.dmodal{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:99;align-items:flex-end;justify-content:center}
+.dbox{width:100%;max-width:520px;background:#0b0b0b;border:1px solid #39ff14;border-radius:16px 16px 0 0;padding:16px 18px 24px}
+.dh{display:flex;justify-content:space-between;align-items:center;font-size:16px;margin-bottom:8px}.dh button{background:none;border:0;color:#e7e9ea;font-size:18px;cursor:pointer}
+.dbox ul{margin:0;padding-left:18px;line-height:1.8;font-size:14px}
+@media(min-width:768px){body{max-width:720px;padding:0 16px}.dmodal{align-items:center}.dbox{border-radius:16px}.wall{max-width:560px}
+.btn:hover,.dinfo:hover{filter:brightness(1.15);cursor:pointer}.card:hover{border-color:#39ff14}}
