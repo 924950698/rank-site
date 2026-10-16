@@ -16,3 +16,23 @@
 
 ## 上线
 仅需 tiger 的 GitHub：建仓库 → 推送 → Settings → Pages（main 根目录）。之后由数据 agent 每小时更新 data.json 并推送。
+
+## 互评账本数据 ledger.json
+
+由 `scripts/ledger.py` 生成（每 6 小时；每个收录号 2 次调用：`from:H is:reply` 和 `to:H is:reply`，各取最近 25 条）。事件累积在 `state/ledger-events.json`（不入库、不存正文），按 post id 去重，超过 7 天丢弃。
+
+```
+{"updated_at":"ISO UTC","window_days":7,
+ "users":{"<handle 小写无@>":[
+   {"handle","name","avatar"(400x400),
+    "me_to":int,            // 我回复 TA 的次数
+    "to_me":int,            // TA 回复我的次数
+    "last_me","last_me_url",        // 我最近一次回复 TA（时间/链接），没有则省略
+    "last_to_me","last_to_me_url",  // TA 最近一次回复我，没有则省略
+    "latest_post_url"}      // TA 最新原创帖，暂未采集，目前一律省略
+ ]}}
+```
+- 前端分栏：互惠 = me_to>0 && to_me>0；待回评 = me_to>0 && to_me==0；我该回的 = to_me>0 && me_to==0。
+- 列表已按 me_to+to_me 降序、最近时间降序排好。
+- 已过滤“在自己帖子下回复评论者”（父帖是对方回复我的评论），这种算作回答，不算去对方那里串门。
+- 局限：每次只拿最近 25 条，活跃号的单次覆盖可能只有几小时，账本靠每 6 小时累积补齐，并不是完整的 7 天。
