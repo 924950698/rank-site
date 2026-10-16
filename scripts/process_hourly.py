@@ -106,6 +106,72 @@ def gain_of(hist, aid):
         return None
     return h[-1]["f"] - old["f"]
 
+RISING_MIN, RISING_MAX, RISING_N = 300, 5000, 10
+D7_MS = 7 * H24_MS
+
+def update_daily(daily, pool, t):
+    """每个作者每天(CST)一条粉丝快照，保留 8 天，用于 7 天增幅。"""
+    day = datetime.fromtimestamp(t / 1000, timezone(timedelta(hours=8))).strftime("%Y-%m-%d")
+    for p in pool.values():
+        a = p.get("author") or {}
+        if not a.get("id"):
+            continue
+        h = daily.setdefault(a["id"], [])
+        if h and h[-1]["d"] == day:
+            h[-1].update(t=t, f=a.get("followers") or 0)
+        else:
+            h.append({"d": day, "t": t, "f": a.get("followers") or 0})
+    for aid in list(daily):
+        daily[aid] = [x for x in daily[aid] if t - x["t"] < 8 * H24_MS]
+        if not daily[aid]:
+            del daily[aid]
+    return daily
+
+def compute_rising(pool, follower_hist, daily):
+    """新号进步榜：粉丝 300–5000，按涨粉百分比排，24h 曝光作并列时的次序。满 7 天快照后改用 7 天增幅。"""
+    now = now_ms()
+    by_author = {}
+    for p in pool.values():
+        a = p.get("author") or {}
+        if not a.get("id") or not a.get("username") or a["username"].lower() == OWNER or a["username"] in BLACKLIST_USERS:
+            continue
+        e = by_author.setdefault(a["id"], {"author": a, "posts": []})
+        e["posts"].append(p)
+        e["author"] = a
+    def base_7d(aid):
+        h = daily.get(aid) or []
+        old = next((x for x in h if now - x["t"] >= D7_MS - 3 * 3600_000), None)
+        return old["f"] if old else None
+    use_7d = sum(1 for aid in by_author if base_7d(aid) is not None) >= RISING_N
+    out = []
+    for aid, e in by_author.items():
+        f = e["author"].get("followers") or 0
+        if not (RISING_MIN <= f <= RISING_MAX):
+            continue
+        g24 = gain_of(follower_hist, aid)
+        if use_7d:
+            b = base_7d(aid)
+            gain = None if b is None else f - b
+            base = b
+        else:
+            gain = g24
+            base = None if g24 is None else f - g24
+        if not gain or gain <= 0 or not base:
+            continue
+        top = max(e["posts"], key=lambda p: p["metrics"]["views"])
+        out.append({
+            "author": e["author"],
+            "followers": f,
+            "followers_24h": g24,
+            "gain": gain,
+            "growth_pct": round(gain / base * 100, 2),
+            "window": "7d" if use_7d else "24h",
+            "views_24h": sum(p["metrics"]["views"] for p in e["posts"]),
+            "post": {"id": top["id"], "url": top["url"], "views": top["metrics"]["views"], "created_at": top.get("created_at")},
+        })
+    out.sort(key=lambda x: (x["growth_pct"], x["views_24h"]), reverse=True)
+    return out[:RISING_N]
+
 def compute(pool, follower_hist, api_calls):
     posts = [p for p in pool.values() if ok_post(p)]
     def top(arr, key, n=50):
@@ -135,6 +201,7 @@ def compute(pool, follower_hist, api_calls):
         "growth": growth[:10],
         "photos": top([p for p in posts if p.get("image")], "views", 60),
         "best": best,
+        "rising": compute_rising(pool, follower_hist, load(STATE / "followers-daily.json", {})),
         "meta": {"pool_size": len(posts), "api_calls_this_run": api_calls},
     }
 
@@ -167,6 +234,8 @@ def cmd_merge_posts(raw_paths, api_calls: int):
         hist[aid] = [x for x in hist[aid] if t - x["t"] < 26 * 3600_000]
         if not hist[aid]:
             del hist[aid]
+    daily = update_daily(load(STATE / "followers-daily.json", {}), pool, t)
+    write_atomic(STATE / "followers-daily.json", daily)
     data = compute(pool, hist, api_calls)
     write_atomic(STATE / "posts.json", pool)
     write_atomic(STATE / "followers.json", hist)
@@ -314,6 +383,11 @@ if __name__ == "__main__":
     if cmd == "merge-posts":
         calls = int(sys.argv[2])
         cmd_merge_posts(sys.argv[3:], calls)
+    elif cmd == "rising":  # 只用现有 state 重算 data.json 的 rising，不调接口
+        d = load(ROOT / "data.json", {})
+        d["rising"] = compute_rising(load(STATE / "posts.json", {}), load(STATE / "followers.json", {}), load(STATE / "followers-daily.json", {}))
+        write_atomic(ROOT / "data.json", d)
+        print(json.dumps({"ok": True, "rising": len(d["rising"])}))
     elif cmd == "merge-partners":
         cmd_merge_partners(sys.argv[2])
     else:

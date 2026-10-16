@@ -10,6 +10,12 @@
 - `privacy.html` `terms.html`
 - `scripts/`：**可选**备用抓数脚本（同 schema）。已不使用 GitHub Actions；如不需要可整个删除，前端不依赖它。
 
+- `data.json.rising[]`：新号进步榜（最多 10 条），由 `scripts/process_hourly.py merge-posts` 每小时自动算，只用帖子池 `state/posts.json` 和粉丝快照，不额外调接口。条目：`{author{id,name,username,avatar,followers}, followers, followers_24h, gain, growth_pct, window, views_24h, post{id,url,views,created_at}}`
+  - 入选：粉丝 300–5000，排除 tigerr3aue，涨粉 > 0
+  - 排序：`growth_pct` 降序，相同时按 `views_24h`（作者 24h 内帖子曝光合计）降序
+  - `window`：`"24h"` 时 `gain = followers_24h`，`growth_pct = gain / (followers - gain) × 100`；已有 7 天日快照（`state/followers-daily.json`，每作者每天一条，保留 8 天）的作者满 10 个后自动切到 `"7d"`，此时 `gain`/`growth_pct` 按 7 天算，`followers_24h` 仍为 24h 涨粉（可能为 null）
+  - 手动重算：`python3 scripts/process_hourly.py rising`
+
 ## 本地预览
     node scripts/build-data.mjs --sample   # 仅在没有真实 data.json 时生成示例（会覆盖 data.json！）
     python3 -m http.server 8080
