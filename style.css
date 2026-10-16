@@ -116,3 +116,5 @@ header .btn{padding:5px 9px;font-size:12px}
 .lg-hd .ov{margin:12px 0 0;background:rgba(0,0,0,.25)}
 .howto{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;max-width:560px;margin:12px auto 0;padding:12px 14px;border:1px solid #39ff14;border-radius:12px;background:#0d1a0a;font-size:14px;font-weight:600}.howto .btn{white-space:nowrap}
 .card.top .gain{color:#000}
+.rk-hd{padding:22px 16px 6px}.rk-hd h3{margin:0 0 4px}
+.rk-hd h3{padding:0!important;font-size:20px}
