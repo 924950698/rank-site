@@ -1,9 +1,67 @@
 {
-  "rolling": ["比特币", "BTC", "以太坊", "ETH", "空投", "山寨币", "Meme", "转发抽奖", "评论区", "你们怎么看", "投票"],
-  "scheduled": ["铭文", "RWA", "\"AI Agent\"", "SOL", "互关", "涨粉", "回关", "互粉", "神回复", "笑死", "破防", "暴跌", "暴涨", "爆仓", "突发", "刚刚"],
-  "scheduled_hours_cst": [11, 20],
+  "rolling": [
+    "互关",
+    "涨粉",
+    "回关",
+    "求关注",
+    "创作者分成",
+    "广告分成",
+    "日常",
+    "转发抽奖",
+    "评论区",
+    "比特币",
+    "你们怎么看",
+    "投票"
+  ],
+  "scheduled": [
+    "热搜",
+    "突发",
+    "刚刚",
+    "打工人",
+    "吐槽",
+    "求助",
+    "追剧",
+    "电影",
+    "神回复",
+    "笑死",
+    "破防",
+    "搞笑",
+    "美食",
+    "旅行",
+    "生活",
+    "分享"
+  ],
+  "scheduled_hours_cst": [
+    11,
+    20
+  ],
   "include_x_trends_top": 5,
   "blacklist_users": [],
-  "blacklist_words": ["私信领取", "带单", "稳赚", "保本", "加V", "加微"],
-  "min_followers": 500
+  "blacklist_words": [
+    "私信领取",
+    "带单",
+    "稳赚",
+    "保本",
+    "加V",
+    "加微"
+  ],
+  "min_followers": 500,
+  "hourly_queries": {
+    "_note": "每小时任务实际使用的分组（与 run notes 的 4 keyword + 3 image + 定时 2 条 一致），后缀都带 lang:zh",
+    "keyword": [
+      "(互关 OR 涨粉 OR 回关 OR 求关注) lang:zh -is:retweet -is:reply",
+      "(创作者分成 OR 广告分成 OR 日常) lang:zh -is:retweet -is:reply",
+      "(转发抽奖 OR 评论区 OR 比特币) lang:zh -is:retweet -is:reply",
+      "(你们怎么看 OR 投票) lang:zh -is:retweet -is:reply"
+    ],
+    "image": [
+      "(日常 OR 美食 OR 旅行 OR 生活 OR 自拍) lang:zh -is:retweet has:images",
+      "(投票 OR 评论区 OR 你们怎么看 OR 求关注 OR 日常) lang:zh -is:retweet has:images",
+      "(互关 OR 涨粉 OR 笑死 OR 转发抽奖 OR 比特币) lang:zh -is:retweet has:media"
+    ],
+    "scheduled_11_20_cst": [
+      "(热搜 OR 突发 OR 刚刚 OR 打工人 OR 吐槽 OR 求助 OR 追剧 OR 电影) lang:zh -is:retweet -is:reply",
+      "(神回复 OR 笑死 OR 破防 OR 搞笑 OR 美食 OR 旅行 OR 生活 OR 分享) lang:zh -is:retweet -is:reply"
+    ]
+  }
 }
