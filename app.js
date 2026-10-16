@@ -243,7 +243,7 @@ async function showPartners(raw, push = true, poll = false) {
     const note = `<div class="pnote">计算方法：${esc(P.method || "按最近回复和@次数")}（只统计最近的回复和 @，不含点赞）${t ? " · 更新于 " + t : ""}</div>`;
     PW = list?.length ? { h, list, extra: P.extra?.[h] || P.users_extra?.[h] || [], selfAv: P.profiles?.[h]?.avatar } : null; renderWall();
     if (!list?.length) { if (!poll) try { window.track?.("queue:" + h, "queue " + h); } catch (e) {}
-      out.innerHTML = `<div class="pres"><h4>@${esc(h)}</h4><div>已加入收录队列，约 15 分钟出结果</div><div class="m">页面不用关，数据一到会自动显示${qTries ? `（已等 ${qTries} 分钟）` : ""}</div>${note}</div>`;
+      out.innerHTML = `<div class="pres"><h4>@${esc(h)}</h4><div>暂未收录，联系 <a href="https://x.com/tigerr3aue" target="_blank" rel="noopener" style="color:#39ff14">@tigerr3aue</a> 加入</div><div class="m">收录后页面会自动显示，不用关${qTries ? `（已等 ${qTries} 分钟）` : ""}</div>${note}</div>`;
       if (qTries < 40) qTimer = setTimeout(() => { qTries++; partnersP = null; showPartners(h, false, true); }, 60000); return null; }
     clearTimeout(qTimer);
     out.innerHTML = `<div class="pres"><h4><span>@${esc(h)}</span> 的最佳互动账号 Top 3</h4>` +
@@ -354,7 +354,7 @@ async function showLedger(raw, scroll) {
   const t = L.updated_at ? new Date(L.updated_at).toLocaleString("zh-CN", { hour12: false, month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" }) : "";
   const selfAv = hiAv(L.profiles?.[h]?.avatar) || selfAvatar(h);
   const head = `<div class="lg-hd"><img src="${esc(selfAv)}" alt="" onerror="this.outerHTML='<b class=ini>${esc(h[0].toUpperCase())}</b>'"><div><b>@${esc(h)} 的互评账本</b><div class="m">统计近期互评 · 每 6 小时更新${t ? " · 更新于 " + t : ""}</div></div></div>`;
-  if (!list?.length) { out.innerHTML = `<h3>互评账本</h3>${head}<div class="lg-sec"><div class="lg-empty">还没有你的互评数据，已加入收录，约 6 小时后再来看。</div></div>`; if (scroll) out.scrollIntoView({ behavior: "smooth" }); return; }
+  if (!list?.length) { out.innerHTML = `<h3>互评账本</h3>${head}<div class="lg-sec"><div class="lg-empty">暂未收录，联系 <a href="https://x.com/tigerr3aue" target="_blank" rel="noopener" style="color:#39ff14">@tigerr3aue</a> 加入</div></div>`; if (scroll) out.scrollIntoView({ behavior: "smooth" }); return; }
   const mu = list.filter(u => u.me_to > 0 && u.to_me > 0).sort((a, b) => (b.me_to + b.to_me) - (a.me_to + a.to_me));
   const wa = list.filter(u => u.me_to > 0 && !(u.to_me > 0)).sort((a, b) => b.me_to - a.me_to);
   const ow = list.filter(u => u.to_me > 0 && !(u.me_to > 0)).sort((a, b) => b.to_me - a.to_me);
