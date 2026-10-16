@@ -83,3 +83,23 @@ header .btn{padding:5px 9px;font-size:12px}
 @media (prefers-reduced-motion:reduce){.bub{animation:none}}
 .bub.fill{border:0;box-shadow:none;background:#1a3d12;pointer-events:none}.bub.fill:nth-child(2n){background:#2a2d31}.bub.fill.o{background:none;border:1px solid #fff5}
 .wall{max-width:420px;margin-left:auto;margin-right:auto}
+
+/* 互评账本 */
+#ledgerOut{margin-top:16px}
+.lg-hd{display:flex;align-items:center;gap:12px;background:#0b140b;border:1px solid #39ff14;border-radius:16px;padding:14px}
+.lg-hd img,.lg-hd .ini{width:52px;height:52px;border-radius:50%;border:3px solid #39ff14;object-fit:cover;flex:none}
+.lg-hd b{font-size:16px}
+.lg-sum{display:flex;gap:8px;margin:12px 0}.lg-sum button{flex:1;background:#111;border:1px solid #111;border-radius:12px;padding:10px 4px;text-align:center;color:#ddd;font:inherit;font-size:13px}
+.lg-sum button.on{border-color:#39ff14}.lg-sum b{display:block;font-size:22px}
+.lg-g{color:#39ff14}.lg-y{color:#ffcc33}.lg-b{color:#6ec6ff}
+.lg-sec{background:#0d0d0d;border:1px solid #222;border-radius:14px;padding:10px 12px;margin-bottom:12px}
+.lg-sec h4{margin:2px 0 6px;font-size:15px}.lg-sec h4 small{color:#8b9095;font-weight:400;font-size:12px;margin-left:6px}
+.lg-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid #1c1c1c}.lg-row:first-of-type{border-top:0}
+.lg-row img,.lg-row .ini{width:36px;height:36px;border-radius:50%;object-fit:cover;flex:none;background:#1d1f23}
+.lg-n{flex:1;min-width:0;color:inherit;text-decoration:none}.lg-n b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.lg-n span{color:#8b9095;font-size:12px}
+.lg-c{display:flex;flex-direction:column;align-items:flex-end;font-size:12px;white-space:nowrap}
+.lg-btn{font:inherit;font-size:12px;border-radius:999px;padding:6px 10px;border:1px solid #39ff14;background:none;color:#39ff14;white-space:nowrap;text-decoration:none}
+.lg-btn.fill{background:#39ff14;color:#000;border:0;font-weight:700}
+.lg-tag{font-size:12px;padding:3px 8px;border-radius:999px;background:#14320c;color:#39ff14;white-space:nowrap}
+.lg-empty{color:#8b9095;font-size:13px;padding:6px 0}
+.lg-card{display:block;width:100%;margin-top:4px}

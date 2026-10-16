@@ -342,9 +342,78 @@ async function openWallModal(pw) {
     m.querySelector("#wmSave").onclick = () => saveImage(file, purl, m.querySelector(".pmb"));
   } catch { m.querySelector(".pmb").innerHTML = `<div class="m" style="padding:30px;text-align:center">动图生成失败</div>`; }
 }
-$("#pq").onsubmit = async e => { e.preventDefault(); const r = await showPartners($("#pqIn").value); document.querySelector("#wall,.wall,canvas")?.scrollIntoView({ behavior: "smooth", block: "start" }); if (r) openWallModal(PW); };
+
+// ---------- 互评账本（ledger.json：me_to=我评TA，to_me=TA评我） ----------
+let ledgerP, LG = null;
+const DM_TEXT = "嗨～最近常去你帖子下聊，挺喜欢你的内容！我这两天也发了几条，有空来坐坐呀 🙏";
+async function showLedger(raw, scroll) {
+  const h = normHandle(raw), out = $("#ledgerOut"); if (!out || !/^[a-z0-9_]{1,15}$/.test(h)) return;
+  try { ledgerP ||= fetch("ledger.json", { cache: "no-cache" }).then(r => { if (!r.ok) throw 0; return r.json(); }); } catch {}
+  let L; try { L = await ledgerP; } catch { ledgerP = null; out.innerHTML = ""; return; }
+  const list = (L.users || {})[h];
+  const t = L.updated_at ? new Date(L.updated_at).toLocaleString("zh-CN", { hour12: false, month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" }) : "";
+  const selfAv = hiAv(L.profiles?.[h]?.avatar) || selfAvatar(h);
+  const head = `<div class="lg-hd"><img src="${esc(selfAv)}" alt="" onerror="this.outerHTML='<b class=ini>${esc(h[0].toUpperCase())}</b>'"><div><b>@${esc(h)} 的互评账本</b><div class="m">统计近期互评 · 每 6 小时更新${t ? " · 更新于 " + t : ""}</div></div></div>`;
+  if (!list?.length) { out.innerHTML = `<h3>互评账本</h3>${head}<div class="lg-sec"><div class="lg-empty">还没有你的互评数据，已加入收录，约 6 小时后再来看。</div></div>`; if (scroll) out.scrollIntoView({ behavior: "smooth" }); return; }
+  const mu = list.filter(u => u.me_to > 0 && u.to_me > 0).sort((a, b) => (b.me_to + b.to_me) - (a.me_to + a.to_me));
+  const wa = list.filter(u => u.me_to > 0 && !(u.to_me > 0)).sort((a, b) => b.me_to - a.me_to);
+  const ow = list.filter(u => u.to_me > 0 && !(u.me_to > 0)).sort((a, b) => b.to_me - a.to_me);
+  LG = { h, mu, wa, ow, selfAv, total_me: list.reduce((s, u) => s + (u.me_to || 0), 0), total_to: list.reduce((s, u) => s + (u.to_me || 0), 0) };
+  const row = (u, kind) => { const hd = normHandle(u.handle), av = hiAv(u.avatar);
+    const btn = kind === "mu" ? `<span class="lg-tag">互惠</span>` : kind === "wa" ? `<button type="button" class="lg-btn" data-dm="${esc(hd)}">复制私信</button>`
+      : `<a class="lg-btn fill" data-go="${esc(hd)}" href="${esc(u.latest_post_url || profile(hd))}" target="_blank" rel="noopener">去回评</a>`;
+    return `<div class="lg-row">${av ? `<img loading="lazy" src="${esc(av)}" alt="" onerror="this.outerHTML='<b class=ini>${esc(ini(u))}</b>'">` : `<b class="ini">${esc(ini(u))}</b>`}
+      <a class="lg-n" href="${esc(profile(hd))}" target="_blank" rel="noopener"><b>${esc(u.name || hd)}</b><span>@${esc(hd)}</span></a>
+      <div class="lg-c"><span class="lg-g">我评 ${u.me_to || 0}</span><span class="lg-b">TA评 ${u.to_me || 0}</span></div>${btn}</div>`; };
+  const sec = (k, ic, name, tip, arr, empty) => `<div class="lg-sec" data-k="${k}"><h4>${ic} ${name}<small>${tip}</small></h4>${arr.length ? arr.map(u => row(u, k)).join("") : `<div class="lg-empty">${empty}</div>`}</div>`;
+  out.innerHTML = `<h3>互评账本</h3>${head}
+    <div class="lg-sum"><button type="button" data-f="all" class="on"><b class="lg-g">${mu.length}</b>互惠好友</button><button type="button" data-f="wa"><b class="lg-y">${wa.length}</b>待回评</button><button type="button" data-f="ow"><b class="lg-b">${ow.length}</b>我该回的</button></div>
+    ${sec("mu", "🤝", "互惠好友", "你们互相评论过", mu, "还没有互惠好友，去评论区多走动走动")}
+    ${sec("wa", "⏳", "待回评", "你评论过 TA，TA 还没来你这儿", wa, "没有待回评，大家都很讲究 👍")}
+    ${sec("ow", "💬", "我该回的", "TA 评论过你，你还没回访", ow, "都回过了，你很靠谱 👍")}
+    <button type="button" class="btn lg-card" id="lgCard">生成我的互评名片</button>`;
+  out.querySelectorAll(".lg-sum button").forEach(b => b.onclick = () => { out.querySelectorAll(".lg-sum button").forEach(x => x.classList.toggle("on", x === b && b.dataset.f !== "all" ? true : x === b));
+    const f = b.dataset.f; if (f !== "all" && b.classList.contains("on") && b._on) { b._on = 0; b.classList.remove("on"); out.querySelector('[data-f="all"]').classList.add("on"); out.querySelectorAll(".lg-sec").forEach(s => s.style.display = ""); return; }
+    out.querySelectorAll(".lg-sum button").forEach(x => x._on = 0); b._on = f !== "all";
+    out.querySelectorAll(".lg-sec").forEach(s => s.style.display = f === "all" || s.dataset.k === f ? "" : "none"); window.track?.("ledger:tab-" + f); });
+  out.querySelectorAll("[data-dm]").forEach(b => b.onclick = async () => { try { await navigator.clipboard.writeText(DM_TEXT); toast("话术已复制，去私信 @" + b.dataset.dm); } catch { prompt("复制这段话术：", DM_TEXT); }
+    window.track?.("ledger:dm"); window.open(profile(b.dataset.dm), "_blank", "noopener"); });
+  out.querySelectorAll("[data-go]").forEach(a => a.addEventListener("click", () => window.track?.("ledger:go")));
+  $("#lgCard").onclick = () => { window.track?.("ledger:card"); openLedgerCard(); };
+  if (scroll) out.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+async function openLedgerCard() {
+  if (!LG) return; const { h, mu, wa, ow, selfAv, total_me, total_to } = LG;
+  const m = document.createElement("div"); m.className = "pm"; m.innerHTML = `<div class="pmb"><div class="m" style="text-align:center;padding:40px">名片生成中…</div></div>`;
+  document.body.appendChild(m); m.onclick = e => { if (e.target === m) m.remove(); };
+  try {
+    const S = 1080, H = 1350, cv = document.createElement("canvas"); cv.width = S; cv.height = H; const c = cv.getContext("2d");
+    const gr = c.createRadialGradient(S * .3, 0, 50, S * .3, 0, H); gr.addColorStop(0, "#1d4d10"); gr.addColorStop(.7, "#050805"); c.fillStyle = gr; c.fillRect(0, 0, S, H);
+    c.strokeStyle = "#39ff14"; c.lineWidth = 4; c.beginPath(); c.roundRect(30, 30, S - 60, H - 60, 48); c.stroke();
+    const im = await wallImg(selfAv), cx = S / 2;
+    c.save(); c.beginPath(); c.arc(cx, 260, 130, 0, 7); c.clip(); if (im) c.drawImage(im, cx - 130, 130, 260, 260); else { c.fillStyle = "#1d1f23"; c.fill(); c.fillStyle = "#39ff14"; c.font = "800 120px sans-serif"; c.textAlign = "center"; c.textBaseline = "middle"; c.fillText(h[0].toUpperCase(), cx, 265); } c.restore();
+    c.strokeStyle = "#39ff14"; c.lineWidth = 10; c.beginPath(); c.arc(cx, 260, 130, 0, 7); c.stroke();
+    c.textAlign = "center"; c.textBaseline = "alphabetic"; c.fillStyle = "#fff"; c.font = "800 64px sans-serif"; c.fillText("@" + h, cx, 480);
+    const rate = mu.length + wa.length ? Math.round(100 * mu.length / (mu.length + wa.length)) : 0, lv = rate >= 60 ? "靠谱互评人" : rate >= 30 ? "互评进行中" : "互评新人";
+    const badge = `互惠率 ${rate}% · ${lv}`; c.font = "800 44px sans-serif"; const bw = c.measureText(badge).width + 80;
+    c.fillStyle = "#39ff14"; c.beginPath(); c.roundRect(cx - bw / 2, 530, bw, 84, 42); c.fill(); c.fillStyle = "#000"; c.fillText(badge, cx, 588);
+    const st = [[mu.length, "互惠好友", "#39ff14"], [total_me, "近期评论", "#ffffff"], [total_to, "收到评论", "#6ec6ff"]];
+    st.forEach(([n, l, col], i) => { const x = S * (i + 1) / 4; c.fillStyle = col; c.font = "800 110px sans-serif"; c.fillText(String(n), x, 800); c.fillStyle = "#c8c8c8"; c.font = "500 40px sans-serif"; c.fillText(l, x, 865); });
+    c.fillStyle = "#8b9095"; c.font = "500 36px sans-serif"; c.fillText(`待回评 ${wa.length} · 我该回的 ${ow.length}`, cx, 980);
+    c.fillStyle = "#fff"; c.font = "700 46px sans-serif"; c.fillText("测测你的互评圈 👉", cx, 1150); c.fillStyle = "#39ff14"; c.font = "700 44px sans-serif"; c.fillText("924950698.github.io/rank-site", cx, 1215);
+    const blob = await new Promise(r => cv.toBlob(r, "image/png")), file = new File([blob], `ledger-${h}.png`, { type: "image/png" }), purl = URL.createObjectURL(blob);
+    const xText = `我的 X 互评名片：互惠率 ${rate}%，测测你的互评圈 👉 ` + shareUrl(h);
+    m.querySelector(".pmb").innerHTML = `<img src="${purl}" alt="互评名片"><div class="pmh">先保存名片，发帖时把图片加上</div>
+      <div class="pmr"><button class="btn" id="lgSave">保存图片</button><a class="btn ghost" id="lgX" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(xText)}">发到 X</a><button class="btn ghost" id="lgClose">关闭</button></div>`;
+    m.querySelector("#lgClose").onclick = () => m.remove();
+    m.querySelector("#lgSave").onclick = () => { window.track?.("ledger:save"); saveImage(file, purl, m.querySelector(".pmb")); };
+    m.querySelector("#lgX").onclick = () => window.track?.("ledger:x");
+  } catch (e) { m.querySelector(".pmb").innerHTML = `<div class="m" style="padding:30px;text-align:center">名片生成失败</div>`; }
+}
+$("#pq").onsubmit = async e => { e.preventDefault(); showLedger($("#pqIn").value); const r = await showPartners($("#pqIn").value); document.querySelector("#wall,.wall,canvas")?.scrollIntoView({ behavior: "smooth", block: "start" }); if (r) openWallModal(PW); };
+$("#pqLedger").onclick = () => { const v = $("#pqIn").value; if (!normHandle(v)) return toast("先输入你的 X 用户名"); showPartners(v); showLedger(v, true); };
 $("#pqPost").onclick = async () => { const r = await showPartners($("#pqIn").value); if (r) openPoster(r.h, r.list, r.url); };
-{ const u = new URLSearchParams(location.search).get("u"); if (u) { $("#pqIn").value = "@" + normHandle(u); showPartners(u, false); } }
+{ const u = new URLSearchParams(location.search).get("u"); if (u) { $("#pqIn").value = "@" + normHandle(u); showPartners(u, false); showLedger(u); } }
 
 // ---------- 启动 ----------
 fetch("data.json", { cache: "no-cache" }).then(r => r.json()).then(d => { D = d; render(); })

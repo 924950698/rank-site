@@ -1,0 +1,47 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=420">
+<style>
+body{margin:0;background:#000;color:#e8e8e8;font:14px/1.45 -apple-system,"PingFang SC","Noto Sans CJK SC",sans-serif;width:420px}
+.wrap{padding:14px}
+.demo{background:#3a2a00;color:#ffd54f;font-size:12px;text-align:center;padding:4px;border-radius:6px;margin-bottom:10px}
+.hd{display:flex;align-items:center;gap:12px;background:#0b140b;border:1px solid #39ff14;border-radius:16px;padding:14px}
+.hd img{width:56px;height:56px;border-radius:50%;border:3px solid #39ff14}
+.hd b{font-size:17px} .m{color:#8b9095;font-size:12px}
+.sum{display:flex;gap:8px;margin:12px 0} .sum div{flex:1;background:#111;border-radius:12px;padding:10px;text-align:center}
+.sum b{display:block;font-size:22px} .g{color:#39ff14} .y{color:#ffcc33} .bl{color:#6ec6ff}
+.tabs{display:flex;gap:6px;margin:6px 0 10px} .tabs span{padding:6px 12px;border-radius:999px;border:1px solid #333;font-size:13px} .tabs .on{border-color:#39ff14;color:#39ff14}
+.sec{background:#0d0d0d;border:1px solid #222;border-radius:14px;padding:10px 12px;margin-bottom:12px}
+.sec h4{margin:2px 0 8px;font-size:15px} .sec h4 small{color:#8b9095;font-weight:400;font-size:12px;margin-left:6px}
+.row{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid #1c1c1c} .row:first-of-type{border-top:0}
+.av{border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-weight:800;flex:none}
+.n{flex:1;min-width:0} .n b{display:block;font-size:14px} .n span{color:#8b9095;font-size:12px}
+.cnt{display:flex;flex-direction:column;align-items:flex-end;font-size:12px;margin-right:4px} .me{color:#39ff14} .he{color:#6ec6ff}
+button{font:inherit;font-size:12px;border-radius:999px;padding:6px 10px;border:1px solid #39ff14;background:none;color:#39ff14} button.go{background:#39ff14;color:#000;border:0;font-weight:700}
+.tag{font-size:12px;padding:3px 8px;border-radius:999px} .ok{background:#14320c;color:#39ff14}
+.big{display:block;width:100%;padding:14px;font-size:16px;font-weight:800;background:#39ff14;color:#000;border:0;border-radius:14px}
+.toast{background:#1b1b1b;border:1px solid #333;border-radius:12px;padding:10px;font-size:12px;color:#ccc;margin-bottom:12px}
+.card{margin:14px auto 0;width:340px;background:radial-gradient(circle at 30% 0,#173d0e,#050805 70%);border:1px solid #39ff14;border-radius:20px;padding:18px;text-align:center}
+.card img{width:64px;height:64px;border-radius:50%;border:3px solid #39ff14} .card .k{display:flex;justify-content:space-around;margin:14px 0} .card .k b{font-size:26px;display:block}
+.badge{display:inline-block;background:#39ff14;color:#000;font-weight:800;border-radius:999px;padding:4px 12px;margin-top:6px}
+</style></head><body><div class=wrap>
+<div class=demo>UI 稿 · 以下人物与数字均为示例数据</div>
+<div class=hd><img src="https://pbs.twimg.com/profile_images/2102987477808279552/EDyHrHli_400x400.jpg"><div><b>@tigerr3aue 的互评账本</b><div class=m>统计近 7 天的评论往来 · 每 6 小时更新</div></div></div>
+<div class=sum><div><b class=g>4</b>互惠好友</div><div><b class=y>3</b>待回评</div><div><b class=bl>2</b>我该回的</div></div>
+<div class=tabs><span class=on>全部</span><span>互惠好友</span><span>待回评</span><span>我该回的</span></div>
+<div class=sec><h4>🤝 互惠好友<small>你们互相评论过</small></h4><div class="row"><div class="av" style="width:36px;height:36px;background:#e57373">A</div><div class="n"><b>示例用户A</b><span>@demo_a</span></div>
+<div class="cnt"><span class="me">我评 6</span><span class="he">TA评 5</span></div><span class="tag ok">互惠</span></div><div class="row"><div class="av" style="width:36px;height:36px;background:#64b5f6">B</div><div class="n"><b>示例用户B</b><span>@demo_b</span></div>
+<div class="cnt"><span class="me">我评 4</span><span class="he">TA评 4</span></div><span class="tag ok">互惠</span></div><div class="row"><div class="av" style="width:36px;height:36px;background:#81c784">C</div><div class="n"><b>示例用户C</b><span>@demo_c</span></div>
+<div class="cnt"><span class="me">我评 3</span><span class="he">TA评 3</span></div><span class="tag ok">互惠</span></div><div class="row"><div class="av" style="width:36px;height:36px;background:#ffb74d">D</div><div class="n"><b>示例用户D</b><span>@demo_d</span></div>
+<div class="cnt"><span class="me">我评 2</span><span class="he">TA评 3</span></div><span class="tag ok">互惠</span></div></div>
+<div class=sec><h4>⏳ 待回评<small>你评论过 TA，TA 还没来你这儿</small></h4><div class="row"><div class="av" style="width:36px;height:36px;background:#ba68c8">E</div><div class="n"><b>示例用户E</b><span>@demo_e</span></div>
+<div class="cnt"><span class="me">我评 5</span><span class="he">TA评 0</span></div><button class="cp">复制私信</button></div><div class="row"><div class="av" style="width:36px;height:36px;background:#4dd0e1">F</div><div class="n"><b>示例用户F</b><span>@demo_f</span></div>
+<div class="cnt"><span class="me">我评 3</span><span class="he">TA评 0</span></div><button class="cp">复制私信</button></div><div class="row"><div class="av" style="width:36px;height:36px;background:#f06292">G</div><div class="n"><b>示例用户G</b><span>@demo_g</span></div>
+<div class="cnt"><span class="me">我评 2</span><span class="he">TA评 0</span></div><button class="cp">复制私信</button></div></div>
+<div class=toast>点「复制私信」后复制的话术：<br>「嗨～最近常去你帖子下聊，挺喜欢你的内容！我这两天也发了几条，有空来坐坐呀 🙏」</div>
+<div class=sec><h4>💬 我该回的<small>TA 评论过你，你还没回访</small></h4><div class="row"><div class="av" style="width:36px;height:36px;background:#aed581">H</div><div class="n"><b>示例用户H</b><span>@demo_h</span></div>
+<div class="cnt"><span class="me">我评 0</span><span class="he">TA评 4</span></div><button class="go">去回评</button></div><div class="row"><div class="av" style="width:36px;height:36px;background:#9575cd">I</div><div class="n"><b>示例用户I</b><span>@demo_i</span></div>
+<div class="cnt"><span class="me">我评 0</span><span class="he">TA评 2</span></div><button class="go">去回评</button></div></div>
+<button class=big>生成我的互评名片</button>
+<div class=card><img src="https://pbs.twimg.com/profile_images/2102987477808279552/EDyHrHli_400x400.jpg"><div style="font-weight:800;font-size:17px;margin-top:6px">@tigerr3aue</div><div class=badge>互惠率 57% · 靠谱互评人</div>
+<div class=k><div><b class=g>4</b>互惠好友</div><div><b>23</b>近7天评论</div><div><b class=bl>19</b>收到评论</div></div>
+<div class=m>测测你的互评圈 👉 924950698.github.io/rank-site</div></div>
+</div></body></html>
