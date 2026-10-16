@@ -364,7 +364,7 @@ async function showLedger(raw, scroll) {
       : `<a class="lg-btn fill" data-go="${esc(hd)}" href="${esc(u.latest_post_url || profile(hd))}" target="_blank" rel="noopener">去回评</a>`;
     return `<div class="lg-row">${av ? `<img loading="lazy" src="${esc(av)}" alt="" onerror="this.outerHTML='<b class=ini>${esc(ini(u))}</b>'">` : `<b class="ini">${esc(ini(u))}</b>`}
       <a class="lg-n" href="${esc(profile(hd))}" target="_blank" rel="noopener"><b>${esc(u.name || hd)}</b><span>@${esc(hd)}</span></a>
-      <div class="lg-c"><span class="lg-g">我评 ${u.me_to || 0}</span><span class="lg-b">TA评 ${u.to_me || 0}</span></div>${btn}</div>`; };
+      <div class="lg-c">${u.me_to > 0 && u.last_me_url ? `<a class="lg-g lg-l" href="${esc(u.last_me_url)}" target="_blank" rel="noopener">我评 ${u.me_to} ›</a>` : `<span class="lg-g">我评 ${u.me_to || 0}</span>`}${u.to_me > 0 && u.last_to_me_url ? `<a class="lg-b lg-l" href="${esc(u.last_to_me_url)}" target="_blank" rel="noopener">TA评 ${u.to_me} ›</a>` : `<span class="lg-b">TA评 ${u.to_me || 0}</span>`}</div>${btn}</div>`; };
   const sec = (k, ic, name, tip, arr, empty) => `<div class="lg-sec" data-k="${k}"><h4>${ic} ${name}<small>${tip}</small></h4>${arr.length ? arr.map(u => row(u, k)).join("") : `<div class="lg-empty">${empty}</div>`}</div>`;
   out.innerHTML = `<h3>互评账本</h3>${head}
     <div class="lg-sum"><button type="button" data-f="all" class="on"><b class="lg-g">${mu.length}</b>互惠好友</button><button type="button" data-f="wa"><b class="lg-y">${wa.length}</b>待回评</button><button type="button" data-f="ow"><b class="lg-b">${ow.length}</b>我该回的</button></div>
