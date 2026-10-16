@@ -39,7 +39,9 @@ function renderList() {
       + (g.length < 5 ? `<div class="empty">新号进步榜刚上线，数据攒满后会有更多新号上榜<br><a class="btn" style="display:inline-block;margin-top:10px" href="https://x.com/intent/follow?screen_name=tigerr3aue" target="_blank" rel="noopener">关注 @tigerr3aue，下一个上榜的就是你</a></div>` : ""));
     $("#more").style.display = "none";
   } else {
-    const arr = D[tab] || [];
+    const seen = new Set(), arr = (D[tab] || []).filter(p => { const m = p.metrics || {}, k = (p.author?.username || "").toLowerCase();
+      if ((m.views || 0) >= 5000 && !((m.likes || 0) + (m.replies || 0) + (m.reposts || 0))) return false;
+      if (seen.has(k)) return false; seen.add(k); return true; });
     html = arr.slice(0, n).map((p, i) => card(p, i)).join("") || `<div class="empty">暂无数据</div>`;
     $("#more").style.display = "none";
   }
@@ -228,6 +230,9 @@ document.addEventListener("click", e => {
 }, true);
 // ---------- 每日话题 & 站长推荐（topic.json，tiger 手动维护） ----------
 fetch("topic.json", { cache: "no-cache" }).then(r => r.json()).then(t => {
+  const isPost = u => /\/status\/\d+/.test(u || "");
+  if (!isPost(t.daily_topic?.url)) { $("#topic").style.display = "none"; delete t.daily_topic; }
+  if (!isPost(t.pinned?.url)) delete t.pinned;
   if (t.daily_topic) { $("#topicText").innerHTML = `${esc(t.daily_topic.title)}<span class="g">去投票/评论 →</span>`; $("#topic").href = t.daily_topic.url; }
   if (t.pinned?.url) { const p = $("#pinned"); p.href = t.pinned.url; p.querySelector("b").textContent = t.pinned.title || "查看 tiger 的最新帖"; p.querySelector(".m").textContent = t.pinned.label || "站长推荐"; p.hidden = false; }
 }).catch(() => {});
