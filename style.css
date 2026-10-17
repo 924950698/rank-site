@@ -155,3 +155,4 @@ header .btn{padding:5px 9px;font-size:12px}
 .incRg{color:#c8c8c8;font-size:14px}.incFun{margin:12px auto;display:inline-block;padding:6px 16px;border-radius:20px;background:#ffd23f;color:#000;font-weight:700}
 .incBtn{display:block;width:100%;padding:12px 0;font-size:17px;margin-top:8px}.incFt{font-size:12px;color:#888;margin:12px 0 0}
 @media(max-width:1023px){body[data-page=income] .colL,body[data-page=income] .howto{display:none}}
+@media(min-width:1024px){.colC .page>:first-child,.colC .page>:first-child>:first-child,#ledgerOut{margin-top:0}}

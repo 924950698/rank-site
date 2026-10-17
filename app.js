@@ -422,7 +422,7 @@ async function showLedger(raw, scroll) {
   const rng = since && L.updated_at ? fmt(since) + " – " + fmt(L.updated_at) : "";
   const tm = (list || []).reduce((x, u) => x + (u.me_to || 0), 0), tt = (list || []).reduce((x, u) => x + (u.to_me || 0), 0);
   const head = `<div class="lg-hd"><div class="lg-top"><img src="${esc(selfAv)}" alt="" onerror="this.outerHTML='<b class=ini>${esc(h[0].toUpperCase())}</b>'"><div><b>@${esc(h)} 的互评账本</b><div class="m">${rng ? "统计区间 " + rng : "统计近期互评"} · 每 6 小时更新</div></div></div>${ov}${list?.length ? `<div class="lg-kpi"><div><b>${tm}</b><span>主动评论</span></div><div><b>${tt}</b><span>收到评论</span></div><div><b>${list.length}</b><span>互动账号</span></div></div>` : ""}</div>`;
-  if (!list?.length) { out.innerHTML = `<h3>互评账本</h3>${head}<div class="lg-sec"><div class="lg-empty">暂未开通，请进 X 群找群主申请权限 <a class="btn" style="display:inline-block;margin-top:8px" href="https://x.com/i/chat/group_join/g2108003040645275931/SH2IyrkR1A" target="_blank" rel="noopener">进 X 群申请</a></div></div>`; if (scroll) out.scrollIntoView({ behavior: "smooth" }); return; }
+  if (!list?.length) { out.innerHTML = `${head}<div class="lg-sec"><div class="lg-empty">暂未开通，请进 X 群找群主申请权限 <a class="btn" style="display:inline-block;margin-top:8px" href="https://x.com/i/chat/group_join/g2108003040645275931/SH2IyrkR1A" target="_blank" rel="noopener">进 X 群申请</a></div></div>`; if (scroll) out.scrollIntoView({ behavior: "smooth" }); return; }
   const mu = list.filter(u => u.me_to > 0 && u.to_me > 0).sort((a, b) => (b.me_to + b.to_me) - (a.me_to + a.to_me));
   const wa = list.filter(u => u.me_to > 0 && !(u.to_me > 0)).sort((a, b) => b.me_to - a.me_to);
   const ow = list.filter(u => u.to_me > 0 && !(u.me_to > 0)).sort((a, b) => b.to_me - a.to_me);
@@ -434,7 +434,7 @@ async function showLedger(raw, scroll) {
       <a class="lg-n" href="${esc(profile(hd))}" target="_blank" rel="noopener"><b>${esc(u.name || hd)}</b><span>@${esc(hd)}</span></a>
       <div class="lg-c">${u.me_to > 0 && u.last_me_url ? `<a class="lg-g lg-l" href="${esc(u.last_me_url)}" target="_blank" rel="noopener">我评 ${u.me_to} ›</a>` : `<span class="lg-g">我评 ${u.me_to || 0}</span>`}${u.to_me > 0 && u.last_to_me_url ? `<a class="lg-b lg-l" href="${esc(u.last_to_me_url)}" target="_blank" rel="noopener">TA评 ${u.to_me} ›</a>` : `<span class="lg-b">TA评 ${u.to_me || 0}</span>`}</div>${btn}</div>`; };
   const sec = (k, ic, name, tip, arr, empty) => `<div class="lg-sec" data-k="${k}"><h4>${ic} ${name}<small>${tip}</small></h4>${arr.length ? arr.map(u => row(u, k)).join("") : `<div class="lg-empty">${empty}</div>`}</div>`;
-  out.innerHTML = `<h3>互评账本</h3>${head}
+  out.innerHTML = `${head}
     <div class="lg-sum"><button type="button" data-f="mu" class="on"><b class="lg-g">${mu.length}</b>互惠好友</button><button type="button" data-f="wa"><b class="lg-y">${wa.length}</b>待回评</button><button type="button" data-f="ow"><b class="lg-b">${ow.length}</b>我该回的</button></div>
     ${sec("mu", "🤝", "互惠好友", "你们互相评论过", mu, "还没有互惠好友，去评论区多走动走动")}
     ${sec("wa", "⏳", "待回评", "你评论过 TA，TA 还没来你这儿", wa, "没有待回评，大家都很讲究 👍")}
