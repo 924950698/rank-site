@@ -1,0 +1,35 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>预期收益 线框图</title>
+<style>
+body{margin:0;font:14px/1.5 "Noto Sans CJK SC",sans-serif;background:#eee;color:#333}
+.box{border:2px dashed #999;background:#fafafa;border-radius:8px;padding:12px;margin:10px 0}
+.top{display:flex;align-items:center;gap:18px;background:#ccc;padding:12px 20px}
+.top b{margin-right:auto}.top span{padding:4px 10px;border-radius:6px}.top .on{background:#555;color:#fff}
+.menuBtn{display:none;font-size:22px}
+.lay{display:grid;grid-template-columns:240px 1fr 260px;gap:16px;padding:16px;max-width:1280px;margin:auto;box-sizing:border-box}
+.side{background:#ddd;border-radius:8px;padding:12px;color:#777;min-height:300px}
+.tog{display:flex;gap:0}.tog span{flex:1;text-align:center;padding:8px;border:2px solid #555}.tog .on{background:#555;color:#fff}
+.inp{border:2px solid #777;padding:10px;border-radius:6px;background:#fff}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.card{border:2px solid #777;border-radius:8px;padding:12px;text-align:center;background:#fff}.card big{font-size:26px;font-weight:700;display:block}
+.bar{height:14px;background:#ddd;border-radius:7px;overflow:hidden}.bar i{display:block;height:100%;background:#888}
+.tag{background:#999;color:#fff;padding:0 6px;border-radius:4px;font-size:12px}
+.slider{height:6px;background:#bbb;position:relative;margin:14px 0}.slider:after{content:"";position:absolute;left:20%;top:-6px;width:18px;height:18px;border-radius:50%;background:#555}
+small{color:#777}.dd{display:none}
+@media(max-width:700px){.top span{display:none}.menuBtn{display:block}.lay{grid-template-columns:1fr;padding:10px}.side{display:none}.dd{display:block;position:absolute;right:10px;top:52px;background:#fff;border:2px solid #555;border-radius:8px;width:180px}.dd div{padding:10px;border-bottom:1px solid #ccc}.dd .on{background:#555;color:#fff}.card big{font-size:20px}}
+</style>
+<div class="top"><b>X 中文创作者成长站</b><span>24 小时照片墙</span><span>今日中文 X 爆帖 Top 10</span><span>互评账本</span><span class="on">预期收益</span><div class="menuBtn">☰</div></div>
+<div class="dd"><div>24 小时照片墙</div><div>今日中文 X 爆帖 Top 10</div><div>互评账本</div><div class="on">预期收益 ✓</div></div>
+<div class="lay"><div class="side">左栏（#pq 输入框，沿用）</div>
+<div id="income"><h2>预期收益 <small>#income</small></h2>
+<div class="tog"><span class="on">我知道合格曝光 QI</span><span>只知道总曝光</span></div>
+<div class="box">两周合格曝光（QI）<div class="inp">200,000</div>
+<small>切到「只知道总曝光」时：输入框变为「两周总曝光」，并显示：</small>
+<div>折算系数（Premium 占比）：<b>20%</b> <small>默认 20%，可调</small></div><div class="slider"></div>
+<small>QI ≈ 总曝光 × 系数，结果标注 <span class="tag">粗估</span></small></div>
+<div class="cards"><div class="card">保守<big>$120</big><small>R=0.6</small></div><div class="card">中位<big>$220</big><small>R=1.1</small></div><div class="card">乐观<big>$260</big><small>R=1.3</small></div></div>
+<small>每两周收益 ≈ QI ÷ 1000 × R（美元）</small>
+<div class="box">打款门槛 $30（按中位）<div class="bar"><i style="width:100%"></i></div><small>单期不满 $30 不打款，滚入下一期</small></div>
+<div class="box">想拿 <span class="inp" style="padding:2px 8px">$100</span>，两周需要约 <b>9.1 万</b> 合格曝光 <small>（中位）</small></div>
+<div class="box">OCR 开通目标：90 天 50 万曝光（每天约 5600）<div class="bar"><i style="width:35%"></i></div><small>进度条占位：已累计 __ / 500,000</small></div>
+<small>单价来自创作者公开结算记录（ClimbX），官方未公开，仅供估算，不代表承诺</small></div>
+<div class="side">右栏（数据说明，沿用）</div></div></html>
