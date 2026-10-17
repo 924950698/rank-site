@@ -3,7 +3,7 @@
 用法：
   python3 scripts/ledger.py ingest HANDLE out|in FILE   # out = from:HANDLE is:reply ; in = to:HANDLE is:reply
   python3 scripts/ledger.py next FILE [CUTOFF_ISO]       # 需要翻页时打印 pagination_token（最多翻到第 4 页）
-  python3 scripts/ledger.py build                        # 生成 ledger.json（7 天窗口）
+  python3 scripts/ledger.py build                        # 生成 ledger.json（7 天窗口；只发布 partners.json users 里的账号）
 推荐查询参数（每个号每轮 2 次调用）：
   query="from:H is:reply" / "to:H is:reply", max_results=25, sort_order=recency, start_time=now-7d,
   post.fields=created_at,in_reply_to_user_id,author_id,referenced_tweets,conversation_id,
@@ -57,7 +57,12 @@ def build():
     cut = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=WIN)).strftime('%Y-%m-%dT%H:%M:%S')
     st['events'] = {k: v for k, v in st['events'].items() if v['t'][:19] >= cut}
     json.dump(st, open(EV, 'w'), ensure_ascii=False, separators=(',', ':'))
-    prof = load(os.path.join(ROOT, 'partners.json'), {}).get('profiles', {})
+    P = load(os.path.join(ROOT, 'partners.json'), {})
+    prof = P.get('profiles', {})
+    # 账本只跟踪/发布照片墙（partners.json users）里的账号
+    allow = {h.lower() for h in P.get('users', {})}
+    if allow: st['tracked'] = [h for h in st['tracked'] if h in allow] + [h for h in sorted(allow) if h not in st['tracked']]
+    json.dump(st, open(EV, 'w'), ensure_ascii=False, separators=(',', ':'))
     def info(h):
         u = st['users'].get(h, {}); p = prof.get(h, {})
         return (u.get('name') or p.get('name')), (p.get('avatar') or u.get('avatar'))
