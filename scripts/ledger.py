@@ -3,7 +3,7 @@
 用法：
   python3 scripts/ledger.py ingest HANDLE out|in FILE   # out = from:HANDLE is:reply ; in = to:HANDLE is:reply
   python3 scripts/ledger.py next FILE [CUTOFF_ISO]       # 需要翻页时打印 pagination_token（最多翻到第 4 页）
-  python3 scripts/ledger.py build                        # 生成 ledger.json（7 天窗口；只发布 partners.json users 里的账号）
+  python3 scripts/ledger.py build                        # 生成 ledger.json（7 天窗口；只发布 partners.json users 里的账号，排除 scripts/ledger_exclude.json）
 推荐查询参数（每个号每轮 2 次调用）：
   query="from:H is:reply" / "to:H is:reply", max_results=25, sort_order=recency, start_time=now-7d,
   post.fields=created_at,in_reply_to_user_id,author_id,referenced_tweets,conversation_id,
@@ -15,6 +15,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EV = os.path.join(ROOT, 'state', 'ledger-events.json')
 OUT = os.path.join(ROOT, 'ledger.json')
 WIN = 7
+EXCL_F = os.path.join(ROOT, 'scripts', 'ledger_exclude.json')
+
+def excluded():
+    try: return {h.lower().lstrip('@') for h in json.load(open(EXCL_F)).get('exclude', [])}
+    except Exception: return set()
 
 def load(p, d):
     try: return json.load(open(p))
@@ -29,6 +34,8 @@ def av(u):
 
 def ingest(handle, direction, path):
     handle = handle.lower().lstrip('@')
+    if handle in excluded():
+        print(f'{handle}: in scripts/ledger_exclude.json, skip'); return
     st = load(EV, {'events': {}, 'users': {}, 'tracked': []})
     d = parse_raw(path)
     inc = d.get('includes', {})
@@ -60,8 +67,8 @@ def build():
     P = load(os.path.join(ROOT, 'partners.json'), {})
     prof = P.get('profiles', {})
     # 账本只跟踪/发布照片墙（partners.json users）里的账号
-    allow = {h.lower() for h in P.get('users', {})}
-    if allow: st['tracked'] = [h for h in st['tracked'] if h in allow] + [h for h in sorted(allow) if h not in st['tracked']]
+    allow = {h.lower() for h in P.get('users', {})} - excluded()
+    if allow or excluded(): st['tracked'] = [h for h in st['tracked'] if h in allow] + [h for h in sorted(allow) if h not in st['tracked']]
     json.dump(st, open(EV, 'w'), ensure_ascii=False, separators=(',', ':'))
     def info(h):
         u = st['users'].get(h, {}); p = prof.get(h, {})

@@ -1,0 +1,6 @@
+{
+ "_note": "只做照片墙、不进互评账本的账号：ledger.py 不跟踪、不发布、不 ingest",
+ "exclude": [
+  "cyeezzzhfx"
+ ]
+}
