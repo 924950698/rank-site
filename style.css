@@ -148,3 +148,10 @@ header .btn{padding:5px 9px;font-size:12px}
 .chT{color:#ffd23f;font-weight:800;font-size:15px;margin-bottom:10px}.chR{display:flex;gap:12px;align-items:center}.chR .av{width:56px;height:56px;border-radius:50%;border:2px solid #ffd23f}
 .chS{color:#ffd23f;font-weight:800;margin-top:2px}.chB{display:flex;gap:8px;margin-top:12px}.chB .btn{flex:1;text-align:center}
 .chMe{display:block;text-align:center;margin-top:8px}.chRank{display:block;text-align:center;color:#39ff14;margin-top:10px;font-weight:700}
+.inc{margin:10px 6px;padding:20px 16px;border:1px solid #ffd23f;border-radius:14px;background:linear-gradient(135deg,#2a2405,#0b0b0b);text-align:center}
+.inc h3{margin:0 0 14px}.incL{display:block;color:#c8c8c8;font-size:14px;margin-bottom:8px}
+.incIn{width:100%;box-sizing:border-box;padding:12px;font-size:20px;text-align:center;border-radius:10px;border:1px solid #ffd23f88;background:#000;color:#fff;margin-bottom:8px}
+.incBig{font-size:18px;margin-top:10px}.incBig b{display:block;font-size:56px;color:#ffd23f;line-height:1.15}
+.incRg{color:#c8c8c8;font-size:14px}.incFun{margin:12px auto;display:inline-block;padding:6px 16px;border-radius:20px;background:#ffd23f;color:#000;font-weight:700}
+.incBtn{display:block;width:100%;padding:12px 0;font-size:17px;margin-top:8px}.incFt{font-size:12px;color:#888;margin:12px 0 0}
+@media(max-width:1023px){body[data-page=income] .colL,body[data-page=income] .howto{display:none}}

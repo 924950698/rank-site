@@ -1,7 +1,7 @@
 // 顶部菜单 + 双飞翼布局：桌面端左栏输入、中栏当前页、右栏说明；手机端右上角 ☰ 下拉切页
 (function(){
   const $=s=>document.querySelector(s), el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
-  const PAGES=[["wall","24 小时照片墙"],["rank","今日中文 X 爆帖 Top 10"],["ledger","互评账本"]];
+  const PAGES=[["wall","24 小时照片墙"],["rank","今日中文 X 爆帖 Top 10"],["ledger","互评账本"],["income","预期收益"]];
   const hd=$("header"), howto=$(".howto"), wallSec=$("#wallSec"), pq=$("#pq");
   // 菜单
   const nav=el("nav","topnav"); PAGES.forEach(([k,t])=>{const a=el("button",null,t);a.type="button";a.dataset.p=k;nav.appendChild(a)});
@@ -20,7 +20,8 @@
   const pL=el("section","page");pL.dataset.p="ledger";
   pL.appendChild(el("div","lgEmpty",'<h3>互评账本</h3><p class="m">在输入框填你的 X 用户名，点「查看我的互评账本」，就能看到谁和你互动过、互动了多少次</p>'));
   pL.appendChild($("#ledgerOut"));
-  C.append(pW,pR,pL); if(cta) C.appendChild(cta); wallSec.remove();
+  const pI=el("section","page");pI.dataset.p="income";pI.id="incomePage";
+  C.append(pW,pR,pL,pI); if(cta) C.appendChild(cta); wallSec.remove();
   // 右栏：数据说明 + 使用方法
   const info=$("#dmodal .dbox ul");
   R.appendChild(el("div","rbox",'<b>数据说明</b>'+(info?info.outerHTML:"")));
