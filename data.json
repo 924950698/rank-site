@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-17T12:02:51.056Z",
+ "updated_at": "2026-10-17T13:07:46.353Z",
  "exposure": [
   {
    "id": "2111268009033822717",
@@ -10,13 +10,13 @@
     "name": "RamenPanda",
     "username": "IamRamenPanda",
     "avatar": "https://pbs.twimg.com/profile_images/1652077879906414593/Y8cRI8vf_normal.jpg",
-    "followers": 94233
+    "followers": 94234
    },
    "metrics": {
-    "views": 24870,
-    "replies": 21,
+    "views": 25748,
+    "replies": 22,
     "reposts": 2,
-    "likes": 35,
+    "likes": 36,
     "quotes": 1,
     "bookmarks": 6
    },
@@ -102,27 +102,6 @@
    }
   },
   {
-   "id": "2111078512115499224",
-   "url": "https://x.com/VentLane/status/2111078512115499224",
-   "created_at": "2026-10-16T12:55:13.000Z",
-   "author": {
-    "id": "1447939086006763536",
-    "name": "水Lane💧",
-    "username": "VentLane",
-    "avatar": "https://pbs.twimg.com/profile_images/1986788783011119104/xMo1IQn8_normal.jpg",
-    "followers": 10184
-   },
-   "metrics": {
-    "views": 4084,
-    "replies": 181,
-    "reposts": 157,
-    "likes": 209,
-    "quotes": 2,
-    "bookmarks": 10
-   },
-   "image": null
-  },
-  {
    "id": "2111327047977165310",
    "url": "https://x.com/luyuban69/status/2111327047977165310",
    "created_at": "2026-10-17T05:22:49.000Z",
@@ -131,15 +110,15 @@
     "name": "鲁与班|Bird🕊️",
     "username": "luyuban69",
     "avatar": "https://pbs.twimg.com/profile_images/1698491537217204224/x-_TdDMe_normal.jpg",
-    "followers": 8927
+    "followers": 8935
    },
    "metrics": {
-    "views": 3426,
-    "replies": 95,
-    "reposts": 72,
-    "likes": 91,
+    "views": 3719,
+    "replies": 101,
+    "reposts": 75,
+    "likes": 98,
     "quotes": 0,
-    "bookmarks": 5
+    "bookmarks": 4
    },
    "image": {
     "url": "https://pbs.twimg.com/media/HUzwwB1bkAAQZyl.png",
@@ -156,13 +135,13 @@
     "name": "Helen 🇺🇸👉PASS THE SAVE ACT",
     "username": "helen_maga99",
     "avatar": "https://pbs.twimg.com/profile_images/2104526152643817472/uQX6pvAy_normal.jpg",
-    "followers": 15774
+    "followers": 15773
    },
    "metrics": {
-    "views": 2588,
+    "views": 2692,
     "replies": 1,
     "reposts": 0,
-    "likes": 17,
+    "likes": 18,
     "quotes": 0,
     "bookmarks": 1
    },
@@ -177,43 +156,18 @@
     "name": "YY",
     "username": "tttwxyow",
     "avatar": "https://pbs.twimg.com/profile_images/2088780249035063296/jRE7WS9h_normal.jpg",
-    "followers": 6920
+    "followers": 6921
    },
    "metrics": {
-    "views": 2373,
+    "views": 2406,
     "replies": 16,
     "reposts": 3,
-    "likes": 47,
+    "likes": 48,
     "quotes": 0,
-    "bookmarks": 22
+    "bookmarks": 21
    },
    "image": {
     "url": "https://pbs.twimg.com/media/HUwUIjbWoAAPT2K.jpg",
-    "w": 864,
-    "h": 1152
-   }
-  },
-  {
-   "id": "2111090991125946876",
-   "url": "https://x.com/tttwxyow/status/2111090991125946876",
-   "created_at": "2026-10-16T13:44:49.000Z",
-   "author": {
-    "id": "2068160567315992576",
-    "name": "YY",
-    "username": "tttwxyow",
-    "avatar": "https://pbs.twimg.com/profile_images/2088780249035063296/jRE7WS9h_normal.jpg",
-    "followers": 6920
-   },
-   "metrics": {
-    "views": 2192,
-    "replies": 7,
-    "reposts": 1,
-    "likes": 28,
-    "quotes": 0,
-    "bookmarks": 13
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HUwZ3PJXYAADXs8.jpg",
     "w": 864,
     "h": 1152
    }
@@ -227,13 +181,13 @@
     "name": "鱼泡泡",
     "username": "yupaopao0",
     "avatar": "https://pbs.twimg.com/profile_images/1991687263949058050/TguP4eCo_normal.jpg",
-    "followers": 23008
+    "followers": 23007
    },
    "metrics": {
-    "views": 2181,
-    "replies": 37,
-    "reposts": 25,
-    "likes": 38,
+    "views": 2355,
+    "replies": 41,
+    "reposts": 27,
+    "likes": 41,
     "quotes": 0,
     "bookmarks": 2
    },
@@ -242,30 +196,55 @@
     "w": 3072,
     "h": 4096
    }
+  },
+  {
+   "id": "2111090991125946876",
+   "url": "https://x.com/tttwxyow/status/2111090991125946876",
+   "created_at": "2026-10-16T13:44:49.000Z",
+   "author": {
+    "id": "2068160567315992576",
+    "name": "YY",
+    "username": "tttwxyow",
+    "avatar": "https://pbs.twimg.com/profile_images/2088780249035063296/jRE7WS9h_normal.jpg",
+    "followers": 6921
+   },
+   "metrics": {
+    "views": 2225,
+    "replies": 8,
+    "reposts": 1,
+    "likes": 29,
+    "quotes": 0,
+    "bookmarks": 13
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HUwZ3PJXYAADXs8.jpg",
+    "w": 864,
+    "h": 1152
+   }
+  },
+  {
+   "id": "2111245481519239496",
+   "url": "https://x.com/yeyusam1/status/2111245481519239496",
+   "created_at": "2026-10-16T23:58:42.000Z",
+   "author": {
+    "id": "476090886",
+    "name": "yeyusam",
+    "username": "yeyusam1",
+    "avatar": "https://pbs.twimg.com/profile_images/1427300008882233346/1QWXUAW9_normal.jpg",
+    "followers": 17767
+   },
+   "metrics": {
+    "views": 1776,
+    "replies": 4,
+    "reposts": 7,
+    "likes": 61,
+    "quotes": 0,
+    "bookmarks": 1
+   },
+   "image": null
   }
  ],
  "comments": [
-  {
-   "id": "2111078512115499224",
-   "url": "https://x.com/VentLane/status/2111078512115499224",
-   "created_at": "2026-10-16T12:55:13.000Z",
-   "author": {
-    "id": "1447939086006763536",
-    "name": "水Lane💧",
-    "username": "VentLane",
-    "avatar": "https://pbs.twimg.com/profile_images/1986788783011119104/xMo1IQn8_normal.jpg",
-    "followers": 10184
-   },
-   "metrics": {
-    "views": 4084,
-    "replies": 181,
-    "reposts": 157,
-    "likes": 209,
-    "quotes": 2,
-    "bookmarks": 10
-   },
-   "image": null
-  },
   {
    "id": "2111327047977165310",
    "url": "https://x.com/luyuban69/status/2111327047977165310",
@@ -275,15 +254,15 @@
     "name": "鲁与班|Bird🕊️",
     "username": "luyuban69",
     "avatar": "https://pbs.twimg.com/profile_images/1698491537217204224/x-_TdDMe_normal.jpg",
-    "followers": 8927
+    "followers": 8935
    },
    "metrics": {
-    "views": 3426,
-    "replies": 95,
-    "reposts": 72,
-    "likes": 91,
+    "views": 3719,
+    "replies": 101,
+    "reposts": 75,
+    "likes": 98,
     "quotes": 0,
-    "bookmarks": 5
+    "bookmarks": 4
    },
    "image": {
     "url": "https://pbs.twimg.com/media/HUzwwB1bkAAQZyl.png",
@@ -313,6 +292,31 @@
    "image": null
   },
   {
+   "id": "2111098495742714197",
+   "url": "https://x.com/0XRongYI/status/2111098495742714197",
+   "created_at": "2026-10-16T14:14:38.000Z",
+   "author": {
+    "id": "1628937732167766017",
+    "name": "榕一（Rong Yi）",
+    "username": "0XRongYI",
+    "avatar": "https://pbs.twimg.com/profile_images/2062652558628511744/DViTWOJ4_normal.jpg",
+    "followers": 2434
+   },
+   "metrics": {
+    "views": 802,
+    "replies": 47,
+    "reposts": 0,
+    "likes": 19,
+    "quotes": 1,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HUwg4tYbgAAHtlu.jpg",
+    "w": 1170,
+    "h": 1704
+   }
+  },
+  {
    "id": "2111373067259949134",
    "url": "https://x.com/yupaopao0/status/2111373067259949134",
    "created_at": "2026-10-17T08:25:41.000Z",
@@ -321,13 +325,13 @@
     "name": "鱼泡泡",
     "username": "yupaopao0",
     "avatar": "https://pbs.twimg.com/profile_images/1991687263949058050/TguP4eCo_normal.jpg",
-    "followers": 23008
+    "followers": 23007
    },
    "metrics": {
-    "views": 2181,
-    "replies": 37,
-    "reposts": 25,
-    "likes": 38,
+    "views": 2355,
+    "replies": 41,
+    "reposts": 27,
+    "likes": 41,
     "quotes": 0,
     "bookmarks": 2
    },
@@ -349,10 +353,10 @@
     "followers": 6002
    },
    "metrics": {
-    "views": 812,
-    "replies": 33,
+    "views": 845,
+    "replies": 34,
     "reposts": 2,
-    "likes": 15,
+    "likes": 16,
     "quotes": 0,
     "bookmarks": 1
    },
@@ -360,6 +364,56 @@
     "url": "https://pbs.twimg.com/media/HUzyb0ta8AAhpcQ.jpg",
     "w": 968,
     "h": 1262
+   }
+  },
+  {
+   "id": "2111376972152438989",
+   "url": "https://x.com/Big_Tea_Rice/status/2111376972152438989",
+   "created_at": "2026-10-17T08:41:12.000Z",
+   "author": {
+    "id": "1620521179663503363",
+    "name": "SuperLeo",
+    "username": "Big_Tea_Rice",
+    "avatar": "https://pbs.twimg.com/profile_images/1965794525282230272/hFzGZwgQ_normal.jpg",
+    "followers": 18740
+   },
+   "metrics": {
+    "views": 884,
+    "replies": 32,
+    "reposts": 31,
+    "likes": 44,
+    "quotes": 0,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HU0eAVZb0AE9Ihq.jpg",
+    "w": 1671,
+    "h": 941
+   }
+  },
+  {
+   "id": "2111397099090870564",
+   "url": "https://x.com/dogbaox/status/2111397099090870564",
+   "created_at": "2026-10-17T10:01:10.000Z",
+   "author": {
+    "id": "1896082294668214280",
+    "name": "小宝DF",
+    "username": "dogbaox",
+    "avatar": "https://pbs.twimg.com/profile_images/2099778801056223232/ktC2QeZx_normal.jpg",
+    "followers": 21644
+   },
+   "metrics": {
+    "views": 1112,
+    "replies": 28,
+    "reposts": 2,
+    "likes": 22,
+    "quotes": 0,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HU0wXqwa0AEWsbS.jpg",
+    "w": 4096,
+    "h": 3002
    }
   },
   {
@@ -388,28 +442,28 @@
    }
   },
   {
-   "id": "2111397099090870564",
-   "url": "https://x.com/dogbaox/status/2111397099090870564",
-   "created_at": "2026-10-17T10:01:10.000Z",
+   "id": "2111268009033822717",
+   "url": "https://x.com/IamRamenPanda/status/2111268009033822717",
+   "created_at": "2026-10-17T01:28:13.000Z",
    "author": {
-    "id": "1896082294668214280",
-    "name": "小宝DF",
-    "username": "dogbaox",
-    "avatar": "https://pbs.twimg.com/profile_images/2099778801056223232/ktC2QeZx_normal.jpg",
-    "followers": 21632
+    "id": "1008162403",
+    "name": "RamenPanda",
+    "username": "IamRamenPanda",
+    "avatar": "https://pbs.twimg.com/profile_images/1652077879906414593/Y8cRI8vf_normal.jpg",
+    "followers": 94234
    },
    "metrics": {
-    "views": 831,
+    "views": 25748,
     "replies": 22,
     "reposts": 2,
-    "likes": 19,
-    "quotes": 0,
-    "bookmarks": 0
+    "likes": 36,
+    "quotes": 1,
+    "bookmarks": 6
    },
    "image": {
-    "url": "https://pbs.twimg.com/media/HU0wXqwa0AEWsbS.jpg",
-    "w": 4096,
-    "h": 3002
+    "url": "https://pbs.twimg.com/media/HUy68dKaoAAC7a5.jpg",
+    "w": 1124,
+    "h": 2048
    }
   },
   {
@@ -435,56 +489,6 @@
     "url": "https://pbs.twimg.com/amplify_video_thumb/2111408648266326016/img/2Sygb5z2QiNHKglc.jpg",
     "w": 1920,
     "h": 1080
-   }
-  },
-  {
-   "id": "2111268009033822717",
-   "url": "https://x.com/IamRamenPanda/status/2111268009033822717",
-   "created_at": "2026-10-17T01:28:13.000Z",
-   "author": {
-    "id": "1008162403",
-    "name": "RamenPanda",
-    "username": "IamRamenPanda",
-    "avatar": "https://pbs.twimg.com/profile_images/1652077879906414593/Y8cRI8vf_normal.jpg",
-    "followers": 94233
-   },
-   "metrics": {
-    "views": 24870,
-    "replies": 21,
-    "reposts": 2,
-    "likes": 35,
-    "quotes": 1,
-    "bookmarks": 6
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HUy68dKaoAAC7a5.jpg",
-    "w": 1124,
-    "h": 2048
-   }
-  },
-  {
-   "id": "2111376972152438989",
-   "url": "https://x.com/Big_Tea_Rice/status/2111376972152438989",
-   "created_at": "2026-10-17T08:41:12.000Z",
-   "author": {
-    "id": "1620521179663503363",
-    "name": "SuperLeo",
-    "username": "Big_Tea_Rice",
-    "avatar": "https://pbs.twimg.com/profile_images/1965794525282230272/hFzGZwgQ_normal.jpg",
-    "followers": 18728
-   },
-   "metrics": {
-    "views": 815,
-    "replies": 20,
-    "reposts": 21,
-    "likes": 30,
-    "quotes": 0,
-    "bookmarks": 0
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HU0eAVZb0AE9Ihq.jpg",
-    "w": 1671,
-    "h": 941
    }
   }
  ],
@@ -524,10 +528,10 @@
      "name": "charles Xiong",
      "username": "charles12388",
      "avatar": "https://pbs.twimg.com/profile_images/2100381185331671040/kgwgxOn8_normal.jpg",
-     "followers": 4907
+     "followers": 4927
     },
     "metrics": {
-     "views": 718,
+     "views": 731,
      "replies": 3,
      "reposts": 1,
      "likes": 3,
@@ -538,34 +542,6 @@
      "url": "https://pbs.twimg.com/media/HUz7anZbMAAM4Vv.png",
      "w": 680,
      "h": 382
-    }
-   }
-  },
-  {
-   "gain": 441,
-   "post": {
-    "id": "2111225125471441215",
-    "url": "https://x.com/nirox0216/status/2111225125471441215",
-    "created_at": "2026-10-16T22:37:49.000Z",
-    "author": {
-     "id": "1843663420169854976",
-     "name": "NiRox",
-     "username": "nirox0216",
-     "avatar": "https://pbs.twimg.com/profile_images/2024313187827650560/sVJi_d0w_normal.jpg",
-     "followers": 1422
-    },
-    "metrics": {
-     "views": 168,
-     "replies": 9,
-     "reposts": 0,
-     "likes": 10,
-     "quotes": 0,
-     "bookmarks": 0
-    },
-    "image": {
-     "url": "https://pbs.twimg.com/media/HUyUDzea8AAhVd2.jpg",
-     "w": 1182,
-     "h": 2048
     }
    }
   },
@@ -598,23 +574,51 @@
    }
   },
   {
-   "gain": 368,
+   "gain": 400,
    "post": {
-    "id": "2111366878765707408",
-    "url": "https://x.com/kkwin2025/status/2111366878765707408",
-    "created_at": "2026-10-17T08:01:05.000Z",
+    "id": "2111225125471441215",
+    "url": "https://x.com/nirox0216/status/2111225125471441215",
+    "created_at": "2026-10-16T22:37:49.000Z",
     "author": {
-     "id": "2107758516106899456",
-     "name": "krex",
-     "username": "kkwin2025",
-     "avatar": "https://pbs.twimg.com/profile_images/2107760201709572096/0PPxINXr_normal.jpg",
-     "followers": 2323
+     "id": "1843663420169854976",
+     "name": "NiRox",
+     "username": "nirox0216",
+     "avatar": "https://pbs.twimg.com/profile_images/2024313187827650560/sVJi_d0w_normal.jpg",
+     "followers": 1434
     },
     "metrics": {
-     "views": 1,
-     "replies": 0,
+     "views": 177,
+     "replies": 9,
      "reposts": 0,
-     "likes": 0,
+     "likes": 10,
+     "quotes": 0,
+     "bookmarks": 0
+    },
+    "image": {
+     "url": "https://pbs.twimg.com/media/HUyUDzea8AAhVd2.jpg",
+     "w": 1182,
+     "h": 2048
+    }
+   }
+  },
+  {
+   "gain": 335,
+   "post": {
+    "id": "2111397752957542697",
+    "url": "https://x.com/ShawnShallSay/status/2111397752957542697",
+    "created_at": "2026-10-17T10:03:46.000Z",
+    "author": {
+     "id": "1868738925830742016",
+     "name": "Shawn有话说",
+     "username": "ShawnShallSay",
+     "avatar": "https://pbs.twimg.com/profile_images/2109291572852363265/yLENtZmW_normal.jpg",
+     "followers": 1351
+    },
+    "metrics": {
+     "views": 61,
+     "replies": 7,
+     "reposts": 0,
+     "likes": 6,
      "quotes": 0,
      "bookmarks": 0
     },
@@ -646,31 +650,7 @@
    }
   },
   {
-   "gain": 327,
-   "post": {
-    "id": "2111397752957542697",
-    "url": "https://x.com/ShawnShallSay/status/2111397752957542697",
-    "created_at": "2026-10-17T10:03:46.000Z",
-    "author": {
-     "id": "1868738925830742016",
-     "name": "Shawn有话说",
-     "username": "ShawnShallSay",
-     "avatar": "https://pbs.twimg.com/profile_images/2109291572852363265/yLENtZmW_normal.jpg",
-     "followers": 1330
-    },
-    "metrics": {
-     "views": 49,
-     "replies": 6,
-     "reposts": 0,
-     "likes": 5,
-     "quotes": 0,
-     "bookmarks": 0
-    },
-    "image": null
-   }
-  },
-  {
-   "gain": 304,
+   "gain": 301,
    "post": {
     "id": "2111235225045155929",
     "url": "https://x.com/IfLzvUv0/status/2111235225045155929",
@@ -680,7 +660,7 @@
      "name": "I AM",
      "username": "IfLzvUv0",
      "avatar": "https://pbs.twimg.com/profile_images/2108370793021526016/aGEhvY6Z_normal.jpg",
-     "followers": 3537
+     "followers": 3546
     },
     "metrics": {
      "views": 212,
@@ -698,6 +678,30 @@
    }
   },
   {
+   "gain": 300,
+   "post": {
+    "id": "2111366878765707408",
+    "url": "https://x.com/kkwin2025/status/2111366878765707408",
+    "created_at": "2026-10-17T08:01:05.000Z",
+    "author": {
+     "id": "2107758516106899456",
+     "name": "krex",
+     "username": "kkwin2025",
+     "avatar": "https://pbs.twimg.com/profile_images/2107760201709572096/0PPxINXr_normal.jpg",
+     "followers": 2323
+    },
+    "metrics": {
+     "views": 1,
+     "replies": 0,
+     "reposts": 0,
+     "likes": 0,
+     "quotes": 0,
+     "bookmarks": 0
+    },
+    "image": null
+   }
+  },
+  {
    "gain": 292,
    "post": {
     "id": "2111405355531972829",
@@ -708,13 +712,13 @@
      "name": "GoalTrader 买美股上美国本土券商，首先必贝",
      "username": "sunkaixuan1718",
      "avatar": "https://pbs.twimg.com/profile_images/2071177738061529088/ScKAIeSk_normal.jpg",
-     "followers": 5702
+     "followers": 5731
     },
     "metrics": {
-     "views": 80,
-     "replies": 3,
+     "views": 106,
+     "replies": 4,
      "reposts": 0,
-     "likes": 3,
+     "likes": 4,
      "quotes": 0,
      "bookmarks": 0
     },
@@ -764,13 +768,13 @@
     "name": "RamenPanda",
     "username": "IamRamenPanda",
     "avatar": "https://pbs.twimg.com/profile_images/1652077879906414593/Y8cRI8vf_normal.jpg",
-    "followers": 94233
+    "followers": 94234
    },
    "metrics": {
-    "views": 24870,
-    "replies": 21,
+    "views": 25748,
+    "replies": 22,
     "reposts": 2,
-    "likes": 35,
+    "likes": 36,
     "quotes": 1,
     "bookmarks": 6
    },
@@ -864,15 +868,15 @@
     "name": "鲁与班|Bird🕊️",
     "username": "luyuban69",
     "avatar": "https://pbs.twimg.com/profile_images/1698491537217204224/x-_TdDMe_normal.jpg",
-    "followers": 8927
+    "followers": 8935
    },
    "metrics": {
-    "views": 3426,
-    "replies": 95,
-    "reposts": 72,
-    "likes": 91,
+    "views": 3719,
+    "replies": 101,
+    "reposts": 75,
+    "likes": 98,
     "quotes": 0,
-    "bookmarks": 5
+    "bookmarks": 4
    },
    "image": {
     "url": "https://pbs.twimg.com/media/HUzwwB1bkAAQZyl.png",
@@ -889,43 +893,18 @@
     "name": "YY",
     "username": "tttwxyow",
     "avatar": "https://pbs.twimg.com/profile_images/2088780249035063296/jRE7WS9h_normal.jpg",
-    "followers": 6920
+    "followers": 6921
    },
    "metrics": {
-    "views": 2373,
+    "views": 2406,
     "replies": 16,
     "reposts": 3,
-    "likes": 47,
+    "likes": 48,
     "quotes": 0,
-    "bookmarks": 22
+    "bookmarks": 21
    },
    "image": {
     "url": "https://pbs.twimg.com/media/HUwUIjbWoAAPT2K.jpg",
-    "w": 864,
-    "h": 1152
-   }
-  },
-  {
-   "id": "2111090991125946876",
-   "url": "https://x.com/tttwxyow/status/2111090991125946876",
-   "created_at": "2026-10-16T13:44:49.000Z",
-   "author": {
-    "id": "2068160567315992576",
-    "name": "YY",
-    "username": "tttwxyow",
-    "avatar": "https://pbs.twimg.com/profile_images/2088780249035063296/jRE7WS9h_normal.jpg",
-    "followers": 6920
-   },
-   "metrics": {
-    "views": 2192,
-    "replies": 7,
-    "reposts": 1,
-    "likes": 28,
-    "quotes": 0,
-    "bookmarks": 13
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HUwZ3PJXYAADXs8.jpg",
     "w": 864,
     "h": 1152
    }
@@ -939,13 +918,13 @@
     "name": "鱼泡泡",
     "username": "yupaopao0",
     "avatar": "https://pbs.twimg.com/profile_images/1991687263949058050/TguP4eCo_normal.jpg",
-    "followers": 23008
+    "followers": 23007
    },
    "metrics": {
-    "views": 2181,
-    "replies": 37,
-    "reposts": 25,
-    "likes": 38,
+    "views": 2355,
+    "replies": 41,
+    "reposts": 27,
+    "likes": 41,
     "quotes": 0,
     "bookmarks": 2
    },
@@ -956,28 +935,28 @@
    }
   },
   {
-   "id": "2111172325466923404",
-   "url": "https://x.com/tttwxyow/status/2111172325466923404",
-   "created_at": "2026-10-16T19:08:00.000Z",
+   "id": "2111090991125946876",
+   "url": "https://x.com/tttwxyow/status/2111090991125946876",
+   "created_at": "2026-10-16T13:44:49.000Z",
    "author": {
     "id": "2068160567315992576",
     "name": "YY",
     "username": "tttwxyow",
     "avatar": "https://pbs.twimg.com/profile_images/2088780249035063296/jRE7WS9h_normal.jpg",
-    "followers": 6920
+    "followers": 6921
    },
    "metrics": {
-    "views": 1707,
-    "replies": 7,
+    "views": 2225,
+    "replies": 8,
     "reposts": 1,
     "likes": 29,
     "quotes": 0,
-    "bookmarks": 12
+    "bookmarks": 13
    },
    "image": {
-    "url": "https://pbs.twimg.com/media/HUxj4hvWMAAmOiI.jpg",
-    "w": 848,
-    "h": 1184
+    "url": "https://pbs.twimg.com/media/HUwZ3PJXYAADXs8.jpg",
+    "w": 864,
+    "h": 1152
    }
   },
   {
@@ -989,13 +968,13 @@
     "name": "YY",
     "username": "tttwxyow",
     "avatar": "https://pbs.twimg.com/profile_images/2088780249035063296/jRE7WS9h_normal.jpg",
-    "followers": 6920
+    "followers": 6921
    },
    "metrics": {
-    "views": 1705,
-    "replies": 16,
+    "views": 1757,
+    "replies": 17,
     "reposts": 1,
-    "likes": 25,
+    "likes": 26,
     "quotes": 0,
     "bookmarks": 12
    },
@@ -1003,6 +982,31 @@
     "url": "https://pbs.twimg.com/media/HUxrqJFW4AAVJSr.jpg",
     "w": 864,
     "h": 1152
+   }
+  },
+  {
+   "id": "2111172325466923404",
+   "url": "https://x.com/tttwxyow/status/2111172325466923404",
+   "created_at": "2026-10-16T19:08:00.000Z",
+   "author": {
+    "id": "2068160567315992576",
+    "name": "YY",
+    "username": "tttwxyow",
+    "avatar": "https://pbs.twimg.com/profile_images/2088780249035063296/jRE7WS9h_normal.jpg",
+    "followers": 6921
+   },
+   "metrics": {
+    "views": 1750,
+    "replies": 7,
+    "reposts": 1,
+    "likes": 31,
+    "quotes": 0,
+    "bookmarks": 12
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HUxj4hvWMAAmOiI.jpg",
+    "w": 848,
+    "h": 1184
    }
   },
   {
@@ -1064,10 +1068,10 @@
     "name": "RamenPanda",
     "username": "IamRamenPanda",
     "avatar": "https://pbs.twimg.com/profile_images/1652077879906414593/Y8cRI8vf_normal.jpg",
-    "followers": 94233
+    "followers": 94234
    },
    "metrics": {
-    "views": 1393,
+    "views": 1423,
     "replies": 0,
     "reposts": 0,
     "likes": 0,
@@ -1081,6 +1085,31 @@
    }
   },
   {
+   "id": "2111402491174945279",
+   "url": "https://x.com/kikuchi168/status/2111402491174945279",
+   "created_at": "2026-10-17T10:22:36.000Z",
+   "author": {
+    "id": "1715190306004758528",
+    "name": "KiKuChi CLUB 【中国官方】",
+    "username": "kikuchi168",
+    "avatar": "https://pbs.twimg.com/profile_images/1940238983587389440/f0oD35Nv_normal.jpg",
+    "followers": 54651
+   },
+   "metrics": {
+    "views": 1327,
+    "replies": 13,
+    "reposts": 18,
+    "likes": 13,
+    "quotes": 1,
+    "bookmarks": 1
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HU01XpcbMAAx10v.jpg",
+    "w": 1440,
+    "h": 2000
+   }
+  },
+  {
    "id": "2111313546973995354",
    "url": "https://x.com/NikolaTesla2010/status/2111313546973995354",
    "created_at": "2026-10-17T04:29:10.000Z",
@@ -1089,10 +1118,10 @@
     "name": "Tesla",
     "username": "NikolaTesla2010",
     "avatar": "https://pbs.twimg.com/profile_images/1884785853194776576/U7JbZj26_normal.jpg",
-    "followers": 23071
+    "followers": 23080
    },
    "metrics": {
-    "views": 1245,
+    "views": 1293,
     "replies": 1,
     "reposts": 0,
     "likes": 1,
@@ -1106,6 +1135,31 @@
    }
   },
   {
+   "id": "2111397099090870564",
+   "url": "https://x.com/dogbaox/status/2111397099090870564",
+   "created_at": "2026-10-17T10:01:10.000Z",
+   "author": {
+    "id": "1896082294668214280",
+    "name": "小宝DF",
+    "username": "dogbaox",
+    "avatar": "https://pbs.twimg.com/profile_images/2099778801056223232/ktC2QeZx_normal.jpg",
+    "followers": 21644
+   },
+   "metrics": {
+    "views": 1112,
+    "replies": 28,
+    "reposts": 2,
+    "likes": 22,
+    "quotes": 0,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HU0wXqwa0AEWsbS.jpg",
+    "w": 4096,
+    "h": 3002
+   }
+  },
+  {
    "id": "2111356935392125278",
    "url": "https://x.com/tb_fzy111/status/2111356935392125278",
    "created_at": "2026-10-17T07:21:35.000Z",
@@ -1114,13 +1168,13 @@
     "name": "上海日记",
     "username": "tb_fzy111",
     "avatar": "https://pbs.twimg.com/profile_images/1997482761050054656/Ny_9Wqy4_normal.jpg",
-    "followers": 9398
+    "followers": 9400
    },
    "metrics": {
-    "views": 967,
+    "views": 1105,
     "replies": 2,
-    "reposts": 1,
-    "likes": 9,
+    "reposts": 2,
+    "likes": 11,
     "quotes": 0,
     "bookmarks": 0
    },
@@ -1128,31 +1182,6 @@
     "url": "https://pbs.twimg.com/amplify_video_thumb/2111356818236850176/img/lyY-ow1zB818NgSl.jpg",
     "w": 1080,
     "h": 1920
-   }
-  },
-  {
-   "id": "2111065621018317012",
-   "url": "https://x.com/Hugo88049441/status/2111065621018317012",
-   "created_at": "2026-10-16T12:04:00.000Z",
-   "author": {
-    "id": "1510395038479441924",
-    "name": "LoveLanxi🌈",
-    "username": "Hugo88049441",
-    "avatar": "https://pbs.twimg.com/profile_images/1526397346619092992/wAG7hELK_normal.jpg",
-    "followers": 19283
-   },
-   "metrics": {
-    "views": 915,
-    "replies": 0,
-    "reposts": 0,
-    "likes": 9,
-    "quotes": 0,
-    "bookmarks": 0
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/amplify_video_thumb/2111022306629918721/img/3deE-mcOCxXvpJk6.jpg",
-    "w": 720,
-    "h": 1280
    }
   },
   {
@@ -1181,53 +1210,28 @@
    }
   },
   {
-   "id": "2111402491174945279",
-   "url": "https://x.com/kikuchi168/status/2111402491174945279",
-   "created_at": "2026-10-17T10:22:36.000Z",
+   "id": "2111376972152438989",
+   "url": "https://x.com/Big_Tea_Rice/status/2111376972152438989",
+   "created_at": "2026-10-17T08:41:12.000Z",
    "author": {
-    "id": "1715190306004758528",
-    "name": "KiKuChi CLUB 【中国官方】",
-    "username": "kikuchi168",
-    "avatar": "https://pbs.twimg.com/profile_images/1940238983587389440/f0oD35Nv_normal.jpg",
-    "followers": 54650
+    "id": "1620521179663503363",
+    "name": "SuperLeo",
+    "username": "Big_Tea_Rice",
+    "avatar": "https://pbs.twimg.com/profile_images/1965794525282230272/hFzGZwgQ_normal.jpg",
+    "followers": 18740
    },
    "metrics": {
-    "views": 840,
-    "replies": 9,
-    "reposts": 13,
-    "likes": 10,
-    "quotes": 1,
-    "bookmarks": 1
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HU01XpcbMAAx10v.jpg",
-    "w": 1440,
-    "h": 2000
-   }
-  },
-  {
-   "id": "2111397099090870564",
-   "url": "https://x.com/dogbaox/status/2111397099090870564",
-   "created_at": "2026-10-17T10:01:10.000Z",
-   "author": {
-    "id": "1896082294668214280",
-    "name": "小宝DF",
-    "username": "dogbaox",
-    "avatar": "https://pbs.twimg.com/profile_images/2099778801056223232/ktC2QeZx_normal.jpg",
-    "followers": 21632
-   },
-   "metrics": {
-    "views": 831,
-    "replies": 22,
-    "reposts": 2,
-    "likes": 19,
+    "views": 884,
+    "replies": 32,
+    "reposts": 31,
+    "likes": 44,
     "quotes": 0,
     "bookmarks": 0
    },
    "image": {
-    "url": "https://pbs.twimg.com/media/HU0wXqwa0AEWsbS.jpg",
-    "w": 4096,
-    "h": 3002
+    "url": "https://pbs.twimg.com/media/HU0eAVZb0AE9Ihq.jpg",
+    "w": 1671,
+    "h": 941
    }
   },
   {
@@ -1242,10 +1246,10 @@
     "followers": 14090
    },
    "metrics": {
-    "views": 822,
-    "replies": 0,
+    "views": 871,
+    "replies": 1,
     "reposts": 1,
-    "likes": 23,
+    "likes": 26,
     "quotes": 0,
     "bookmarks": 0
    },
@@ -1253,31 +1257,6 @@
     "url": "https://pbs.twimg.com/media/HUzsN6da8AAhxYR.jpg",
     "w": 1536,
     "h": 2048
-   }
-  },
-  {
-   "id": "2111376972152438989",
-   "url": "https://x.com/Big_Tea_Rice/status/2111376972152438989",
-   "created_at": "2026-10-17T08:41:12.000Z",
-   "author": {
-    "id": "1620521179663503363",
-    "name": "SuperLeo",
-    "username": "Big_Tea_Rice",
-    "avatar": "https://pbs.twimg.com/profile_images/1965794525282230272/hFzGZwgQ_normal.jpg",
-    "followers": 18728
-   },
-   "metrics": {
-    "views": 815,
-    "replies": 20,
-    "reposts": 21,
-    "likes": 30,
-    "quotes": 0,
-    "bookmarks": 0
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HU0eAVZb0AE9Ihq.jpg",
-    "w": 1671,
-    "h": 941
    }
   },
   {
@@ -1292,10 +1271,10 @@
     "followers": 6002
    },
    "metrics": {
-    "views": 812,
-    "replies": 33,
+    "views": 845,
+    "replies": 34,
     "reposts": 2,
-    "likes": 15,
+    "likes": 16,
     "quotes": 0,
     "bookmarks": 1
    },
@@ -1303,6 +1282,56 @@
     "url": "https://pbs.twimg.com/media/HUzyb0ta8AAhpcQ.jpg",
     "w": 968,
     "h": 1262
+   }
+  },
+  {
+   "id": "2111098495742714197",
+   "url": "https://x.com/0XRongYI/status/2111098495742714197",
+   "created_at": "2026-10-16T14:14:38.000Z",
+   "author": {
+    "id": "1628937732167766017",
+    "name": "榕一（Rong Yi）",
+    "username": "0XRongYI",
+    "avatar": "https://pbs.twimg.com/profile_images/2062652558628511744/DViTWOJ4_normal.jpg",
+    "followers": 2434
+   },
+   "metrics": {
+    "views": 802,
+    "replies": 47,
+    "reposts": 0,
+    "likes": 19,
+    "quotes": 1,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HUwg4tYbgAAHtlu.jpg",
+    "w": 1170,
+    "h": 1704
+   }
+  },
+  {
+   "id": "2111409956750770299",
+   "url": "https://x.com/HyperTrenders/status/2111409956750770299",
+   "created_at": "2026-10-17T10:52:16.000Z",
+   "author": {
+    "id": "2880662977",
+    "name": "HyperTrend 中文",
+    "username": "HyperTrenders",
+    "avatar": "https://pbs.twimg.com/profile_images/2067510215038386176/IQwDhoWF_normal.jpg",
+    "followers": 1166
+   },
+   "metrics": {
+    "views": 777,
+    "replies": 0,
+    "reposts": 0,
+    "likes": 2,
+    "quotes": 0,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HU08E08bcAEcLyi.jpg",
+    "w": 1600,
+    "h": 900
    }
   },
   {
@@ -1339,10 +1368,10 @@
     "name": "charles Xiong",
     "username": "charles12388",
     "avatar": "https://pbs.twimg.com/profile_images/2100381185331671040/kgwgxOn8_normal.jpg",
-    "followers": 4907
+    "followers": 4927
    },
    "metrics": {
-    "views": 718,
+    "views": 731,
     "replies": 3,
     "reposts": 1,
     "likes": 3,
@@ -1353,31 +1382,6 @@
     "url": "https://pbs.twimg.com/media/HUz7anZbMAAM4Vv.png",
     "w": 680,
     "h": 382
-   }
-  },
-  {
-   "id": "2111066644844036405",
-   "url": "https://x.com/SamyeeiYu/status/2111066644844036405",
-   "created_at": "2026-10-16T12:08:04.000Z",
-   "author": {
-    "id": "353406720",
-    "name": "反方向的钟",
-    "username": "SamyeeiYu",
-    "avatar": "https://pbs.twimg.com/profile_images/1230505976534425600/EIq-AeV1_normal.jpg",
-    "followers": 11411
-   },
-   "metrics": {
-    "views": 488,
-    "replies": 2,
-    "reposts": 0,
-    "likes": 1,
-    "quotes": 0,
-    "bookmarks": 0
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HUwDxTvacAAZev4.png",
-    "w": 724,
-    "h": 874
    }
   },
   {
@@ -1406,28 +1410,28 @@
    }
   },
   {
-   "id": "2111409956750770299",
-   "url": "https://x.com/HyperTrenders/status/2111409956750770299",
-   "created_at": "2026-10-17T10:52:16.000Z",
+   "id": "2111331445570740397",
+   "url": "https://x.com/Mashiro_0619/status/2111331445570740397",
+   "created_at": "2026-10-17T05:40:17.000Z",
    "author": {
-    "id": "2880662977",
-    "name": "HyperTrend 中文",
-    "username": "HyperTrenders",
-    "avatar": "https://pbs.twimg.com/profile_images/2067510215038386176/IQwDhoWF_normal.jpg",
-    "followers": 1166
+    "id": "1897327640543133696",
+    "name": "真白大小姐",
+    "username": "Mashiro_0619",
+    "avatar": "https://pbs.twimg.com/profile_images/2096862187860135936/uDmXXYEy_normal.jpg",
+    "followers": 3399
    },
    "metrics": {
-    "views": 464,
-    "replies": 0,
+    "views": 422,
+    "replies": 10,
     "reposts": 0,
-    "likes": 2,
+    "likes": 11,
     "quotes": 0,
     "bookmarks": 0
    },
    "image": {
-    "url": "https://pbs.twimg.com/media/HU08E08bcAEcLyi.jpg",
-    "w": 1600,
-    "h": 900
+    "url": "https://pbs.twimg.com/media/HUz0wI8a4AAiMcX.jpg",
+    "w": 968,
+    "h": 1262
    }
   },
   {
@@ -1439,10 +1443,10 @@
     "name": "Dangcing Chan",
     "username": "DangcingAI",
     "avatar": "https://pbs.twimg.com/profile_images/2070725916532363264/z1z3k-DO_normal.jpg",
-    "followers": 6787
+    "followers": 6786
    },
    "metrics": {
-    "views": 407,
+    "views": 413,
     "replies": 8,
     "reposts": 0,
     "likes": 10,
@@ -1481,53 +1485,28 @@
    }
   },
   {
-   "id": "2111077007027249283",
-   "url": "https://x.com/hanasaki_vtuber/status/2111077007027249283",
-   "created_at": "2026-10-16T12:49:15.000Z",
+   "id": "2111412548226716049",
+   "url": "https://x.com/YIYONG19680604/status/2111412548226716049",
+   "created_at": "2026-10-17T11:02:34.000Z",
    "author": {
-    "id": "1554859791633096705",
-    "name": "🎀花咲🎶個人勢VTuber✨",
-    "username": "hanasaki_vtuber",
-    "avatar": "https://pbs.twimg.com/profile_images/1918389108730384384/NLEM2ybv_normal.jpg",
-    "followers": 1878
+    "id": "1656357960090808321",
+    "name": "全球商业 Yico",
+    "username": "YIYONG19680604",
+    "avatar": "https://pbs.twimg.com/profile_images/2108186818248327168/sBeb8vr9_normal.jpg",
+    "followers": 7776
    },
    "metrics": {
-    "views": 364,
-    "replies": 0,
+    "views": 380,
+    "replies": 5,
     "reposts": 0,
-    "likes": 16,
+    "likes": 4,
     "quotes": 0,
-    "bookmarks": 0
+    "bookmarks": 1
    },
    "image": {
-    "url": "https://pbs.twimg.com/media/HUwNTrDbUAAEwIO.png",
-    "w": 185,
-    "h": 179
-   }
-  },
-  {
-   "id": "2111331445570740397",
-   "url": "https://x.com/Mashiro_0619/status/2111331445570740397",
-   "created_at": "2026-10-17T05:40:17.000Z",
-   "author": {
-    "id": "1897327640543133696",
-    "name": "真白大小姐",
-    "username": "Mashiro_0619",
-    "avatar": "https://pbs.twimg.com/profile_images/2096862187860135936/uDmXXYEy_normal.jpg",
-    "followers": 3340
-   },
-   "metrics": {
-    "views": 363,
-    "replies": 10,
-    "reposts": 0,
-    "likes": 10,
-    "quotes": 0,
-    "bookmarks": 0
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HUz0wI8a4AAiMcX.jpg",
-    "w": 968,
-    "h": 1262
+    "url": "https://pbs.twimg.com/media/HU0-D26bAAA6met.jpg",
+    "w": 515,
+    "h": 290
    }
   },
   {
@@ -1539,10 +1518,10 @@
     "name": "图库（美食家）",
     "username": "laigeibao",
     "avatar": "https://pbs.twimg.com/profile_images/2108819621386305536/rQPfBKHk_normal.jpg",
-    "followers": 3968
+    "followers": 3965
    },
    "metrics": {
-    "views": 350,
+    "views": 352,
     "replies": 16,
     "reposts": 0,
     "likes": 18,
@@ -1581,6 +1560,31 @@
    }
   },
   {
+   "id": "2111348257620156796",
+   "url": "https://x.com/vivimoneya/status/2111348257620156796",
+   "created_at": "2026-10-17T06:47:06.000Z",
+   "author": {
+    "id": "606148464",
+    "name": "vivimoney AI交易分析师 Bluebird🕊️",
+    "username": "vivimoneya",
+    "avatar": "https://pbs.twimg.com/profile_images/2103736988612677632/EhX8U3h2_normal.jpg",
+    "followers": 21519
+   },
+   "metrics": {
+    "views": 306,
+    "replies": 7,
+    "reposts": 0,
+    "likes": 7,
+    "quotes": 0,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HU0D9kkboAAgIWj.jpg",
+    "w": 1024,
+    "h": 1535
+   }
+  },
+  {
    "id": "2111366822650171524",
    "url": "https://x.com/TaoRay/status/2111366822650171524",
    "created_at": "2026-10-17T08:00:52.000Z",
@@ -1614,10 +1618,10 @@
     "name": "Dison",
     "username": "DISONYYDS",
     "avatar": "https://pbs.twimg.com/profile_images/2046276343328051200/L7dITeMv_normal.jpg",
-    "followers": 10885
+    "followers": 10888
    },
    "metrics": {
-    "views": 301,
+    "views": 302,
     "replies": 0,
     "reposts": 0,
     "likes": 1,
@@ -1628,31 +1632,6 @@
     "url": "https://pbs.twimg.com/media/HUwiYula8AECj65.jpg",
     "w": 690,
     "h": 258
-   }
-  },
-  {
-   "id": "2111348257620156796",
-   "url": "https://x.com/vivimoneya/status/2111348257620156796",
-   "created_at": "2026-10-17T06:47:06.000Z",
-   "author": {
-    "id": "606148464",
-    "name": "vivimoney AI交易分析师 Bluebird🕊️",
-    "username": "vivimoneya",
-    "avatar": "https://pbs.twimg.com/profile_images/2103736988612677632/EhX8U3h2_normal.jpg",
-    "followers": 21497
-   },
-   "metrics": {
-    "views": 282,
-    "replies": 7,
-    "reposts": 0,
-    "likes": 6,
-    "quotes": 0,
-    "bookmarks": 0
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HU0D9kkboAAgIWj.jpg",
-    "w": 1024,
-    "h": 1535
    }
   },
   {
@@ -1681,6 +1660,31 @@
    }
   },
   {
+   "id": "2111082947239715026",
+   "url": "https://x.com/ShadowC1001/status/2111082947239715026",
+   "created_at": "2026-10-16T13:12:51.000Z",
+   "author": {
+    "id": "504042984",
+    "name": "雪豆Shadow🪥",
+    "username": "ShadowC1001",
+    "avatar": "https://pbs.twimg.com/profile_images/2111095857068253184/E6EAg-Pi_normal.jpg",
+    "followers": 2231
+   },
+   "metrics": {
+    "views": 269,
+    "replies": 0,
+    "reposts": 0,
+    "likes": 6,
+    "quotes": 0,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HUwSwCfbAAE1keo.jpg",
+    "w": 2048,
+    "h": 1536
+   }
+  },
+  {
    "id": "2111134837012930870",
    "url": "https://x.com/sjmdongwugo/status/2111134837012930870",
    "created_at": "2026-10-16T16:39:02.000Z",
@@ -1703,31 +1707,6 @@
     "url": "https://pbs.twimg.com/media/HUxB8dSaUAAbNHo.jpg",
     "w": 1170,
     "h": 614
-   }
-  },
-  {
-   "id": "2111412548226716049",
-   "url": "https://x.com/YIYONG19680604/status/2111412548226716049",
-   "created_at": "2026-10-17T11:02:34.000Z",
-   "author": {
-    "id": "1656357960090808321",
-    "name": "全球商业 Yico",
-    "username": "YIYONG19680604",
-    "avatar": "https://pbs.twimg.com/profile_images/2108186818248327168/sBeb8vr9_normal.jpg",
-    "followers": 7766
-   },
-   "metrics": {
-    "views": 234,
-    "replies": 4,
-    "reposts": 0,
-    "likes": 4,
-    "quotes": 0,
-    "bookmarks": 1
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HU0-D26bAAA6met.jpg",
-    "w": 515,
-    "h": 290
    }
   },
   {
@@ -1764,10 +1743,10 @@
     "name": "李天才｜TianCai",
     "username": "Lniosytest",
     "avatar": "https://pbs.twimg.com/profile_images/2094837076042936320/tO9X3R2e_normal.jpg",
-    "followers": 5710
+    "followers": 5714
    },
    "metrics": {
-    "views": 214,
+    "views": 218,
     "replies": 0,
     "reposts": 1,
     "likes": 3,
@@ -1789,7 +1768,7 @@
     "name": "I AM",
     "username": "IfLzvUv0",
     "avatar": "https://pbs.twimg.com/profile_images/2108370793021526016/aGEhvY6Z_normal.jpg",
-    "followers": 3537
+    "followers": 3546
    },
    "metrics": {
     "views": 212,
@@ -1828,31 +1807,6 @@
     "url": "https://pbs.twimg.com/amplify_video_thumb/2111337428732792832/img/0ZljOm-XKYM49mni.jpg",
     "w": 1280,
     "h": 720
-   }
-  },
-  {
-   "id": "2111080756923764800",
-   "url": "https://x.com/CryptoTumor9527/status/2111080756923764800",
-   "created_at": "2026-10-16T13:04:09.000Z",
-   "author": {
-    "id": "710122462470492164",
-    "name": "毒瘤.RGB🐸",
-    "username": "CryptoTumor9527",
-    "avatar": "https://pbs.twimg.com/profile_images/2078116086575484928/aFtqzCK-_normal.jpg",
-    "followers": 1514
-   },
-   "metrics": {
-    "views": 202,
-    "replies": 19,
-    "reposts": 17,
-    "likes": 23,
-    "quotes": 0,
-    "bookmarks": 0
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HUwQvuqbcAArx88.jpg",
-    "w": 1024,
-    "h": 576
    }
   },
   {
@@ -1981,6 +1935,31 @@
    }
   },
   {
+   "id": "2111306715979468981",
+   "url": "https://x.com/ETH0928/status/2111306715979468981",
+   "created_at": "2026-10-17T04:02:01.000Z",
+   "author": {
+    "id": "1455704131771850757",
+    "name": "加密兔",
+    "username": "ETH0928",
+    "avatar": "https://pbs.twimg.com/profile_images/2071794520367489025/92K2J4A9_normal.jpg",
+    "followers": 3474
+   },
+   "metrics": {
+    "views": 179,
+    "replies": 1,
+    "reposts": 0,
+    "likes": 2,
+    "quotes": 0,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HUzeQyga8AANpwh.jpg",
+    "w": 1200,
+    "h": 1200
+   }
+  },
+  {
    "id": "2111362850367385884",
    "url": "https://x.com/HongYu71807/status/2111362850367385884",
    "created_at": "2026-10-17T07:45:05.000Z",
@@ -2006,28 +1985,28 @@
    }
   },
   {
-   "id": "2111306715979468981",
-   "url": "https://x.com/ETH0928/status/2111306715979468981",
-   "created_at": "2026-10-17T04:02:01.000Z",
+   "id": "2111225125471441215",
+   "url": "https://x.com/nirox0216/status/2111225125471441215",
+   "created_at": "2026-10-16T22:37:49.000Z",
    "author": {
-    "id": "1455704131771850757",
-    "name": "加密兔",
-    "username": "ETH0928",
-    "avatar": "https://pbs.twimg.com/profile_images/2071794520367489025/92K2J4A9_normal.jpg",
-    "followers": 3459
+    "id": "1843663420169854976",
+    "name": "NiRox",
+    "username": "nirox0216",
+    "avatar": "https://pbs.twimg.com/profile_images/2024313187827650560/sVJi_d0w_normal.jpg",
+    "followers": 1434
    },
    "metrics": {
-    "views": 176,
-    "replies": 1,
+    "views": 177,
+    "replies": 9,
     "reposts": 0,
-    "likes": 2,
+    "likes": 10,
     "quotes": 0,
     "bookmarks": 0
    },
    "image": {
-    "url": "https://pbs.twimg.com/media/HUzeQyga8AANpwh.jpg",
-    "w": 1200,
-    "h": 1200
+    "url": "https://pbs.twimg.com/media/HUyUDzea8AAhVd2.jpg",
+    "w": 1182,
+    "h": 2048
    }
   },
   {
@@ -2053,31 +2032,6 @@
     "url": "https://pbs.twimg.com/media/HU0MJd7bsAAVGq0.jpg",
     "w": 849,
     "h": 1200
-   }
-  },
-  {
-   "id": "2111225125471441215",
-   "url": "https://x.com/nirox0216/status/2111225125471441215",
-   "created_at": "2026-10-16T22:37:49.000Z",
-   "author": {
-    "id": "1843663420169854976",
-    "name": "NiRox",
-    "username": "nirox0216",
-    "avatar": "https://pbs.twimg.com/profile_images/2024313187827650560/sVJi_d0w_normal.jpg",
-    "followers": 1422
-   },
-   "metrics": {
-    "views": 168,
-    "replies": 9,
-    "reposts": 0,
-    "likes": 10,
-    "quotes": 0,
-    "bookmarks": 0
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HUyUDzea8AAhVd2.jpg",
-    "w": 1182,
-    "h": 2048
    }
   },
   {
@@ -2139,7 +2093,7 @@
     "name": "Modric & Kroos",
     "username": "Tony8889999",
     "avatar": "https://pbs.twimg.com/profile_images/2099522604709138432/q7SZN6yI_normal.jpg",
-    "followers": 4057
+    "followers": 4060
    },
    "metrics": {
     "views": 157,
@@ -2192,7 +2146,7 @@
     "followers": 1714
    },
    "metrics": {
-    "views": 148,
+    "views": 150,
     "replies": 0,
     "reposts": 0,
     "likes": 1,
@@ -2231,6 +2185,31 @@
    }
   },
   {
+   "id": "2111363550056952035",
+   "url": "https://x.com/BiKing_CN/status/2111363550056952035",
+   "created_at": "2026-10-17T07:47:52.000Z",
+   "author": {
+    "id": "1730125282772656128",
+    "name": "BiKing币王中文",
+    "username": "BiKing_CN",
+    "avatar": "https://pbs.twimg.com/profile_images/1873553834863386624/g0Nh1uVy_normal.jpg",
+    "followers": 10807
+   },
+   "metrics": {
+    "views": 132,
+    "replies": 4,
+    "reposts": 0,
+    "likes": 4,
+    "quotes": 0,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HU0Rt2saQAAYAsP.jpg",
+    "w": 1024,
+    "h": 606
+   }
+  },
+  {
    "id": "2111137976462012875",
    "url": "https://x.com/Vincent_AINotes/status/2111137976462012875",
    "created_at": "2026-10-16T16:51:31.000Z",
@@ -2254,30 +2233,55 @@
     "w": 804,
     "h": 1542
    }
+  },
+  {
+   "id": "2111140553111069052",
+   "url": "https://x.com/AnnieC_Noodles/status/2111140553111069052",
+   "created_at": "2026-10-16T17:01:45.000Z",
+   "author": {
+    "id": "1350317945574998016",
+    "name": "😈麵子👼",
+    "username": "AnnieC_Noodles",
+    "avatar": "https://pbs.twimg.com/profile_images/1773747565537935360/ZZa2uxVv_normal.jpg",
+    "followers": 31951
+   },
+   "metrics": {
+    "views": 125,
+    "replies": 1,
+    "reposts": 0,
+    "likes": 0,
+    "quotes": 0,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HUxHJAYagAAf7Ym.jpg",
+    "w": 1108,
+    "h": 1051
+   }
   }
  ],
  "best": [
-  {
-   "author": {
-    "id": "1447939086006763536",
-    "name": "水Lane💧",
-    "username": "VentLane",
-    "avatar": "https://pbs.twimg.com/profile_images/1986788783011119104/xMo1IQn8_normal.jpg",
-    "followers": 10184
-   },
-   "interactions": 549,
-   "gain": 168
-  },
   {
    "author": {
     "id": "1698491406006845440",
     "name": "鲁与班|Bird🕊️",
     "username": "luyuban69",
     "avatar": "https://pbs.twimg.com/profile_images/1698491537217204224/x-_TdDMe_normal.jpg",
-    "followers": 8927
+    "followers": 8935
    },
-   "interactions": 258,
-   "gain": -15
+   "interactions": 274,
+   "gain": -7
+  },
+  {
+   "author": {
+    "id": "2068160567315992576",
+    "name": "YY",
+    "username": "tttwxyow",
+    "avatar": "https://pbs.twimg.com/profile_images/2088780249035063296/jRE7WS9h_normal.jpg",
+    "followers": 6921
+   },
+   "interactions": 188,
+   "gain": null
   },
   {
    "author": {
@@ -2292,25 +2296,25 @@
   },
   {
    "author": {
-    "id": "2068160567315992576",
-    "name": "YY",
-    "username": "tttwxyow",
-    "avatar": "https://pbs.twimg.com/profile_images/2088780249035063296/jRE7WS9h_normal.jpg",
-    "followers": 6920
-   },
-   "interactions": 181,
-   "gain": null
-  },
-  {
-   "author": {
     "id": "1649716083346255874",
     "name": "鱼泡泡",
     "username": "yupaopao0",
     "avatar": "https://pbs.twimg.com/profile_images/1991687263949058050/TguP4eCo_normal.jpg",
-    "followers": 23008
+    "followers": 23007
    },
-   "interactions": 100,
-   "gain": 234
+   "interactions": 109,
+   "gain": 233
+  },
+  {
+   "author": {
+    "id": "1620521179663503363",
+    "name": "SuperLeo",
+    "username": "Big_Tea_Rice",
+    "avatar": "https://pbs.twimg.com/profile_images/1965794525282230272/hFzGZwgQ_normal.jpg",
+    "followers": 18740
+   },
+   "interactions": 107,
+   "gain": null
   },
   {
    "author": {
@@ -2320,7 +2324,7 @@
     "avatar": "https://pbs.twimg.com/profile_images/1652077879906414593/Y8cRI8vf_normal.jpg",
     "followers": 94232
    },
-   "interactions": 91,
+   "interactions": 93,
    "gain": null
   },
   {
@@ -2336,25 +2340,25 @@
   },
   {
    "author": {
-    "id": "1620521179663503363",
-    "name": "SuperLeo",
-    "username": "Big_Tea_Rice",
-    "avatar": "https://pbs.twimg.com/profile_images/1965794525282230272/hFzGZwgQ_normal.jpg",
-    "followers": 18728
-   },
-   "interactions": 71,
-   "gain": null
-  },
-  {
-   "author": {
     "id": "476090886",
     "name": "yeyusam",
     "username": "yeyusam1",
     "avatar": "https://pbs.twimg.com/profile_images/1427300008882233346/1QWXUAW9_normal.jpg",
     "followers": 17767
    },
-   "interactions": 65,
+   "interactions": 72,
    "gain": 2
+  },
+  {
+   "author": {
+    "id": "1628937732167766017",
+    "name": "榕一（Rong Yi）",
+    "username": "0XRongYI",
+    "avatar": "https://pbs.twimg.com/profile_images/2062652558628511744/DViTWOJ4_normal.jpg",
+    "followers": 2434
+   },
+   "interactions": 67,
+   "gain": null
   },
   {
    "author": {
@@ -2375,40 +2379,19 @@
     "name": "NiRox",
     "username": "nirox0216",
     "avatar": "https://pbs.twimg.com/profile_images/2024313187827650560/sVJi_d0w_normal.jpg",
-    "followers": 1422
+    "followers": 1434
    },
-   "followers": 1422,
-   "followers_24h": 441,
-   "gain": 441,
-   "growth_pct": 44.95,
+   "followers": 1434,
+   "followers_24h": 400,
+   "gain": 400,
+   "growth_pct": 38.68,
    "window": "24h",
-   "views_24h": 168,
+   "views_24h": 177,
    "post": {
     "id": "2111225125471441215",
     "url": "https://x.com/nirox0216/status/2111225125471441215",
-    "views": 168,
+    "views": 177,
     "created_at": "2026-10-16T22:37:49.000Z"
-   }
-  },
-  {
-   "author": {
-    "id": "2108063229855584257",
-    "name": "小X",
-    "username": "zeroherotf",
-    "avatar": "https://pbs.twimg.com/profile_images/2108183504647540736/6E49O8Hk_normal.jpg",
-    "followers": 718
-   },
-   "followers": 718,
-   "followers_24h": 198,
-   "gain": 198,
-   "growth_pct": 38.08,
-   "window": "24h",
-   "views_24h": 56,
-   "post": {
-    "id": "2111067681285919088",
-    "url": "https://x.com/zeroherotf/status/2111067681285919088",
-    "views": 56,
-    "created_at": "2026-10-16T12:12:11.000Z"
    }
   },
   {
@@ -2417,40 +2400,40 @@
     "name": "Shawn有话说",
     "username": "ShawnShallSay",
     "avatar": "https://pbs.twimg.com/profile_images/2109291572852363265/yLENtZmW_normal.jpg",
-    "followers": 1330
+    "followers": 1351
    },
-   "followers": 1330,
-   "followers_24h": 327,
-   "gain": 327,
-   "growth_pct": 32.6,
+   "followers": 1351,
+   "followers_24h": 335,
+   "gain": 335,
+   "growth_pct": 32.97,
    "window": "24h",
-   "views_24h": 49,
+   "views_24h": 61,
    "post": {
     "id": "2111397752957542697",
     "url": "https://x.com/ShawnShallSay/status/2111397752957542697",
-    "views": 49,
+    "views": 61,
     "created_at": "2026-10-17T10:03:46.000Z"
    }
   },
   {
    "author": {
-    "id": "2107758516106899456",
-    "name": "krex",
-    "username": "kkwin2025",
-    "avatar": "https://pbs.twimg.com/profile_images/2107760201709572096/0PPxINXr_normal.jpg",
-    "followers": 2323
+    "id": "2094081756009992192",
+    "name": "BitEra比特纪元",
+    "username": "BitEra2026",
+    "avatar": "https://pbs.twimg.com/profile_images/2109526938536808448/cqhtdkun_normal.jpg",
+    "followers": 472
    },
-   "followers": 2323,
-   "followers_24h": 368,
-   "gain": 368,
-   "growth_pct": 18.82,
+   "followers": 472,
+   "followers_24h": 85,
+   "gain": 85,
+   "growth_pct": 21.96,
    "window": "24h",
-   "views_24h": 1,
+   "views_24h": 10,
    "post": {
-    "id": "2111366878765707408",
-    "url": "https://x.com/kkwin2025/status/2111366878765707408",
-    "views": 1,
-    "created_at": "2026-10-17T08:01:05.000Z"
+    "id": "2111143238769766474",
+    "url": "https://x.com/BitEra2026/status/2111143238769766474",
+    "views": 10,
+    "created_at": "2026-10-16T17:12:25.000Z"
    }
   },
   {
@@ -2459,12 +2442,12 @@
     "name": "清欢（必回关）",
     "username": "QingHuan1989",
     "avatar": "https://pbs.twimg.com/profile_images/2110305962120921088/T_5IzMjB_normal.jpg",
-    "followers": 1320
+    "followers": 1409
    },
-   "followers": 1320,
-   "followers_24h": 183,
-   "gain": 183,
-   "growth_pct": 16.09,
+   "followers": 1409,
+   "followers_24h": 202,
+   "gain": 202,
+   "growth_pct": 16.74,
    "window": "24h",
    "views_24h": 109,
    "post": {
@@ -2497,23 +2480,23 @@
   },
   {
    "author": {
-    "id": "2094081756009992192",
-    "name": "BitEra比特纪元",
-    "username": "BitEra2026",
-    "avatar": "https://pbs.twimg.com/profile_images/2109526938536808448/cqhtdkun_normal.jpg",
-    "followers": 443
+    "id": "2107758516106899456",
+    "name": "krex",
+    "username": "kkwin2025",
+    "avatar": "https://pbs.twimg.com/profile_images/2107760201709572096/0PPxINXr_normal.jpg",
+    "followers": 2323
    },
-   "followers": 443,
-   "followers_24h": 56,
-   "gain": 56,
-   "growth_pct": 14.47,
+   "followers": 2323,
+   "followers_24h": 300,
+   "gain": 300,
+   "growth_pct": 14.83,
    "window": "24h",
-   "views_24h": 10,
+   "views_24h": 1,
    "post": {
-    "id": "2111143238769766474",
-    "url": "https://x.com/BitEra2026/status/2111143238769766474",
-    "views": 10,
-    "created_at": "2026-10-16T17:12:25.000Z"
+    "id": "2111366878765707408",
+    "url": "https://x.com/kkwin2025/status/2111366878765707408",
+    "views": 1,
+    "created_at": "2026-10-17T08:01:05.000Z"
    }
   },
   {
@@ -2522,12 +2505,12 @@
     "name": "Marky li",
     "username": "Lisheng99668",
     "avatar": "https://pbs.twimg.com/profile_images/2109358112243318784/tDFOrlC1_normal.jpg",
-    "followers": 1634
+    "followers": 1641
    },
-   "followers": 1634,
-   "followers_24h": 164,
-   "gain": 164,
-   "growth_pct": 11.16,
+   "followers": 1641,
+   "followers_24h": 171,
+   "gain": 171,
+   "growth_pct": 11.63,
    "window": "24h",
    "views_24h": 11,
    "post": {
@@ -2564,24 +2547,45 @@
     "name": "charles Xiong",
     "username": "charles12388",
     "avatar": "https://pbs.twimg.com/profile_images/2100381185331671040/kgwgxOn8_normal.jpg",
-    "followers": 4907
+    "followers": 4927
    },
-   "followers": 4907,
+   "followers": 4927,
    "followers_24h": 470,
    "gain": 470,
-   "growth_pct": 10.59,
+   "growth_pct": 10.55,
    "window": "24h",
-   "views_24h": 725,
+   "views_24h": 738,
    "post": {
     "id": "2111340581377225074",
     "url": "https://x.com/charles12388/status/2111340581377225074",
-    "views": 718,
+    "views": 731,
     "created_at": "2026-10-17T06:16:36.000Z"
+   }
+  },
+  {
+   "author": {
+    "id": "1061139439127330817",
+    "name": "拾叁藝",
+    "username": "Edward913413",
+    "avatar": "https://pbs.twimg.com/profile_images/1801528668944273412/S15fm0px_normal.jpg",
+    "followers": 1763
+   },
+   "followers": 1763,
+   "followers_24h": 158,
+   "gain": 158,
+   "growth_pct": 9.84,
+   "window": "24h",
+   "views_24h": 94,
+   "post": {
+    "id": "2111313757791986052",
+    "url": "https://x.com/Edward913413/status/2111313757791986052",
+    "views": 94,
+    "created_at": "2026-10-17T04:30:00.000Z"
    }
   }
  ],
  "meta": {
   "pool_size": 546,
-  "api_calls_this_run": 23
+  "api_calls_this_run": 21
  }
 }
