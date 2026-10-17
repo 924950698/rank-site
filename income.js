@@ -54,7 +54,7 @@
       m.querySelector("#incImg").outerHTML=`<img id="incImg" src="${purl}" alt="收益海报">`;};
     let tm;m.querySelector("#incH").addEventListener("input",()=>{clearTimeout(tm);tm=setTimeout(render,500)});
     m.querySelector("#incC").onclick=()=>m.remove();
-    m.querySelector("#incS").onclick=()=>{if(file){window.track?.("income:save");window.saveImage?saveImage(file,purl,m.querySelector(".pmb")):0}};
+    m.querySelector("#incS").onclick=()=>{if(file){window.track?.("income:save");if(window.saveImage)saveImage(file,purl,m.querySelector(".pmb"));else{const a=document.createElement("a");a.href=purl;a.download=file.name;document.body.appendChild(a);a.click();a.remove();}}};
     render();}
   $("#incPost").onclick=open;
 })();

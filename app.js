@@ -332,6 +332,7 @@ function saveImage(file, purl, box) {
   let p; try { p = navigator.share({ files: [file] }); } catch (e) { return hint(); }   // 同步调用，保住用户手势
   p.catch(e => { if (e?.name !== "AbortError") hint(); });
 }
+window.saveImage = saveImage;
 let posterLib;
 async function openPoster(h, list, url) {
   const m = document.createElement("div"); m.className = "pm"; m.innerHTML = `<div class="pmb"><div class="m" style="text-align:center;padding:40px">海报生成中…</div></div>`;
@@ -495,6 +496,7 @@ fetch("data.json", { cache: "no-cache" }).then(r => r.json()).then(d => { D = d;
   const code = (window.APP_CONFIG || {}).GC_CODE;
   if (code) { const s = document.createElement("script"); s.async = true; s.src = "https://gc.zgo.at/count.js"; s.dataset.goatcounter = `https://${code}.goatcounter.com/count`; document.head.appendChild(s); }
   const name = el => el.dataset.ev || (el.id ? el.id : "") || [el.dataset.t, el.dataset.s, el.dataset.src].filter(Boolean).join("-") || (el.textContent || "").trim().slice(0, 20) || "unknown";
-  window.track = (ev, title) => { const n = "ev-" + ev; if (window.goatcounter?.count) goatcounter.count({ path: n, title: title || ev, event: true }); else (window._evq ||= []).push(n); };
+  const _tk = {}; let _tn = 0;
+  window.track = (ev, title) => { const n = "ev-" + ev, now = Date.now(); if (now - (_tk[n] || 0) < 5000 || ++_tn > 30) return; _tk[n] = now; if (window.goatcounter?.count) goatcounter.count({ path: n, title: title || ev, event: true }); else (window._evq ||= []).push(n); };
   document.addEventListener("click", e => { const el = e.target.closest("button,a,.pu,canvas"); if (!el) return; const sec = el.closest("section,header,footer,form,.pm")?.id || el.closest(".pm") && "poster" || ""; track((sec ? sec + ":" : "") + name(el), (el.textContent || "").trim().slice(0, 30)); }, true);
 })();
