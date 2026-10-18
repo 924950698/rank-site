@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-18T21:03:49.429Z",
+ "updated_at": "2026-10-18T22:04:00.998Z",
  "exposure": [
   {
    "id": "2111593418111807853",
@@ -24,6 +24,31 @@
     "url": "https://pbs.twimg.com/media/HU3jBRma0AAkZtv.jpg",
     "w": 1016,
     "h": 884
+   }
+  },
+  {
+   "id": "2111939335607992612",
+   "url": "https://x.com/GuoShenCN7/status/2111939335607992612",
+   "created_at": "2026-10-18T21:55:50.000Z",
+   "author": {
+    "id": "1190799145621000192",
+    "name": "🇨🇳 Guo Shen 郭深",
+    "username": "GuoShenCN7",
+    "avatar": "https://pbs.twimg.com/profile_images/2061375846460399617/yqlH9ts6_400x400.jpg",
+    "followers": 116442
+   },
+   "metrics": {
+    "views": 1764,
+    "replies": 0,
+    "reposts": 0,
+    "likes": 0,
+    "quotes": 0,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HU8dn4OXoAAlKSv.jpg",
+    "w": 1320,
+    "h": 894
    }
   },
   {
@@ -182,46 +207,29 @@
    }
   },
   {
-   "id": "2111724908028063826",
-   "url": "https://x.com/Jiangzhuoer2/status/2111724908028063826",
-   "created_at": "2026-10-18T07:43:46.000Z",
+   "id": "2111940386558288063",
+   "url": "https://x.com/whyyoutouzhele/status/2111940386558288063",
+   "created_at": "2026-10-18T22:00:00.000Z",
    "author": {
-    "id": "1403282867208163332",
-    "name": "江卓尔_莱比特矿池",
-    "username": "Jiangzhuoer2",
-    "avatar": "https://pbs.twimg.com/profile_images/1403283017603248136/M08o6xO1_400x400.jpg",
-    "followers": 63938
+    "id": "1260553941714186241",
+    "name": "李老师不是你老师",
+    "username": "whyyoutouzhele",
+    "avatar": "https://pbs.twimg.com/profile_images/2004720683905904640/8ZEZs67v_400x400.jpg",
+    "followers": 2271639
    },
    "metrics": {
-    "views": 960,
-    "replies": 2,
-    "reposts": 0,
-    "likes": 1,
-    "quotes": 0,
-    "bookmarks": 0
-   },
-   "image": null
-  },
-  {
-   "id": "2111863444198887563",
-   "url": "https://x.com/nimogo39967/status/2111863444198887563",
-   "created_at": "2026-10-18T16:54:16.000Z",
-   "author": {
-    "id": "2012342098448486400",
-    "name": "Nova Nova",
-    "username": "nimogo39967",
-    "avatar": "https://pbs.twimg.com/profile_images/2055118873834450944/YzCK9s-3_400x400.jpg",
-    "followers": 2581
-   },
-   "metrics": {
-    "views": 881,
+    "views": 979,
     "replies": 0,
-    "reposts": 0,
+    "reposts": 1,
     "likes": 0,
     "quotes": 0,
     "bookmarks": 0
    },
-   "image": null
+   "image": {
+    "url": "https://pbs.twimg.com/amplify_video_thumb/2111448071104086016/img/rcGkAts1yExpf9Qv.jpg",
+    "w": 720,
+    "h": 1280
+   }
   }
  ],
  "comments": [
@@ -753,6 +761,31 @@
    }
   },
   {
+   "id": "2111939335607992612",
+   "url": "https://x.com/GuoShenCN7/status/2111939335607992612",
+   "created_at": "2026-10-18T21:55:50.000Z",
+   "author": {
+    "id": "1190799145621000192",
+    "name": "🇨🇳 Guo Shen 郭深",
+    "username": "GuoShenCN7",
+    "avatar": "https://pbs.twimg.com/profile_images/2061375846460399617/yqlH9ts6_400x400.jpg",
+    "followers": 116442
+   },
+   "metrics": {
+    "views": 1764,
+    "replies": 0,
+    "reposts": 0,
+    "likes": 0,
+    "quotes": 0,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HU8dn4OXoAAlKSv.jpg",
+    "w": 1320,
+    "h": 894
+   }
+  },
+  {
    "id": "2111615657775382920",
    "url": "https://x.com/Williampkkk/status/2111615657775382920",
    "created_at": "2026-10-18T00:29:39.000Z",
@@ -800,6 +833,31 @@
     "url": "https://pbs.twimg.com/media/HU7_z8gWUAAWC2a.jpg",
     "w": 680,
     "h": 641
+   }
+  },
+  {
+   "id": "2111940386558288063",
+   "url": "https://x.com/whyyoutouzhele/status/2111940386558288063",
+   "created_at": "2026-10-18T22:00:00.000Z",
+   "author": {
+    "id": "1260553941714186241",
+    "name": "李老师不是你老师",
+    "username": "whyyoutouzhele",
+    "avatar": "https://pbs.twimg.com/profile_images/2004720683905904640/8ZEZs67v_400x400.jpg",
+    "followers": 2271639
+   },
+   "metrics": {
+    "views": 979,
+    "replies": 0,
+    "reposts": 1,
+    "likes": 0,
+    "quotes": 0,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/amplify_video_thumb/2111448071104086016/img/rcGkAts1yExpf9Qv.jpg",
+    "w": 720,
+    "h": 1280
    }
   },
   {
@@ -2176,56 +2234,6 @@
     "w": 946,
     "h": 2048
    }
-  },
-  {
-   "id": "2111834437516431821",
-   "url": "https://x.com/KELMAND1/status/2111834437516431821",
-   "created_at": "2026-10-18T14:59:00.000Z",
-   "author": {
-    "id": "1408728834799673351",
-    "name": "Eason Mao☢",
-    "username": "KELMAND1",
-    "avatar": "https://pbs.twimg.com/profile_images/2015655180155355136/KOuv-jjM_400x400.jpg",
-    "followers": 116318
-   },
-   "metrics": {
-    "views": 132,
-    "replies": 0,
-    "reposts": 0,
-    "likes": 0,
-    "quotes": 0,
-    "bookmarks": 0
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HU6-ORWbcAAdvL8.jpg",
-    "w": 1254,
-    "h": 1254
-   }
-  },
-  {
-   "id": "2111683944760443255",
-   "url": "https://x.com/WangNextDoor2/status/2111683944760443255",
-   "created_at": "2026-10-18T05:01:00.000Z",
-   "author": {
-    "id": "1378320364376219655",
-    "name": "WangNextDoor",
-    "username": "WangNextDoor2",
-    "avatar": "https://pbs.twimg.com/profile_images/1617123815510933505/7TIpoQM9_400x400.jpg",
-    "followers": 110521
-   },
-   "metrics": {
-    "views": 123,
-    "replies": 0,
-    "reposts": 0,
-    "likes": 0,
-    "quotes": 0,
-    "bookmarks": 0
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HU4TL2paUAAL5yt.png",
-    "w": 640,
-    "h": 335
-   }
   }
  ],
  "best": [
@@ -2315,7 +2323,7 @@
     "followers": 1779
    },
    "interactions": 38,
-   "gain": 160
+   "gain": 154
   },
   {
    "author": {
@@ -2553,7 +2561,7 @@
   }
  ],
  "meta": {
-  "pool_size": 1374,
+  "pool_size": 1434,
   "api_calls_this_run": 21
  }
 }
