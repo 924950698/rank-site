@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-18T19:05:24.337Z",
+ "updated_at": "2026-10-18T20:08:26.190Z",
  "exposure": [
   {
    "id": "2111593418111807853",
@@ -25,27 +25,6 @@
     "w": 1016,
     "h": 884
    }
-  },
-  {
-   "id": "2111535576071668067",
-   "url": "https://x.com/_vicwong/status/2111535576071668067",
-   "created_at": "2026-10-17T19:11:26.000Z",
-   "author": {
-    "id": "281045155",
-    "name": "Vic Wong 黄维克",
-    "username": "_vicwong",
-    "avatar": "https://pbs.twimg.com/profile_images/1562231842530549760/gakJS4XE_400x400.jpg",
-    "followers": 60146
-   },
-   "metrics": {
-    "views": 2107,
-    "replies": 9,
-    "reposts": 4,
-    "likes": 28,
-    "quotes": 0,
-    "bookmarks": 2
-   },
-   "image": null
   },
   {
    "id": "2111739486522716523",
@@ -91,6 +70,31 @@
     "url": "https://pbs.twimg.com/media/HU33PuLa0AAWIEz.jpg",
     "w": 1477,
     "h": 2048
+   }
+  },
+  {
+   "id": "2111906545470464166",
+   "url": "https://x.com/__Inty__/status/2111906545470464166",
+   "created_at": "2026-10-18T19:45:32.000Z",
+   "author": {
+    "id": "1027764083565711360",
+    "name": "Inty News",
+    "username": "__Inty__",
+    "avatar": "https://pbs.twimg.com/profile_images/1683004187951665153/9u75ptcg_400x400.jpg",
+    "followers": 751250
+   },
+   "metrics": {
+    "views": 984,
+    "replies": 3,
+    "reposts": 0,
+    "likes": 1,
+    "quotes": 1,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HU7_z8gWUAAWC2a.jpg",
+    "w": 680,
+    "h": 641
    }
   },
   {
@@ -334,27 +338,6 @@
    }
   },
   {
-   "id": "2111535576071668067",
-   "url": "https://x.com/_vicwong/status/2111535576071668067",
-   "created_at": "2026-10-17T19:11:26.000Z",
-   "author": {
-    "id": "281045155",
-    "name": "Vic Wong 黄维克",
-    "username": "_vicwong",
-    "avatar": "https://pbs.twimg.com/profile_images/1562231842530549760/gakJS4XE_400x400.jpg",
-    "followers": 60146
-   },
-   "metrics": {
-    "views": 2107,
-    "replies": 9,
-    "reposts": 4,
-    "likes": 28,
-    "quotes": 0,
-    "bookmarks": 2
-   },
-   "image": null
-  },
-  {
    "id": "2111682308189389215",
    "url": "https://x.com/Mulight/status/2111682308189389215",
    "created_at": "2026-10-18T04:54:30.000Z",
@@ -474,6 +457,27 @@
     "w": 880,
     "h": 1232
    }
+  },
+  {
+   "id": "2111681615021887640",
+   "url": "https://x.com/xingyu_ling/status/2111681615021887640",
+   "created_at": "2026-10-18T04:51:44.000Z",
+   "author": {
+    "id": "1501748415461740547",
+    "name": "小师猜想",
+    "username": "xingyu_ling",
+    "avatar": "https://pbs.twimg.com/profile_images/2108408779624841216/2my0p7Dv_400x400.jpg",
+    "followers": 3320
+   },
+   "metrics": {
+    "views": 83,
+    "replies": 8,
+    "reposts": 0,
+    "likes": 6,
+    "quotes": 0,
+    "bookmarks": 0
+   },
+   "image": null
   }
  ],
  "growth": [
@@ -502,6 +506,34 @@
      "url": "https://pbs.twimg.com/media/HU5rZmXbgAALMKg.jpg",
      "w": 1671,
      "h": 941
+    }
+   }
+  },
+  {
+   "gain": 600,
+   "post": {
+    "id": "2111906834906796154",
+    "url": "https://x.com/SI_Luck77/status/2111906834906796154",
+    "created_at": "2026-10-18T19:46:41.000Z",
+    "author": {
+     "id": "2010705704135618560",
+     "name": "Luck | Web3 Legal",
+     "username": "SI_Luck77",
+     "avatar": "https://pbs.twimg.com/profile_images/2107589350448074752/Gpr71laO_400x400.jpg",
+     "followers": 1355
+    },
+    "metrics": {
+     "views": 14,
+     "replies": 0,
+     "reposts": 0,
+     "likes": 1,
+     "quotes": 0,
+     "bookmarks": 0
+    },
+    "image": {
+     "url": "https://pbs.twimg.com/media/HU8AERZWcAAEJSN.jpg",
+     "w": 945,
+     "h": 2048
     }
    }
   },
@@ -712,30 +744,6 @@
      "h": 668
     }
    }
-  },
-  {
-   "gain": 368,
-   "post": {
-    "id": "2111851475685232656",
-    "url": "https://x.com/Ay0505688/status/2111851475685232656",
-    "created_at": "2026-10-18T16:06:42.000Z",
-    "author": {
-     "id": "1631120962300280834",
-     "name": "Have",
-     "username": "Ay0505688",
-     "avatar": "https://pbs.twimg.com/profile_images/2109803305925021696/Z3bPFly9_400x400.jpg",
-     "followers": 1539
-    },
-    "metrics": {
-     "views": 6,
-     "replies": 1,
-     "reposts": 0,
-     "likes": 0,
-     "quotes": 0,
-     "bookmarks": 0
-    },
-    "image": null
-   }
   }
  ],
  "photos": [
@@ -787,6 +795,31 @@
     "url": "https://pbs.twimg.com/media/HU33PuLa0AAWIEz.jpg",
     "w": 1477,
     "h": 2048
+   }
+  },
+  {
+   "id": "2111906545470464166",
+   "url": "https://x.com/__Inty__/status/2111906545470464166",
+   "created_at": "2026-10-18T19:45:32.000Z",
+   "author": {
+    "id": "1027764083565711360",
+    "name": "Inty News",
+    "username": "__Inty__",
+    "avatar": "https://pbs.twimg.com/profile_images/1683004187951665153/9u75ptcg_400x400.jpg",
+    "followers": 751250
+   },
+   "metrics": {
+    "views": 984,
+    "replies": 3,
+    "reposts": 0,
+    "likes": 1,
+    "quotes": 1,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HU7_z8gWUAAWC2a.jpg",
+    "w": 680,
+    "h": 641
    }
   },
   {
@@ -1290,31 +1323,6 @@
    }
   },
   {
-   "id": "2111535168280240520",
-   "url": "https://x.com/USB2023USB/status/2111535168280240520",
-   "created_at": "2026-10-17T19:09:49.000Z",
-   "author": {
-    "id": "1601193399100805120",
-    "name": "Coffee",
-    "username": "USB2023USB",
-    "avatar": "https://pbs.twimg.com/profile_images/1614229134418513927/ezmZwT2__400x400.jpg",
-    "followers": 3057
-   },
-   "metrics": {
-    "views": 349,
-    "replies": 4,
-    "reposts": 0,
-    "likes": 4,
-    "quotes": 1,
-    "bookmarks": 0
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HU2txqgXAAAl8zx.jpg",
-    "w": 973,
-    "h": 2029
-   }
-  },
-  {
    "id": "2111804384652693584",
    "url": "https://x.com/LUOXIANGF/status/2111804384652693584",
    "created_at": "2026-10-18T12:59:35.000Z",
@@ -1712,6 +1720,31 @@
     "url": "https://pbs.twimg.com/media/HU4nde8W0AAioxK.jpg",
     "w": 1280,
     "h": 1280
+   }
+  },
+  {
+   "id": "2111906460355657940",
+   "url": "https://x.com/Ruanshiziuo/status/2111906460355657940",
+   "created_at": "2026-10-18T19:45:12.000Z",
+   "author": {
+    "id": "1747418923757383681",
+    "name": "Ruanshizi",
+    "username": "Ruanshiziuo",
+    "avatar": "https://pbs.twimg.com/profile_images/2109821895688572928/tEY5a_rI_400x400.jpg",
+    "followers": 3727
+   },
+   "metrics": {
+    "views": 173,
+    "replies": 1,
+    "reposts": 0,
+    "likes": 2,
+    "quotes": 0,
+    "bookmarks": 1
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HU7_ttuaQAAsMRx.jpg",
+    "w": 1200,
+    "h": 675
    }
   },
   {
@@ -2213,31 +2246,6 @@
     "w": 935,
     "h": 937
    }
-  },
-  {
-   "id": "2111633784584143150",
-   "url": "https://x.com/YIYONG19680604/status/2111633784584143150",
-   "created_at": "2026-10-18T01:41:41.000Z",
-   "author": {
-    "id": "1656357960090808321",
-    "name": "全球商业 Yico",
-    "username": "YIYONG19680604",
-    "avatar": "https://pbs.twimg.com/profile_images/2108186818248327168/sBeb8vr9_400x400.jpg",
-    "followers": 7855
-   },
-   "metrics": {
-    "views": 112,
-    "replies": 1,
-    "reposts": 0,
-    "likes": 1,
-    "quotes": 0,
-    "bookmarks": 1
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HU4HY5aawAEr9oT.png",
-    "w": 877,
-    "h": 715
-   }
   }
  ],
  "best": [
@@ -2283,7 +2291,7 @@
     "followers": 6933
    },
    "interactions": 61,
-   "gain": 9
+   "gain": 6
   },
   {
    "author": {
@@ -2309,17 +2317,6 @@
   },
   {
    "author": {
-    "id": "281045155",
-    "name": "Vic Wong 黄维克",
-    "username": "_vicwong",
-    "avatar": "https://pbs.twimg.com/profile_images/1562231842530549760/gakJS4XE_400x400.jpg",
-    "followers": 60146
-   },
-   "interactions": 41,
-   "gain": null
-  },
-  {
-   "author": {
     "id": "2513812775",
     "name": "K仔",
     "username": "_8J444",
@@ -2338,7 +2335,7 @@
     "followers": 1779
    },
    "interactions": 38,
-   "gain": 174
+   "gain": 163
   },
   {
    "author": {
@@ -2349,6 +2346,17 @@
     "followers": 1392
    },
    "interactions": 25,
+   "gain": null
+  },
+  {
+   "author": {
+    "id": "1501748415461740547",
+    "name": "小师猜想",
+    "username": "xingyu_ling",
+    "avatar": "https://pbs.twimg.com/profile_images/2108408779624841216/2my0p7Dv_400x400.jpg",
+    "followers": 3423
+   },
+   "interactions": 22,
    "gain": null
   }
  ],
@@ -2418,6 +2426,27 @@
   },
   {
    "author": {
+    "id": "2010705704135618560",
+    "name": "Luck | Web3 Legal",
+    "username": "SI_Luck77",
+    "avatar": "https://pbs.twimg.com/profile_images/2107589350448074752/Gpr71laO_400x400.jpg",
+    "followers": 1355
+   },
+   "followers": 1355,
+   "followers_24h": 600,
+   "gain": 600,
+   "growth_pct": 79.47,
+   "window": "24h",
+   "views_24h": 14,
+   "post": {
+    "id": "2111906834906796154",
+    "url": "https://x.com/SI_Luck77/status/2111906834906796154",
+    "views": 14,
+    "created_at": "2026-10-18T19:46:41.000Z"
+   }
+  },
+  {
+   "author": {
     "id": "2100899477104242688",
     "name": "rotasi aonie",
     "username": "rotasiaonie",
@@ -2456,6 +2485,27 @@
     "url": "https://x.com/ASMD_BLSH/status/2111834436496969882",
     "views": 0,
     "created_at": "2026-10-18T14:59:00.000Z"
+   }
+  },
+  {
+   "author": {
+    "id": "1444711528486211588",
+    "name": "龙baby",
+    "username": "moiaka4",
+    "avatar": "https://pbs.twimg.com/profile_images/2109972077541474304/zp73odcv_400x400.jpg",
+    "followers": 608
+   },
+   "followers": 608,
+   "followers_24h": 185,
+   "gain": 185,
+   "growth_pct": 43.74,
+   "window": "24h",
+   "views_24h": 4,
+   "post": {
+    "id": "2111911169430839769",
+    "url": "https://x.com/moiaka4/status/2111911169430839769",
+    "views": 4,
+    "created_at": "2026-10-18T20:03:54.000Z"
    }
   },
   {
@@ -2520,52 +2570,10 @@
     "views": 6,
     "created_at": "2026-10-18T16:06:42.000Z"
    }
-  },
-  {
-   "author": {
-    "id": "1071750967903875073",
-    "name": "来福哥",
-    "username": "Josu66821",
-    "avatar": "https://pbs.twimg.com/profile_images/2109836644123832320/DOiR97EG_400x400.jpg",
-    "followers": 1297
-   },
-   "followers": 1297,
-   "followers_24h": 310,
-   "gain": 310,
-   "growth_pct": 31.41,
-   "window": "24h",
-   "views_24h": 9,
-   "post": {
-    "id": "2111851284093624810",
-    "url": "https://x.com/Josu66821/status/2111851284093624810",
-    "views": 9,
-    "created_at": "2026-10-18T16:05:57.000Z"
-   }
-  },
-  {
-   "author": {
-    "id": "1919660863369187328",
-    "name": "Jmax",
-    "username": "jmax_lam",
-    "avatar": "https://pbs.twimg.com/profile_images/1919671118488580096/e7FE9eEJ_400x400.jpg",
-    "followers": 1383
-   },
-   "followers": 1383,
-   "followers_24h": 294,
-   "gain": 294,
-   "growth_pct": 27.0,
-   "window": "24h",
-   "views_24h": 3,
-   "post": {
-    "id": "2111864960938918320",
-    "url": "https://x.com/jmax_lam/status/2111864960938918320",
-    "views": 3,
-    "created_at": "2026-10-18T17:00:17.000Z"
-   }
   }
  ],
  "meta": {
-  "pool_size": 1157,
+  "pool_size": 1196,
   "api_calls_this_run": 21
  }
 }
