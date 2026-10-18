@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-18T13:05:53.795Z",
+ "updated_at": "2026-10-18T14:03:24.705Z",
  "exposure": [
   {
    "id": "2111478643910451458",
@@ -313,31 +313,6 @@
    }
   },
   {
-   "id": "2111456295173980452",
-   "url": "https://x.com/vivimoneya/status/2111456295173980452",
-   "created_at": "2026-10-17T13:56:24.000Z",
-   "author": {
-    "id": "606148464",
-    "name": "vivimoney AI交易分析师 Bluebird🕊️",
-    "username": "vivimoneya",
-    "avatar": "https://pbs.twimg.com/profile_images/2103736988612677632/EhX8U3h2_400x400.jpg",
-    "followers": 21557
-   },
-   "metrics": {
-    "views": 551,
-    "replies": 20,
-    "reposts": 7,
-    "likes": 14,
-    "quotes": 0,
-    "bookmarks": 2
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HU1lM5Ma4AA7ZtL.jpg",
-    "w": 1360,
-    "h": 768
-   }
-  },
-  {
    "id": "2111739486522716523",
    "url": "https://x.com/jizhouwang2026/status/2111739486522716523",
    "created_at": "2026-10-18T08:41:42.000Z",
@@ -473,6 +448,31 @@
     "url": "https://pbs.twimg.com/media/HU5n7x5bYAA0TLZ.jpg",
     "w": 2284,
     "h": 1212
+   }
+  },
+  {
+   "id": "2111774481744306493",
+   "url": "https://x.com/lesbellachlec8/status/2111774481744306493",
+   "created_at": "2026-10-18T11:00:45.000Z",
+   "author": {
+    "id": "2107064480324829184",
+    "name": "lesbellachen",
+    "username": "lesbellachlec8",
+    "avatar": "https://pbs.twimg.com/profile_images/2107069504916533248/zbAo0AQr_400x400.jpg",
+    "followers": 1392
+   },
+   "metrics": {
+    "views": 57,
+    "replies": 9,
+    "reposts": 7,
+    "likes": 9,
+    "quotes": 0,
+    "bookmarks": 1
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/amplify_video_thumb/2111774420981493760/img/Y3CDSGTeZDOMoy4F.jpg",
+    "w": 2160,
+    "h": 2632
    }
   }
  ],
@@ -1019,6 +1019,31 @@
    }
   },
   {
+   "id": "2111816205342515419",
+   "url": "https://x.com/sss_crypto/status/2111816205342515419",
+   "created_at": "2026-10-18T13:46:33.000Z",
+   "author": {
+    "id": "1784021113754071040",
+    "name": "FAN",
+    "username": "sss_crypto",
+    "avatar": "https://pbs.twimg.com/profile_images/2077768967016615936/5hpnlfKl_400x400.jpg",
+    "followers": 13941
+   },
+   "metrics": {
+    "views": 738,
+    "replies": 1,
+    "reposts": 0,
+    "likes": 6,
+    "quotes": 0,
+    "bookmarks": 2
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HU6th06boAEauH1.jpg",
+    "w": 1133,
+    "h": 1774
+   }
+  },
+  {
    "id": "2111600626983477693",
    "url": "https://x.com/tttwxyow/status/2111600626983477693",
    "created_at": "2026-10-17T23:29:55.000Z",
@@ -1116,31 +1141,6 @@
     "url": "https://pbs.twimg.com/media/HU51mjdbIAA6rpt.jpg",
     "w": 1200,
     "h": 675
-   }
-  },
-  {
-   "id": "2111456295173980452",
-   "url": "https://x.com/vivimoneya/status/2111456295173980452",
-   "created_at": "2026-10-17T13:56:24.000Z",
-   "author": {
-    "id": "606148464",
-    "name": "vivimoney AI交易分析师 Bluebird🕊️",
-    "username": "vivimoneya",
-    "avatar": "https://pbs.twimg.com/profile_images/2103736988612677632/EhX8U3h2_400x400.jpg",
-    "followers": 21557
-   },
-   "metrics": {
-    "views": 551,
-    "replies": 20,
-    "reposts": 7,
-    "likes": 14,
-    "quotes": 0,
-    "bookmarks": 2
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HU1lM5Ma4AA7ZtL.jpg",
-    "w": 1360,
-    "h": 768
    }
   },
   {
@@ -1619,6 +1619,31 @@
    }
   },
   {
+   "id": "2111819710593478987",
+   "url": "https://x.com/MasterKenta2020/status/2111819710593478987",
+   "created_at": "2026-10-18T14:00:29.000Z",
+   "author": {
+    "id": "1340291553005191169",
+    "name": "Master Kenta",
+    "username": "MasterKenta2020",
+    "avatar": "https://pbs.twimg.com/profile_images/1900061690601103360/sFjPvMqr_400x400.jpg",
+    "followers": 125876
+   },
+   "metrics": {
+    "views": 286,
+    "replies": 0,
+    "reposts": 0,
+    "likes": 3,
+    "quotes": 0,
+    "bookmarks": 0
+   },
+   "image": {
+    "url": "https://pbs.twimg.com/media/HU6w0JGXEAAbjF1.jpg",
+    "w": 1810,
+    "h": 2560
+   }
+  },
+  {
    "id": "2111494906040697075",
    "url": "https://x.com/Cyxyj2/status/2111494906040697075",
    "created_at": "2026-10-17T16:29:49.000Z",
@@ -2044,31 +2069,6 @@
    }
   },
   {
-   "id": "2111449651131875548",
-   "url": "https://x.com/xubaobao888/status/2111449651131875548",
-   "created_at": "2026-10-17T13:30:00.000Z",
-   "author": {
-    "id": "2100471622574706688",
-    "name": "徐宝宝",
-    "username": "xubaobao888",
-    "avatar": "https://pbs.twimg.com/profile_images/2100475863984959488/UNHzkw4h_400x400.jpg",
-    "followers": 4957
-   },
-   "metrics": {
-    "views": 136,
-    "replies": 3,
-    "reposts": 0,
-    "likes": 2,
-    "quotes": 0,
-    "bookmarks": 0
-   },
-   "image": {
-    "url": "https://pbs.twimg.com/media/HU1WCDTbsAAQ25u.jpg",
-    "w": 1200,
-    "h": 1047
-   }
-  },
-  {
    "id": "2111711588164219352",
    "url": "https://x.com/gbroai/status/2111711588164219352",
    "created_at": "2026-10-18T06:50:50.000Z",
@@ -2313,17 +2313,6 @@
   },
   {
    "author": {
-    "id": "606148464",
-    "name": "vivimoney AI交易分析师 Bluebird🕊️",
-    "username": "vivimoneya",
-    "avatar": "https://pbs.twimg.com/profile_images/2103736988612677632/EhX8U3h2_400x400.jpg",
-    "followers": 21557
-   },
-   "interactions": 41,
-   "gain": 38
-  },
-  {
-   "author": {
     "id": "281045155",
     "name": "Vic Wong 黄维克",
     "username": "_vicwong",
@@ -2354,6 +2343,17 @@
    },
    "interactions": 38,
    "gain": 345
+  },
+  {
+   "author": {
+    "id": "2107064480324829184",
+    "name": "lesbellachen",
+    "username": "lesbellachlec8",
+    "avatar": "https://pbs.twimg.com/profile_images/2107069504916533248/zbAo0AQr_400x400.jpg",
+    "followers": 1392
+   },
+   "interactions": 25,
+   "gain": null
   }
  ],
  "rising": [
@@ -2569,7 +2569,7 @@
   }
  ],
  "meta": {
-  "pool_size": 813,
+  "pool_size": 878,
   "api_calls_this_run": 21
  }
 }
