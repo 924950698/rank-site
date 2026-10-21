@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-21T00:02:42Z",
+ "updated_at": "2026-10-21T01:07:08Z",
  "method": "按最近回复和@次数",
  "users": {
   "tigerr3aue": [
@@ -7,7 +7,7 @@
     "handle": "pucheng520",
     "name": "卡总裁",
     "avatar": "https://pbs.twimg.com/profile_images/2109531292052357120/PODn2OyA_400x400.jpg",
-    "count": 10
+    "count": 7
    },
    {
     "handle": "marketsandai789",
@@ -19,19 +19,13 @@
     "handle": "mobiustuan",
     "name": "莫比乌斯团",
     "avatar": "https://pbs.twimg.com/profile_images/2109642052611006464/QMoNxZLC_400x400.jpg",
+    "count": 4
+   },
+   {
+    "handle": "donghaohm",
+    "name": "DONG",
+    "avatar": "https://pbs.twimg.com/profile_images/2109635695816130560/a_iYVptp_400x400.jpg",
     "count": 3
-   },
-   {
-    "handle": "easya9_ccc",
-    "name": "cc橙🍊",
-    "avatar": "https://pbs.twimg.com/profile_images/2103063533252706304/mc0oSh1l_400x400.jpg",
-    "count": 2
-   },
-   {
-    "handle": "grok",
-    "name": "Grok",
-    "avatar": "https://pbs.twimg.com/profile_images/2057885623374290944/lmj0pawP_400x400.jpg",
-    "count": 2
    },
    {
     "handle": "in_chongs",
@@ -46,21 +40,15 @@
     "count": 2
    },
    {
-    "handle": "yiweneven94",
-    "name": "伊文Even",
-    "avatar": "https://pbs.twimg.com/profile_images/2104781721673580544/VFtLlxQb_400x400.jpg",
-    "count": 2
-   },
-   {
     "handle": "0xsol985",
     "name": "陈着冷静",
     "avatar": "https://pbs.twimg.com/profile_images/1867765580838682624/Mb6j-cgE_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "1t2993329337",
-    "name": "基督山伯爵",
-    "avatar": "https://pbs.twimg.com/profile_images/2112154959861141504/bcdEcAf6_400x400.jpg",
+    "handle": "axlumen",
+    "name": "Axel（互关版）",
+    "avatar": "https://pbs.twimg.com/profile_images/2111082563884421120/QQ1QmWA9_400x400.jpg",
     "count": 1
    },
    {
@@ -76,12 +64,6 @@
     "count": 1
    },
    {
-    "handle": "catia9203388964",
-    "name": "康勋裕",
-    "avatar": "https://pbs.twimg.com/profile_images/2106329842547560448/JT7oEOEv_400x400.jpg",
-    "count": 1
-   },
-   {
     "handle": "chihanniu",
     "name": "痴汗🇨🇦",
     "avatar": "https://pbs.twimg.com/profile_images/1826072251717820416/MSJBsv6t_400x400.jpg",
@@ -94,21 +76,9 @@
     "count": 1
    },
    {
-    "handle": "dav338876",
-    "name": "小梦梦",
-    "avatar": "https://pbs.twimg.com/profile_images/2098137297640357888/8MippWQ0_400x400.jpg",
-    "count": 1
-   },
-   {
-    "handle": "dearhua2025",
-    "name": "DearHua",
-    "avatar": "https://pbs.twimg.com/profile_images/2086038908614201344/-kNn5tsh_400x400.jpg",
-    "count": 1
-   },
-   {
-    "handle": "dtaowy",
-    "name": "TKeng",
-    "avatar": "https://pbs.twimg.com/profile_images/2108097149196173312/KMiKCfHf_400x400.jpg",
+    "handle": "easya9_ccc",
+    "name": "cc橙🍊",
+    "avatar": "https://pbs.twimg.com/profile_images/2103063533252706304/mc0oSh1l_400x400.jpg",
     "count": 1
    },
    {
@@ -118,9 +88,27 @@
     "count": 1
    },
    {
+    "handle": "family59110",
+    "name": "蓝朋友",
+    "avatar": "https://pbs.twimg.com/profile_images/1901896637938806784/YKLcSZoZ_400x400.jpg",
+    "count": 1
+   },
+   {
+    "handle": "grok",
+    "name": "Grok",
+    "avatar": "https://pbs.twimg.com/profile_images/2057885623374290944/lmj0pawP_400x400.jpg",
+    "count": 1
+   },
+   {
     "handle": "hackdeacon",
     "name": "黑衣执事",
     "avatar": "https://pbs.twimg.com/profile_images/1919292411702099968/b2_Ji-F5_400x400.jpg",
+    "count": 1
+   },
+   {
+    "handle": "hs_272727",
+    "name": "Zhang.07",
+    "avatar": "https://pbs.twimg.com/profile_images/1733769412405243904/yIQFgbJv_400x400.jpg",
     "count": 1
    },
    {
@@ -133,6 +121,24 @@
     "handle": "meganzou1990",
     "name": "莫子墨 Jake（有关必回）",
     "avatar": "https://pbs.twimg.com/profile_images/2108587866519711744/3RvvtH-9_400x400.jpg",
+    "count": 1
+   },
+   {
+    "handle": "midasmmmm",
+    "name": "AK富",
+    "avatar": "https://pbs.twimg.com/profile_images/2107738501106274304/BQAKTtP2_400x400.jpg",
+    "count": 1
+   },
+   {
+    "handle": "nannan07788",
+    "name": "nannan07788",
+    "avatar": "",
+    "count": 1
+   },
+   {
+    "handle": "orange_gmai",
+    "name": "世外桃园香",
+    "avatar": "https://pbs.twimg.com/profile_images/2106037459817779200/kOpwuA_t_400x400.jpg",
     "count": 1
    },
    {
@@ -154,12 +160,6 @@
     "count": 1
    },
    {
-    "handle": "tomcat530",
-    "name": "Small bee🐝",
-    "avatar": "https://pbs.twimg.com/profile_images/2108806684487319552/w76UwXM-_400x400.jpg",
-    "count": 1
-   },
-   {
     "handle": "watsontaylor23",
     "name": "Watson Taylor",
     "avatar": "https://pbs.twimg.com/profile_images/1719901360689422336/qV_zmiHG_400x400.jpg",
@@ -174,10 +174,16 @@
   ],
   "wugaga520": [
    {
+    "handle": "lser88",
+    "name": "Jack Li",
+    "avatar": "https://pbs.twimg.com/profile_images/2109535888766308352/vCZZWF79_400x400.jpg",
+    "count": 10
+   },
+   {
     "handle": "nirox0216",
     "name": "NiRox｜美股实盘·出海工具",
     "avatar": "https://pbs.twimg.com/profile_images/2024313187827650560/sVJi_d0w_400x400.jpg",
-    "count": 11
+    "count": 10
    },
    {
     "handle": "rainwaterjay",
@@ -198,28 +204,10 @@
     "count": 5
    },
    {
-    "handle": "lser88",
-    "name": "Jack Li",
-    "avatar": "https://pbs.twimg.com/profile_images/2109535888766308352/vCZZWF79_400x400.jpg",
-    "count": 5
-   },
-   {
     "handle": "insight_alchemy",
     "name": "Insight Alchemy/金乌术",
     "avatar": "https://pbs.twimg.com/profile_images/2107696948404772864/lE6IHcJ6_400x400.jpg",
     "count": 4
-   },
-   {
-    "handle": "alanjiatu",
-    "name": "阿海",
-    "avatar": "https://pbs.twimg.com/profile_images/2101934175200886784/Hr_Vhnoz_400x400.jpg",
-    "count": 3
-   },
-   {
-    "handle": "xuejoker168",
-    "name": "德豪的ai之路",
-    "avatar": "https://pbs.twimg.com/profile_images/2112202673424334848/9FXn0Ooc_400x400.jpg",
-    "count": 3
    },
    {
     "handle": "haisenbaoeth",
@@ -240,6 +228,12 @@
     "count": 2
    },
    {
+    "handle": "alanjiatu",
+    "name": "阿海",
+    "avatar": "https://pbs.twimg.com/profile_images/2101934175200886784/Hr_Vhnoz_400x400.jpg",
+    "count": 1
+   },
+   {
     "handle": "freestyle_error",
     "name": "freestyle",
     "avatar": "https://pbs.twimg.com/profile_images/2097700946021376000/njUH1jKK_400x400.jpg",
@@ -250,19 +244,19 @@
     "name": "苏见 #文艺女青年",
     "avatar": "https://pbs.twimg.com/profile_images/2111100358059827200/Q1ph4ehR_400x400.jpg",
     "count": 1
+   },
+   {
+    "handle": "xuejoker168",
+    "name": "德豪的ai之路",
+    "avatar": "https://pbs.twimg.com/profile_images/2112202673424334848/9FXn0Ooc_400x400.jpg",
+    "count": 1
    }
   ],
   "xinjiangmoment": [
    {
-    "handle": "0xspur",
-    "name": "刺老师Spur（普拉提版）",
-    "avatar": "https://pbs.twimg.com/profile_images/2100766155883622400/8v6UXI5v_400x400.jpg",
-    "count": 4
-   },
-   {
-    "handle": "kun70706",
-    "name": "杯中风暴",
-    "avatar": "https://pbs.twimg.com/profile_images/1654689089327869952/QG43rZMW_400x400.jpg",
+    "handle": "chantoziq",
+    "name": "牛叔叔",
+    "avatar": "https://pbs.twimg.com/profile_images/2111318378069774337/EqU_jsEZ_400x400.jpg",
     "count": 4
    },
    {
@@ -290,9 +284,21 @@
     "count": 3
    },
    {
+    "handle": "ivy02523291648",
+    "name": "Ivy",
+    "avatar": "https://pbs.twimg.com/profile_images/2001130614603616256/mlFFow91_400x400.jpg",
+    "count": 3
+   },
+   {
     "handle": "jerry_grey2002",
     "name": "Jerry Sees China",
     "avatar": "https://pbs.twimg.com/profile_images/2056976874308349952/Xeg_vRf6_400x400.jpg",
+    "count": 3
+   },
+   {
+    "handle": "kun70706",
+    "name": "杯中风暴",
+    "avatar": "https://pbs.twimg.com/profile_images/1654689089327869952/QG43rZMW_400x400.jpg",
     "count": 3
    },
    {
@@ -332,15 +338,15 @@
     "count": 3
    },
    {
-    "handle": "freeskyerp",
-    "name": "Freesky",
-    "avatar": "https://pbs.twimg.com/profile_images/2107010388609097728/ExNNafZR_400x400.jpg",
+    "handle": "0xspur",
+    "name": "刺老师Spur（普拉提版）",
+    "avatar": "https://pbs.twimg.com/profile_images/2100766155883622400/8v6UXI5v_400x400.jpg",
     "count": 2
    },
    {
-    "handle": "xitin655326",
-    "name": "夏天(❤️)",
-    "avatar": "https://pbs.twimg.com/profile_images/1925361866551042048/qN-21ie0_400x400.jpg",
+    "handle": "xingtinmng2433",
+    "name": "旅行小蜜蜂_（互fo）",
+    "avatar": "https://pbs.twimg.com/profile_images/1968339430365917184/FCSqefIK_400x400.jpg",
     "count": 2
    },
    {
@@ -368,27 +374,15 @@
     "count": 1
    },
    {
-    "handle": "cuizhuo1028559",
-    "name": "cuizhuozhong",
-    "avatar": "https://pbs.twimg.com/profile_images/2075555475773612032/z6IyYypW_400x400.jpg",
-    "count": 1
-   },
-   {
     "handle": "edwardbkkh",
     "name": "Edward 柯樂",
     "avatar": "https://pbs.twimg.com/profile_images/2090725939802177536/Jf2HzHzu_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "ivy02523291648",
-    "name": "Ivy",
-    "avatar": "https://pbs.twimg.com/profile_images/2001130614603616256/mlFFow91_400x400.jpg",
-    "count": 1
-   },
-   {
-    "handle": "lanaistarke",
-    "name": "Lanai Starke",
-    "avatar": "https://pbs.twimg.com/profile_images/2087802001640017920/WOHEISmN_400x400.jpg",
+    "handle": "freeskyerp",
+    "name": "Freesky",
+    "avatar": "https://pbs.twimg.com/profile_images/2107010388609097728/ExNNafZR_400x400.jpg",
     "count": 1
    },
    {
@@ -416,15 +410,9 @@
     "count": 1
    },
    {
-    "handle": "xingtinmng2433",
-    "name": "旅行小蜜蜂_（互fo）",
-    "avatar": "https://pbs.twimg.com/profile_images/1968339430365917184/FCSqefIK_400x400.jpg",
-    "count": 1
-   },
-   {
-    "handle": "zhangyuanlu1",
-    "name": "十二",
-    "avatar": "https://pbs.twimg.com/profile_images/1871474171135569920/wBCn8hJM_400x400.jpg",
+    "handle": "xitin655326",
+    "name": "夏天(❤️)",
+    "avatar": "https://pbs.twimg.com/profile_images/1925361866551042048/qN-21ie0_400x400.jpg",
     "count": 1
    },
    {
@@ -448,9 +436,9 @@
     "count": 5
    },
    {
-    "handle": "tkr8264kitty",
-    "name": "Kitty",
-    "avatar": "https://pbs.twimg.com/profile_images/2110625907362930688/08buKVAw_400x400.jpg",
+    "handle": "nannan07788",
+    "name": "Flora",
+    "avatar": "https://pbs.twimg.com/profile_images/2011337611877720064/iTEavpMV_400x400.jpg",
     "count": 3
    },
    {
@@ -463,6 +451,12 @@
     "handle": "grok",
     "name": "Grok",
     "avatar": "https://pbs.twimg.com/profile_images/2057885623374290944/lmj0pawP_400x400.jpg",
+    "count": 2
+   },
+   {
+    "handle": "tkr8264kitty",
+    "name": "Kitty",
+    "avatar": "https://pbs.twimg.com/profile_images/2110625907362930688/08buKVAw_400x400.jpg",
     "count": 2
    },
    {
@@ -532,15 +526,15 @@
     "count": 1
    },
    {
-    "handle": "johnqiaoshijie",
-    "name": "瞧世界",
-    "avatar": "https://pbs.twimg.com/profile_images/2104017785487867904/0LmQAhJS_400x400.jpg",
-    "count": 1
-   },
-   {
     "handle": "linxiyu85",
     "name": "老咸鱼🇨🇳pi",
     "avatar": "https://pbs.twimg.com/profile_images/2012436584994586624/6iyuWcnW_400x400.jpg",
+    "count": 1
+   },
+   {
+    "handle": "misskiss5998",
+    "name": "麦子头",
+    "avatar": "https://pbs.twimg.com/profile_images/1801530923449729025/P2EVW_B0_400x400.jpg",
     "count": 1
    },
    {
@@ -562,18 +556,6 @@
     "count": 1
    },
    {
-    "handle": "superallensv",
-    "name": "superallen",
-    "avatar": "https://pbs.twimg.com/profile_images/2108182201875795969/vRYP73QA_400x400.jpg",
-    "count": 1
-   },
-   {
-    "handle": "supereasyit",
-    "name": "山上有松",
-    "avatar": "https://pbs.twimg.com/profile_images/2104552664159997952/GRrcGd8U_400x400.jpg",
-    "count": 1
-   },
-   {
     "handle": "sxc2587",
     "name": "织境AI",
     "avatar": "https://pbs.twimg.com/profile_images/2104787014977744896/QJnLOckc_400x400.jpg",
@@ -582,51 +564,69 @@
   ],
   "blackbeanred67": [
    {
-    "handle": "czhdfjfjd",
-    "name": "czh",
-    "avatar": "https://pbs.twimg.com/profile_images/2099578751285927937/avFA-9mQ_400x400.jpg",
-    "count": 4
+    "handle": "aly12138",
+    "name": "阿狸｜Aly",
+    "avatar": "https://pbs.twimg.com/profile_images/2085930848784932864/Om7cRhfu_400x400.jpg",
+    "count": 2
+   },
+   {
+    "handle": "branson2066",
+    "name": "Branson",
+    "avatar": "https://pbs.twimg.com/profile_images/2092895260750073856/l7rpnk2u_400x400.jpg",
+    "count": 2
    },
    {
     "handle": "dawnfrank90917",
     "name": "牛得华",
     "avatar": "https://pbs.twimg.com/profile_images/2090235654236221441/-8d1cVZh_400x400.jpg",
-    "count": 3
-   },
-   {
-    "handle": "seansheen0727",
-    "name": "响当当",
-    "avatar": "https://pbs.twimg.com/profile_images/2106799416963407872/eG9NUFjR_400x400.jpg",
-    "count": 3
-   },
-   {
-    "handle": "adiyimk",
-    "name": "Allen",
-    "avatar": "https://pbs.twimg.com/profile_images/2104430426966380544/ImGfKlUU_400x400.jpg",
     "count": 2
    },
    {
-    "handle": "frank09884107",
-    "name": "刘德龙Frank（龙学版）",
-    "avatar": "https://pbs.twimg.com/profile_images/2057330874119856128/Nl4ljvq8_400x400.jpg",
+    "handle": "eastgocc",
+    "name": "Eastgo",
+    "avatar": "https://pbs.twimg.com/profile_images/2096175157031436288/2zvTZ2r0_400x400.jpg",
     "count": 2
    },
    {
-    "handle": "tianqinglin",
-    "name": "西格玛T70",
-    "avatar": "https://pbs.twimg.com/profile_images/1948755152103768066/uVDM-68E_400x400.jpg",
+    "handle": "npcqzp",
+    "name": "NPC",
+    "avatar": "https://pbs.twimg.com/profile_images/2108082031238455297/NEzUuu3e_400x400.jpg",
     "count": 2
    },
    {
-    "handle": "yuehqiang",
-    "name": "yuehqiang",
-    "avatar": "https://pbs.twimg.com/profile_images/2013912927724507136/9cC0lwlI_400x400.jpg",
+    "handle": "qianray_xiao",
+    "name": "QianRay",
+    "avatar": "https://pbs.twimg.com/profile_images/2107301126525849600/jJuEUR5Z_400x400.jpg",
     "count": 2
    },
    {
-    "handle": "0xoudoudou",
-    "name": "0x欧豆豆（交友版）",
-    "avatar": "https://pbs.twimg.com/profile_images/1976691274460831744/tnOU17sE_400x400.jpg",
+    "handle": "sixdiemgq",
+    "name": "Six Die",
+    "avatar": "https://pbs.twimg.com/profile_images/2062749930079559680/PqOx05vI_400x400.jpg",
+    "count": 2
+   },
+   {
+    "handle": "timmini21",
+    "name": "斯音",
+    "avatar": "https://pbs.twimg.com/profile_images/2111123091946713088/l4szi8sx_400x400.jpg",
+    "count": 2
+   },
+   {
+    "handle": "yudian_zero",
+    "name": "余电 Zero",
+    "avatar": "https://pbs.twimg.com/profile_images/2110050059773775872/qzIan_fq_400x400.jpg",
+    "count": 2
+   },
+   {
+    "handle": "15669558wer",
+    "name": "Hello",
+    "avatar": "https://pbs.twimg.com/profile_images/2019030815833817088/wEOnWU8l_400x400.jpg",
+    "count": 1
+   },
+   {
+    "handle": "aitd986",
+    "name": "永不言弃的土豆",
+    "avatar": "https://pbs.twimg.com/profile_images/2103337805057273856/gx5Q0wBa_400x400.jpg",
     "count": 1
    },
    {
@@ -636,15 +636,15 @@
     "count": 1
    },
    {
-    "handle": "alpynan",
-    "name": "安南",
-    "avatar": "https://pbs.twimg.com/profile_images/1759228244379996160/1uCN7gAc_400x400.jpg",
+    "handle": "borejuexing888",
+    "name": "般若觉醒",
+    "avatar": "https://pbs.twimg.com/profile_images/2110217677675626496/euNWAlY8_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "archie_wang_007",
-    "name": "阿奇｜财商与观察",
-    "avatar": "https://pbs.twimg.com/profile_images/2105336973833670656/yedSweD4_400x400.jpg",
+    "handle": "changqingluo",
+    "name": "狼图腾",
+    "avatar": "https://pbs.twimg.com/profile_images/2105897208080109568/OPA9WAI8_400x400.jpg",
     "count": 1
    },
    {
@@ -654,115 +654,103 @@
     "count": 1
    },
    {
-    "handle": "duolinto",
-    "name": "Jarvis Claude",
-    "avatar": "https://pbs.twimg.com/profile_images/2108739664903565312/sNK87iw9_400x400.jpg",
+    "handle": "crypto_alb1",
+    "name": "Trader_Alberts",
+    "avatar": "https://pbs.twimg.com/profile_images/2108746318512607232/rZgxrlow_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "empresay654",
-    "name": "Empresay",
-    "avatar": "https://pbs.twimg.com/profile_images/2096522831492517888/zZUQWP0Z_400x400.jpg",
+    "handle": "csccbt5",
+    "name": "懒卷",
+    "avatar": "https://pbs.twimg.com/profile_images/1339580885675302912/AHw8tRFw_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "hinlmo141388",
-    "name": "橙子c",
-    "avatar": "https://pbs.twimg.com/profile_images/2096857651258998784/PPHQb0io_400x400.jpg",
+    "handle": "czhdfjfjd",
+    "name": "czh",
+    "avatar": "https://pbs.twimg.com/profile_images/2099578751285927937/avFA-9mQ_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "insomnialk",
-    "name": "InsomniaLK",
-    "avatar": "https://pbs.twimg.com/profile_images/2084263052762095616/3jVOPoXH_400x400.jpg",
+    "handle": "dtee000",
+    "name": "DT",
+    "avatar": "https://pbs.twimg.com/profile_images/2058809958289088512/1NsbWGgT_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "jwx1250",
-    "name": "Wee",
-    "avatar": "https://pbs.twimg.com/profile_images/2095790465585119232/TreuazsS_400x400.jpg",
+    "handle": "feifeifree35750",
+    "name": "李飞飞",
+    "avatar": "https://pbs.twimg.com/profile_images/2094332501464653824/kQI8qupd_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "lbang_2580",
-    "name": "青山",
-    "avatar": "https://pbs.twimg.com/profile_images/2108357264012988416/LP9LJWhV_400x400.jpg",
+    "handle": "fzc8848848",
+    "name": "Zichao 🐸",
+    "avatar": "https://pbs.twimg.com/profile_images/2107805736696991745/U86sx2s6_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "mercredijohnkin",
-    "name": "Mercredi",
-    "avatar": "https://pbs.twimg.com/profile_images/2102167547265372160/7xp5LpNo_400x400.jpg",
+    "handle": "gaooofy",
+    "name": "高飞",
+    "avatar": "https://pbs.twimg.com/profile_images/2105095738527260672/SbaSMqlM_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "michell49473040",
-    "name": "yongge",
-    "avatar": "https://pbs.twimg.com/profile_images/1745102628781178880/Cpby0Rph_400x400.jpg",
+    "handle": "gqing0930",
+    "name": "Gqing",
+    "avatar": "https://pbs.twimg.com/profile_images/2107460027778764800/6UPwBEZa_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "moonquakes_ai",
-    "name": "Moonquakes",
-    "avatar": "https://pbs.twimg.com/profile_images/2103524619525423104/Ug4s0D4X_400x400.jpg",
+    "handle": "hpyhh7",
+    "name": "雯雯",
+    "avatar": "https://pbs.twimg.com/profile_images/2085174337863307264/JH3Ndff1_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "nivance5",
-    "name": "李明建",
-    "avatar": "https://pbs.twimg.com/profile_images/1774414086543126528/6FxB0yHB_400x400.jpg",
+    "handle": "hyjsfn9h",
+    "name": "H YJ",
+    "avatar": "https://pbs.twimg.com/profile_images/2106047628261650433/63ZW_p6G_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "qiyaqiyoo",
-    "name": "饺子",
-    "avatar": "https://pbs.twimg.com/profile_images/2104534189655609345/KPnNxUCo_400x400.jpg",
+    "handle": "jin3934yu",
+    "name": "向阳而生",
+    "avatar": "https://pbs.twimg.com/profile_images/2105487325119868928/x4eVa_Ya_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "rexxarbpk",
-    "name": "巴卡虾卡",
-    "avatar": "https://pbs.twimg.com/profile_images/2102063602840846336/6HhQh5Ui_400x400.jpg",
+    "handle": "jojeangsaing",
+    "name": "nana（交友版）",
+    "avatar": "https://pbs.twimg.com/profile_images/2107733676922679296/DFLSMnMa_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "richwang013",
-    "name": "王瑞驰Rich",
-    "avatar": "https://pbs.twimg.com/profile_images/2107568928536834049/mZcXtrLO_400x400.jpg",
+    "handle": "lili103103",
+    "name": "rainbow彩虹姐",
+    "avatar": "https://pbs.twimg.com/profile_images/2106931944445583360/3X89ua0Y_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "rose526528",
-    "name": "Lisa",
-    "avatar": "https://pbs.twimg.com/profile_images/2109265126201446401/zG9uJM9P_400x400.jpg",
+    "handle": "lser88",
+    "name": "Jack Li",
+    "avatar": "https://pbs.twimg.com/profile_images/2109535888766308352/vCZZWF79_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "roserv01",
-    "name": "Rose king（交友）",
-    "avatar": "https://pbs.twimg.com/profile_images/2098993600214568960/cCJgZJlB_400x400.jpg",
-    "count": 1
-   },
-   {
-    "handle": "sailimuhu134947",
-    "name": "大可highfive",
-    "avatar": "https://pbs.twimg.com/profile_images/2107471171461742593/uEcMZKJU_400x400.jpg",
-    "count": 1
-   },
-   {
-    "handle": "t1doo_ai",
-    "name": "T1doo",
-    "avatar": "https://pbs.twimg.com/profile_images/2026025394839928832/ppdQDGU3_400x400.jpg",
-    "count": 1
-   },
-   {
-    "handle": "vshen77",
-    "name": "vshen77",
-    "avatar": "",
+    "handle": "nakamurajoph",
+    "name": "Nakamura",
+    "avatar": "https://pbs.twimg.com/profile_images/2106684857598582784/TzKtTWxL_400x400.jpg",
     "count": 1
    }
   ],
   "cyeezzzhfx": [
+   {
+    "handle": "mt5all",
+    "name": "总有吊毛想害朕",
+    "avatar": "https://pbs.twimg.com/profile_images/2111020001314717696/I5AxnVv2_400x400.jpg",
+    "count": 10
+   },
    {
     "handle": "sixdiemgq",
     "name": "Six Die",
@@ -770,69 +758,39 @@
     "count": 8
    },
    {
-    "handle": "raineplaylife",
-    "name": "RainePlay(雨学)",
-    "avatar": "https://pbs.twimg.com/profile_images/2111151176788168704/QqBuQc4H_400x400.jpg",
+    "handle": "siaqi77",
+    "name": "SI/阿七",
+    "avatar": "https://pbs.twimg.com/profile_images/2108470289776709632/_1XaimKk_400x400.jpg",
     "count": 7
+   },
+   {
+    "handle": "miomm0766",
+    "name": "mio",
+    "avatar": "https://pbs.twimg.com/profile_images/2093422616371757056/0DRLT-gA_400x400.jpg",
+    "count": 6
    },
    {
     "handle": "fjshlx56",
     "name": "Code_R",
     "avatar": "https://pbs.twimg.com/profile_images/2104834051526086656/qlkFZCpd_400x400.jpg",
-    "count": 4
-   },
-   {
-    "handle": "siaqi77",
-    "name": "SI/阿七",
-    "avatar": "https://pbs.twimg.com/profile_images/2108470289776709632/_1XaimKk_400x400.jpg",
-    "count": 4
-   },
-   {
-    "handle": "deep___white",
-    "name": "Joe 宋(薄肌版)",
-    "avatar": "https://pbs.twimg.com/profile_images/2108412249010249728/gso20OLC_400x400.jpg",
-    "count": 3
-   },
-   {
-    "handle": "nguyenhadn",
-    "name": "Nguyễn Hà",
-    "avatar": "https://pbs.twimg.com/profile_images/2098990685831737344/vrmr75lL_400x400.jpg",
     "count": 2
    },
    {
-    "handle": "nrdurjoyx",
-    "name": "ɴʀ ᴅᴜʀᴊᴏʏ",
-    "avatar": "https://pbs.twimg.com/profile_images/2111680777666846720/4quYVabl_400x400.jpg",
-    "count": 2
-   },
-   {
-    "handle": "richwang013",
-    "name": "王瑞驰Rich",
-    "avatar": "https://pbs.twimg.com/profile_images/2107568928536834049/mZcXtrLO_400x400.jpg",
-    "count": 2
-   },
-   {
-    "handle": "wangjiankang9",
-    "name": "啊呀丨打工人观察",
-    "avatar": "https://pbs.twimg.com/profile_images/2111129054225281024/FqtDQaIY_400x400.jpg",
-    "count": 2
-   },
-   {
-    "handle": "y25879034",
-    "name": "欧叶🍃",
-    "avatar": "https://pbs.twimg.com/profile_images/1666453695880372225/npeonwFU_400x400.jpg",
-    "count": 2
-   },
-   {
-    "handle": "cabigcat",
-    "name": "大猫",
-    "avatar": "https://pbs.twimg.com/profile_images/2108425773174366208/jfNPjetB_400x400.jpg",
+    "handle": "14256617zgq",
+    "name": "禅堂",
+    "avatar": "https://pbs.twimg.com/profile_images/2111569831745236992/SmxB2U2H_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "ianwong1002",
-    "name": "黄老板",
-    "avatar": "https://pbs.twimg.com/profile_images/2101873456589815808/HwKOAjsA_400x400.jpg",
+    "handle": "hackdeacon",
+    "name": "黑衣执事",
+    "avatar": "https://pbs.twimg.com/profile_images/1919292411702099968/b2_Ji-F5_400x400.jpg",
+    "count": 1
+   },
+   {
+    "handle": "jackdian2g",
+    "name": "赛博不得闲",
+    "avatar": "https://pbs.twimg.com/profile_images/2110672561973669888/9jm4q29-_400x400.jpg",
     "count": 1
    },
    {
@@ -842,63 +800,87 @@
     "count": 1
    },
    {
-    "handle": "jacobaaaaa154",
-    "name": "Jacob│AIart",
-    "avatar": "https://pbs.twimg.com/profile_images/2057085462289022976/f3zXSLgT_400x400.jpg",
+    "handle": "jackwuvs",
+    "name": "Jack Wu",
+    "avatar": "https://pbs.twimg.com/profile_images/2030160335387381765/66dxpV2n_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "kirk0523",
-    "name": "荷包蛋🍳",
-    "avatar": "https://pbs.twimg.com/profile_images/1282241321055338496/HSwR0cBW_400x400.jpg",
+    "handle": "kimmykimol",
+    "name": "职业女王",
+    "avatar": "https://pbs.twimg.com/profile_images/2098654107661934592/a0bWYKUn_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "lily7xvo",
-    "name": "菠萝🍍 pineapple",
-    "avatar": "https://pbs.twimg.com/profile_images/2107277496597233664/spFNhLyA_400x400.jpg",
+    "handle": "kyota97",
+    "name": "顾的Idea",
+    "avatar": "https://pbs.twimg.com/profile_images/2088463532866277376/rJDXG5Iz_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "linsen437",
-    "name": "Linsen",
-    "avatar": "https://pbs.twimg.com/profile_images/2108753808583208960/Ll8obQO4_400x400.jpg",
+    "handle": "lazzzy_42",
+    "name": "玲珑鸡翅",
+    "avatar": "https://pbs.twimg.com/profile_images/2031925972136869888/8IYcYyc1_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "mt5all",
-    "name": "总有吊毛想害朕",
-    "avatar": "https://pbs.twimg.com/profile_images/2111020001314717696/I5AxnVv2_400x400.jpg",
+    "handle": "nero60706626",
+    "name": "NERO",
+    "avatar": "https://pbs.twimg.com/profile_images/2112029233895899136/30DKCERj_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "simonmytime",
-    "name": "GM元宝",
-    "avatar": "https://pbs.twimg.com/profile_images/2107158201607311360/FjFN6AKa_400x400.jpg",
+    "handle": "qqteng",
+    "name": "Joker",
+    "avatar": "https://pbs.twimg.com/profile_images/2109494883077754880/PGrUaKpG_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "szdyai666",
-    "name": "失重的雨",
-    "avatar": "https://pbs.twimg.com/profile_images/2103715493110779904/nEVuJ-th_400x400.jpg",
+    "handle": "raineplaylife",
+    "name": "RainePlay(雨学)",
+    "avatar": "https://pbs.twimg.com/profile_images/2111151176788168704/QqBuQc4H_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "wanerime",
-    "name": "rain",
-    "avatar": "https://pbs.twimg.com/profile_images/2090431264130310145/ytgfSK8F_400x400.jpg",
+    "handle": "richbear_xr",
+    "name": "虾仁猪心",
+    "avatar": "https://pbs.twimg.com/profile_images/2109494195329323008/dxnATj14_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "xubaobao888",
-    "name": "徐宝宝",
-    "avatar": "https://pbs.twimg.com/profile_images/2100475863984959488/UNHzkw4h_400x400.jpg",
+    "handle": "shinyruoxotto",
+    "name": "律队Riiitsu",
+    "avatar": "https://pbs.twimg.com/profile_images/1938996930169995264/OV0sQtdH_400x400.jpg",
     "count": 1
    },
    {
-    "handle": "yuziyyaa",
-    "name": "Youzi",
-    "avatar": "https://pbs.twimg.com/profile_images/2093740336610942976/becO_aaR_400x400.jpg",
+    "handle": "sjsmrk8",
+    "name": "一维",
+    "avatar": "https://pbs.twimg.com/profile_images/2105465159410192384/vmUHAVvm_400x400.jpg",
+    "count": 1
+   },
+   {
+    "handle": "tinahuynhvn",
+    "name": "baby Huỳnh",
+    "avatar": "https://pbs.twimg.com/profile_images/2096474716836081664/mBE7A7yH_400x400.jpg",
+    "count": 1
+   },
+   {
+    "handle": "tngtng192073",
+    "name": "芥末辣",
+    "avatar": "https://pbs.twimg.com/profile_images/2110980927673516032/Zx0IXSHj_400x400.jpg",
+    "count": 1
+   },
+   {
+    "handle": "xiaosanaixiaoer",
+    "name": "PANXUERU",
+    "avatar": "https://pbs.twimg.com/profile_images/1981772959032229888/U7XSMSqA_400x400.jpg",
+    "count": 1
+   },
+   {
+    "handle": "zhaxinx",
+    "name": "扎心了老铁",
+    "avatar": "https://pbs.twimg.com/profile_images/2105318244190142464/P_cFtkra_400x400.jpg",
     "count": 1
    }
   ],
@@ -8924,7 +8906,7 @@
   },
   "tngtng192073": {
    "name": "芥末辣",
-   "avatar": "https://pbs.twimg.com/profile_images/1808994617981087748/rqUer5W6_400x400.jpg"
+   "avatar": "https://pbs.twimg.com/profile_images/2110980927673516032/Zx0IXSHj_400x400.jpg"
   },
   "sunbtc_astro": {
    "name": "占星阳.btc🔮",
@@ -12879,7 +12861,7 @@
    "avatar": "https://pbs.twimg.com/profile_images/1959449085792137217/EaFQd7b4_400x400.jpg"
   },
   "misskiss5998": {
-   "name": "hxhyh.eth",
+   "name": "麦子头",
    "avatar": "https://pbs.twimg.com/profile_images/1801530923449729025/P2EVW_B0_400x400.jpg"
   },
   "bankemaestro": {
@@ -19765,11 +19747,95 @@
   "kirk0523": {
    "name": "荷包蛋🍳",
    "avatar": "https://pbs.twimg.com/profile_images/1282241321055338496/HSwR0cBW_400x400.jpg"
+  },
+  "midasmmmm": {
+   "name": "AK富",
+   "avatar": "https://pbs.twimg.com/profile_images/2107738501106274304/BQAKTtP2_400x400.jpg"
+  },
+  "hs_272727": {
+   "name": "Zhang.07",
+   "avatar": "https://pbs.twimg.com/profile_images/1733769412405243904/yIQFgbJv_400x400.jpg"
+  },
+  "family59110": {
+   "name": "蓝朋友",
+   "avatar": "https://pbs.twimg.com/profile_images/1901896637938806784/YKLcSZoZ_400x400.jpg"
+  },
+  "chantoziq": {
+   "name": "牛叔叔",
+   "avatar": "https://pbs.twimg.com/profile_images/2111318378069774337/EqU_jsEZ_400x400.jpg"
+  },
+  "x_zhuren": {
+   "name": "X 主任",
+   "avatar": "https://pbs.twimg.com/profile_images/2112567173860483072/jVV94qC1_400x400.jpg"
+  },
+  "nakamurajoph": {
+   "name": "Nakamura",
+   "avatar": "https://pbs.twimg.com/profile_images/2106684857598582784/TzKtTWxL_400x400.jpg"
+  },
+  "jin3934yu": {
+   "name": "向阳而生",
+   "avatar": "https://pbs.twimg.com/profile_images/2105487325119868928/x4eVa_Ya_400x400.jpg"
+  },
+  "changqingluo": {
+   "name": "狼图腾",
+   "avatar": "https://pbs.twimg.com/profile_images/2105897208080109568/OPA9WAI8_400x400.jpg"
+  },
+  "jojeangsaing": {
+   "name": "nana（交友版）",
+   "avatar": "https://pbs.twimg.com/profile_images/2107733676922679296/DFLSMnMa_400x400.jpg"
+  },
+  "wangeaymau": {
+   "name": "农村大懒汉",
+   "avatar": "https://pbs.twimg.com/profile_images/2101545309101072384/CEG1nU9O_400x400.jpg"
+  },
+  "gaooofy": {
+   "name": "高飞",
+   "avatar": "https://pbs.twimg.com/profile_images/2105095738527260672/SbaSMqlM_400x400.jpg"
+  },
+  "aitd986": {
+   "name": "永不言弃的土豆",
+   "avatar": "https://pbs.twimg.com/profile_images/2103337805057273856/gx5Q0wBa_400x400.jpg"
+  },
+  "xiaomada88": {
+   "name": "老鱼船长",
+   "avatar": "https://pbs.twimg.com/profile_images/2110727016849047552/_k54_5ZM_400x400.jpg"
+  },
+  "crypto_alb1": {
+   "name": "Trader_Alberts",
+   "avatar": "https://pbs.twimg.com/profile_images/2108746318512607232/rZgxrlow_400x400.jpg"
+  },
+  "14256617zgq": {
+   "name": "禅堂",
+   "avatar": "https://pbs.twimg.com/profile_images/2111569831745236992/SmxB2U2H_400x400.jpg"
+  },
+  "kyota97": {
+   "name": "顾的Idea",
+   "avatar": "https://pbs.twimg.com/profile_images/2088463532866277376/rJDXG5Iz_400x400.jpg"
+  },
+  "nero60706626": {
+   "name": "NERO",
+   "avatar": "https://pbs.twimg.com/profile_images/2112029233895899136/30DKCERj_400x400.jpg"
+  },
+  "qqteng": {
+   "name": "Joker",
+   "avatar": "https://pbs.twimg.com/profile_images/2109494883077754880/PGrUaKpG_400x400.jpg"
+  },
+  "tinahuynhvn": {
+   "name": "baby Huỳnh",
+   "avatar": "https://pbs.twimg.com/profile_images/2096474716836081664/mBE7A7yH_400x400.jpg"
+  },
+  "shinyruoxotto": {
+   "name": "律队Riiitsu",
+   "avatar": "https://pbs.twimg.com/profile_images/1938996930169995264/OV0sQtdH_400x400.jpg"
+  },
+  "jackdian2g": {
+   "name": "赛博不得闲",
+   "avatar": "https://pbs.twimg.com/profile_images/2110672561973669888/9jm4q29-_400x400.jpg"
   }
  },
  "meta": {
   "fetched_at": {
-   "tigerr3aue": "2026-10-21T00:02:42Z",
+   "tigerr3aue": "2026-10-21T01:07:08Z",
    "marktowin8": "2026-10-16T11:12:45Z",
    "hongjunlv": "2026-10-16T10:11:11Z",
    "zy16881": "2026-10-16T10:11:11Z",
@@ -19811,15 +19877,15 @@
    "ylj158852": "2026-10-16T10:11:11Z",
    "techflowpost": "2026-10-16T09:05:30Z",
    "mithles56972385": "2026-10-16T09:05:30Z",
-   "wugaga520": "2026-10-21T00:02:42Z",
+   "wugaga520": "2026-10-21T01:07:08Z",
    "jjk_votingteam": "2026-10-16T09:05:30Z",
    "jurymusty5ae": "2026-10-16T10:11:11Z",
-   "xinjiangmoment": "2026-10-21T00:02:42Z",
+   "xinjiangmoment": "2026-10-21T01:07:08Z",
    "idsn14365": "2026-10-15T13:18:21Z",
    "ianxintx": "2026-10-16T09:05:30Z",
    "tylerspace2026": "2026-10-16T09:05:30Z",
    "kang53440576": "2026-10-16T09:05:30Z",
-   "nimogo39967": "2026-10-21T00:02:42Z",
+   "nimogo39967": "2026-10-21T01:07:08Z",
    "ruxin231": "2026-10-16T11:12:45Z",
    "luobaoouo": "2026-10-16T11:12:45Z",
    "hebi555": "2026-10-16T11:12:45Z",
@@ -19830,9 +19896,9 @@
    "hdl48": "2026-10-16T09:31:13Z",
    "philihx": "2026-10-16T09:31:13Z",
    "725_rika": "2026-10-16T09:31:13Z",
-   "blackbeanred67": "2026-10-21T00:02:42Z",
-   "cyeezzzhfx": "2026-10-21T00:02:42Z",
-   "eatmoreduck98": "2026-10-21T00:02:42Z"
+   "blackbeanred67": "2026-10-21T01:07:08Z",
+   "cyeezzzhfx": "2026-10-21T01:07:08Z",
+   "eatmoreduck98": "2026-10-21T01:07:08Z"
   },
   "accounts_this_run": 7,
   "extra_fetched_at": {
