@@ -197,23 +197,24 @@ function startWallFx(el) {
   fxRaf = requestAnimationFrame(step);
 }
 let wallTok = 0;
-async function renderPersonalWall() {
+let poolP, uniLib;
+async function renderPersonalWall() {   // 互动宇宙：照片墙互动 → 互评账本 → 头像池补位，满 100 人
   const tok = ++wallTok, el = $("#wall"), h = PW.h;
-  const ppl = await keepLoaded(wallPeople(PW), true); if (tok !== wallTok || !PW) return;
-  const W = el.clientWidth || 378, { H, items } = packCircles(ppl.length, W, peopleRad(ppl));
-  let rank = 0;
-  el.style.height = H + "px";
-  el.innerHTML = items.map((c, i) => { const u = ppl[i], rk = !u.self && !u.extra ? ++rank : 0;
-    return `<a class="bub${u.self ? " self" : ""}" href="${outUrl(profile(u.handle), u.self ? "self_wall" : "partner_wall")}" target="_blank" rel="noopener" title="@${esc(u.handle)}${u.count ? " · " + u.count + " 次互动" : ""}"
-      style="left:${(c.x - c.r).toFixed(1)}px;top:${(c.y - c.r).toFixed(1)}px;width:${(2 * c.r).toFixed(1)}px;height:${(2 * c.r).toFixed(1)}px;opacity:${c.o}">
-      <img decoding="async" src="${esc(u.avatar)}" alt="" onerror="${u.self ? `this.outerHTML='<b class=ini>${esc(ini(u))}</b>'` : "this.parentNode.remove()"}">${rk && rk <= 3 ? `<i>${rk}</i>` : ""}</a>`; }).join("")
-    + `<span class="wtag l">@${esc(h)} 的互动圈<br><span style="opacity:.7">圆越大互动越多</span></span><span class="wtag r">${ppl.length - 1} 人</span>`;
-  startWallFx(el);
+  if (!el.classList.contains("uni")) { el.style.height = ""; el.innerHTML = `<div class="empty">互动宇宙加载中…</div>`; }
+  uniLib ||= loadJS("vendor/qrcode.js?v=" + AV_V).catch(() => {});
+  ledgerP ||= fetch("ledger.json", { cache: "no-cache" }).then(r => { if (!r.ok) throw 0; return r.json(); });
+  poolP ||= fetch("pool.json?v=" + AV_V).then(r => r.ok ? r.json() : []).catch(() => []);
+  const [Pj, Lj, pool] = await Promise.all([partnersP, ledgerP.catch(() => null), poolP, uniLib]);
+  if (tok !== wallTok || !PW || !window.Universe) return;
+  const data = Universe.build(Pj, Lj, pool, h);
+  await Universe.mount(el, data, { isStale: () => tok !== wallTok || !PW,
+    onPick: hd => { if ((Pj.users || {})[hd]?.length) { $("#pqIn").value = "@" + hd; showPartners(hd); showLedger(hd); el.scrollIntoView({ behavior: "smooth", block: "start" }); } else toast(`@${hd} 还没开通照片墙`); } });
 }
 async function renderWall() {
   $("#wallTitle").textContent = PW ? `@${PW.h} 的互动照片墙` : "24 小时照片墙";
   $("#wallSort").style.display = PW ? "none" : "";
   if (PW) return renderPersonalWall();
+  $("#wall").classList.remove("uni");
   if (!D) return;
   const tok = ++wallTok, el = $("#wall");
   const ps = [...(D.photos || [])].sort((a, b) => b.metrics[wallSort] - a.metrics[wallSort]).slice(0, 50);
@@ -389,19 +390,28 @@ async function makeWallGif(pw, prog) {
   enc.finish(); return new Blob([enc.bytes()], { type: "image/gif" });
 }
 window.__makeWallGif = makeWallGif;
-async function openWallModal(pw) {
+async function openWallModal(pw) {   // 互动宇宙海报 + 6 秒视频
   const h = pw.h;
-  const m = document.createElement("div"); m.className = "pm"; m.innerHTML = `<div class="pmb"><div class="m" style="text-align:center;padding:40px" id="wmProg">动图生成中…</div></div>`;
+  const m = document.createElement("div"); m.className = "pm"; m.innerHTML = `<div class="pmb"><div class="m" style="text-align:center;padding:40px">海报生成中…</div></div>`;
   document.body.appendChild(m); m.onclick = e => { if (e.target === m) m.remove(); };
   try {
-    const gb = await makeWallGif(pw, p => { const e = m.querySelector("#wmProg"); if (e) e.textContent = `动图生成中… ${Math.round(p * 100)}%`; });
-    const file = new File([gb], `wall-${h}.gif`, { type: "image/gif" }), purl = URL.createObjectURL(gb);
-    const xText = "我的 X 互动照片墙出炉了，测测你的 👉 " + shareUrl(h);
-    m.querySelector(".pmb").innerHTML = `<img src="${purl}" alt="互动照片墙"><div class="pmh">先保存图片，发帖时把图片加上</div>
-      <div class="pmr"><button class="btn" id="wmSave">保存图片</button><a class="btn ghost" id="wmX" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(xText)}">发到 X</a><button class="btn ghost" id="wmClose">关闭</button></div>`;
+    let u; for (let i = 0; i < 100 && !((u = window.Universe?.current) && u.data.owner.handle === h); i++) await new Promise(r => setTimeout(r, 150));
+    if (!u || u.data.owner.handle !== h) throw 0;
+    const blob = await u.poster(), file = new File([blob], `universe-${h}.png`, { type: "image/png" }), purl = URL.createObjectURL(blob);
+    m.querySelector(".pmb").innerHTML = `<img src="${purl}" alt="我的互动宇宙"><div class="pmh">先保存海报，发帖时把图片加上（文案已自动 @ 互动最多的 3 个人）</div>
+      <div class="pmr"><button class="btn" id="wmSave">保存海报</button><a class="btn ghost" id="wmX" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(u.shareText)}">发到 X</a><button class="btn ghost" id="wmVid">生成 6 秒视频</button><button class="btn ghost" id="wmClose">关闭</button></div>`;
     m.querySelector("#wmClose").onclick = () => m.remove();
-    m.querySelector("#wmSave").onclick = () => saveImage(file, purl, m.querySelector(".pmb"));
-  } catch { m.querySelector(".pmb").innerHTML = `<div class="m" style="padding:30px;text-align:center">动图生成失败</div>`; }
+    m.querySelector("#wmX").onclick = () => window.track?.("wall:uni_share");
+    m.querySelector("#wmSave").onclick = () => { window.track?.("wall:uni_save"); saveImage(file, purl, m.querySelector(".pmb")); };
+    const vb = m.querySelector("#wmVid"); let vf, vurl;
+    vb.onclick = async () => {
+      if (vf) { window.track?.("wall:uni_video_save"); return saveImage(vf, vurl, m.querySelector(".pmb")); }
+      vb.disabled = true;
+      try { const vblob = await u.video(p => vb.textContent = `录制中 ${Math.round(p * 100)}%`); const ext = vblob.type.includes("mp4") ? "mp4" : "webm";
+        vf = new File([vblob], `universe-${h}.${ext}`, { type: vblob.type }); vurl = URL.createObjectURL(vblob); vb.textContent = `保存视频（${ext.toUpperCase()}）`; window.track?.("wall:uni_video"); }
+      catch { vb.textContent = "此浏览器不支持录视频"; }
+      vb.disabled = false; };
+  } catch { m.querySelector(".pmb").innerHTML = `<div class="m" style="padding:30px;text-align:center">海报生成失败</div>`; }
 }
 
 // ---------- 互评账本（ledger.json：me_to=我评TA，to_me=TA评我） ----------

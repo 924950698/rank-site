@@ -156,3 +156,8 @@ header .btn{padding:5px 9px;font-size:12px}
 .incBtn{display:block;width:100%;padding:12px 0;font-size:17px;margin-top:8px}.incFt{font-size:12px;color:#888;margin:12px 0 0}
 @media(max-width:1023px){body[data-page=income] .colL,body[data-page=income] .howto{display:none}}
 @media(min-width:1024px){.colC .page>:first-child,.colC .page>:first-child>:first-child,#ledgerOut{margin-top:0}}
+/* 互动宇宙照片墙 */
+.wall.uni{max-width:560px;height:auto!important;background:#05040d;border-color:#2b2350;box-shadow:0 0 28px #6d28d933}
+.wall.uni canvas{display:block;width:100%;height:auto}
+.uTip{position:absolute;pointer-events:none;display:none;transform:translate(-50%,calc(-100% - 10px));background:#0d0b1dee;border:1px solid #8b5cf6;border-radius:10px;padding:5px 10px;font-size:12px;line-height:1.4;white-space:nowrap;color:#e7e9ea;box-shadow:0 0 14px #8b5cf688;z-index:6}
+.uTip b{color:#22d3ee}.uTip small{display:block;color:#a1a1aa;font-size:11px}
