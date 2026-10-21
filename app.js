@@ -85,7 +85,7 @@ async function openChampCard() {
     c.fillStyle = "#fff"; c.font = "800 62px sans-serif"; let nm = a.name || ""; while (c.measureText(nm).width > S - 160 && nm.length > 1) nm = nm.slice(0, -1); c.fillText(nm, cx, 830);
     c.fillStyle = "#c8c8c8"; c.font = "500 44px sans-serif"; c.fillText("@" + a.username, cx, 895);
     c.font = "800 56px sans-serif"; const bw = c.measureText(stat).width + 100; c.fillStyle = "#ffd23f"; c.beginPath(); c.roundRect(cx - bw / 2, 950, bw, 100, 50); c.fill(); c.fillStyle = "#000"; c.fillText(stat, cx, 1020);
-    c.fillStyle = "#39ff14"; c.font = "800 48px sans-serif"; c.fillText("X 中文创作者成长站", cx, 1170); c.fillStyle = "#c8c8c8"; c.font = "500 38px sans-serif"; c.fillText("924950698.github.io/rank-site", cx, 1230);
+    c.fillStyle = "#39ff14"; c.font = "800 48px sans-serif"; c.fillText("X 中文创作者成长站", cx, 1170); c.fillStyle = "#c8c8c8"; c.font = "500 38px sans-serif"; c.fillText("markpump.com", cx, 1230);
     const blob = await new Promise(r => cv.toBlob(r, "image/png")), file = new File([blob], `champ-${a.username}.png`, { type: "image/png" }), purl = URL.createObjectURL(blob);
     const xt = document.getElementById("chX")?.href || "#";
     m.querySelector(".pmb").innerHTML = `<img src="${purl}" alt="冠军卡片"><div class="pmh">先保存图片，发帖时把图片加上</div>
@@ -378,7 +378,7 @@ async function makeWallGif(pw, prog) {
     for (const f of RIP) { let age = (Math.round(t * N) - f.f + N) % N; if (age >= RL) continue; const k = age / RL, e = 1 - (1 - k) * (1 - k);
       c.globalAlpha = (1 - k) * .85; c.strokeStyle = "#39ff14"; c.lineWidth = 3 * (1 - k) + .8; c.beginPath(); c.arc(ox + f.x, oy + f.y, 2.5 + e * (f.s * .65 + 9), 0, 7); c.stroke(); }
     c.globalAlpha = .75; c.fillStyle = "#8b9095"; c.font = "500 15px sans-serif"; c.textAlign = "center"; c.textBaseline = "alphabetic";
-    c.fillText(`@${h} 的互动圈 · 924950698.github.io/rank-site`, S / 2, S - 12); c.globalAlpha = 1;
+    c.fillText(`@${h} 的互动圈 · markpump.com`, S / 2, S - 12); c.globalAlpha = 1;
   };
   const enc = GIFEncoder(); let pal;
   for (let f = 0; f < N; f++) {
@@ -478,7 +478,7 @@ async function openLedgerCard() {
     const st = [[mu.length, "互惠好友", "#39ff14"], [total_me, "近期评论", "#ffffff"], [total_to, "收到评论", "#6ec6ff"]];
     st.forEach(([n, l, col], i) => { const x = S * (i + 1) / 4; c.fillStyle = col; c.font = "800 110px sans-serif"; c.fillText(String(n), x, 800); c.fillStyle = "#c8c8c8"; c.font = "500 40px sans-serif"; c.fillText(l, x, 865); });
     c.fillStyle = "#8b9095"; c.font = "500 36px sans-serif"; c.fillText(`待回评 ${wa.length} · 我该回的 ${ow.length}`, cx, 980);
-    c.fillStyle = "#fff"; c.font = "700 46px sans-serif"; c.fillText("测测你的互评圈 👉", cx, 1150); c.fillStyle = "#39ff14"; c.font = "700 44px sans-serif"; c.fillText("924950698.github.io/rank-site", cx, 1215);
+    c.fillStyle = "#fff"; c.font = "700 46px sans-serif"; c.fillText("测测你的互评圈 👉", cx, 1150); c.fillStyle = "#39ff14"; c.font = "700 44px sans-serif"; c.fillText("markpump.com", cx, 1215);
     const blob = await new Promise(r => cv.toBlob(r, "image/png")), file = new File([blob], `ledger-${h}.png`, { type: "image/png" }), purl = URL.createObjectURL(blob);
     const xText = `我的 X 互评名片：互惠率 ${rate}%，测测你的互评圈 👉 ` + shareUrl(h);
     m.querySelector(".pmb").innerHTML = `<img src="${purl}" alt="互评名片"><div class="pmh">先保存名片，发帖时把图片加上</div>

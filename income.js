@@ -1,6 +1,6 @@
 // 预期收益：一个输入框 → 一个大数字 + 奶茶换算 + 收益海报（娱乐估算）
 (function(){
-  const P=0.20, R_LO=0.6, R_MID=1.1, R_HI=1.3, USD_CNY=7.1, CUP=20, SITE="https://924950698.github.io/rank-site/";
+  const P=0.20, R_LO=0.6, R_MID=1.1, R_HI=1.3, USD_CNY=7.1, CUP=20, SITE="https://markpump.com/";
   const pg=document.getElementById("incomePage"); if(!pg) return;
   const LS=k=>{try{return localStorage.getItem(k)||""}catch{return""}}, SS=(k,v)=>{try{localStorage.setItem(k,v)}catch{}};
   pg.innerHTML=`<div class="inc"><h3>💰 预期收益</h3>
@@ -40,7 +40,7 @@
     c.fillStyle="#ffd23f";c.font="900 200px sans-serif";let big="$"+fmt(r.mid);c.fillText(big,cx,800);
     c.fillStyle="#fff";c.font="500 44px sans-serif";c.fillText(`区间 $${fmt(r.lo)} ～ $${fmt(r.hi)}  ·  两周曝光 ${fmt(r.v)}`,cx,880);
     c.font="800 52px sans-serif";const q=quip(r.mid),bw=c.measureText(q).width+100;c.fillStyle="#ffd23f";c.beginPath();c.roundRect(cx-bw/2,940,bw,100,50);c.fill();c.fillStyle="#000";c.fillText(q,cx,1008);
-    c.fillStyle="#39ff14";c.font="800 48px sans-serif";c.fillText("X 中文创作者成长站",cx,1160);c.fillStyle="#c8c8c8";c.font="500 36px sans-serif";c.fillText("924950698.github.io/rank-site  ·  仅供娱乐",cx,1220);
+    c.fillStyle="#39ff14";c.font="800 48px sans-serif";c.fillText("X 中文创作者成长站",cx,1160);c.fillStyle="#c8c8c8";c.font="500 36px sans-serif";c.fillText("markpump.com  ·  仅供娱乐",cx,1220);
     return cv;}
   async function open(){const r=calc(num()); if(!r.v){inp.focus();window.toast?.("先填上你两周的曝光量");return}
     const m=document.createElement("div");m.className="pm";document.body.appendChild(m);m.onclick=e=>{if(e.target===m)m.remove()};

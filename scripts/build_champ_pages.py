@@ -4,7 +4,7 @@
 import json, io, os, sys, html, urllib.request
 from PIL import Image, ImageDraw, ImageFont
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SITE = "https://924950698.github.io/rank-site/"
+SITE = "https://markpump.com/"
 FONT = "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc"
 NAMES = {"exposure": "曝光榜", "comments": "评论榜", "growth": "涨粉榜", "rising": "新号进步榜"}
 def num(n):
@@ -53,7 +53,7 @@ def draw(a, stat, board, out):
     f2 = F(52); bw = d.textlength(stat, font=f2) + 80
     d.rounded_rectangle((x, 350, x + bw, 440), 45, fill="#ffd23f"); d.text((x + bw / 2, 395), stat, font=f2, fill="#000", anchor="mm")
     d.text((x, 500), "X 中文创作者成长站", font=F(40), fill="#39ff14")
-    d.text((x, 555), "924950698.github.io/rank-site", font=F(28), fill="#c8c8c8")
+    d.text((x, 555), "markpump.com", font=F(28), fill="#c8c8c8")
     im.save(out, optimize=True)
 PAGE = """<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{t}</title><meta name="description" content="{desc}">

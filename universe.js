@@ -1,7 +1,7 @@
 // 互动照片墙「互动宇宙」：主人居中，四圈 8/20/32/40 = 100 人；心跳冲击波每 3 秒一次
 // 数据顺序：照片墙互动（partners.json）→ 互评账本互动对（ledger.json）→ 头像池补位（pool.json，标「补位」）。不额外调 X 接口
 (function(){
-const W=1080,H=1350,CX=540,CY=720,R=480,TAU=Math.PI*2,SITE="https://924950698.github.io/rank-site/";
+const W=1080,H=1350,CX=540,CY=720,R=480,TAU=Math.PI*2,SITE="https://markpump.com/";
 const C={bg:"#05040d",pur:"#a855f7",cy:"#22d3ee",cy2:"#38bdf8",gold:"#ffd34d"};
 const RING=[{n:8,rr:.27,ar:.072,w:.105,al:1,name:"核心圈"},{n:20,rr:.47,ar:.0576,w:-.07,al:.95,name:"铁粉圈"},{n:32,rr:.67,ar:.0432,w:.048,al:.85,name:"互动圈"},{n:40,rr:.87,ar:.0324,w:-.033,al:.72,name:"路人圈"}];
 const metal={1:["#fff3b0","#d49b17","#7a5200","#ffd34d"],2:["#ffffff","#a9b4c2","#4b5563","#cfe8ff"],3:["#ffd0a8","#b8692f","#5c2c0c","#f0a36b"]};
@@ -44,7 +44,7 @@ function brand(c){const qs=118,pad=14,bx=W-24-qs-pad*2-250,by=H-24-qs-pad*2,bw=W
   spark(c,ix,iy,17,1);c.fillStyle=C.pur;c.shadowColor=C.pur;c.shadowBlur=10;c.beginPath();c.arc(ix+27,iy-14,5,0,TAU);c.fill();c.shadowBlur=0;
   c.textAlign="left";c.textBaseline="alphabetic";const tg=c.createLinearGradient(ix+44,0,ix+210,0);tg.addColorStop(0,"#d8b4fe");tg.addColorStop(1,"#67e8f9");
   c.fillStyle=tg;c.font="900 40px sans-serif";c.fillText("互动宇宙",ix+46,iy+14);
-  c.fillStyle="#a1a1aa";c.font="500 17px sans-serif";c.fillText("X 中文创作者成长站",bx+pad+6,by+pad+92);c.fillText("924950698.github.io/rank-site",bx+pad+6,by+pad+116);c.restore();}
+  c.fillStyle="#a1a1aa";c.font="500 17px sans-serif";c.fillText("X 中文创作者成长站",bx+pad+6,by+pad+92);c.fillText("markpump.com",bx+pad+6,by+pad+116);c.restore();}
 function bg(c,t){c.fillStyle=C.bg;c.fillRect(0,0,W,H);
   let g=c.createRadialGradient(300,420,0,300,420,560);g.addColorStop(0,"rgba(109,40,217,.28)");g.addColorStop(1,"rgba(109,40,217,0)");c.fillStyle=g;c.fillRect(0,0,W,H);
   g=c.createRadialGradient(820,980,0,820,980,600);g.addColorStop(0,"rgba(8,145,178,.22)");g.addColorStop(1,"rgba(8,145,178,0)");c.fillStyle=g;c.fillRect(0,0,W,H);
