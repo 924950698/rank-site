@@ -115,13 +115,14 @@ async function create(data){
   const toBlob=(cv,type,q)=>new Promise(r=>cv.toBlob(r,type,q));
   return {AV,data,shareText,frame,hit:(x,y)=>HIT.slice().reverse().find(h=>Math.hypot(h.x-x,h.y-y)<h.r)||null,
     async poster(t=.9){const k=document.createElement("canvas");k.width=W;k.height=H;frame(k.getContext("2d"),t,null);return toBlob(k,"image/png");},
-    // 6 秒视频：画布录制，优先 MP4（Safari / 新版 Chrome），否则 WebM；开场就是心跳冲击波
-    async video(prog){const k=document.createElement("canvas");k.width=W;k.height=H;const c=k.getContext("2d");frame(c,0,null);
-      const types=["video/mp4;codecs=avc1.42E01F","video/mp4;codecs=avc1","video/mp4","video/webm;codecs=vp9","video/webm"],type=types.find(x=>window.MediaRecorder&&MediaRecorder.isTypeSupported(x));
-      if(!type)throw new Error("no recorder");const st=k.captureStream(30),rec=new MediaRecorder(st,{mimeType:type,videoBitsPerSecond:6e6}),chunks=[];rec.ondataavailable=e=>e.data.size&&chunks.push(e.data);
-      const done=new Promise(r=>rec.onstop=r);rec.start(200);const t0=performance.now();
-      await new Promise(res=>{(function f(){const t=(performance.now()-t0)/1000;frame(c,Math.min(t,6),null);prog?.(Math.min(1,t/6));if(t>=6)return res();requestAnimationFrame(f);})();});
-      rec.stop();await done;st.getTracks().forEach(x=>x.stop());return new Blob(chunks,{type:type.split(";")[0]});}};
+    // 动图：540×675，一个心跳周期 3 秒循环；末尾 0.75 秒与开头交叉淡化，星环旋转首尾无缝；多帧采样共用调色板
+    async gif(prog){const {GIFEncoder,quantize,applyPalette}=await import("./vendor/gifenc.esm.js?v="+(window.ASSET_V||"1"));
+      const GW=540,GH=675,N=43,DL=70,L=P,X=.75,k=document.createElement("canvas");k.width=W;k.height=H;const c=k.getContext("2d");
+      const o=document.createElement("canvas");o.width=GW;o.height=GH;const oc=o.getContext("2d",{willReadFrequently:true});oc.imageSmoothingQuality="high";
+      const shot=s=>{frame(c,s+X,null);oc.globalAlpha=1;oc.drawImage(k,0,0,GW,GH);if(s>L-X){frame(c,s+X-L,null);oc.globalAlpha=(s-(L-X))/X;oc.drawImage(k,0,0,GW,GH);oc.globalAlpha=1;}return oc.getImageData(0,0,GW,GH).data;};
+      const smp=[0,.3,.6,1.2,2.4].map(s=>shot(s)),all=new Uint8Array(smp.length*GW*GH*4);smp.forEach((d,i)=>all.set(d,i*GW*GH*4));const pal=quantize(all,256);
+      const enc=GIFEncoder();for(let f=0;f<N;f++){const px=shot(f*L/N);enc.writeFrame(applyPalette(px,pal),GW,GH,{palette:f?undefined:pal,delay:DL,repeat:0});prog?.((f+1)/N);await new Promise(r=>setTimeout(r));}
+      enc.finish();return new Blob([enc.bytes()],{type:"image/gif"});}};
 }
 // 挂到页面：canvas + 悬停提示 + 点头像切到他的照片墙
 let raf=0,cur=null;

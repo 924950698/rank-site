@@ -390,7 +390,7 @@ async function makeWallGif(pw, prog) {
   enc.finish(); return new Blob([enc.bytes()], { type: "image/gif" });
 }
 window.__makeWallGif = makeWallGif;
-async function openWallModal(pw) {   // 互动宇宙海报 + 6 秒视频
+async function openWallModal(pw) {   // 互动宇宙海报 + 动图
   const h = pw.h;
   const m = document.createElement("div"); m.className = "pm"; m.innerHTML = `<div class="pmb"><div class="m" style="text-align:center;padding:40px">海报生成中…</div></div>`;
   document.body.appendChild(m); m.onclick = e => { if (e.target === m) m.remove(); };
@@ -399,17 +399,17 @@ async function openWallModal(pw) {   // 互动宇宙海报 + 6 秒视频
     if (!u || u.data.owner.handle !== h) throw 0;
     const blob = await u.poster(), file = new File([blob], `universe-${h}.png`, { type: "image/png" }), purl = URL.createObjectURL(blob);
     m.querySelector(".pmb").innerHTML = `<img src="${purl}" alt="我的互动宇宙"><div class="pmh">先保存海报，发帖时把图片加上（文案已自动 @ 互动最多的 3 个人）</div>
-      <div class="pmr"><button class="btn" id="wmSave">保存海报</button><a class="btn ghost" id="wmX" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(u.shareText)}">发到 X</a><button class="btn ghost" id="wmVid">生成 6 秒视频</button><button class="btn ghost" id="wmClose">关闭</button></div>`;
+      <div class="pmr"><button class="btn" id="wmSave">保存海报</button><a class="btn ghost" id="wmX" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(u.shareText)}">发到 X</a><button class="btn ghost" id="wmVid">生成动图</button><button class="btn ghost" id="wmClose">关闭</button></div>`;
     m.querySelector("#wmClose").onclick = () => m.remove();
     m.querySelector("#wmX").onclick = () => window.track?.("wall:uni_share");
     m.querySelector("#wmSave").onclick = () => { window.track?.("wall:uni_save"); saveImage(file, purl, m.querySelector(".pmb")); };
     const vb = m.querySelector("#wmVid"); let vf, vurl;
     vb.onclick = async () => {
-      if (vf) { window.track?.("wall:uni_video_save"); return saveImage(vf, vurl, m.querySelector(".pmb")); }
+      if (vf) { window.track?.("wall:uni_gif_save"); return saveImage(vf, vurl, m.querySelector(".pmb")); }
       vb.disabled = true;
-      try { const vblob = await u.video(p => vb.textContent = `录制中 ${Math.round(p * 100)}%`); const ext = vblob.type.includes("mp4") ? "mp4" : "webm";
-        vf = new File([vblob], `universe-${h}.${ext}`, { type: vblob.type }); vurl = URL.createObjectURL(vblob); vb.textContent = `保存视频（${ext.toUpperCase()}）`; window.track?.("wall:uni_video"); }
-      catch { vb.textContent = "此浏览器不支持录视频"; }
+      try { const vblob = await u.gif(p => vb.textContent = `生成中 ${Math.round(p * 100)}%`);
+        vf = new File([vblob], `universe-${h}.gif`, { type: "image/gif" }); vurl = URL.createObjectURL(vblob); vb.textContent = `保存动图（${(vblob.size / 1048576).toFixed(1)}MB）`; window.track?.("wall:uni_gif"); }
+      catch { vb.textContent = "动图生成失败"; }
       vb.disabled = false; };
   } catch { m.querySelector(".pmb").innerHTML = `<div class="m" style="padding:30px;text-align:center">海报生成失败</div>`; }
 }
