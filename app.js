@@ -397,18 +397,19 @@ async function openWallModal(pw) {   // 互动宇宙海报 + 动图
   try {
     let u; for (let i = 0; i < 100 && !((u = window.Universe?.current) && u.data.owner.handle === h); i++) await new Promise(r => setTimeout(r, 150));
     if (!u || u.data.owner.handle !== h) throw 0;
-    const blob = await u.poster(), file = new File([blob], `universe-${h}.png`, { type: "image/png" }), purl = URL.createObjectURL(blob);
-    m.querySelector(".pmb").innerHTML = `<img src="${purl}" alt="我的互动宇宙"><div class="pmh">先保存海报，发帖时把图片加上（文案已自动 @ 互动最多的 3 个人）</div>
-      <div class="pmr"><button class="btn" id="wmSave">保存海报</button><a class="btn ghost" id="wmX" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(u.shareText)}">发到 X</a><button class="btn ghost" id="wmVid">生成动图</button><button class="btn ghost" id="wmClose">关闭</button></div>`;
+    const blob = await u.poster(), purl = URL.createObjectURL(blob);
+    m.querySelector(".pmb").innerHTML = `<img src="${purl}" alt="我的互动宇宙"><div class="pmh">点「生成动图」自动下载，发帖时把动图加上（文案已自动 @ 互动最多的 3 个人）</div>
+      <div class="pmr"><a class="btn ghost" id="wmX" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(u.shareText)}">发到 X</a><button class="btn" id="wmVid">生成动图</button><button class="btn ghost" id="wmClose">关闭</button></div>`;
     m.querySelector("#wmClose").onclick = () => m.remove();
     m.querySelector("#wmX").onclick = () => window.track?.("wall:uni_share");
-    m.querySelector("#wmSave").onclick = () => { window.track?.("wall:uni_save"); saveImage(file, purl, m.querySelector(".pmb")); };
     const vb = m.querySelector("#wmVid"); let vf, vurl;
     vb.onclick = async () => {
-      if (vf) { window.track?.("wall:uni_gif_save"); return saveImage(vf, vurl, m.querySelector(".pmb")); }
+      if (vf) { window.track?.("wall:uni_gif_redl"); return saveImage(vf, vurl, m.querySelector(".pmb")); }
       vb.disabled = true;
       try { const vblob = await u.gif(p => vb.textContent = `生成中 ${Math.round(p * 100)}%`);
-        vf = new File([vblob], `universe-${h}.gif`, { type: "image/gif" }); vurl = URL.createObjectURL(vblob); vb.textContent = `保存动图（${(vblob.size / 1048576).toFixed(1)}MB）`; window.track?.("wall:uni_gif"); }
+        vf = new File([vblob], `universe-${h}.gif`, { type: "image/gif" }); vurl = URL.createObjectURL(vblob); vb.textContent = "重新下载"; window.track?.("wall:uni_gif");
+        const im = m.querySelector(".pmb img"); if (im) im.src = vurl;   // 换成动图，iOS 长按可存
+        saveImage(vf, vurl, m.querySelector(".pmb")); }
       catch { vb.textContent = "动图生成失败"; }
       vb.disabled = false; };
   } catch { m.querySelector(".pmb").innerHTML = `<div class="m" style="padding:30px;text-align:center">海报生成失败</div>`; }
