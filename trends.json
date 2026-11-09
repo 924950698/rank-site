@@ -1,352 +1,126 @@
 {
- "updated": 1794200607420,
- "regions": [
+ "updated": 1794201205173,
+ "source": "x_recent_search_zh",
+ "window_h": 6,
+ "sampled": 1052,
+ "topics": [
   {
-   "key": "global",
-   "name": "全球",
-   "woeid": 1,
-   "items": [
-    {
-     "name": "#キミの推しポケムービー",
-     "zh": "#你最喜欢的口袋妖怪电影"
-    },
-    {
-     "name": "Caleb",
-     "zh": "迦勒"
-    },
-    {
-     "name": "Bears",
-     "zh": "熊"
-    },
-    {
-     "name": "Bucs",
-     "zh": "海盗队"
-    },
-    {
-     "name": "Baker",
-     "zh": "贝克"
-    },
-    {
-     "name": "#LamansionVIP2",
-     "zh": "#拉曼逊 VIP2"
-    },
-    {
-     "name": "#LaGranjaGala",
-     "zh": "#加拉农场"
-    },
-    {
-     "name": "गोवर्धन पूजा",
-     "zh": "戈瓦尔丹法会"
-    },
-    {
-     "name": "#AmanBerlaluLintas",
-     "zh": "#安全交通"
-    },
-    {
-     "name": "Bucky Irving",
-     "zh": "巴基·欧文"
-    },
-    {
-     "name": "Gojek Mulai 1000 DiGoPay",
-     "zh": "Gojek 启动 1000 DiGoPay"
-    },
-    {
-     "name": "#ファミマの人気クリーム",
-     "zh": "#全家便利店人气面霜"
-    },
-    {
-     "name": "Chivas",
-     "zh": "芝华士"
-    },
-    {
-     "name": "Jaylon Johnson",
-     "zh": "杰伦·约翰逊"
-    },
-    {
-     "name": "Budayakan Disiplin Berkendara",
-     "zh": "培养驾驶纪律"
-    },
-    {
-     "name": "Todd Bowles",
-     "zh": "托德·鲍尔斯"
-    },
-    {
-     "name": "ドラゴンクエストRPG",
-     "zh": "勇者斗恶龙角色扮演游戏"
-    },
-    {
-     "name": "トップ娘役",
-     "zh": "顶级女孩角色"
-    },
-    {
-     "name": "Jensen",
-     "zh": "詹森"
-    },
-    {
-     "name": "Ben Johnson",
-     "zh": "本·约翰逊"
-    }
-   ]
+   "name": "黄仁勋 婚外情",
+   "heat": 1520,
+   "count": 200,
+   "authors": 180,
+   "related": [
+    "出轨",
+    "妻子不忠",
+    "董事会"
+   ],
+   "rep": "https://x.com/1904shanhua/status/2119573553708433468"
   },
   {
-   "key": "jp",
-   "name": "日本",
-   "woeid": 23424856,
-   "items": [
-    {
-     "name": "#キミの推しポケムービー",
-     "zh": "#你最喜欢的口袋妖怪电影"
-    },
-    {
-     "name": "#ファミマの人気クリーム",
-     "zh": "#全家便利店人气面霜"
-    },
-    {
-     "name": "#わたしの冬ごはん",
-     "zh": "#我的冬餐"
-    },
-    {
-     "name": "#楽パックで旅しよう",
-     "zh": "#和 Rakupack 一起去旅行吧"
-    },
-    {
-     "name": "ドラゴンクエストRPG",
-     "zh": "勇者斗恶龙角色扮演游戏"
-    },
-    {
-     "name": "トップ娘役",
-     "zh": "顶级女孩角色"
-    },
-    {
-     "name": "#吉田仁人_愛の形CP",
-     "zh": "#吉田仁志恋爱形态CP"
-    },
-    {
-     "name": "ドラクエ",
-     "zh": "勇者斗恶龙"
-    },
-    {
-     "name": "ユーベル",
-     "zh": "于贝尔"
-    },
-    {
-     "name": "私の精神年齢",
-     "zh": "我的心理年龄"
-    },
-    {
-     "name": "るりはなちゃん",
-     "zh": "琉璃花酱"
-    },
-    {
-     "name": "次期トップスター",
-     "zh": "下一个顶级明星"
-    },
-    {
-     "name": "とっしー",
-     "zh": "藤井"
-    },
-    {
-     "name": "エールの残照",
-     "zh": "麦芽酒的余辉"
-    },
-    {
-     "name": "エスコフィエ",
-     "zh": "埃科菲耶"
-    },
-    {
-     "name": "Blaz",
-     "zh": "布拉兹"
-    },
-    {
-     "name": "宝塚歌劇公式ホームページ",
-     "zh": "宝冢歌剧官方主页"
-    },
-    {
-     "name": "ポケモン名",
-     "zh": "神奇宝贝名称"
-    },
-    {
-     "name": "茨城県沖",
-     "zh": "茨城县近海"
-    },
-    {
-     "name": "異世界合体",
-     "zh": "异世界合体"
-    }
-   ]
+   "name": "AI",
+   "heat": 446,
+   "count": 50,
+   "authors": 49,
+   "related": [],
+   "rep": "https://x.com/darrencao2024/status/2119599646909571328"
   },
   {
-   "key": "us",
-   "name": "美国",
-   "woeid": 23424977,
-   "items": [
-    {
-     "name": "Caleb",
-     "zh": "迦勒"
-    },
-    {
-     "name": "Bears",
-     "zh": "熊"
-    },
-    {
-     "name": "Bucs",
-     "zh": "海盗队"
-    },
-    {
-     "name": "Bucky Irving",
-     "zh": "巴基·欧文"
-    },
-    {
-     "name": "Jaylon Johnson",
-     "zh": "杰伦·约翰逊"
-    },
-    {
-     "name": "Todd Bowles",
-     "zh": "托德·鲍尔斯"
-    },
-    {
-     "name": "Ben Johnson",
-     "zh": "本·约翰逊"
-    },
-    {
-     "name": "Burden",
-     "zh": "负担"
-    },
-    {
-     "name": "Buccaneers",
-     "zh": "海盗"
-    },
-    {
-     "name": "#TBvsCHI"
-    },
-    {
-     "name": "Devin Bush",
-     "zh": "德文·布什"
-    },
-    {
-     "name": "#BearDown",
-     "zh": "#熊下"
-    },
-    {
-     "name": "Amnesty",
-     "zh": "大赦"
-    },
-    {
-     "name": "#BaddiesUSAChapter3",
-     "zh": "#美国坏人第3章"
-    },
-    {
-     "name": "Jensen",
-     "zh": "詹森"
-    },
-    {
-     "name": "4 INTs",
-     "zh": "4 个 INT"
-    },
-    {
-     "name": "Loveland",
-     "zh": "拉夫兰"
-    },
-    {
-     "name": "Swift",
-     "zh": "迅速"
-    },
-    {
-     "name": "Packers",
-     "zh": "包装工"
-    },
-    {
-     "name": "Tampa Bay",
-     "zh": "坦帕湾"
-    }
-   ]
+   "name": "OpenAI 灰度",
+   "heat": 288,
+   "count": 32,
+   "authors": 30,
+   "related": [
+    "Astra",
+    "GPT",
+    "Codex"
+   ],
+   "rep": "https://x.com/kale243222/status/2119610162927530408"
   },
   {
-   "key": "sg",
-   "name": "新加坡",
-   "woeid": 23424948,
-   "items": [
-    {
-     "name": "#MrFanboyEP11",
-     "zh": "#范博先生先生 EP11"
-    },
-    {
-     "name": "Jensen Huang",
-     "zh": "黄仁勋"
-    },
-    {
-     "name": "#NINGNINGatLACMA2026",
-     "zh": "#宁宁与LACMA2026"
-    },
-    {
-     "name": "#FoolInLoveEP10",
-     "zh": "#恋爱中的傻瓜 EP10"
-    },
-    {
-     "name": "DO YOU ADMIT IT",
-     "zh": "你承认吗"
-    },
-    {
-     "name": "#GoodBoySeriesEP5",
-     "zh": "#好孩子系列EP5"
-    },
-    {
-     "name": "Nvidia",
-     "zh": "英伟达"
-    },
-    {
-     "name": "Happy Deepavali",
-     "zh": "屠妖节快乐"
-    },
-    {
-     "name": "Happy Diwali",
-     "zh": "排灯节快乐"
-    },
-    {
-     "name": "#BBFanFest2026inKaohsiung",
-     "zh": "#BBF粉丝节2026高雄"
-    },
-    {
-     "name": "RUTHJI UNLOCKS THE PAST",
-     "zh": "露丝吉解开了过去"
-    },
-    {
-     "name": "KHEMJIRA FOREVER EP2",
-     "zh": "永远的克姆吉拉 EP2"
-    },
-    {
-     "name": "Mitch",
-     "zh": "米奇"
-    },
-    {
-     "name": "Carrick",
-     "zh": "卡里克"
-    },
-    {
-     "name": "EMIBONNIE LIGHT UP KAOHSIUNG",
-     "zh": "EMIBONNIE 点亮高雄"
-    },
-    {
-     "name": "Dalot",
-     "zh": "分享"
-    },
-    {
-     "name": "Doran",
-     "zh": "多兰"
-    },
-    {
-     "name": "EST X VANILLIN FW26 SHOW",
-     "zh": "EST X 香草醛 FW26 秀"
-    },
-    {
-     "name": "Lando Norris",
-     "zh": "兰多·诺里斯"
-    },
-    {
-     "name": "Festival of Lights",
-     "zh": "灯节"
-    }
-   ]
+   "name": "Claude",
+   "heat": 246,
+   "count": 26,
+   "authors": 25,
+   "related": [
+    "Code",
+    "Anthropic"
+   ],
+   "rep": "https://x.com/ItsNexoras/status/2119570174307406084"
+  },
+  {
+   "name": "川普 国务卿",
+   "heat": 227,
+   "count": 21,
+   "authors": 20,
+   "related": [
+    "俄罗斯",
+    "伊朗"
+   ],
+   "rep": "https://x.com/1904shanhua/status/2119573553708433468"
+  },
+  {
+   "name": "短剧 ai",
+   "heat": 114,
+   "count": 8,
+   "authors": 8,
+   "related": [],
+   "rep": "https://x.com/Mike0608js/status/2119576572378382445"
+  },
+  {
+   "name": "爆料 郭文贵先生",
+   "heat": 104,
+   "count": 8,
+   "authors": 8,
+   "related": [],
+   "rep": "https://x.com/ManuMG777/status/2119595974058451357"
+  },
+  {
+   "name": "Agent",
+   "heat": 100,
+   "count": 7,
+   "authors": 7,
+   "related": [],
+   "rep": "https://x.com/taojukfc/status/2119589556819501540"
+  },
+  {
+   "name": "杭州",
+   "heat": 88,
+   "count": 5,
+   "authors": 5,
+   "related": [],
+   "rep": "https://x.com/wangguan2ghr/status/2119570817952432496"
+  },
+  {
+   "name": "台灣",
+   "heat": 87,
+   "count": 4,
+   "authors": 4,
+   "related": [],
+   "rep": "https://x.com/Kyleyoujustdoit/status/2119616899395023186"
+  },
+  {
+   "name": "欧洲",
+   "heat": 85,
+   "count": 6,
+   "authors": 6,
+   "related": [],
+   "rep": "https://x.com/dsm8NNrmIkKohP9/status/2119568816539582827"
+  },
+  {
+   "name": "习近平",
+   "heat": 82,
+   "count": 7,
+   "authors": 7,
+   "related": [],
+   "rep": "https://x.com/baiyu0123/status/2119569545090548156"
+  },
+  {
+   "name": "韩国",
+   "heat": 73,
+   "count": 6,
+   "authors": 6,
+   "related": [],
+   "rep": "https://x.com/AiWorking_Lab/status/2119626890785046649"
   }
  ]
 }
