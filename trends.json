@@ -1,0 +1,273 @@
+{
+ "updated": 1794200390044,
+ "regions": [
+  {
+   "key": "global",
+   "name": "全球",
+   "woeid": 1,
+   "items": [
+    {
+     "name": "#キミの推しポケムービー"
+    },
+    {
+     "name": "Caleb"
+    },
+    {
+     "name": "Bears"
+    },
+    {
+     "name": "Bucs"
+    },
+    {
+     "name": "Baker"
+    },
+    {
+     "name": "#LamansionVIP2"
+    },
+    {
+     "name": "#LaGranjaGala"
+    },
+    {
+     "name": "गोवर्धन पूजा"
+    },
+    {
+     "name": "Bucky Irving"
+    },
+    {
+     "name": "Gojek Mulai 1000 DiGoPay"
+    },
+    {
+     "name": "#ファミマの人気クリーム"
+    },
+    {
+     "name": "Chivas"
+    },
+    {
+     "name": "#AmanBerlaluLintas"
+    },
+    {
+     "name": "Jaylon Johnson"
+    },
+    {
+     "name": "Todd Bowles"
+    },
+    {
+     "name": "Budayakan Disiplin Berkendara"
+    },
+    {
+     "name": "ドラゴンクエストRPG"
+    },
+    {
+     "name": "トップ娘役"
+    },
+    {
+     "name": "Jensen"
+    },
+    {
+     "name": "Ben Johnson"
+    }
+   ]
+  },
+  {
+   "key": "jp",
+   "name": "日本",
+   "woeid": 23424856,
+   "items": [
+    {
+     "name": "#キミの推しポケムービー"
+    },
+    {
+     "name": "#ファミマの人気クリーム"
+    },
+    {
+     "name": "#わたしの冬ごはん"
+    },
+    {
+     "name": "#楽パックで旅しよう"
+    },
+    {
+     "name": "ドラゴンクエストRPG"
+    },
+    {
+     "name": "トップ娘役"
+    },
+    {
+     "name": "#吉田仁人_愛の形CP"
+    },
+    {
+     "name": "ドラクエ"
+    },
+    {
+     "name": "ユーベル"
+    },
+    {
+     "name": "私の精神年齢"
+    },
+    {
+     "name": "次期トップスター"
+    },
+    {
+     "name": "るりはなちゃん"
+    },
+    {
+     "name": "とっしー"
+    },
+    {
+     "name": "エールの残照"
+    },
+    {
+     "name": "エスコフィエ"
+    },
+    {
+     "name": "Blaz"
+    },
+    {
+     "name": "宝塚歌劇公式ホームページ"
+    },
+    {
+     "name": "ポケモン名"
+    },
+    {
+     "name": "撮り下ろしグラビア"
+    },
+    {
+     "name": "異世界合体"
+    }
+   ]
+  },
+  {
+   "key": "us",
+   "name": "美国",
+   "woeid": 23424977,
+   "items": [
+    {
+     "name": "Caleb"
+    },
+    {
+     "name": "Bears"
+    },
+    {
+     "name": "Bucs"
+    },
+    {
+     "name": "Bucky Irving"
+    },
+    {
+     "name": "Jaylon Johnson"
+    },
+    {
+     "name": "Todd Bowles"
+    },
+    {
+     "name": "Ben Johnson"
+    },
+    {
+     "name": "Burden"
+    },
+    {
+     "name": "Buccaneers"
+    },
+    {
+     "name": "#TBvsCHI"
+    },
+    {
+     "name": "Devin Bush"
+    },
+    {
+     "name": "#BearDown"
+    },
+    {
+     "name": "Amnesty"
+    },
+    {
+     "name": "#BaddiesUSAChapter3"
+    },
+    {
+     "name": "Jensen"
+    },
+    {
+     "name": "4 INTs"
+    },
+    {
+     "name": "Loveland"
+    },
+    {
+     "name": "Swift"
+    },
+    {
+     "name": "Tampa Bay"
+    },
+    {
+     "name": "Turhan"
+    }
+   ]
+  },
+  {
+   "key": "sg",
+   "name": "新加坡",
+   "woeid": 23424948,
+   "items": [
+    {
+     "name": "#MrFanboyEP11"
+    },
+    {
+     "name": "Jensen Huang"
+    },
+    {
+     "name": "#NINGNINGatLACMA2026"
+    },
+    {
+     "name": "#FoolInLoveEP10"
+    },
+    {
+     "name": "DO YOU ADMIT IT"
+    },
+    {
+     "name": "#GoodBoySeriesEP5"
+    },
+    {
+     "name": "Nvidia"
+    },
+    {
+     "name": "Happy Deepavali"
+    },
+    {
+     "name": "#DewTeeFanconD2"
+    },
+    {
+     "name": "Happy Diwali"
+    },
+    {
+     "name": "RUTHJI UNLOCKS THE PAST"
+    },
+    {
+     "name": "KHEMJIRA FOREVER EP2"
+    },
+    {
+     "name": "Mitch"
+    },
+    {
+     "name": "Carrick"
+    },
+    {
+     "name": "EMIBONNIE LIGHT UP KAOHSIUNG"
+    },
+    {
+     "name": "Dalot"
+    },
+    {
+     "name": "Doran"
+    },
+    {
+     "name": "EST X VANILLIN FW26 SHOW"
+    },
+    {
+     "name": "Lando Norris"
+    },
+    {
+     "name": "Festival of Lights"
+    }
+   ]
+  }
+ ]
+}
