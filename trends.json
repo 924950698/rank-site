@@ -1,5 +1,5 @@
 {
- "updated": 1794200390044,
+ "updated": 1794200607420,
  "regions": [
   {
    "key": "global",
@@ -7,64 +7,84 @@
    "woeid": 1,
    "items": [
     {
-     "name": "#キミの推しポケムービー"
+     "name": "#キミの推しポケムービー",
+     "zh": "#你最喜欢的口袋妖怪电影"
     },
     {
-     "name": "Caleb"
+     "name": "Caleb",
+     "zh": "迦勒"
     },
     {
-     "name": "Bears"
+     "name": "Bears",
+     "zh": "熊"
     },
     {
-     "name": "Bucs"
+     "name": "Bucs",
+     "zh": "海盗队"
     },
     {
-     "name": "Baker"
+     "name": "Baker",
+     "zh": "贝克"
     },
     {
-     "name": "#LamansionVIP2"
+     "name": "#LamansionVIP2",
+     "zh": "#拉曼逊 VIP2"
     },
     {
-     "name": "#LaGranjaGala"
+     "name": "#LaGranjaGala",
+     "zh": "#加拉农场"
     },
     {
-     "name": "गोवर्धन पूजा"
+     "name": "गोवर्धन पूजा",
+     "zh": "戈瓦尔丹法会"
     },
     {
-     "name": "Bucky Irving"
+     "name": "#AmanBerlaluLintas",
+     "zh": "#安全交通"
     },
     {
-     "name": "Gojek Mulai 1000 DiGoPay"
+     "name": "Bucky Irving",
+     "zh": "巴基·欧文"
     },
     {
-     "name": "#ファミマの人気クリーム"
+     "name": "Gojek Mulai 1000 DiGoPay",
+     "zh": "Gojek 启动 1000 DiGoPay"
     },
     {
-     "name": "Chivas"
+     "name": "#ファミマの人気クリーム",
+     "zh": "#全家便利店人气面霜"
     },
     {
-     "name": "#AmanBerlaluLintas"
+     "name": "Chivas",
+     "zh": "芝华士"
     },
     {
-     "name": "Jaylon Johnson"
+     "name": "Jaylon Johnson",
+     "zh": "杰伦·约翰逊"
     },
     {
-     "name": "Todd Bowles"
+     "name": "Budayakan Disiplin Berkendara",
+     "zh": "培养驾驶纪律"
     },
     {
-     "name": "Budayakan Disiplin Berkendara"
+     "name": "Todd Bowles",
+     "zh": "托德·鲍尔斯"
     },
     {
-     "name": "ドラゴンクエストRPG"
+     "name": "ドラゴンクエストRPG",
+     "zh": "勇者斗恶龙角色扮演游戏"
     },
     {
-     "name": "トップ娘役"
+     "name": "トップ娘役",
+     "zh": "顶级女孩角色"
     },
     {
-     "name": "Jensen"
+     "name": "Jensen",
+     "zh": "詹森"
     },
     {
-     "name": "Ben Johnson"
+     "name": "Ben Johnson",
+     "zh": "本·约翰逊"
     }
    ]
   },
@@ -74,64 +94,84 @@
    "woeid": 23424856,
    "items": [
     {
-     "name": "#キミの推しポケムービー"
+     "name": "#キミの推しポケムービー",
+     "zh": "#你最喜欢的口袋妖怪电影"
     },
     {
-     "name": "#ファミマの人気クリーム"
+     "name": "#ファミマの人気クリーム",
+     "zh": "#全家便利店人气面霜"
     },
     {
-     "name": "#わたしの冬ごはん"
+     "name": "#わたしの冬ごはん",
+     "zh": "#我的冬餐"
     },
     {
-     "name": "#楽パックで旅しよう"
+     "name": "#楽パックで旅しよう",
+     "zh": "#和 Rakupack 一起去旅行吧"
     },
     {
-     "name": "ドラゴンクエストRPG"
+     "name": "ドラゴンクエストRPG",
+     "zh": "勇者斗恶龙角色扮演游戏"
     },
     {
-     "name": "トップ娘役"
+     "name": "トップ娘役",
+     "zh": "顶级女孩角色"
     },
     {
-     "name": "#吉田仁人_愛の形CP"
+     "name": "#吉田仁人_愛の形CP",
+     "zh": "#吉田仁志恋爱形态CP"
     },
     {
-     "name": "ドラクエ"
+     "name": "ドラクエ",
+     "zh": "勇者斗恶龙"
     },
     {
-     "name": "ユーベル"
+     "name": "ユーベル",
+     "zh": "于贝尔"
     },
     {
-     "name": "私の精神年齢"
+     "name": "私の精神年齢",
+     "zh": "我的心理年龄"
     },
     {
-     "name": "次期トップスター"
+     "name": "るりはなちゃん",
+     "zh": "琉璃花酱"
     },
     {
-     "name": "るりはなちゃん"
+     "name": "次期トップスター",
+     "zh": "下一个顶级明星"
     },
     {
-     "name": "とっしー"
+     "name": "とっしー",
+     "zh": "藤井"
     },
     {
-     "name": "エールの残照"
+     "name": "エールの残照",
+     "zh": "麦芽酒的余辉"
     },
     {
-     "name": "エスコフィエ"
+     "name": "エスコフィエ",
+     "zh": "埃科菲耶"
     },
     {
-     "name": "Blaz"
+     "name": "Blaz",
+     "zh": "布拉兹"
     },
     {
-     "name": "宝塚歌劇公式ホームページ"
+     "name": "宝塚歌劇公式ホームページ",
+     "zh": "宝冢歌剧官方主页"
     },
     {
-     "name": "ポケモン名"
+     "name": "ポケモン名",
+     "zh": "神奇宝贝名称"
     },
     {
-     "name": "撮り下ろしグラビア"
+     "name": "茨城県沖",
+     "zh": "茨城县近海"
     },
     {
-     "name": "異世界合体"
+     "name": "異世界合体",
+     "zh": "异世界合体"
     }
    ]
   },
@@ -141,64 +181,83 @@
    "woeid": 23424977,
    "items": [
     {
-     "name": "Caleb"
+     "name": "Caleb",
+     "zh": "迦勒"
     },
     {
-     "name": "Bears"
+     "name": "Bears",
+     "zh": "熊"
     },
     {
-     "name": "Bucs"
+     "name": "Bucs",
+     "zh": "海盗队"
     },
     {
-     "name": "Bucky Irving"
+     "name": "Bucky Irving",
+     "zh": "巴基·欧文"
     },
     {
-     "name": "Jaylon Johnson"
+     "name": "Jaylon Johnson",
+     "zh": "杰伦·约翰逊"
     },
     {
-     "name": "Todd Bowles"
+     "name": "Todd Bowles",
+     "zh": "托德·鲍尔斯"
     },
     {
-     "name": "Ben Johnson"
+     "name": "Ben Johnson",
+     "zh": "本·约翰逊"
     },
     {
-     "name": "Burden"
+     "name": "Burden",
+     "zh": "负担"
     },
     {
-     "name": "Buccaneers"
+     "name": "Buccaneers",
+     "zh": "海盗"
     },
     {
      "name": "#TBvsCHI"
     },
     {
-     "name": "Devin Bush"
+     "name": "Devin Bush",
+     "zh": "德文·布什"
     },
     {
-     "name": "#BearDown"
+     "name": "#BearDown",
+     "zh": "#熊下"
     },
     {
-     "name": "Amnesty"
+     "name": "Amnesty",
+     "zh": "大赦"
     },
     {
-     "name": "#BaddiesUSAChapter3"
+     "name": "#BaddiesUSAChapter3",
+     "zh": "#美国坏人第3章"
     },
     {
-     "name": "Jensen"
+     "name": "Jensen",
+     "zh": "詹森"
     },
     {
-     "name": "4 INTs"
+     "name": "4 INTs",
+     "zh": "4 个 INT"
     },
     {
-     "name": "Loveland"
+     "name": "Loveland",
+     "zh": "拉夫兰"
     },
     {
-     "name": "Swift"
+     "name": "Swift",
+     "zh": "迅速"
     },
     {
-     "name": "Tampa Bay"
+     "name": "Packers",
+     "zh": "包装工"
     },
     {
-     "name": "Turhan"
+     "name": "Tampa Bay",
+     "zh": "坦帕湾"
     }
    ]
   },
@@ -208,64 +267,84 @@
    "woeid": 23424948,
    "items": [
     {
-     "name": "#MrFanboyEP11"
+     "name": "#MrFanboyEP11",
+     "zh": "#范博先生先生 EP11"
     },
     {
-     "name": "Jensen Huang"
+     "name": "Jensen Huang",
+     "zh": "黄仁勋"
     },
     {
-     "name": "#NINGNINGatLACMA2026"
+     "name": "#NINGNINGatLACMA2026",
+     "zh": "#宁宁与LACMA2026"
     },
     {
-     "name": "#FoolInLoveEP10"
+     "name": "#FoolInLoveEP10",
+     "zh": "#恋爱中的傻瓜 EP10"
     },
     {
-     "name": "DO YOU ADMIT IT"
+     "name": "DO YOU ADMIT IT",
+     "zh": "你承认吗"
     },
     {
-     "name": "#GoodBoySeriesEP5"
+     "name": "#GoodBoySeriesEP5",
+     "zh": "#好孩子系列EP5"
     },
     {
-     "name": "Nvidia"
+     "name": "Nvidia",
+     "zh": "英伟达"
     },
     {
-     "name": "Happy Deepavali"
+     "name": "Happy Deepavali",
+     "zh": "屠妖节快乐"
     },
     {
-     "name": "#DewTeeFanconD2"
+     "name": "Happy Diwali",
+     "zh": "排灯节快乐"
     },
     {
-     "name": "Happy Diwali"
+     "name": "#BBFanFest2026inKaohsiung",
+     "zh": "#BBF粉丝节2026高雄"
     },
     {
-     "name": "RUTHJI UNLOCKS THE PAST"
+     "name": "RUTHJI UNLOCKS THE PAST",
+     "zh": "露丝吉解开了过去"
     },
     {
-     "name": "KHEMJIRA FOREVER EP2"
+     "name": "KHEMJIRA FOREVER EP2",
+     "zh": "永远的克姆吉拉 EP2"
     },
     {
-     "name": "Mitch"
+     "name": "Mitch",
+     "zh": "米奇"
     },
     {
-     "name": "Carrick"
+     "name": "Carrick",
+     "zh": "卡里克"
     },
     {
-     "name": "EMIBONNIE LIGHT UP KAOHSIUNG"
+     "name": "EMIBONNIE LIGHT UP KAOHSIUNG",
+     "zh": "EMIBONNIE 点亮高雄"
     },
     {
-     "name": "Dalot"
+     "name": "Dalot",
+     "zh": "分享"
     },
     {
-     "name": "Doran"
+     "name": "Doran",
+     "zh": "多兰"
     },
     {
-     "name": "EST X VANILLIN FW26 SHOW"
+     "name": "EST X VANILLIN FW26 SHOW",
+     "zh": "EST X 香草醛 FW26 秀"
     },
     {
-     "name": "Lando Norris"
+     "name": "Lando Norris",
+     "zh": "兰多·诺里斯"
     },
     {
-     "name": "Festival of Lights"
+     "name": "Festival of Lights",
+     "zh": "灯节"
     }
    ]
   }

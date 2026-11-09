@@ -14,3 +14,4 @@
 #trendSec .c{font-size:12px;color:#71767b;flex:none}
 #trendSec .em{padding:16px 12px;text-align:center}
 #trendSec .more{border-top:1px solid #16181c}
+#trendSec .t small{display:block;font-weight:400;font-size:11px;color:#71767b;overflow:hidden;text-overflow:ellipsis}

@@ -9,7 +9,7 @@
     const r = data && data.regions && data.regions[cur], items = (r && r.items) || [];
     if (!items.length) { ol.innerHTML = '<li class="em m">暂无趋势数据</li>'; more.hidden = true; return; }
     const show = open ? items : items.slice(0, 10);
-    ol.innerHTML = show.map((t, i) => `<li><a href="https://x.com/search?q=${encodeURIComponent(t.name)}" target="_blank" rel="noopener" data-src="trend"><span class="n">${i + 1}</span><span class="t">${esc(t.name)}</span>${t.count ? `<span class="c">${fmt(t.count)}</span>` : ""}</a></li>`).join("");
+    ol.innerHTML = show.map((t, i) => `<li><a href="https://x.com/search?q=${encodeURIComponent(t.name)}" target="_blank" rel="noopener" data-src="trend"><span class="n">${i + 1}</span><span class="t">${esc(t.zh || t.name)}${t.zh ? `<small>${esc(t.name)}</small>` : ""}</span>${t.count ? `<span class="c">${fmt(t.count)}</span>` : ""}</a></li>`).join("");
     more.hidden = items.length <= 10; more.textContent = open ? "收起 ↑" : `查看全部 ${items.length} 个 ↓`;
   }
   more.onclick = () => { open = !open; render(); };
