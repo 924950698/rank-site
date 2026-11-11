@@ -1,0 +1,89 @@
+{
+  "updatedAt": "2026-11-11T19:03:00+08:00",
+  "agents": [
+    {
+      "name": "大汉丞相",
+      "status": "idle",
+      "activity": null,
+      "updatedAt": "2026-11-11T19:03:00+08:00",
+      "lastEventAt": "2026-11-11T19:03:00+08:00"
+    },
+    {
+      "name": "选题大师",
+      "status": "idle",
+      "activity": null,
+      "updatedAt": "2026-11-11T19:03:00+08:00",
+      "lastEventAt": "2026-11-11T19:03:00+08:00"
+    },
+    {
+      "name": "剪辑大师",
+      "status": "idle",
+      "activity": null,
+      "updatedAt": "2026-11-11T19:03:00+08:00",
+      "lastEventAt": "2026-11-11T19:03:00+08:00"
+    },
+    {
+      "name": "产品经理",
+      "status": "idle",
+      "activity": null,
+      "updatedAt": "2026-11-11T19:03:00+08:00",
+      "lastEventAt": "2026-11-11T19:03:00+08:00"
+    },
+    {
+      "name": "全栈工程师",
+      "status": "idle",
+      "activity": null,
+      "updatedAt": "2026-11-11T19:03:00+08:00",
+      "lastEventAt": "2026-11-11T19:03:00+08:00"
+    },
+    {
+      "name": "运营大师",
+      "status": "idle",
+      "activity": null,
+      "updatedAt": "2026-11-11T19:03:00+08:00",
+      "lastEventAt": "2026-11-11T19:03:00+08:00"
+    },
+    {
+      "name": "插画机器人",
+      "status": "idle",
+      "activity": null,
+      "updatedAt": "2026-11-11T19:03:00+08:00",
+      "lastEventAt": "2026-11-11T19:03:00+08:00"
+    },
+    {
+      "name": "推文bot-小组长",
+      "status": "idle",
+      "activity": null,
+      "updatedAt": "2026-11-11T19:03:00+08:00",
+      "lastEventAt": "2026-11-11T19:03:00+08:00"
+    },
+    {
+      "name": "职场导师",
+      "status": "idle",
+      "activity": null,
+      "updatedAt": "2026-11-11T19:03:00+08:00",
+      "lastEventAt": "2026-11-11T19:03:00+08:00"
+    },
+    {
+      "name": "加密货币",
+      "status": "idle",
+      "activity": null,
+      "updatedAt": "2026-11-11T19:03:00+08:00",
+      "lastEventAt": "2026-11-11T19:03:00+08:00"
+    },
+    {
+      "name": "金融分析师",
+      "status": "idle",
+      "activity": null,
+      "updatedAt": "2026-11-11T19:03:00+08:00",
+      "lastEventAt": "2026-11-11T19:03:00+08:00"
+    },
+    {
+      "name": "微信bot",
+      "status": "idle",
+      "activity": null,
+      "updatedAt": "2026-11-11T19:03:00+08:00",
+      "lastEventAt": "2026-11-11T19:03:00+08:00"
+    }
+  ]
+}

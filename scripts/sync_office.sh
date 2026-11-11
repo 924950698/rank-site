@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 # 从 whatsmyagentdoing（MIT, cheoyu/Charonyuu）源码生成静态展示页 office/。
 # 用法：scripts/sync_office.sh [源码目录，默认 /workspace/myoffice]
-# 只读源码目录；对上游文件只做最小路径补丁（绝对路径 → 相对 /office/），
-# 演示数据与 API 替身在 office/demo-api.js，展示页外框在 office/showcase.css（不被本脚本覆盖）。
+# 只读源码目录；对上游文件只做最小路径补丁（绝对路径 → 相对 /office/）。
+# 不被本脚本覆盖、同步时必须保留：
+#   office/demo-api.js   —— 读 status.json 的 API 替身（不要收回假循环演示）
+#   office/status.json   —— 各助手真实工作状态
+#   office/showcase.css  —— 展示页外框
+# 同步后仍会重打「助手列表」补丁（i18n.js）。
 set -euo pipefail
 SRC="${1:-/workspace/myoffice}"
 DST="$(cd "$(dirname "$0")/.." && pwd)/office"
@@ -41,4 +45,11 @@ open(p,'w',encoding='utf-8').write(s)
 PY
 # 剩余的绝对路径只应是 /api、/events、/scenes（由 demo-api.js 接管）
 grep -noE "[\"'\`]/(assets|office3d|i18n|office\.js|popout)" "$DST"/*.js "$DST/index.html" && { echo "还有未改的绝对路径" >&2; exit 1; } || true
+# 保留真实状态链路，不要在同步时丢掉或收回假循环
+for f in demo-api.js status.json showcase.css; do
+  [ -f "$DST/$f" ] || { echo "同步后缺少 office/$f，已中止" >&2; exit 1; }
+done
+grep -q 'status.json' "$DST/demo-api.js" || { echo "office/demo-api.js 应读取 status.json，不要收回假循环" >&2; exit 1; }
+grep -q '假演示循环' "$DST/demo-api.js" || { echo "office/demo-api.js 缺少失败兜底说明，可能被旧演示脚本覆盖" >&2; exit 1; }
+grep -q 'agentsTitle: "助手列表"' "$DST/i18n.js" || { echo "助手列表补丁没打上" >&2; exit 1; }
 echo "synced -> $DST"
