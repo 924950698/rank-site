@@ -1,0 +1,9 @@
+/* markpump 展示页：隐藏静态托管下无意义的本地功能，加署名条 */
+#newVer, #notifyToggle, #notifyNote, #todayMenu, .copy, .dactions, #ver { display: none !important; }
+.mp-credit { position: fixed; left: 8px; bottom: 6px; z-index: 50; max-width: calc(100vw - 16px);
+  font: 12px/1.4 system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #666; background: rgba(255,255,255,.82); padding: 3px 8px; border-radius: 6px; pointer-events: auto; }
+.mp-credit a { color: inherit; text-decoration: underline; }
+@media (prefers-color-scheme: dark) { .mp-credit { color: #aaa; background: rgba(20,20,20,.75); } }
+body.pip .mp-credit { display: none; }
+@media (max-width: 640px) { .mp-credit { bottom: auto; top: 68px; max-width: 52vw; font-size: 11px; } }
