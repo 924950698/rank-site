@@ -2,6 +2,14 @@
   "date": "2026-11-12",
   "stories": [
     {
+      "title": "深圳启用 APEC 会议周新闻中心",
+      "published": "2026-11-11",
+      "summary": "新闻中心在深圳会展中心（福田）启用。APEC 领导人非正式会议将于 11 月 18 日至 19 日在深圳举行。",
+      "angle": "梳理接下来一周的会议日程，区分哪天是工商活动、哪天是领导人会议，做一张一眼能看懂的时间表。",
+      "source": "https://www.news.cn/20261111/90e7e8e3bb8b4f7097e002fe1d739f3e/c.html",
+      "query": "深圳 APEC 新闻中心"
+    },
+    {
       "title": "中国 U17 男足世界杯名单公布",
       "published": "2026-11-11",
       "summary": "国际足联公布卡塔尔 U17 世界杯参赛名单，中国队有 21 名球员入选。",
@@ -16,14 +24,6 @@
       "angle": "拿这次发射做例子，用一张图解释「点火升空」和「进入预定轨道」分别意味着什么。",
       "source": "https://www1.xinhuanet.com/politics/20261111/ffbc1ac7b7794615bce0409975cc4f0e/c.html",
       "query": "探源计划 探路者卫星"
-    },
-    {
-      "title": "Grok Bot 可以加入视频会议并发会后摘要",
-      "published": "2026-11-11",
-      "summary": "新版支持通过链接加入 Google Meet、Zoom 或 Microsoft Teams，在会议聊天里回答问题，并在会后发摘要。会议功能面向 Team、Enterprise 和 Ultra 计划。",
-      "angle": "用一场模拟会议对比 Bot 摘要和人工笔记：谁负责什么、截止日期和未决问题，哪项最容易漏？",
-      "source": "https://x.ai/changelog/bot",
-      "query": "Grok Bot meetings"
     }
   ]
 }

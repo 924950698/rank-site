@@ -15,8 +15,8 @@
     const stories = d.stories.filter(s => s?.title && storyLink(s.source)).slice(0, 3);
     if (!stories.length) return false;
     more.hidden = true;
-    upd.textContent = d.date.slice(5).replace("-", "/") + " 今日精选";
-    intro.textContent = "近期发布与进展，附官方出处和可以动手验证的选题。";
+    upd.textContent = d.date.slice(5).replace("-", "/") + " 简中精选";
+    intro.textContent = "面向 X 简中区读者的编辑精选，附官方出处、讨论入口和选题角度。";
     ol.innerHTML = stories.map(s => `<li class="fresh-story"><div class="trend-row"><b>${esc(s.title)}</b><span>${esc(s.published)} 发布</span></div><p>${esc(s.summary)}</p><p><strong>可以怎么写：</strong>${esc(s.angle)}</p><div class="trend-links"><a href="${esc(storyLink(s.source))}" target="_blank" rel="noopener">官方出处 ↗</a><a href="https://x.com/search?q=${encodeURIComponent(s.query || s.title)}&amp;f=live" target="_blank" rel="noopener">看 X 讨论 ↗</a></div></li>`).join("");
     return true;
   }

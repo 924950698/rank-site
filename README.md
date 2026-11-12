@@ -51,3 +51,7 @@
 `{"updated_at","window_days":7,"users":{"<handle>":{posts,views,avg_views,likes,reposts(含引用),replies,eng_rate(小数),followers,followers_24h?,top_post:{url,views}}}}`
 - posts 只算原创（不含回复和转帖），views 为 impression_count 之和；字段未知时省略。
 - followers_24h 需要约 24h 前的粉丝快照，首日没有。
+
+## 新鲜事选题
+
+优先看 X 上的简体中文讨论，不按作者所在地或事件发生地筛选。社会、文体、商业、科技都可入选，重点是近期有可核实的新进展。缺少可用的 X 热点数据时，可更新 `fresh-stories.json` 作为当天的编辑精选，附可靠出处和中文讨论搜索词，不填未经验证的热度或曝光。
