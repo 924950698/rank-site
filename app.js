@@ -299,7 +299,7 @@ async function showPartners(raw, push = true, poll = false) {
   try {
     partnersP ||= fetch("partners.json", { cache: "no-cache" }).then(r => { if (!r.ok) throw 0; return r.json(); });
     const P = await partnersP, list = (P.users || {})[h];
-    if (push) history.replaceState(null, "", `?u=${encodeURIComponent(h)}`);
+    if (push) { const url = new URL(location.href); url.searchParams.set("u", h); history.replaceState(null, "", url); }
     const t = P.updated_at ? new Date(P.updated_at).toLocaleString("zh-CN", { hour12: false, month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" }) : "";
     const note = `<div class="pnote">计算方法：${esc(P.method || "按最近回复和@次数")}（只统计最近的回复和 @，不含点赞）${t ? " · 更新于 " + t : ""}</div>`;
     PW = list?.length ? { h, list, extra: P.extra?.[h] || P.users_extra?.[h] || [], selfAv: P.profiles?.[h]?.avatar } : null; renderWall();

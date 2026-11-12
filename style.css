@@ -114,7 +114,6 @@ header .btn{padding:5px 9px;font-size:12px}
 .ov-k i{font-style:normal;font-size:11px;margin-left:4px}.ov-k i.up{color:#39ff14}.ov-k i.dn{color:#ff5a5a}
 .ov-top{display:block;margin-top:10px;font-size:13px;color:#39ff14;text-decoration:none}
 .lg-hd .ov{margin:12px 0 0;background:rgba(0,0,0,.25)}
-.howto{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;max-width:560px;margin:12px auto 0;padding:12px 14px;border:1px solid #39ff14;border-radius:12px;background:#0d1a0a;font-size:14px;font-weight:600}.howto .btn{white-space:nowrap}
 .card.top .gain{color:#000}
 .rk-hd{padding:22px 16px 6px}.rk-hd h3{margin:0 0 4px}
 .rk-hd h3{padding:0!important;font-size:20px}
@@ -141,7 +140,7 @@ header .btn{padding:5px 9px;font-size:12px}
  .colL{width:260px;flex:none;position:sticky;top:72px}.colL .pq{margin:0}.lhint{display:block;padding:8px 4px;font-size:12px}
  .colC{flex:1;min-width:0}.colR{width:260px;flex:none;position:sticky;top:72px;display:flex;flex-direction:column;gap:14px}
  .colR .rbox{display:block;border:1px solid #39ff14;border-radius:12px;padding:14px;background:#0b0b0b}.colR .rbox ul{padding-left:18px;margin:6px 0 0;line-height:1.7;font-size:13px}
- .colR .howto{margin:0;max-width:none;flex-direction:column;align-items:flex-start}.dinfo{display:none}}
+ .dinfo{display:none}}
 @media(max-width:1023px){header .upd{display:none}}
 
 .champ{margin:10px 6px 12px;padding:14px;border:1px solid #ffd23f;border-radius:14px;background:linear-gradient(135deg,#2a2405,#0b0b0b)}
@@ -154,7 +153,11 @@ header .btn{padding:5px 9px;font-size:12px}
 .incBig{font-size:18px;margin-top:10px}.incBig b{display:block;font-size:56px;color:#ffd23f;line-height:1.15}
 .incRg{color:#c8c8c8;font-size:14px}.incFun{margin:12px auto;display:inline-block;padding:6px 16px;border-radius:20px;background:#ffd23f;color:#000;font-weight:700}
 .incBtn{display:block;width:100%;padding:12px 0;font-size:17px;margin-top:8px}.incFt{font-size:12px;color:#888;margin:12px 0 0}
-@media(max-width:1023px){body[data-page=income] .colL,body[data-page=income] .howto{display:none}}
+.rk-personal{display:none}
+@media(max-width:1023px){
+ body[data-page=income] .colL{display:none}
+ .rk-personal{display:inline-block;margin-top:8px;padding:6px 10px;border:1px solid #39ff14;border-radius:8px;background:none;color:#39ff14;cursor:pointer}
+}
 @media(min-width:1024px){.colC .page>:first-child,.colC .page>:first-child>:first-child,#ledgerOut{margin-top:0}}
 /* 互动宇宙照片墙 */
 .wall.uni{max-width:560px;height:auto!important;background:#05040d;border-color:#2b2350;box-shadow:0 0 28px #6d28d933}

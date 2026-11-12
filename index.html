@@ -15,7 +15,7 @@
 <meta name="twitter:image" content="https://markpump.com/og.png">
 <meta name="theme-color" content="#000000">
 <link rel="preload" href="data.json" as="fetch" crossorigin>
-<link rel="stylesheet" href="style.css?v=20261111190511">
+<link rel="stylesheet" href="style.css?v=20261112-home">
 <link rel="stylesheet" href="trends.css?v=20261111190511">
 </head>
 <body>
@@ -24,7 +24,6 @@
   <span class="upd" id="upd">● --:-- 已更新</span>
   <a class="btn follow" data-src="header" href="https://x.com/intent/follow?screen_name=tigerr3aue" target="_blank" rel="noopener">关注 @tigerr3aue</a>
 </header>
-<div class="howto"><span>📌 使用方法：需要进X群找群主申请权限，才能看到数据</span><a class="btn" data-src="howto" href="https://x.com/i/chat/group_join/g2108003040645275931/SH2IyrkR1A" target="_blank" rel="noopener">进 X 群申请</a></div>
 <section id="trendSec">
   <div class="th"><b>🔥 热门话题检测 <span class="m">中文热点</span></b><span class="m tu">--</span></div>
   <ol><li class="em m">加载中…</li></ol>
@@ -32,8 +31,8 @@
   <div class="m" style="padding:0 12px 8px">近 6 小时中文帖按互动量与讨论人数聚合 · 点话题直达 X 搜索</div>
 </section>
 <section id="wallSec">
-  <form class="pq top" id="pq"><b>我的最佳互动账号</b><span class="m">看看谁和你互动最多 · 有问题联系 <a href="https://x.com/tigerr3aue" target="_blank" rel="noopener" style="color:#39ff14">@tigerr3aue</a></span>
-    <div class="pqr"><input id="pqIn" placeholder="输入你的 X 用户名" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="16"></div>
+  <form class="pq top" id="pq"><b>查我的互动</b><span class="m">看看谁和你互动最多 · 有问题联系 <a href="https://x.com/tigerr3aue" target="_blank" rel="noopener" style="color:#39ff14">@tigerr3aue</a></span>
+    <div class="pqr"><input id="pqIn" aria-label="X 用户名" placeholder="输入你的 X 用户名" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="16"></div>
     <div class="pqb"><button type="submit" class="btn" id="pqWall">生成我的互动照片墙</button><button type="button" class="btn ghost" id="pqPost">生成最佳互动Top3海报</button><button type="button" class="btn ghost" id="pqLedger">查看我的互评账本</button></div>
   </form>
   <h3 id="wallTitle">24 小时照片墙</h3>
@@ -52,7 +51,7 @@
   <span class="m">今日话题</span><br><b id="topicText">加载中…</b>
 </a>
 
-<div class="rk-hd"><h3>今日中文 X 爆帖 Top 10 <button class="dinfo" type="button" onclick="document.getElementById('dmodal').style.display='flex'">ⓘ 数据说明</button></h3><div class="m">给冲分成的中文新号：每天来这找选题、找互关 · 每小时更新</div><div class="m g" id="rkSub" style="margin-top:4px"></div></div>
+<div class="rk-hd"><h3>今日中文 X 爆帖 Top 10 <button class="dinfo" type="button" onclick="document.getElementById('dmodal').style.display='flex'">ⓘ 数据说明</button></h3><div class="m">公开榜单 · 看热门帖子，从原帖里找选题</div><button type="button" class="rk-personal" id="rkPersonal">查我的互动 ↓</button><div class="m g" id="rkSub" style="margin-top:4px"></div></div>
 <nav class="tabs" id="tabs">
   <button data-t="exposure" class="on">曝光</button>
   <button data-t="growth">涨粉</button>
@@ -78,9 +77,9 @@
 
 
 <script>window.ASSET_V="20261111190511"</script><script src="config.js?v=20261111190511"></script>
-<script src="nav.js?v=20261111190511" defer></script>
+<script src="nav.js?v=20261112-home" defer></script>
 <script src="universe.js?v=20261111190511" defer></script>
-<script src="app.js?v=20261111190511" defer></script>
+<script src="app.js?v=20261112-home" defer></script>
 <script src="income.js?v=20261111190511" defer></script>
 <script src="trends.js?v=20261111190511" defer></script>
 <div id="dmodal" class="dmodal" style="display:none" onclick="if(event.target===this)this.style.display='none'"><div class="dbox"><div class="dh"><b>数据说明</b><button type="button" onclick="document.getElementById('dmodal').style.display='none'">✕</button></div><ul>
@@ -88,7 +87,6 @@
 <li>每天早上 8 点（北京时间）切日，榜单从零开始算</li>
 <li>每个作者在一个榜单里只出现一次，取他表现最好的那条帖子</li>
 <li>曝光超过 5000、但评论、转发、点赞都是 0 的帖子按刷量处理，不上榜</li>
-<li>个人数据要先进 X 群找群主开通，开通后一般当天生效</li>
 </ul></div></div>
 </body>
 </html>
