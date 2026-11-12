@@ -6,10 +6,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 T = os.environ["X_BEARER_TOKEN"]
 SINCE = (datetime.now(timezone.utc) - timedelta(hours=6)).strftime("%Y-%m-%dT%H:%M:%SZ")
-BASE = " lang:zh -is:retweet -is:reply"
+BASE = " lang:zh -is:retweet -is:reply -is:quote"
 QUERIES = ["的", "了", "是", "在", "有", "我", "(新闻 OR 突发 OR 刚刚 OR 热搜 OR 曝光)", "(比赛 OR 夺冠 OR 发布 OR 官宣 OR 回应)"]
 PAGES = int(os.environ.get("ZH_PAGES", "3"))
-F = "tweet.fields=created_at,public_metrics,lang,author_id,entities&expansions=author_id&user.fields=username,public_metrics"
+F = "tweet.fields=created_at,public_metrics,lang,author_id,entities,referenced_tweets&expansions=author_id&user.fields=username,public_metrics"
 posts = {}; users = {}; calls = 0
 for q in QUERIES:
     tok = None

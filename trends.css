@@ -1,21 +1,13 @@
-/* 热门话题检测（独立样式文件） */
-#trendSec{margin:12px 16px 4px;border:1px solid #2f3336;border-radius:12px;overflow:hidden}
-#trendSec .th{display:flex;justify-content:space-between;align-items:baseline;padding:10px 12px 6px}
-#trendSec .th b{font-size:16px}
-#trendSec .sw{display:flex;gap:6px;padding:0 12px 8px;overflow-x:auto;scrollbar-width:none}
-#trendSec .sw button{flex:none;background:none;border:1px solid #536471;color:#e7e9ea;border-radius:14px;padding:2px 10px;font-size:12px;cursor:pointer}
-#trendSec .sw button.on{background:#39ff14;border-color:#39ff14;color:#000;font-weight:700}
-#trendSec ol{list-style:none}
-#trendSec li a{display:flex;align-items:center;gap:10px;padding:8px 12px;border-top:1px solid #16181c}
-#trendSec li a:hover{background:#080808}
-#trendSec .n{width:20px;font-weight:800;color:#71767b;flex:none;text-align:right}
-#trendSec li:nth-child(-n+3) .n{color:#39ff14}
-#trendSec .t{flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:600}
-#trendSec .c{font-size:12px;color:#71767b;flex:none}
-#trendSec .em{padding:16px 12px;text-align:center}
-#trendSec .more{border-top:1px solid #16181c}
-#trendSec .t small{display:block;font-weight:400;font-size:11px;color:#71767b;overflow:hidden;text-overflow:ellipsis}
-#trendSec li{position:relative}
-#trendSec li a:first-child{padding-right:70px;min-height:58px}
-#trendSec .c{position:absolute;right:12px;top:7px;text-align:right;line-height:1.3;white-space:nowrap}
-#trendSec .rp{position:absolute;right:12px;bottom:6px;font-size:11px;color:#39ff14}
+#trendSec{margin:12px 6px 8px;border:1px solid #2f3336;border-radius:12px;overflow:hidden;background:#0b0b0b}
+#trendSec .th{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 10px;padding:12px 14px 4px}
+#trendSec h2{margin:0;font-size:18px}
+#trendSec .tu,#trendSec .trend-intro,#trendSec .trend-row span,#trendSec small{color:#a9afb4;font-size:12px}
+#trendSec .trend-intro{margin:0;padding:0 14px 10px}
+#trendSec ol{list-style:none;margin:0;padding:0}
+#trendSec li{padding:9px 14px;border-top:1px solid #242729}
+#trendSec .trend-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;justify-content:space-between}
+#trendSec .trend-links{display:flex;flex-wrap:wrap;gap:0 12px;margin-top:2px}
+#trendSec a{display:inline-flex;align-items:baseline;gap:5px;padding:5px 0;color:#39ff14;font-size:12px}
+#trendSec a:hover{text-decoration:underline}
+#trendSec .more{margin:0;border-top:1px solid #242729}
+#trendSec .more[hidden]{display:none}

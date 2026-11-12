@@ -16,7 +16,7 @@
   ["#wallTitle","#wallSort","#wall","#pqOut"].forEach(s=>pW.appendChild($(s)));
   const cta=wallSec.querySelector(".cta");
   const pR=el("section","page");pR.dataset.p="rank";
-  [".rk-hd","#tabs","main","#pinned","#topic"].forEach(s=>pR.appendChild($(s)));
+  ["#trendSec",".rk-hd","#tabs","main","#pinned","#topic"].forEach(s=>pR.appendChild($(s)));
   const pL=el("section","page");pL.dataset.p="ledger";
   pL.appendChild(el("div","lgEmpty",'<h3>互评账本</h3><p class="m">在输入框填你的 X 用户名，点「查看我的互评账本」，就能看到谁和你互动过、互动了多少次</p>'));
   pL.appendChild($("#ledgerOut"));

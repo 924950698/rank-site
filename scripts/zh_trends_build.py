@@ -95,10 +95,21 @@ final.sort(key=lambda x: -x["score"])
 out = []
 final = [t for t in final if t["na"] >= 4]
 for t in final[:20]:
-    rep = max(t["posts"], key=lambda i: eng(byid[i]))
-    rp = byid[rep]
-    out.append({"name": t["k"], "heat": t["score"], "count": len(t["posts"]), "authors": t["na"], "related": t.get("rel", []),
-                "rep": f"https://x.com/{rp.get('username') or 'i'}/status/{rep}"})
+    # 从真正命中话题的采样帖选参考帖，避免同一作者包揽。
+    candidates = [byid[i] for i in t["posts"] if not byid[i].get("referenced_tweets")]
+    def views(p):
+        return p.get("public_metrics", {}).get("impression_count")
+    picks, authors = [], set()
+    for p in sorted(candidates, key=lambda p: (views(p) is not None, views(p) or 0, eng(p), p["id"]), reverse=True):
+        if p["author_id"] in authors:
+            continue
+        authors.add(p["author_id"])
+        picks.append({"url": f"https://x.com/{p.get('username') or 'i'}/status/{p['id']}",
+                      "created_at": p.get("created_at"), "views": views(p)})
+        if len(picks) == 3:
+            break
+    out.append({"name": t["k"], "heat": t["score"], "count": len(t["posts"]), "authors": t["na"],
+                "related": t.get("rel", []), "examples": picks})
 json.dump({"updated": raw["fetched"], "source": "x_recent_search_zh", "window_h": 6, "sampled": len(posts), "topics": out},
           open(ROOT / "trends.json", "w"), ensure_ascii=False, indent=1)
 for t in out: print(t["heat"], t["count"], t["authors"], t["name"], t["related"])

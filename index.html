@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>X 中文创作者成长站 · 爆帖榜 互评账本 涨粉数据</title>
-<meta name="description" content="每小时更新 X 中文圈 24 小时爆帖：曝光榜、评论榜、涨粉榜、照片墙。">
+<title>今天 X 上有什么新鲜事？ · MarkPump</title>
+<meta name="description" content="看 X 中文区近 6 小时的热门话题和相关原帖，找值得关注的消息和创作选题。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://markpump.com/">
-<meta property="og:title" content="X 中文创作者成长站 · 爆帖榜 互评账本 涨粉数据">
-<meta property="og:description" content="曝光榜、涨粉榜、互动照片墙、互评账本，测测你的互动圈。">
+<meta property="og:title" content="今天 X 上有什么新鲜事？ · MarkPump">
+<meta property="og:description" content="看 X 中文区最近在聊什么，找到原帖和你能写的角度。">
 <meta property="og:image" content="https://markpump.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@tigerr3aue">
@@ -16,7 +16,7 @@
 <meta name="theme-color" content="#000000">
 <link rel="preload" href="data.json" as="fetch" crossorigin>
 <link rel="stylesheet" href="style.css?v=20261112-home">
-<link rel="stylesheet" href="trends.css?v=20261111190511">
+<link rel="stylesheet" href="trends.css?v=20261112-topics">
 </head>
 <body>
 <header>
@@ -24,11 +24,12 @@
   <span class="upd" id="upd">● --:-- 已更新</span>
   <a class="btn follow" data-src="header" href="https://x.com/intent/follow?screen_name=tigerr3aue" target="_blank" rel="noopener">关注 @tigerr3aue</a>
 </header>
-<section id="trendSec">
-  <div class="th"><b>🔥 热门话题检测 <span class="m">中文热点</span></b><span class="m tu">--</span></div>
+<section id="trendSec" aria-labelledby="trendTitle">
+  <div class="th"><h2 id="trendTitle">今天 X 上有什么新鲜事？</h2><span class="tu" role="status"></span></div>
+  <p class="trend-intro">看近 6 小时 X 中文区在聊什么，找到原帖，也看看还有什么值得自己写。</p>
   <ol><li class="em m">加载中…</li></ol>
   <button class="more" type="button" hidden></button>
-  <div class="m" style="padding:0 12px 8px">近 6 小时中文帖按互动量与讨论人数聚合 · 点话题直达 X 搜索</div>
+
 </section>
 <section id="wallSec">
   <form class="pq top" id="pq"><b>查我的互动</b><span class="m">看看谁和你互动最多 · 有问题联系 <a href="https://x.com/tigerr3aue" target="_blank" rel="noopener" style="color:#39ff14">@tigerr3aue</a></span>
@@ -77,11 +78,11 @@
 
 
 <script>window.ASSET_V="20261111190511"</script><script src="config.js?v=20261111190511"></script>
-<script src="nav.js?v=20261112-home" defer></script>
+<script src="nav.js?v=20261112-topics" defer></script>
 <script src="universe.js?v=20261111190511" defer></script>
 <script src="app.js?v=20261112-home" defer></script>
 <script src="income.js?v=20261111190511" defer></script>
-<script src="trends.js?v=20261111190511" defer></script>
+<script src="trends.js?v=20261112-topics" defer></script>
 <div id="dmodal" class="dmodal" style="display:none" onclick="if(event.target===this)this.style.display='none'"><div class="dbox"><div class="dh"><b>数据说明</b><button type="button" onclick="document.getElementById('dmodal').style.display='none'">✕</button></div><ul>
 <li>只统计中文 X 帖子，每小时更新一次</li>
 <li>每天早上 8 点（北京时间）切日，榜单从零开始算</li>
