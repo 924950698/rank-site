@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-12",
+  "stories": [
+    {
+      "title": "Grok Bot 可以加入视频会议并发会后摘要",
+      "published": "2026-11-11",
+      "summary": "新版支持通过链接加入 Google Meet、Zoom 或 Microsoft Teams，在会议聊天里回答问题，并在会后发摘要。会议功能面向 Team、Enterprise 和 Ultra 计划。",
+      "angle": "用一场模拟会议对比 Bot 摘要和人工笔记：谁负责什么、截止日期和未决问题，哪项最容易漏？",
+      "source": "https://x.ai/changelog/bot",
+      "query": "Grok Bot meetings"
+    },
+    {
+      "title": "Gemini 4 Carbon 开放使用",
+      "published": "2026-11-10",
+      "summary": "Google 开放了 Gemini 4 Carbon。Google AI Ultra 用户可以在 Gemini 应用体验，开发者可通过付费 API 使用。",
+      "angle": "拿同一个真实的改站任务对比 Carbon 和 Argon，记录各自的用时、返工次数和最终完成度。",
+      "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/",
+      "query": "Gemini 4 Carbon"
+    },
+    {
+      "title": "Claude 里可以并排打开完整工具",
+      "published": "2026-11-10",
+      "summary": "支持新版体验的连接器可以在对话旁打开，也可以展开到全屏；侧栏和全屏体验正分批开放。",
+      "angle": "选一个自己常用的连接器，用同一项任务对比在 Claude 内操作和切到原应用操作，看看少了几次切换、哪些动作仍要回原应用。",
+      "source": "https://claude.com/resources/articles/interactive-connectors-full-tool",
+      "query": "Claude interactive connectors"
+    }
+  ]
+}

@@ -6,6 +6,20 @@
   const format = new Intl.DateTimeFormat("zh-CN", { timeZone: "Asia/Shanghai", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
   const counts = new Intl.NumberFormat("zh-CN");
   const validLink = url => /^https:\/\/x\.com\/(?:[A-Za-z0-9_]+|i\/web)\/status\/\d+$/.test(url);
+  const localDay = new Intl.DateTimeFormat("sv-SE", {timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit"});
+  const storyLink = url => {
+    try { const u = new URL(url); return u.protocol === "https:" && !u.username && !u.password ? u.href : ""; } catch { return ""; }
+  };
+  function showStories(d) {
+    if (d?.date !== localDay.format() || !Array.isArray(d.stories)) return false;
+    const stories = d.stories.filter(s => s?.title && storyLink(s.source)).slice(0, 3);
+    if (!stories.length) return false;
+    more.hidden = true;
+    upd.textContent = d.date.slice(5).replace("-", "/") + " 今日精选";
+    intro.textContent = "近期发布与进展，附官方出处和可以动手验证的选题。";
+    ol.innerHTML = stories.map(s => `<li class="fresh-story"><div class="trend-row"><b>${esc(s.title)}</b><span>${esc(s.published)} 发布</span></div><p>${esc(s.summary)}</p><p><strong>可以怎么写：</strong>${esc(s.angle)}</p><div class="trend-links"><a href="${esc(storyLink(s.source))}" target="_blank" rel="noopener">官方出处 ↗</a><a href="https://x.com/search?q=${encodeURIComponent(s.query || s.title)}&amp;f=live" target="_blank" rel="noopener">看 X 讨论 ↗</a></div></li>`).join("");
+    return true;
+  }
   let items = [], open = false, stale = false;
   function render() {
     ol.innerHTML = "";
@@ -30,11 +44,13 @@
     }).join("");
   }
   more.onclick = () => { open = !open; render(); };
-  fetch("trends.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : null).catch(() => null).then(j => {
+  const read = path => fetch(path, {cache: "no-cache"}).then(r => r.ok ? r.json() : null).catch(() => null);
+  read("trends.json").then(async j => {
     items = Array.isArray(j?.topics) ? j.topics : [];
     const updated = j?.updated ? new Date(j.updated) : null;
     stale = !updated || !Number.isFinite(+updated) || Date.now() - +updated >= 2 * 60 * 60 * 1000;
     upd.textContent = updated && Number.isFinite(+updated) ? `${format.format(updated)} 更新（北京时间）` : "";
+    if ((stale || !items.length) && showStories(await read("fresh-stories.json"))) return;
     if (!items.length) intro.textContent = "暂时没有可用的热点数据，可以先看下面的曝光榜。";
     else if (stale) intro.textContent = "热点更新延迟。下方曝光榜仍可查看，也可以展开上次的话题。";
     render();

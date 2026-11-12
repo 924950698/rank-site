@@ -11,3 +11,6 @@
 #trendSec a:hover{text-decoration:underline}
 #trendSec .more{margin:0;border-top:1px solid #242729}
 #trendSec .more[hidden]{display:none}
+
+#trendSec .fresh-story p{margin:4px 0;color:#c4c9cd;font-size:13px;line-height:1.5}
+#trendSec .fresh-story strong{color:#e7e9ea}
