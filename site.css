@@ -89,3 +89,7 @@ a.fp:hover{border-color:#f0b90b}
 /* X 模块：爆帖榜数据更新时间 */
 .rk-upd{margin-top:4px;color:#a9afb4}
 .rk-upd:empty{display:none}
+/* 2026-11-14 tiger：YouTube 模块先隐藏 */
+.sb-tabs a[href="/youtube/"],.mod.yt,.btn.yt{display:none!important}
+.mods{grid-template-columns:repeat(2,1fr)}
+@media(max-width:860px){.mods{grid-template-columns:1fr}}
