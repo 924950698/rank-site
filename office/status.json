@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-11-13T08:56:00+08:00",
+  "updatedAt": "2026-11-13T09:07:00+08:00",
   "agents": [
     {
       "name": "大汉丞相",
-      "status": "tool",
-      "activity": "巡查突发新闻",
-      "updatedAt": "2026-11-13T08:56:00+08:00",
-      "lastEventAt": "2026-11-13T08:56:00+08:00"
+      "status": "idle",
+      "activity": null,
+      "updatedAt": "2026-11-13T09:07:00+08:00",
+      "lastEventAt": "2026-11-13T09:07:00+08:00"
     },
     {
       "name": "选题大师",
