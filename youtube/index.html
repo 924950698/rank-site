@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>马克Pump YouTube 频道 · 每周讲清 AI 和 Web3 大事 · MarkPump</title>
+<meta name="description" content="马克Pump 的 YouTube 频道 @DGBGJC：每周日十分钟，讲清 AI 和 Web3 圈的大事，再聊聊我的看法。">
+<link rel="canonical" href="https://markpump.com/youtube/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://markpump.com/youtube/">
+<meta property="og:title" content="马克Pump YouTube 频道 · MarkPump">
+<meta property="og:description" content="每周日十分钟，讲清 AI 和 Web3 圈的大事，再聊聊我的看法。">
+<meta property="og:image" content="https://markpump.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@tigerr3aue">
+<meta name="twitter:image" content="https://markpump.com/og.png">
+<meta name="theme-color" content="#000000">
+<link rel="stylesheet" href="/site.css?v=20261113-modules">
+</head>
+<body class="mp">
+<nav class="sitebar" aria-label="站点导航"><a class="sb-brand" href="/">马克<span class="g">Pump</span></a><div class="sb-tabs"><a href="/youtube/" class="on" aria-current="page">YouTube</a><a href="/x/" data-ev="nav-x">X</a><a href="/web3/" data-ev="nav-web3">Web3</a></div></nav>
+
+<section class="phead">
+  <div class="row">
+    <img class="av" src="https://yt3.googleusercontent.com/OVgPjDGqjoQxmsW_zoI4-_au_zengZZHZNxdWVl0t96O4YAY_TYee9O_jClJfxrj2VB36BY8PkM=s176-c-k-c0x00ffffff-no-rj" alt="马克Pump 频道头像" referrerpolicy="no-referrer" onerror="this.src='https://unavatar.io/x/tigerr3aue';this.onerror=null">
+    <div>
+      <h1>马克Pump · YouTube</h1>
+      <div class="m">@DGBGJC · 币圈 / Web3 · AI 新闻</div>
+    </div>
+  </div>
+  <p>每周日十分钟，讲清 AI 和 Web3 圈的大事，再聊聊我的看法。新闻之外，多一点思考。币圈发生了什么、值不值得关注，一条视频讲明白。</p>
+  <div class="acts">
+    <a class="btn yt" href="https://www.youtube.com/@DGBGJC?sub_confirmation=1" target="_blank" rel="noopener" data-ev="yt-sub">▶ 订阅频道</a>
+    <a class="btn ghost" href="https://www.youtube.com/@DGBGJC" target="_blank" rel="noopener" data-ev="yt-channel">打开频道主页</a>
+  </div>
+</section>
+
+<div class="sec-t"><h2>最新视频</h2><span class="m" id="ytUpd"></span></div>
+<div id="ytList"><div class="empty-box">加载中…</div></div>
+
+<footer class="mp-foot">
+  视频列表来自 YouTube 官方 RSS，点击跳转 YouTube 观看<br>
+  <a href="/">马克Pump 首页</a> · <a href="/privacy.html">隐私政策</a> · <a href="/terms.html">服务条款</a>
+</footer>
+
+<script src="/config.js?v=20261113-modules"></script>
+<script src="/site.js?v=20261113-modules"></script>
+<script>
+(() => {
+  const box = document.getElementById("ytList"), upd = document.getElementById("ytUpd"), { esc, fmtDate } = MP;
+  const empty = (t, s) => { box.innerHTML = `<div class="empty-box"><b>${t}</b>${s}<br><br><a class="btn yt" href="https://www.youtube.com/@DGBGJC?sub_confirmation=1" target="_blank" rel="noopener">订阅频道，第一时间收到更新</a></div>`; };
+  MP.json("/youtube/videos.json").then(d => {
+    const vs = (d.videos || []).filter(v => /^[\w-]{6,20}$/.test(v.id || ""));
+    if (d.fetchedAt) upd.textContent = "列表更新于 " + fmtDate(d.fetchedAt, true) + "（北京时间）";
+    if (!vs.length) return empty("新视频正在路上", "频道暂时还没有公开视频，敬请期待。");
+    box.innerHTML = `<div class="vgrid">` + vs.map((v, i) => `<a class="vc${i === 0 ? " new" : ""}" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener" data-ev="yt-video">
+      <div class="th"><img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="">${i === 0 ? "<i>最新</i>" : ""}</div>
+      <div class="bd"><b>${esc(v.title)}</b><div class="m">${esc(fmtDate(v.published))}</div></div></a>`).join("") + `</div>`;
+  }).catch(() => empty("视频列表暂时打不开", "可以直接去 YouTube 频道看最新视频。"));
+})();
+</script>
+</body>
+</html>

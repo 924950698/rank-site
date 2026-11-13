@@ -12,7 +12,7 @@ export GIT_ASKPASS="$ASK" GIT_TERMINAL_PROMPT=0
 git config user.name >/dev/null || git config user.name "rank-bot"
 git config user.email >/dev/null || git config user.email "924950698@users.noreply.github.com"
 if [ "${1:-}" = "--all" ]; then
-  V="$(date +%Y%m%d%H%M%S)"; sed -i -E "s/\?v=[A-Za-z0-9]+\"/?v=$V\"/g; s/ASSET_V=\"[A-Za-z0-9]+\"/ASSET_V=\"$V\"/" index.html   # 缓存版本号
+  V="$(date +%Y%m%d%H%M%S)"; sed -i -E "s/\?v=[A-Za-z0-9]+\"/?v=$V\"/g; s/ASSET_V=\"[A-Za-z0-9]+\"/ASSET_V=\"$V\"/" index.html x/index.html   # 缓存版本号
   git add -A; else
   # 校验 JSON，避免把写了一半的文件推上去
   for f in data.json partners.json ledger.json overview.json trends.json; do [ -f "$f" ] && { node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))" || { echo "$f 不是合法 JSON，放弃推送" >&2; exit 1; }; git add "$f"; }; done

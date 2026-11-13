@@ -70,7 +70,7 @@ def main():
         if not c or not c[0].get("username"): continue
         a, stat = c; u = a["username"]
         draw(a, stat, name, os.path.join(ROOT, "champ", f"{b}.png"))
-        go = f"{SITE}?champ={u}&board={b}#rank"; e = html.escape
+        go = f"{SITE}x/?champ={u}&board={b}#rank"; e = html.escape  # X 模块在 /x/
         open(os.path.join(ROOT, "champ", f"{b}.html"), "w", encoding="utf-8").write(PAGE.format(
             t=e(f"今日 X 中文{name}冠军：{a.get('name') or u}（@{u}）"), desc=e(f"{stat}，来看看今天谁在爆，你排第几"),
             url=f"{SITE}champ/{b}.html", img=f"{SITE}champ/{b}.png?v={v}", go=e(go), go_js=json.dumps(go)))

@@ -59,7 +59,7 @@ function champ() {
     if (!p) return null; stat = tab === "comments" ? `${num(p.metrics?.replies)} 评论` : `${num(p.metrics?.views)} 曝光`; }
   if (!p?.author?.username) return null; return { p, a: p.author, stat, board: CH_NAME[tab] || "" };
 }
-function champUrl(u) { return location.origin + location.pathname.replace(/[^/]*$/, "") + "champ/" + tab + ".html"; }
+function champUrl(u) { return location.origin + "/champ/" + tab + ".html"; }  // 冠军页固定在站点根目录 /champ/（X 模块在 /x/）
 function champHtml() {
   const c = champ(); if (!c) return ""; const { a, stat, board } = c;
   const xt = `恭喜 @${a.username} 拿下今日 X 中文${board}冠军 🏆 ${stat}\n来看看今天谁在爆 👉 ` + champUrl(a.username);
@@ -237,8 +237,11 @@ async function renderWall() {
 }
 function render() {
   const t = new Date(D.updated_at);
-  $("#upd").textContent = `● ${String(t.getHours()).padStart(2,"0")}:${String(t.getMinutes()).padStart(2,"0")} 已更新`;
-  $("#upd").title = t.toLocaleString();
+  const tz = { timeZone: "Asia/Shanghai", hour12: false }, ok = !isNaN(t);
+  const md = ok ? t.toLocaleDateString("zh-CN", { ...tz, month: "numeric", day: "numeric" }) : "", hm = ok ? t.toLocaleTimeString("zh-CN", { ...tz, hour: "2-digit", minute: "2-digit" }) : "--:--";
+  $("#upd").textContent = `● ${md} ${hm} 已更新`;
+  $("#upd").title = ok ? t.toLocaleString("zh-CN", tz) + "（北京时间）" : "";
+  const ru = $("#rkUpd"); if (ru) ru.textContent = ok ? `数据更新于 ${t.toLocaleString("zh-CN", { ...tz, year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" })}（北京时间）· 显示最近一次数据` : "";
   renderList(); renderBest(); renderWall();
 }
 

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>马克Pump Web3 · 币安广场精选 · MarkPump</title>
+<meta name="description" content="马克Pump 的 Web3 板块：币安广场入口和精选帖，挑值得看的币圈内容。">
+<link rel="canonical" href="https://markpump.com/web3/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://markpump.com/web3/">
+<meta property="og:title" content="马克Pump Web3 · 币安广场精选 · MarkPump">
+<meta property="og:description" content="币安广场入口和精选帖，挑值得看的币圈内容。">
+<meta property="og:image" content="https://markpump.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@tigerr3aue">
+<meta name="twitter:image" content="https://markpump.com/og.png">
+<meta name="theme-color" content="#000000">
+<link rel="stylesheet" href="/site.css?v=20261113-modules">
+</head>
+<body class="mp">
+<nav class="sitebar" aria-label="站点导航"><a class="sb-brand" href="/">马克<span class="g">Pump</span></a><div class="sb-tabs"><a href="/youtube/" data-ev="nav-youtube">YouTube</a><a href="/x/" data-ev="nav-x">X</a><a href="/web3/" class="on" aria-current="page">Web3</a></div></nav>
+
+<section class="phead">
+  <h1>Web3</h1>
+  <p>币安广场入口和我挑出来的精选帖。这里只放值得看的内容，不做实时行情。</p>
+</section>
+
+<div class="w3card">
+  <div class="ic">◆</div>
+  <div class="tx"><h2>马克Pump 的币安广场</h2><p id="bsTip">主页链接整理中，开放后可以直接在币安广场关注我。</p></div>
+  <a class="btn bn" id="bsBtn" aria-disabled="true" role="link" tabindex="-1">即将开放</a>
+</div>
+
+<div class="sec-t"><h2>精选帖</h2><span class="m" id="fpUpd"></span></div>
+<div class="fgrid" id="fpList"></div>
+<p class="note">内容仅为个人观点分享，不构成任何投资建议。加密资产波动大，请自行判断风险。</p>
+
+<footer class="mp-foot">
+  <a href="/">马克Pump 首页</a> · <a href="/privacy.html">隐私政策</a> · <a href="/terms.html">服务条款</a>
+</footer>
+
+<script src="/config.js?v=20261113-modules"></script>
+<script src="/site.js?v=20261113-modules"></script>
+<script>
+(() => {
+  const { esc, safeUrl, fmtDate } = MP, list = document.getElementById("fpList");
+  const placeholders = () => { list.innerHTML = [1, 2, 3].map(() => `<div class="fp ph"><b>精选帖即将上线</b><span class="m">敬请期待</span></div>`).join(""); };
+  placeholders();
+  MP.json("/web3/featured.json").then(d => {
+    const url = safeUrl(d.binanceSquareUrl || ""), btn = document.getElementById("bsBtn");
+    if (url) { btn.href = url; btn.target = "_blank"; btn.rel = "noopener"; btn.removeAttribute("aria-disabled"); btn.removeAttribute("tabindex");
+      btn.dataset.ev = "web3-binance"; btn.textContent = "去币安广场关注 →"; document.getElementById("bsTip").textContent = "在币安广场看我的更多帖子和观点。"; }
+    const ps = (d.posts || []).filter(p => p && p.title && safeUrl(p.url || ""));
+    if (d.updatedAt && ps.length) document.getElementById("fpUpd").textContent = "更新于 " + fmtDate(d.updatedAt);
+    if (!ps.length) return;
+    list.innerHTML = ps.map(p => `<a class="fp" href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener" data-ev="web3-post"><b>${esc(p.title)}</b>${p.summary ? `<p>${esc(p.summary)}</p>` : ""}<span class="m">${esc(p.date ? fmtDate(p.date) : "")}${p.date ? " · " : ""}币安广场 →</span></a>`).join("");
+  }).catch(() => {});
+})();
+</script>
+</body>
+</html>

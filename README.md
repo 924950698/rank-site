@@ -55,3 +55,10 @@
 ## 新鲜事选题
 
 优先看 X 上的简体中文讨论，不按作者所在地或事件发生地筛选。社会、文体、商业、科技都可入选，重点是近期有可核实的新进展。缺少可用的 X 热点数据时，可更新 `fresh-stories.json` 作为当天的编辑精选，附可靠出处和中文讨论搜索词，不填未经验证的热度或曝光。
+
+## 站点结构（2026-11 改版：YouTube / X / Web3 三模块）
+- `/` `index.html`：马克Pump 首页（简介 + 三个模块入口）。旧链接兼容：`/#rank|#wall|#ledger|#income`、`/?u=`、`/?champ=&board=` 会带着参数自动跳到 `/x/`。
+- `/x/` `x/index.html`：X 中文创作者成长站（原首页整体迁入）。用 `<base href="/">`，脚本和数据文件（data.json、partners.json 等）仍在根目录，抓取/部署脚本不用改路径。
+- `/youtube/`：频道 @DGBGJC（channel_id `UC6btmfpTMjlZ5r0VuQUP-hA`）。手动刷新视频：`python3 scripts/youtube_fetch.py` → 写 `youtube/videos.json`，再部署。无定时任务。
+- `/web3/`：币安广场入口 + 精选帖，手动维护 `web3/featured.json`：`binanceSquareUrl` 填上后按钮自动可点；`posts` 每条 `{ "title", "url", "date", "summary" }`（url 须 https）。
+- 新增样式/脚本放在 `site.css` / `site.js`，不动 `style.css`。

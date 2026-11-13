@@ -1,0 +1,91 @@
+/* 马克Pump 站点级样式：顶部三模块导航 + 首页 / YouTube / Web3 页面。
+   与 style.css 分开放，避免和未上线的增长战报样式混在一起。配色沿用 X 模块：黑底、#39ff14 绿、#2f3336 描边。 */
+.sitebar{display:flex;align-items:center;justify-content:space-between;gap:10px;height:48px;padding:0 8px;border-bottom:1px solid #2f3336;background:#000}
+.sitebar a{color:#e7e9ea;text-decoration:none}
+.sb-brand{font-weight:800;font-size:17px;white-space:nowrap;letter-spacing:.2px}
+.sb-brand .g{color:#39ff14}
+.sb-tabs{display:flex;gap:4px}
+.sb-tabs a{font-size:14px;font-weight:600;padding:6px 10px;border-radius:16px;color:#a9afb4!important;white-space:nowrap}
+.sb-tabs a:hover{color:#39ff14!important}
+.sb-tabs a.on{color:#000!important;background:#39ff14}
+@media(min-width:1024px){.sitebar{height:52px;padding:0 4px}.sb-tabs{gap:10px}.sb-tabs a{font-size:15px;padding:6px 14px}}
+
+/* 独立页面（首页 / YouTube / Web3）基础 */
+body.mp{background:#000;color:#e7e9ea;font:15px/1.55 -apple-system,"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif;margin:0 auto;max-width:1120px;min-height:100vh;padding:0 12px}
+body.mp *{box-sizing:border-box}
+body.mp h1,body.mp h2,body.mp h3,body.mp p{margin:0}
+body.mp a{color:inherit;text-decoration:none}
+body.mp .sitebar{margin:0 -12px;padding:0 12px;position:sticky;top:0;z-index:10}
+.mp .g{color:#39ff14}.mp .m{color:#71767b;font-size:13px}
+.mp .btn{background:#39ff14;color:#000;font-weight:700;border-radius:20px;padding:9px 18px;font-size:15px;border:0;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.mp .btn.ghost{background:none;color:#e7e9ea;border:1px solid #536471}
+.mp .btn.yt{background:#ff0033;color:#fff}
+.mp .btn[aria-disabled=true],.mp .btn:disabled,.w3card .btn.bn[aria-disabled=true]{background:#1d1f23;color:#71767b;border:1px solid #2f3336;cursor:not-allowed}
+.mp .btn:not([aria-disabled=true]):not(:disabled):hover{filter:brightness(1.12)}
+.mp-foot{padding:32px 0 28px;text-align:center;color:#71767b;font-size:12px;line-height:1.9}
+.mp-foot a{text-decoration:underline}
+
+/* 首页 */
+.hero{display:flex;gap:18px;align-items:center;padding:36px 0 26px}
+.hero .av{width:84px;height:84px;border-radius:50%;border:3px solid #39ff14;background:#1d1f23;object-fit:cover;flex:none}
+.hero h1{font-size:clamp(28px,6vw,44px);line-height:1.15;font-weight:800}
+.hero p{color:#c4c9cd;margin-top:8px;font-size:16px;max-width:640px}
+.hero .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.hero .tags span{font-size:12px;color:#39ff14;border:1px solid #39ff1466;border-radius:12px;padding:2px 10px}
+.mods{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-bottom:12px}
+.mod{display:flex;flex-direction:column;gap:10px;border:1px solid #2f3336;border-radius:16px;padding:20px;background:#0b0b0b;min-height:240px;transition:border-color .15s,transform .15s}
+.mod:hover{border-color:#39ff14;transform:translateY(-2px)}
+.mod .ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800}
+.mod.yt .ic{background:#ff0033;color:#fff}.mod.x .ic{background:#fff;color:#000}.mod.w3 .ic{background:#f0b90b;color:#000}
+.mod h2{font-size:22px}
+.mod p{color:#a9afb4;font-size:14px}
+.mod ul{margin:0;padding-left:18px;color:#c4c9cd;font-size:14px;line-height:1.8}
+.mod .go{margin-top:auto;color:#39ff14;font-weight:700}
+.mod .latest{font-size:13px;color:#c4c9cd;border-top:1px solid #1d1f23;padding-top:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mod .latest:empty{display:none}
+.follow-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:22px 0 0}
+@media(max-width:860px){.mods{grid-template-columns:1fr}.mod{min-height:0}}
+@media(max-width:520px){.hero{flex-direction:column;align-items:flex-start;padding:24px 0 18px;gap:12px}.hero .av{width:64px;height:64px}.sb-tabs a{padding:5px 8px;font-size:13px}.sb-brand{font-size:15px}}
+
+/* 模块页通用 */
+.phead{padding:28px 0 18px;border-bottom:1px solid #1d1f23;margin-bottom:18px}
+.phead .row{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.phead .av{width:72px;height:72px;border-radius:50%;border:2px solid #2f3336;background:#1d1f23;object-fit:cover;flex:none}
+.phead h1{font-size:clamp(24px,5vw,34px);font-weight:800}
+.phead p{color:#c4c9cd;margin-top:6px;max-width:720px}
+.phead .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.sec-t{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;margin:6px 0 12px}
+.sec-t h2{font-size:20px}
+
+/* YouTube 视频列表 */
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.vc{display:block;border:1px solid #2f3336;border-radius:14px;overflow:hidden;background:#0b0b0b;transition:border-color .15s}
+.vc:hover{border-color:#39ff14}
+.vc .th{position:relative;aspect-ratio:16/9;background:#1d1f23;overflow:hidden}
+.vc .th img{width:100%;height:100%;object-fit:cover;display:block}
+.vc .th i{position:absolute;right:8px;bottom:8px;background:#000c;color:#fff;font-style:normal;font-size:11px;padding:2px 7px;border-radius:6px}
+.vc .bd{padding:10px 12px 12px}
+.vc b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:15px;line-height:1.4;min-height:42px}
+.vc .m{margin-top:6px}
+.vc.new{border-color:#39ff1488}
+.empty-box{border:1px dashed #2f3336;border-radius:14px;padding:36px 16px;text-align:center;color:#a9afb4}
+.empty-box b{display:block;color:#e7e9ea;font-size:17px;margin-bottom:6px}
+
+/* Web3 */
+.w3card{border:1px solid #f0b90b66;border-radius:16px;padding:20px;background:linear-gradient(135deg,#221a02,#0b0b0b);display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:22px}
+.w3card .ic{width:52px;height:52px;border-radius:14px;background:#f0b90b;color:#000;font-weight:900;font-size:24px;display:flex;align-items:center;justify-content:center;flex:none}
+.w3card .tx{flex:1;min-width:200px}.w3card h2{font-size:20px}.w3card p{color:#c4c9cd;font-size:14px;margin-top:4px}
+.w3card .btn.bn{background:#f0b90b;color:#000}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.fp{display:flex;flex-direction:column;gap:8px;border:1px solid #2f3336;border-radius:14px;padding:16px;background:#0b0b0b;min-height:150px}
+a.fp:hover{border-color:#f0b90b}
+.fp b{font-size:16px;line-height:1.4}.fp p{color:#a9afb4;font-size:14px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.fp .m{margin-top:auto}
+.fp.ph{border-style:dashed;align-items:center;justify-content:center;text-align:center;color:#71767b}
+.fp.ph b{color:#a9afb4;font-size:15px}.fp.ph .m{margin-top:0}
+@media(max-width:520px){.fp{min-height:110px}}
+.note{margin-top:20px;font-size:12px;color:#71767b}
+
+/* X 模块：爆帖榜数据更新时间 */
+.rk-upd{margin-top:4px;color:#a9afb4}
+.rk-upd:empty{display:none}
