@@ -26,3 +26,5 @@
 .video-field label{font-weight:700;margin-bottom:5px}
 #video-info{overflow-wrap:anywhere}
 button:disabled{opacity:.6;cursor:wait}
+
+.data-actions{margin:12px 0 8px}.data-actions button{font-size:14px}

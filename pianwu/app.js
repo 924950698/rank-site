@@ -46,7 +46,7 @@ function videoStatus(work, selected) {
   videoLabel.textContent = work?.video ? '更换成片' : '导入成片（可选）';
   videoInfo.textContent = media ? (selected ? '待保存 · ' : '已保存 · ') + media.name + ' · ' +
     new Intl.NumberFormat('zh-CN', { maximumFractionDigits: 1 }).format(media.size / 1024 ** 2) + ' MB'
-    : '选择 MP4、MOV 或 WebM。视频保存在当前浏览器。';
+    : work?.missingVideoName ? '待重新导入成片 · ' + work.missingVideoName : '选择 MP4、MOV 或 WebM。视频保存在当前浏览器。';
   videoPreview.hidden = !work?.video;
 }
 const pages = new Set(['board', 'calendar', 'archive']);
@@ -79,6 +79,7 @@ try {
   notice.hidden = false;
 }
 let editing = null;
+let packageInput = null;
 let month = zone.format().slice(0, 7);
 
 function esc(value) {
@@ -208,8 +209,9 @@ function historyTable(work, id) {
     }).join('') + '</tbody></table></div>';
 }
 
-function open(work) {
+function open(work, imported = null) {
   editing = work?.id ?? null;
+  packageInput = imported;
   form.reset();
   error.hidden = true;
   document.querySelector('#editor-title').textContent = editing ? '编辑作品' : '新建作品';
@@ -220,14 +222,18 @@ function open(work) {
     panel.querySelector('[data-metric-history]').innerHTML = historyTable(work, id);
     for (const metric of metrics) form.elements.namedItem(id + '-' + metric).value = work?.metrics?.[id]?.[metric] ?? '';
   }
-  videoStatus(work);
+  if (imported && !work) form.elements.namedItem('title').value = imported.title;
+  videoStatus(work, imported?.file);
   editor.showModal();
 }
 
 document.querySelector('#add').addEventListener('click', () => open());
 document.querySelector('#cancel').addEventListener('click', () => { if (!saving) editor.close(); });
 editor.addEventListener('cancel', event => { if (saving) event.preventDefault(); });
-videoInput.addEventListener('change', () => videoStatus(works.find(work => work.id === editing), videoInput.files[0]));
+videoInput.addEventListener('change', () => {
+  if (videoInput.files.length && packageInput) packageInput.file = null;
+  videoStatus(works.find(work => work.id === editing), videoInput.files[0] || packageInput?.file);
+});
 videoPreview.addEventListener('click', async () => {
   const video = works.find(work => work.id === editing)?.video;
   if (!video) return;
@@ -276,7 +282,7 @@ form.addEventListener('submit', async event => {
   saveButton.textContent = '保存中…';
   error.hidden = true;
   let stagedVideo;
-  const file = videoInput.files[0];
+  const file = videoInput.files[0] || packageInput?.file;
   const entry = Object.fromEntries(new FormData(form));
   try {
     entry.title = entry.title.trim();
@@ -305,7 +311,8 @@ form.addEventListener('submit', async event => {
         ? [{ url: entry[id], at: now, values }, ...history].slice(0, 30)
         : history;
     }
-    entry.id = editing || crypto.randomUUID();
+    entry.id = editing || packageInput?.id || crypto.randomUUID();
+    if (packageInput?.preset || previous?.preset) entry.preset = packageInput?.preset || previous.preset;
     if (file) {
       if (!file.size || !/\.(mp4|mov|webm)$/i.test(file.name)) throw new Error('请选择有效的 MP4、MOV 或 WebM 视频。');
       stagedVideo = crypto.randomUUID();
@@ -313,6 +320,8 @@ form.addEventListener('submit', async event => {
       entry.video = videoMeta(file, stagedVideo);
     } else if (previous?.video) {
       entry.video = previous.video;
+    } else if (previous?.missingVideoName) {
+      entry.missingVideoName = previous.missingVideoName;
     }
     const next = [entry, ...works.filter(work => work.id !== entry.id)];
     localStorage.setItem(key, JSON.stringify(next));
@@ -337,6 +346,132 @@ form.addEventListener('submit', async event => {
     saveButton.disabled = false;
     saveButton.textContent = '保存作品';
   }
+});
+function showNotice(message) {
+  notice.textContent = message;
+  notice.hidden = false;
+}
+
+function checkedString(value, max, required = false) {
+  if (typeof value !== 'string' || value.length > max || (required && !value.trim())) {
+    throw new Error('文件中的作品信息格式不正确。');
+  }
+  return value;
+}
+
+function checkedId(id) {
+  if (typeof id !== 'string' || !/^[a-zA-Z0-9_-]{1,80}$/.test(id)) throw new Error('作品编号格式不正确。');
+  return id;
+}
+
+async function unpackWork(file) {
+  if (file.size <= 24) throw new Error('作品包内容不完整。');
+  const footer = await file.slice(-12).arrayBuffer();
+  const magic = new TextDecoder().decode(footer.slice(4));
+  const size = new DataView(footer).getUint32(0, true);
+  const end = file.size - size - 12;
+  if (magic !== 'PUMP0001' || !size || size > 16384 || end < 12) throw new Error('请选择有效的 Pump 作品包。');
+  const data = JSON.parse(await file.slice(end, -12).text());
+  if (data.type !== 'pump-work' || data.version !== 1) throw new Error('作品包版本不支持。');
+  const videoName = checkedString(data.videoName, 128, true);
+  if (!/^[^\\/]+\.mp4$/i.test(videoName)) throw new Error('作品包没有有效的 MP4 成片。');
+  const signature = await file.slice(4, 8).text();
+  if (signature !== 'ftyp') throw new Error('作品包内的 MP4 格式不正确。');
+  return {
+    id: 'studio-' + checkedId(data.id), title: checkedString(data.title, 160, true),
+    preset: checkedString(data.preset || '', 80),
+    file: new File([file.slice(0, end)], videoName, { type: 'video/mp4' })
+  };
+}
+
+function backupMetrics(values) {
+  const copy = {};
+  for (const metric of metrics) {
+    const value = values?.[metric];
+    if (Number.isSafeInteger(value) && value >= 0) copy[metric] = value;
+  }
+  return copy;
+}
+
+function readBackupWork(input) {
+  const work = {
+    id: checkedId(input.id),
+    title: checkedString(input.title, 160, true),
+    date: checkedString(input.date || '', 10),
+    notes: checkedString(input.notes || '', 2000),
+    metrics: {}, history: {}
+  };
+  if (work.date && !/^\d{4}-\d{2}-\d{2}$/.test(work.date)) throw new Error('备份日期格式不正确。');
+  if (input.preset) work.preset = checkedString(input.preset, 80);
+  const videoName = input.missingVideoName || input.video?.name;
+  if (videoName) work.missingVideoName = checkedString(videoName, 255);
+  for (const id of ids) {
+    work[id] = platformLink(id, checkedString(input[id] || '', 2000));
+    work.metrics[id] = work[id] ? backupMetrics(input.metrics?.[id]) : {};
+    work.history[id] = metricHistory(input, id).slice(0, 30).map(sample => {
+      const at = sample.at ?? null;
+      if (at !== null && (typeof at !== 'string' || !Number.isFinite(Date.parse(at)))) throw new Error('备份中的录入时间不正确。');
+      return { url: platformLink(id, checkedString(sample.url, 2000, true)), at, values: backupMetrics(sample.values) };
+    });
+  }
+  return work;
+}
+
+function exportBackup() {
+  const payload = {
+    type: 'pump-planner-backup', version: 1,
+    works: works.map(({video, ...work}) => ({...work, missingVideoName: video?.name || work.missingVideoName}))
+  };
+  const url = URL.createObjectURL(new Blob([JSON.stringify(payload, null, 2)], {type: 'application/json'}));
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'pump-works-' + zone.format() + '.json';
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 30000);
+  showNotice('已导出 ' + works.length + ' 条作品记录。');
+}
+
+const packageFile = document.querySelector('#package-file');
+const backupFile = document.querySelector('#backup-file');
+document.querySelector('#import-package').addEventListener('click', () => packageFile.click());
+document.querySelector('#import-backup').addEventListener('click', () => backupFile.click());
+document.querySelector('#export-backup').addEventListener('click', exportBackup);
+packageFile.addEventListener('change', async () => {
+  const file = packageFile.files[0];
+  packageFile.value = '';
+  if (!file || saving || editor.open) return;
+  try {
+    const imported = await unpackWork(file);
+    const existing = works.find(work => work.id === imported.id);
+    if (editor.open || saving) return;
+    open(existing, imported);
+    if (existing) showNotice('已打开同一作品，保存后更新成片。');
+  } catch (error) { showNotice('导入失败：' + error.message); }
+});
+backupFile.addEventListener('change', async () => {
+  const file = backupFile.files[0];
+  backupFile.value = '';
+  if (!file || saving || editor.open) return;
+  try {
+    if (file.size > 10 * 1024 ** 2) throw new Error('备份文件过大。');
+    const backup = JSON.parse(await file.text());
+    if (backup.type !== 'pump-planner-backup' || backup.version !== 1 || !Array.isArray(backup.works)) {
+      throw new Error('请选择片务导出的作品记录备份。');
+    }
+    const records = backup.works.map(readBackupWork);
+    if (editor.open || saving) return;
+    const existing = new Set(works.map(work => work.id));
+    const added = records.filter(work => {
+      if (existing.has(work.id)) return false;
+      existing.add(work.id);
+      return true;
+    });
+    const next = [...works, ...added];
+    localStorage.setItem(key, JSON.stringify(next));
+    works = next;
+    render();
+    showNotice('恢复 ' + added.length + ' 条作品，跳过 ' + (records.length - added.length) + ' 条重复记录。');
+  } catch (error) { showNotice('恢复失败：' + error.message); }
 });
 window.addEventListener('hashchange', render);
 render();

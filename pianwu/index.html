@@ -4,14 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Pump 片务 · MarkPump</title>
-<link rel="stylesheet" href="style.css?v=20261117-media">
-<script type="module" src="app.js?v=20261117-media"></script>
+<link rel="stylesheet" href="style.css?v=20261117-handoff">
+<script type="module" src="app.js?v=20261117-handoff"></script>
 </head>
 <body>
 <header><a href="/" class="back">‹ MarkPump</a><h1><span aria-hidden="true">🎙</span> Pump 片务</h1><button id="add" class="primary">新建作品</button></header>
 <main>
 <nav aria-label="片务导航"><a href="#board">大屏</a><a href="#calendar">日历</a><a href="#archive">档案</a></nav>
-<p class="muted">作品记录和成片保存在当前浏览器。</p>
+<div class="actions data-actions" aria-label="导入与备份">
+  <button id="import-package" type="button">导入工作室作品包</button>
+  <button id="export-backup" type="button">备份作品记录</button>
+  <button id="import-backup" type="button">恢复作品记录</button>
+  <input id="package-file" type="file" accept=".pumpwork" hidden>
+  <input id="backup-file" type="file" accept=".json,application/json" hidden>
+</div>
+<p class="muted">作品记录和成片保存在当前浏览器。记录备份包含排期、链接和数据历史，成片文件请另行保留。</p>
 <p id="notice" role="status" hidden></p>
 <section id="view"></section>
 </main>
