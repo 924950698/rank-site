@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>麦克片务 · MarkPump</title>
-<link rel="stylesheet" href="style.css?v=20261117-platforms">
-<script type="module" src="app.js?v=20261117-platforms"></script>
+<link rel="stylesheet" href="style.css?v=20261117-media">
+<script type="module" src="app.js?v=20261117-media"></script>
 </head>
 <body>
 <header><a href="/" class="back">‹ MarkPump</a><h1><span aria-hidden="true">🎙</span> 麦克片务</h1><button id="add" class="primary">新建作品</button></header>
 <main>
 <nav aria-label="片务导航"><a href="#board">大屏</a><a href="#calendar">日历</a><a href="#archive">档案</a></nav>
-<p class="muted">记录保存在当前浏览器。</p>
+<p class="muted">作品记录和成片保存在当前浏览器。</p>
 <p id="notice" role="status" hidden></p>
 <section id="view"></section>
 </main>
@@ -20,6 +20,12 @@
 <h2 id="editor-title">作品</h2>
 <label>作品标题<input name="title" required maxlength="160"></label>
 <label>计划发布日期<input name="date" type="date"></label>
+<div class="video-field">
+  <label id="video-label" for="work-video">导入成片（可选）</label>
+  <input id="work-video" type="file" accept="video/mp4,video/quicktime,video/webm,.mp4,.mov,.webm">
+  <p class="muted" id="video-info">选择 MP4、MOV 或 WebM。视频保存在当前浏览器。</p>
+  <button id="video-preview" type="button" hidden>打开已保存成片</button>
+</div>
 <div id="platform-fields"></div>
 <label>备注<textarea name="notes" maxlength="2000" rows="3"></textarea></label>
 <p id="form-error" role="alert" hidden></p>
