@@ -32,3 +32,19 @@ body.home .sitebar{background:#0b0d0b;border-bottom-color:#272c25}
   .home-links a{padding:13px}
 }
 @media(prefers-reduced-motion:no-preference){.watch,.home-links a{transition:filter .15s,background-color .15s}.watch:hover{filter:brightness(1.15)}}
+@media(min-width:1440px){
+  body.home{--home-width:clamp(1280px,76vw,2380px)}
+  .feature{gap:clamp(64px,5vw,168px);padding-block:clamp(76px,8vh,120px) clamp(58px,7vh,104px)}
+  .feature-copy{gap:clamp(16px,1.05vw,34px)}
+  .home .feature h1{font-size:clamp(83px,4.2vw,144px)}
+  .home .feature h2{font-size:clamp(36px,1.9vw,62px)}
+  .home .feature .intro{font-size:clamp(18px,0.86vw,27px)}
+  .home .issue,.home .follow-mark{font-size:clamp(15px,0.65vw,21px)}
+  .home .watch{font-size:clamp(16px,0.72vw,24px);padding:0.68em 1.15em}
+  .feature-media{border-radius:clamp(18px,0.85vw,28px)}
+  .feature-play{width:clamp(44px,2vw,68px);height:clamp(44px,2vw,68px);font-size:clamp(16px,0.8vw,26px)}
+  .home-links{gap:clamp(14px,0.85vw,28px);padding-top:clamp(18px,1.1vw,36px)}
+  .home-links a{padding:clamp(18px,1.15vw,36px)}
+  .home-links h2{font-size:clamp(21px,0.94vw,32px)}
+  .home-links p{font-size:clamp(15px,0.65vw,22px)}
+}
