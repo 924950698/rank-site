@@ -7,6 +7,9 @@
   const nav=el("nav","topnav"); PAGES.forEach(([k,t])=>{const a=el("button",null,t);a.type="button";a.dataset.p=k;nav.appendChild(a)});
   const mb=el("button","menuBtn","☰");mb.type="button";mb.setAttribute("aria-label","菜单");
   const dd=el("div","menuDd");PAGES.forEach(([k,t])=>{const a=el("button",null,t);a.type="button";a.dataset.p=k;dd.appendChild(a)});
+  for(const menu of [nav,dd]){
+    const link=el("a","pianwu-link","麦克片务"); link.href="/pianwu/"; menu.appendChild(link);
+  }
   hd.insertBefore(nav,hd.querySelector(".upd"));hd.appendChild(mb);hd.appendChild(dd);
   // 三栏
   const lay=el("div","layout"), L=el("aside","colL"), C=el("div","colC"), R=el("aside","colR");

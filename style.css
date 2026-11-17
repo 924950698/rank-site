@@ -164,3 +164,5 @@ header .btn{padding:5px 9px;font-size:12px}
 .wall.uni canvas{display:block;width:100%;height:auto}
 .uTip{position:absolute;pointer-events:none;display:none;transform:translate(-50%,calc(-100% - 10px));background:#0d0b1dee;border:1px solid #8b5cf6;border-radius:10px;padding:5px 10px;font-size:12px;line-height:1.4;white-space:nowrap;color:#e7e9ea;box-shadow:0 0 14px #8b5cf688;z-index:6}
 .uTip b{color:#22d3ee}.uTip small{display:block;color:#a1a1aa;font-size:11px}
+
+.topnav .pianwu-link{align-self:center;white-space:nowrap;color:#39ff14;font-size:15px}.menuDd .pianwu-link{display:block;padding:12px 14px;border-top:1px solid #222;color:#39ff14;font-size:14px}

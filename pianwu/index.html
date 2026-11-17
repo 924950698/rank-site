@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>麦克片务 · MarkPump</title>
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<header><a href="/" class="back">‹ MarkPump</a><h1><span aria-hidden="true">🎙</span> 麦克片务</h1><button id="add" class="primary">新建作品</button></header>
+<main>
+<nav aria-label="片务导航"><a href="#board">大屏</a><a href="#calendar">日历</a><a href="#archive">档案</a></nav>
+<p class="muted">记录保存在当前浏览器。</p>
+<p id="notice" role="status" hidden></p>
+<section id="view"></section>
+</main>
+<dialog id="editor">
+<form id="work-form">
+<h2 id="editor-title">作品</h2>
+<label>作品标题<input name="title" required maxlength="160"></label>
+<label>计划发布日期<input name="date" type="date"></label>
+<label>抖音链接<input name="douyin" type="url" placeholder="https://www.douyin.com/video/…"></label>
+<label>YouTube 链接<input name="youtube" type="url" placeholder="https://youtu.be/…"></label>
+<label>备注<textarea name="notes" maxlength="2000" rows="3"></textarea></label>
+<p id="form-error" role="alert" hidden></p>
+<div class="actions"><button id="cancel" type="button">取消</button><button class="primary" type="submit">保存作品</button></div>
+</form>
+</dialog>
+</body>
+</html>
