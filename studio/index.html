@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>麦克工作室 MikeStudio · 口播视频的字幕与风格，一条命令出片</title>
+<meta name="description" content="麦克工作室 MikeStudio：把口播原片和口播稿丢进去，字幕自动压时间轴、暗色动效卡片自动编排、音效自动配，直接导出成片。三套风格，横屏竖屏都能出。">
+<meta property="og:title" content="麦克工作室 MikeStudio · 口播视频一条命令出片">
+<meta property="og:description" content="字幕、卡点、转场、音效，全在一条时间轴上跑完。不用再开剪映。">
+<meta property="og:image" content="https://markpump.com/studio/assets/shot-horizontal.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23E8B33A'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='%230e0f12' font-family='sans-serif' font-weight='700'>M</text></svg>">
+<style>
+:root{
+  --bg:#0e0f12; --panel:#15161a; --panel-2:#1b1c21; --line:rgba(255,255,255,.09);
+  --text:#f3f4f6; --muted:#9599a3; --gold:#E8B33A; --red:#E5484D;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img,video{display:block;max-width:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(14,15,18,.78);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:26px;height:62px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.02em}
+.brand .dot{width:22px;height:22px;border-radius:6px;background:var(--gold);color:#0e0f12;display:grid;place-items:center;font-size:13px;font-weight:800}
+nav .links{display:flex;gap:22px;margin-left:auto;font-size:14px;color:var(--muted)}
+nav .links a:hover{color:var(--text)}
+nav .cta{font-size:14px;padding:8px 16px;border-radius:8px;border:1px solid var(--gold);color:var(--gold);font-weight:600;white-space:nowrap}
+@media(max-width:760px){nav .links{display:none}nav .cta{margin-left:auto}}
+
+header{padding:76px 0 40px;text-align:center}
+.kicker{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:700}
+h1{font-size:clamp(30px,5vw,52px);line-height:1.15;margin:16px 0 0;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--gold)}
+.lead{color:var(--muted);font-size:clamp(15px,2vw,18px);max-width:640px;margin:18px auto 0}
+.stats{display:flex;justify-content:center;gap:clamp(20px,5vw,64px);margin:38px 0 8px;flex-wrap:wrap}
+.stat{text-align:center}
+.stat b{display:block;font-size:24px;font-weight:800}
+.stat span{font-size:12px;color:var(--muted);letter-spacing:.06em}
+
+.hero-media{margin:44px 0 0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel);box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.hero-media video{width:100%;aspect-ratio:16/9;background:#000}
+
+section{padding:76px 0}
+section h2{font-size:clamp(22px,3.2vw,32px);margin:0 0 8px;letter-spacing:-.01em}
+section .sub{color:var(--muted);margin:0 0 34px;font-size:15px}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:820px){.steps{grid-template-columns:1fr}}
+.step{border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--panel)}
+.step .no{font-size:12px;color:var(--gold);font-weight:800;letter-spacing:.16em}
+.step h3{margin:10px 0 8px;font-size:17px}
+.step p{margin:0;color:var(--muted);font-size:14px}
+
+.looks{display:grid;grid-template-columns:1.25fr .55fr .9fr;gap:16px;align-items:start}
+@media(max-width:900px){.looks{grid-template-columns:1fr 1fr}.looks .wide{grid-column:1/-1}}
+.look{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}
+.look img{width:100%;object-fit:cover}
+.look .body{padding:16px 18px 20px}
+.look h3{margin:0 0 6px;font-size:16px}
+.look .meta{font-size:12px;color:var(--muted);letter-spacing:.04em}
+.look .body p{margin:10px 0 0;font-size:13.5px;color:var(--muted)}
+
+.cards{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center}
+@media(max-width:860px){.cards{grid-template-columns:1fr}}
+.cards img{border-radius:14px;border:1px solid var(--line)}
+.card-list{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin:0;padding:0;list-style:none}
+.card-list li{border-left:2px solid var(--gold);padding-left:12px;font-size:14px}
+.card-list span{display:block;color:var(--muted);font-size:12.5px}
+
+.price{border:1px solid var(--line);border-radius:18px;padding:clamp(24px,4vw,42px);background:linear-gradient(180deg,#191a1f,#131418);display:grid;grid-template-columns:1.1fr .9fr;gap:34px}
+@media(max-width:860px){.price{grid-template-columns:1fr}}
+.price .amount{font-size:44px;font-weight:800;letter-spacing:-.02em}
+.price .amount small{font-size:15px;color:var(--muted);font-weight:500;letter-spacing:0}
+.price ul{margin:18px 0 0;padding-left:18px;color:var(--muted);font-size:14px}
+.price ul li{margin-bottom:8px}
+.buy-actions{display:flex;flex-direction:column;gap:10px;justify-content:center}
+.btn-gold{display:inline-flex;justify-content:center;align-items:center;padding:14px 20px;border-radius:10px;background:var(--gold);color:#14151a;font-weight:700;font-size:15px;border:1px solid var(--gold)}
+.btn-ghost{display:inline-flex;justify-content:center;align-items:center;padding:13px 20px;border-radius:10px;border:1px solid var(--line);color:var(--text);font-size:14px}
+.notice{font-size:12.5px;color:var(--muted);text-align:center}
+
+.faq{display:grid;gap:14px}
+.qa{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--panel)}
+.qa h3{margin:0 0 6px;font-size:15.5px}
+.qa p{margin:0;color:var(--muted);font-size:14px}
+
+footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="/studio/"><span class="dot">M</span>麦克工作室 <span style="color:var(--muted);font-weight:500">MikeStudio</span></a>
+    <div class="links">
+      <a href="#demo">演示</a>
+      <a href="#flow">流程</a>
+      <a href="#looks">风格</a>
+      <a href="#price">价格</a>
+      <a href="#faq">问题</a>
+    </div>
+    <a class="cta" href="#price">199 / 月</a>
+  </div>
+</nav>
+
+<header class="wrap" id="demo">
+  <div class="kicker">口播成片 · 不用开剪映</div>
+  <h1>原片丢进去，<em>成片</em>出来</h1>
+  <p class="lead">字幕自动压时间轴、暗色动效卡片自动编排、音效自动配、镜头推进自动加。你只负责讲，剩下的交给一条命令。</p>
+
+  <div class="stats">
+    <div class="stat"><b>0.06s</b><span>字幕对齐平均偏差</span></div>
+    <div class="stat"><b>8 类</b><span>动效卡片</span></div>
+    <div class="stat"><b>3 套</b><span>风格预设</span></div>
+    <div class="stat"><b>-14 LUFS</b><span>出片自动响度归一</span></div>
+  </div>
+
+  <div class="hero-media">
+    <video controls preload="metadata" poster="assets/shot-horizontal.jpg" playsinline>
+      <source src="assets/demo.mp4" type="video/mp4">
+    </video>
+  </div>
+</header>
+
+<section id="flow" class="wrap">
+  <h2>三步，从原片到一条成片</h2>
+  <p class="sub">全过程在一台电脑上跑完，不上传云端，素材不出本机。</p>
+  <div class="steps">
+    <div class="step">
+      <div class="no">STEP 01</div>
+      <h3>导入 A-roll</h3>
+      <p>拖进你录好的口播原片。竖屏横屏都行，原片不用带字幕——字幕由它自己识别。</p>
+    </div>
+    <div class="step">
+      <div class="no">STEP 02</div>
+      <h3>贴上口播稿</h3>
+      <p>把稿子按行粘进去，点「自动压时间轴」。语音先建时间骨架，稿子再按文字对上去，切点落在句子上。</p>
+    </div>
+    <div class="step">
+      <div class="no">STEP 03</div>
+      <h3>选风格，导出</h3>
+      <p>挑一套风格，改高亮色，实时预览满意了就导出。长句自动分页，不会挤成两行断在逗号里。</p>
+    </div>
+  </div>
+</section>
+
+<section id="looks" class="wrap">
+  <h2>三套风格，一套时间轴</h2>
+  <p class="sub">同一段原片、同一份稿子，换风格不用重剪，只换节奏。</p>
+  <div class="looks">
+    <div class="look wide">
+      <img src="assets/shot-horizontal.jpg" alt="横屏暗色画板成片截图" loading="lazy">
+      <div class="body">
+        <h3>暗色画板 · 圆头像（横屏）</h3>
+        <div class="meta">1920 × 1080 · 适合 B 站 / YouTube / 视频号</div>
+        <p>圆形半身头像 + 暗色纹理底 + 全屏动效卡片，字幕压底部安全区，关键词单独高亮。</p>
+      </div>
+    </div>
+    <div class="look">
+      <img src="assets/shot-vertical.jpg" alt="竖屏成片截图" loading="lazy">
+      <div class="body">
+        <h3>竖屏</h3>
+        <div class="meta">1080 × 1920</div>
+        <p>头像上置，字幕单行满宽。</p>
+      </div>
+    </div>
+    <div class="look">
+      <img src="assets/shot-card.jpg" alt="原片全屏 + 底部字幕截图" loading="lazy">
+      <div class="body">
+        <h3>原片全屏 · 底部字幕</h3>
+        <div class="meta">1920 × 1080</div>
+        <p>不要头像不要画板，只压字幕。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>卡片不是贴图，是编排</h2>
+  <p class="sub">每类卡片有自己的入场、停留、退场节奏，配上对应的音效提示。</p>
+  <div class="cards">
+    <img src="assets/shot-card.jpg" alt="动效卡片截图" loading="lazy">
+    <ul class="card-list">
+      <li>信息术语卡<span>滑入过冲 + 正弦悬浮 + 图标微转</span></li>
+      <li>竖向步骤时间线<span>线按真时刻推进，节点 backOut 弹出</span></li>
+      <li>章节进度清单<span>讲到哪条亮哪条</span></li>
+      <li>折线标注卡<span>圆点涟漪 + 折线展开 + 标签裁切</span></li>
+      <li>数字滚动卡<span>定格目标值，不清零乱跳</span></li>
+      <li>对比卡 / 金句卡<span>左论据右结论，重音单独放大</span></li>
+      <li>章节接管卡<span>整屏接管 2.5 秒做段落分隔</span></li>
+      <li>音效层<span>whoosh / pop / tick / ding / thud 自动卡点</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="price" class="wrap">
+  <div class="price">
+    <div>
+      <div class="kicker">会员</div>
+      <div class="amount">¥199 <small>/ 月</small></div>
+      <ul>
+        <li>三套风格预设，横屏竖屏都能出，高亮色可自定义</li>
+        <li>字幕按稿对齐 + 长句自动分页</li>
+        <li>8 类动效卡片 + 自动音效 + 自动响度归一</li>
+        <li>本机渲染，素材不上传，出片不进队列</li>
+        <li>后续新增卡片与风格，会员期内直接可用</li>
+      </ul>
+    </div>
+    <div class="buy-actions">
+      <a class="btn-gold" href="#price">即将开放购买</a>
+      <a class="btn-ghost" href="/studio/#demo">先看演示片</a>
+      <div class="notice">内测阶段，开通入口还没放出来</div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="wrap">
+  <h2>常见问题</h2>
+  <div class="faq">
+    <div class="qa">
+      <h3>需要服务器吗？</h3>
+      <p>不需要。渲染在你自己的电脑上跑（Chrome + ffmpeg），边际成本是零，所以不做云端排队。网页版要等以后再说。</p>
+    </div>
+    <div class="qa">
+      <h3>字幕时间是怎么来的？</h3>
+      <p>先对音轨做一次语音识别，把每个字的时刻摊出来；再拿你的稿子按文字相似度对上去，未匹配的字前后插值。对着真实配音实测，平均偏差 0.06 秒。</p>
+    </div>
+    <div class="qa">
+      <h3>原片必须干净没字幕吗？</h3>
+      <p>建议原片不带烧录字幕，否则会和新字幕叠在一起。画面字幕擦除是另一个功能，还没做。</p>
+    </div>
+    <div class="qa">
+      <h3>能出哪些平台的比例？</h3>
+      <p>横屏 16:9 和竖屏 9:16 两套。抖音、视频号、小红书走竖屏，B 站、YouTube 走横屏，同一个工程换预设就行。</p>
+    </div>
+    <div class="qa">
+      <h3>卡片能自己加吗？</h3>
+      <p>能。每张卡片就是一个 React 组件，带自己的节拍表，加进卡片库后在时间轴上按起止时间挂上去。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>麦克工作室 MikeStudio · 本机渲染，素材不出本机</div>
+    <div><a href="/" style="color:var(--muted)">← markpump.com</a></div>
+  </div>
+</footer>
+
+<script>
+// 视频只在进入视口时才预加载，减少首屏流量
+(function(){
+  var v = document.querySelector('video');
+  if (!v) return;
+  v.addEventListener('play', function(){
+    Array.prototype.forEach.call(document.querySelectorAll('video'), function(o){ if (o !== v) o.pause(); });
+  });
+})();
+</script>
+</body>
+</html>
