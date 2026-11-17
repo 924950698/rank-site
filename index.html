@@ -21,46 +21,34 @@ if(h.length>1||q.has("u")||q.has("champ")||q.has("board"))location.replace("/x/"
 <meta name="twitter:image" content="https://markpump.com/og.png">
 <meta name="theme-color" content="#000000">
 <link rel="stylesheet" href="site.css?v=20261117-wide">
+<link rel="stylesheet" href="home.css?v=20261117-editorial">
 </head>
 <body class="mp home">
 <nav class="sitebar" aria-label="站点导航"><a class="sb-brand" href="/">马克<span class="g">Pump</span></a><div class="sb-tabs"><a href="/youtube/" data-ev="nav-youtube">YouTube</a><a href="/x/" data-ev="nav-x">X</a><a href="/web3/" data-ev="nav-web3">Web3</a><a href="/pianwu/" data-ev="nav-pianwu">麦克片务</a></div></nav>
 
-<section class="hero">
-  <img class="av" src="https://unavatar.io/x/tigerr3aue" alt="马克Pump 头像" onerror="this.style.visibility='hidden'">
-  <div>
-    <h1>马克<span class="g">Pump</span></h1>
-    <p>每周日十分钟，讲清 AI 和 Web3 圈的大事，再聊聊我的看法。新闻之外，多一点思考。</p>
-    <div class="tags"><span>币圈 · Web3</span><span>AI 新闻</span><span>X 中文创作者</span></div>
-  </div>
-</section>
-
-<section class="mods" aria-label="模块入口">
-  <a class="mod yt" href="/youtube/" data-ev="home-youtube">
-    <div class="ic">▶</div>
-    <h2>YouTube</h2>
-    <p>频道 @DGBGJC：每周日更新，十分钟讲清币圈和 AI 圈这一周的大事。</p>
-    <div class="latest" id="ytLatest"></div>
-    <span class="go">看最新视频 →</span>
-  </a>
-  <a class="mod x" href="/x/" data-ev="home-x">
-    <div class="ic">𝕏</div>
-    <h2>X 中文创作者成长站</h2>
-    <ul><li>中文 X 爆帖 Top 10 与冠军页</li><li>24 小时互动照片墙 · 海报 / GIF</li><li>互评账本 · 公开数据概览 · 收益海报</li></ul>
-    <span class="go">进入 X 模块 →</span>
-  </a>
-  <a class="mod w3" href="/web3/" data-ev="home-web3">
-    <div class="ic">◆</div>
-    <h2>Web3</h2>
-    <p>币安广场入口和精选帖，挑值得看的内容，不做实时行情。</p>
-    <span class="go">进入 Web3 →</span>
-  </a>
-</section>
-
-<div class="follow-row">
-  <a class="btn yt" href="https://www.youtube.com/@DGBGJC?sub_confirmation=1" target="_blank" rel="noopener" data-ev="home-sub">订阅 YouTube 频道</a>
-  <a class="btn" href="https://x.com/intent/follow?screen_name=tigerr3aue" target="_blank" rel="noopener" data-ev="home-follow">关注 @tigerr3aue</a>
-</div>
-
+<main class="editorial-home">
+  <section class="feature" aria-labelledby="home-title">
+    <div class="feature-copy">
+      <h1 id="home-title">马克<span class="g">Pump</span></h1>
+      <p class="intro">每周十分钟，讲清 AI 和 Web3 圈的大事，再聊聊我的看法。</p>
+      <p class="issue">最新一期 <time id="issue-date" datetime="2026-11-13T01:38:34+00:00">11 月 13 日</time></p>
+      <h2 id="issue-title">黄仁勋打造英伟达用了33年辞职只用14天</h2>
+      <div class="feature-actions">
+        <a id="issue-watch" class="watch" href="https://www.youtube.com/watch?v=p09fI49i-i8" target="_blank" rel="noopener" data-ev="home-feature-watch">看本期 <span aria-hidden="true">↗</span></a>
+        <a class="follow-mark" href="https://x.com/tigerr3aue" target="_blank" rel="noopener" data-ev="home-follow">关注我的 X <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <a class="feature-media" id="issue-cover-link" href="https://www.youtube.com/watch?v=p09fI49i-i8" aria-label="播放：黄仁勋打造英伟达用了33年辞职只用14天" target="_blank" rel="noopener" data-ev="home-feature-cover">
+      <img id="issue-cover" src="https://i.ytimg.com/vi/p09fI49i-i8/hqdefault.jpg" alt="" width="640" height="360" fetchpriority="high">
+      <span class="feature-play" aria-hidden="true">▶</span>
+    </a>
+  </section>
+  <section class="home-links" aria-label="更多内容和工具">
+    <a href="/x/" data-ev="home-x"><div><h2>X 新鲜事</h2><p>看简中区话题、精选原帖和创作角度。</p></div><span aria-hidden="true">↗</span></a>
+    <a href="/web3/" data-ev="home-web3"><div><h2>Web3</h2><p>看币安广场精选和我的 Web3 内容。</p></div><span aria-hidden="true">↗</span></a>
+    <a href="/pianwu/" data-ev="home-pianwu"><div><h2>麦克片务</h2><p>安排发布日期，管理作品和多平台链接。</p></div><span aria-hidden="true">↗</span></a>
+  </section>
+</main>
 <footer class="mp-foot">
   © 马克Pump · markpump.com<br>
   <a href="privacy.html">隐私政策</a> · <a href="terms.html">服务条款</a>
@@ -68,9 +56,6 @@ if(h.length>1||q.has("u")||q.has("champ")||q.has("board"))location.replace("/x/"
 
 <script src="config.js?v=20261113-modules"></script>
 <script src="site.js?v=20261113-modules"></script>
-<script>
-MP.json("youtube/videos.json").then(d => { const v = (d.videos || [])[0]; if (!v) return;
-  document.getElementById("ytLatest").textContent = "最新：" + v.title + "（" + MP.fmtDate(v.published) + "）"; }).catch(() => {});
-</script>
+<script src="home.js?v=20261117-editorial" defer></script>
 </body>
 </html>
