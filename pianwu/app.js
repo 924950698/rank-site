@@ -7,7 +7,21 @@ const editor = document.querySelector('#editor');
 const form = document.querySelector('#work-form');
 const error = document.querySelector('#form-error');
 const pages = new Set(['board', 'calendar', 'archive']);
-const platforms = { douyin: '抖音', youtube: 'YouTube' };
+const platforms = {
+  douyin: { name: '抖音', domains: ['douyin.com', 'www.douyin.com', 'v.douyin.com'], views: '播放' },
+  youtube: { name: 'YouTube', domains: ['youtube.com', 'www.youtube.com', 'm.youtube.com', 'youtu.be'], views: '播放' },
+  x: { name: 'X', domains: ['x.com', 'www.x.com', 'twitter.com', 'www.twitter.com', 'mobile.twitter.com'], views: '浏览' }
+};
+const ids = Object.keys(platforms);
+const counts = new Intl.NumberFormat('zh-CN');
+const fields = document.querySelector('#platform-fields');
+const metricLabels = { views: '播放 / 浏览', likes: '点赞', comments: '评论 / 回复' };
+const metrics = Object.keys(metricLabels);
+fields.innerHTML = ids.map(id => '<details data-platform="' + id + '"><summary>' + platforms[id].name +
+  '</summary><label>作品链接<input type="url" name="' + id + '"></label><div class="metric-fields">' +
+  metrics.map(metric => '<label>' + metricLabels[metric] + '<input type="number" name="' + id + '-' + metric +
+    '" min="0" max="9007199254740991" step="1" inputmode="numeric"></label>').join('') + '</div></details>'
+).join('');
 let works;
 try {
   works = JSON.parse(localStorage.getItem(key) || '[]');
@@ -26,17 +40,19 @@ function esc(value) {
 
 function platformLink(platform, text) {
   if (!text) return '';
-  const url = new URL(text);
-  const domains = platform === 'douyin' ? ['douyin.com', 'www.douyin.com', 'v.douyin.com'] : ['youtube.com', 'www.youtube.com', 'm.youtube.com', 'youtu.be'];
-  if (url.protocol !== 'https:' || url.username || url.password || !domains.includes(url.hostname)) {
-    throw new Error('请填写 ' + platforms[platform] + ' 的 HTTPS 链接。');
+  let url;
+  try { url = new URL(text); } catch {}
+  const { name, domains } = platforms[platform];
+  if (!url || url.protocol !== 'https:' || url.username || url.password || url.port || !domains.includes(url.hostname) ||
+      (platform === 'x' && !/^\/[^/]+(?:\/web)?\/status\/\d+\/?$/.test(url.pathname))) {
+    throw new Error('请填写 ' + name + ' 的 HTTPS 作品链接。');
   }
   return url.href;
 }
 
 function status(work) {
-  if (work.douyin && work.youtube) return '两平台已登记';
-  if (work.douyin || work.youtube) return '已登记一个平台';
+  const linked = ids.filter(id => work[id]).length;
+  if (linked) return '已登记 ' + linked + ' / ' + ids.length + ' 个平台';
   return work.date ? '已排期' : '待排期';
 }
 
@@ -47,7 +63,7 @@ function editButton(work, label = '编辑') {
 function list(items, showLinks = false) {
   if (!items.length) return '<p class="card muted">暂无作品。</p>';
   return '<div class="work-list">' + items.map(work => {
-    const links = showLinks ? Object.entries(platforms).map(([id, name]) => {
+    const links = showLinks ? Object.entries(platforms).map(([id, {name}]) => {
       try {
         const url = platformLink(id, work[id]);
         return url ? '<a target="_blank" rel="noopener" href="' + esc(url) + '">' + name + ' ↗</a>' : '';
@@ -60,12 +76,33 @@ function list(items, showLinks = false) {
   }).join('') + '</div>';
 }
 
+function platformCard(id) {
+  const {name, views} = platforms[id];
+  const entries = works.filter(work => work[id]);
+  const labels = [views, '点赞', id === 'x' ? '回复' : '评论'];
+  const summary = metrics.map((metric, index) => {
+    const numbers = entries.map(work => work.metrics?.[id]?.[metric]).filter(Number.isSafeInteger);
+    const total = numbers.length ? counts.format(numbers.reduce((sum, n) => sum + BigInt(n), 0n)) : '—';
+    return '<div><dt>' + labels[index] + '</dt><dd>' + total + '</dd></div>';
+  }).join('');
+  const recent = entries.slice(0, 3).map(work => {
+    let url;
+    try { url = platformLink(id, work[id]); } catch { return ''; }
+    return '<li><a href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(work.title) +
+      ' ↗</a>' + editButton(work, '录数据') + '</li>';
+  }).join('');
+  return '<article class="card"><h3>' + name + '</h3><p class="muted">已登记 ' + entries.length +
+    ' 条作品</p><dl class="platform-metrics">' + summary + '</dl>' +
+    (recent ? '<ul class="platform-recent">' + recent + '</ul>' : '<p class="muted">在作品里登记链接后显示。</p>') + '</article>';
+}
+
 function board() {
-  const stats = [['全部作品', works.length], ['待排期', works.filter(work => !work.date && !work.douyin && !work.youtube).length],
-    ['两平台已登记', works.filter(work => work.douyin && work.youtube).length]];
+  const stats = [['全部作品', works.length], ['待排期', works.filter(work => !work.date && !ids.some(id => work[id])).length],
+    ['三平台已登记', works.filter(work => ids.every(id => work[id])).length]];
   return '<h2>作品进度</h2><div class="stats">' + stats.map(([name, count]) =>
     '<div class="card stat"><span class="muted">' + name + '</span><strong>' + count + '</strong></div>'
-  ).join('') + '</div><h2>最近编辑</h2>' + list(works.slice(0, 4));
+  ).join('') + '</div><h2>平台表现</h2><p class="muted">指标按已录入的数据汇总。</p><div class="platform-grid">' +
+    ids.map(platformCard).join('') + '</div><h2>最近编辑</h2>' + list(works.slice(0, 4));
 }
 
 function calendar() {
@@ -80,7 +117,7 @@ function calendar() {
     return '<div class="day' + (date === today ? ' today' : '') + '"><time datetime="' + date + '">' + (i + 1) +
       '</time>' + works.filter(work => work.date === date).map(work => editButton(work, work.title)).join('') + '</div>';
   }).join('');
-  const waiting = works.filter(work => !work.date && !work.douyin && !work.youtube);
+  const waiting = works.filter(work => !work.date && !ids.some(id => work[id]));
   return '<div class="cal-head"><h2>' + monthLabel.format(first) + '</h2><div class="actions">' +
     '<button data-month="-1">上个月</button><button data-month="1">下个月</button></div></div><div class="calendar">' +
     headers + '<div aria-hidden="true"></div>'.repeat(start) + cells + '</div>' +
@@ -102,7 +139,11 @@ function open(work) {
   form.reset();
   error.hidden = true;
   document.querySelector('#editor-title').textContent = editing ? '编辑作品' : '新建作品';
-  for (const name of ['title', 'date', 'douyin', 'youtube', 'notes']) form.elements.namedItem(name).value = work?.[name] ?? '';
+  for (const name of ['title', 'date', ...ids, 'notes']) form.elements.namedItem(name).value = work?.[name] ?? '';
+  for (const id of ids) {
+    fields.querySelector('[data-platform=' + id + ']').open = Boolean(work?.[id]);
+    for (const metric of metrics) form.elements.namedItem(id + '-' + metric).value = work?.metrics?.[id]?.[metric] ?? '';
+  }
   editor.showModal();
 }
 
@@ -118,13 +159,31 @@ view.addEventListener('click', event => {
     render();
   }
 });
+form.addEventListener('invalid', event => {
+  const panel = event.target.closest('details');
+  if (panel) panel.open = true;
+}, true);
 form.addEventListener('submit', event => {
   event.preventDefault();
   const entry = Object.fromEntries(new FormData(form));
   try {
     entry.title = entry.title.trim();
     if (!entry.title) throw new Error('请填写作品标题。');
-    for (const platform of Object.keys(platforms)) entry[platform] = platformLink(platform, entry[platform].trim());
+    entry.metrics = {};
+    for (const id of ids) {
+      entry[id] = platformLink(id, entry[id].trim());
+      entry.metrics[id] = {};
+      for (const metric of metrics) {
+        const field = id + '-' + metric;
+        const raw = entry[field].trim();
+        delete entry[field];
+        if (!raw) continue;
+        const value = Number(raw);
+        if (!entry[id]) throw new Error('请先登记 ' + platforms[id].name + ' 的作品链接。');
+        if (!Number.isSafeInteger(value) || value < 0) throw new Error('指标请填写非负整数。');
+        entry.metrics[id][metric] = value;
+      }
+    }
     entry.id = editing || crypto.randomUUID();
     const next = [entry, ...works.filter(work => work.id !== entry.id)];
     localStorage.setItem(key, JSON.stringify(next));

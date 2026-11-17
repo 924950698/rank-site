@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>麦克片务 · MarkPump</title>
-<link rel="stylesheet" href="style.css?v=20261117-wide">
-<script type="module" src="app.js"></script>
+<link rel="stylesheet" href="style.css?v=20261117-platforms">
+<script type="module" src="app.js?v=20261117-platforms"></script>
 </head>
 <body>
 <header><a href="/" class="back">‹ MarkPump</a><h1><span aria-hidden="true">🎙</span> 麦克片务</h1><button id="add" class="primary">新建作品</button></header>
@@ -20,8 +20,7 @@
 <h2 id="editor-title">作品</h2>
 <label>作品标题<input name="title" required maxlength="160"></label>
 <label>计划发布日期<input name="date" type="date"></label>
-<label>抖音链接<input name="douyin" type="url" placeholder="https://www.douyin.com/video/…"></label>
-<label>YouTube 链接<input name="youtube" type="url" placeholder="https://youtu.be/…"></label>
+<div id="platform-fields"></div>
 <label>备注<textarea name="notes" maxlength="2000" rows="3"></textarea></label>
 <p id="form-error" role="alert" hidden></p>
 <div class="actions"><button id="cancel" type="button">取消</button><button class="primary" type="submit">保存作品</button></div>
