@@ -93,3 +93,9 @@ a.fp:hover{border-color:#f0b90b}
 .sb-tabs a[href="/youtube/"],.mod.yt,.btn.yt{display:none!important}
 .mods{grid-template-columns:repeat(2,1fr)}
 @media(max-width:860px){.mods{grid-template-columns:1fr}}
+
+/* Desktop shell spans the window; reading widths are set by each section. */
+@media(min-width:1024px){
+  body.mp,body.mod-x{--page-gutter:clamp(24px,2.5vw,48px);width:100%;max-width:none;margin:0;padding-inline:var(--page-gutter);box-sizing:border-box}
+  body.mp .sitebar,body.mod-x .sitebar{margin-inline:calc(-1 * var(--page-gutter));padding-inline:var(--page-gutter)}
+}
