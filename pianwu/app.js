@@ -79,6 +79,7 @@ try {
   notice.hidden = false;
 }
 let editing = null;
+let selectedWork = null;
 let packageInput = null;
 let month = zone.format().slice(0, 7);
 
@@ -108,21 +109,47 @@ function editButton(work, label = '编辑') {
   return '<button type="button" data-edit="' + esc(work.id) + '" title="' + esc(work.title) + '">' + esc(label) + '</button>';
 }
 
-function list(items, showLinks = false) {
+function list(items) {
   if (!items.length) return '<p class="card muted">暂无作品。</p>';
-  return '<div class="work-list">' + items.map(work => {
-    const links = showLinks ? Object.entries(platforms).map(([id, {name}]) => {
-      try {
-        const url = platformLink(id, work[id]);
-        return url ? '<a target="_blank" rel="noopener" href="' + esc(url) + '">' + name + ' ↗</a>' : '';
-      } catch { return ''; }
-    }).join(' ') : '';
-    return '<article class="card work"><div><h3>' + esc(work.title) + '</h3><p class="muted">' +
-      esc(work.date || '未排期') + ' · ' + status(work) + '</p>' +
-      (showLinks && work.video ? '<p class="muted">成片 · ' + esc(work.video.name) + '</p>' : '') +
-      (showLinks && work.notes ? '<p>' + esc(work.notes) + '</p>' : '') + '<div class="actions">' + links +
-      '</div></div>' + editButton(work) + '</article>';
-  }).join('') + '</div>';
+  return '<div class="work-list">' + items.map(work =>
+    '<article class="card work"><div><h3>' + esc(work.title) + '</h3><p class="muted">' +
+    esc(work.date || '未排期') + ' · ' + status(work) + '</p></div>' + editButton(work) + '</article>'
+  ).join('') + '</div>';
+}
+
+function archive() {
+  const heading = '<h2>片库 <span class="muted">' + works.length + ' 部作品</span></h2>';
+  const work = works.find(item => item.id === selectedWork) || works[0];
+  if (!work) {
+    return heading + '<p class="card muted">暂无作品。可以新建作品或导入工作室作品包。</p>';
+  }
+  selectedWork = work.id;
+  const choices = works.map(item =>
+    '<button type="button" data-select="' + esc(item.id) + '" aria-pressed="' + (item.id === work.id) +
+    '"><strong>' + esc(item.title) + '</strong><span class="muted">' +
+    esc(item.date || '未排期') + ' · ' + status(item) + '</span></button>'
+  ).join('');
+  const details = ids.map(id => {
+    const {name, views} = platforms[id];
+    let url = '';
+    try { url = platformLink(id, work[id]); } catch {}
+    const labels = [views, '点赞', id === 'x' ? '回复' : '评论'];
+    const numbers = metrics.map((metric, index) => {
+      const value = work.metrics?.[id]?.[metric];
+      return '<div><dt>' + labels[index] + '</dt><dd>' + (Number.isSafeInteger(value) ? counts.format(value) : '—') + '</dd></div>';
+    }).join('');
+    return '<article class="card"><h4>' + name + '</h4>' +
+      (url ? '<a href="' + esc(url) + '" target="_blank" rel="noopener">查看作品 ↗</a>' : '<span class="muted">未登记链接</span>') +
+      '<dl class="platform-metrics">' + numbers + '</dl></article>';
+  }).join('');
+  return heading + '<div class="archive-layout"><div class="archive-list" role="group" aria-label="选择作品">' + choices +
+    '</div><section class="card archive-detail" aria-labelledby="selected-title"><div class="archive-head"><div>' +
+    '<h3 id="selected-title">' + esc(work.title) + '</h3><p class="muted">' + esc(work.date || '未排期') + ' · ' +
+    status(work) + '</p></div>' + editButton(work, '编辑作品') + '</div>' +
+    (work.video ? '<p class="muted">成片 · ' + esc(work.video.name) + '</p>' :
+      work.missingVideoName ? '<p class="muted">待重新导入成片 · ' + esc(work.missingVideoName) + '</p>' : '') +
+    (work.notes ? '<p class="archive-notes">' + esc(work.notes) + '</p>' : '') +
+    '<div class="platform-grid archive-platforms">' + details + '</div></section></div>';
 }
 
 function platformCard(id) {
@@ -180,7 +207,7 @@ function render() {
     if (link.hash === '#' + page) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
   }
-  view.innerHTML = page === 'board' ? board() : page === 'calendar' ? calendar() : '<h2>作品档案</h2>' + list(works, true);
+  view.innerHTML = page === 'board' ? board() : page === 'calendar' ? calendar() : archive();
 }
 
 function sameMetrics(a, b) {
@@ -263,6 +290,16 @@ videoPreview.addEventListener('click', async () => {
 view.addEventListener('click', event => {
   const button = event.target.closest('button');
   if (!button) return;
+  if (button.hasAttribute('data-select')) {
+    const scroll = button.parentElement.scrollTop;
+    selectedWork = button.dataset.select;
+    render();
+    const selected = view.querySelector('[aria-pressed="true"]');
+    if (selected) {
+      selected.parentElement.scrollTop = scroll;
+      selected.focus({preventScroll: true});
+    }
+  }
   if (button.dataset.edit) open(works.find(work => work.id === button.dataset.edit));
   if (button.dataset.month) {
     const [year, number] = month.split('-').map(Number);
