@@ -88,6 +88,9 @@ section .sub{color:var(--muted);margin:0 0 34px;font-size:15px}
 
 footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:13px}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.local-access{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px 18px;margin:22px auto 0}
+.local-access p{max-width:40em;margin:0;color:var(--muted);font-size:14px}
+@media(max-width:680px){.local-access{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
@@ -110,6 +113,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="kicker">口播成片 · 不用开剪映</div>
   <h1>原片丢进去，<em>成片</em>出来</h1>
   <p class="lead">字幕自动压时间轴、暗色动效卡片自动编排、音效自动配、镜头推进自动加。你只负责讲，剩下的交给一条命令。</p>
+
+  <div class="local-access">
+    <a class="btn-gold" href="http://127.0.0.1:8790/" target="_blank" rel="noopener">打开本地编辑台 ↗</a>
+    <p>请在运行 Pump 工作室的电脑上打开。连接不上时，在工作室目录运行 <code>node server.mjs</code> 后重试。</p>
+  </div>
 
   <div class="stats">
     <div class="stat"><b>0.06s</b><span>字幕对齐平均偏差</span></div>
